@@ -1,0 +1,65 @@
+{
+  "sglang_neuron": {
+    "start": ["bash", "srv_sglang_neuron.sh", "start", "{model}", "{port}", "{name}"],
+    "stop": ["bash", "srv_sglang_neuron.sh", "stop", "{name}"],
+    "alive": ["bash", "srv_sglang_neuron.sh", "alive", "{name}"],
+    "logs": ["bash", "srv_sglang_neuron.sh", "logs", "{name}"],
+    "detached": true,
+    "served_map_env": "MODELS_ROOT",
+    "served_map_to": "/models",
+    "ready_timeout_s": 5400,
+    "stop_grace_s": 150
+  },
+  "sglang_neuron_inplace": {
+    "start": ["bash", "srv_sglang_neuron.sh", "start", "{model}", "{port}", "{name}"],
+    "stop": ["bash", "srv_sglang_neuron.sh", "stop", "{name}"],
+    "alive": ["bash", "srv_sglang_neuron.sh", "alive", "{name}"],
+    "logs": ["bash", "srv_sglang_neuron.sh", "logs", "{name}"],
+    "detached": true,
+    "served_map_env": "MODELS_ROOT",
+    "served_map_to": "/models",
+    "ready_timeout_s": 5400,
+    "stop_grace_s": 150,
+    "weight_update": "sglang_disk"
+  },
+  "vllm_neuron": {
+    "start": ["bash", "srv_other.sh", "vllm_neuron", "{model}", "{port}", "{name}"],
+    "served": "{name}",
+    "ready_timeout_s": 3600,
+    "stop_grace_s": 120
+  },
+  "vllm_neuron_docker": {
+    "start": ["bash", "srv_vllm_neuron_docker.sh", "start", "{model}", "{port}", "{name}"],
+    "stop": ["bash", "srv_vllm_neuron_docker.sh", "stop", "{name}"],
+    "alive": ["bash", "srv_vllm_neuron_docker.sh", "alive", "{name}"],
+    "logs": ["bash", "srv_vllm_neuron_docker.sh", "logs", "{name}"],
+    "detached": true,
+    "served": "{name}",
+    "ready_timeout_s": 3600,
+    "stop_grace_s": 150
+  },
+  "vllm_cuda": {
+    "start": ["bash", "srv_other.sh", "vllm_cuda", "{model}", "{port}", "{name}"],
+    "served": "{name}",
+    "ready_timeout_s": 900,
+    "stop_grace_s": 60
+  },
+  "sglang_cuda_docker": {
+    "start": ["bash", "srv_sglang_cuda_docker.sh", "start", "{model}", "{port}", "{name}"],
+    "stop": ["bash", "srv_sglang_cuda_docker.sh", "stop", "{name}"],
+    "alive": ["bash", "srv_sglang_cuda_docker.sh", "alive", "{name}"],
+    "logs": ["bash", "srv_sglang_cuda_docker.sh", "logs", "{name}"],
+    "detached": true,
+    "served": "{model}",
+    "ready_timeout_s": 900,
+    "stop_grace_s": 90,
+    "weight_update": "sglang_disk"
+  },
+  "sglang_cuda": {
+    "start": ["bash", "srv_other.sh", "sglang_cuda", "{model}", "{port}"],
+    "served": "{model}",
+    "ready_timeout_s": 900,
+    "stop_grace_s": 60,
+    "weight_update": "sglang_disk"
+  }
+}
