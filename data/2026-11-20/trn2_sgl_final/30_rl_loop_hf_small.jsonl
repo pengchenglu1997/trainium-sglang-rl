@@ -1,0 +1,4 @@
+{"event": "open", "pid": 698935, "unix": 1795197791.1}
+{"event": "trainer_ready", "seconds": 12.2, "device": "neuron", "core": "14", "trainable_params": 10092544, "max_len": 576, "micro_bs": 4, "lr": 0.0002, "sync_ok": true, "sync_error": null}
+{"event": "data", "train_rows": 7473, "train_rows_within_prompt_limit": 7473, "needed": 24, "eval_rows": 20}
+{"event": "start", "run_tag": "hf_small", "backend": "hf", "steps": 6, "questions_per_step": 4, "k": 8, "temperature": 0.7, "max_new_tokens": 256, "sync_every": 1, "rollout_mode": "parallel", "seed": 1}

@@ -1,0 +1,12 @@
+{"event": "open", "pid": 12180, "unix": 1795334914.7}
+{"event": "start_base", "ready_s": 522.1, "log": "/home/ubuntu/w/results_night/server_logs/server_srv_glm4_001.log", "start_no": 1}
+{"event": "answers", "which": "A base, fresh start", "answers": [{"status": 200, "chars": 216, "tokens": 48, "sum_logprob": -6.7964, "error": null}, {"status": 200, "chars": 169, "tokens": 48, "sum_logprob": -6.9998, "error": null}, {"status": 200, "chars": 216, "tokens": 48, "sum_logprob": -3.771, "error": null}]}
+{"event": "update", "to": "alt", "status": 200, "ok": true, "seconds": 4.9, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "answers", "which": "B alt, in place", "answers": [{"status": 200, "chars": 216, "tokens": 48, "sum_logprob": -6.9638, "error": null}, {"status": 200, "chars": 169, "tokens": 48, "sum_logprob": -7.009, "error": null}, {"status": 200, "chars": 216, "tokens": 48, "sum_logprob": -3.8692, "error": null}]}
+{"event": "update", "to": "base", "status": 200, "ok": true, "seconds": 4.89, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "answers", "which": "C base, in place again", "answers": [{"status": 200, "chars": 216, "tokens": 48, "sum_logprob": -6.7964, "error": null}, {"status": 200, "chars": 169, "tokens": 48, "sum_logprob": -6.9998, "error": null}, {"status": 200, "chars": 216, "tokens": 48, "sum_logprob": -3.771, "error": null}]}
+{"event": "check", "update_changed_answers": false, "a_vs_b_max_logprob_diff": 0.08719, "back_to_base_same_text": true, "back_to_base_max_logprob_diff": 0.0}
+{"event": "restart_alt", "ready_s": 204.4, "log": "/home/ubuntu/w/results_night/server_logs/server_srv_glm4_002.log", "start_no": 2, "stop_s": 2.4}
+{"event": "answers", "which": "D alt, fresh start", "answers": [{"status": 200, "chars": 216, "tokens": 48, "sum_logprob": -6.9638, "error": null}, {"status": 200, "chars": 169, "tokens": 48, "sum_logprob": -7.009, "error": null}, {"status": 200, "chars": 216, "tokens": 48, "sum_logprob": -3.8692, "error": null}]}
+{"event": "check", "inplace_equals_fresh_text": true, "inplace_vs_fresh_max_logprob_diff": 0.0}
+{"done": true}

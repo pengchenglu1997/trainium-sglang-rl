@@ -1,0 +1,8 @@
+{"event": "open", "pid": 12940, "unix": 1795202112.9}
+{"event": "trainer_ready", "seconds": 4.5, "device": "cuda", "core": null, "trainable_params": 10092544, "max_len": 576, "micro_bs": 4, "lr": 0.0002, "sync_ok": true, "sync_error": null}
+{"event": "data", "train_rows": 7473, "train_rows_within_prompt_limit": 7473, "needed": 40, "eval_rows": 100}
+{"event": "start", "run_tag": "cuda_restart", "backend": "sglang_cuda", "steps": 10, "questions_per_step": 4, "k": 8, "temperature": 0.7, "max_new_tokens": 256, "sync_every": 1, "rollout_mode": "parallel", "seed": 1}
+{"event": "sync", "method": "restart", "ckpt_root": "/home/ubuntu/w/models/rl_cuda_restart/cuda_restart"}
+{"event": "server_start", "ready_s": null, "log": "/home/ubuntu/w/work_cuda_restart/cuda_restart/server_logs/server_rl_cuda_restart_001.log", "start_no": 1}
+{"status": "fail", "stage": "loop", "error_type": "RuntimeError", "message": "server did not become ready on the base model ({'ready_s': None, 'log': '/home/ubuntu/w/work_cuda_restart/cuda_restart/server_logs/server_rl_cuda_restart_001.log', 'start_no': 1})"}
+{"done": true}

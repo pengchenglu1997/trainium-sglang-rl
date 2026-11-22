@@ -1,0 +1,271 @@
+activate_instruction_count: 3652
+activate_instruction_time: 0.001430493592
+adjusted_hardware_flops: 103781515264
+adjusted_transpose_flops: 52405960704
+cc_cores_instruction_active_time: 9.5015146e-05
+cc_cores_instruction_active_time_percent: 0.0009506072624841104
+cc_cores_instruction_count: 5164
+cc_cores_instruction_time: 0.002101674343
+cc_op_active_time: 0.002646841752
+cc_op_active_time_percent: 0.026481114832969544
+cc_op_count: 236
+cc_op_time: 0.002646841752
+collectives_version: 0.35.43 ("354a)
+compiler_version: 2.28.7631.0+8f7b0cf5
+dma_active_cycles: 26038471
+dma_active_time: 0.021698725419
+dma_active_time_percent: 0.2170913463622944
+dma_packet_time: 0.434717164567
+dma_queue_count: 656
+dma_transfer_average_bytes: 157792.7960199005
+dma_transfer_count: 1608
+dma_transfer_time: 0.001645178595
+dma_transfer_total_bytes: 63432704
+driver_version: 2.31.0 ()
+dynamic_dma_active_time_percent: 0.20323851371866108
+dynamic_dma_packet_percent: 0.9901043951975395
+dynamic_dma_size_percent: 0.984509185894515
+event_count: 843577
+gpsimd_engine_active_time: 0.013954821055
+gpsimd_engine_active_time_percent: 0.1396151540044908
+gpsimd_engine_instruction_count: 29611
+gpsimd_engine_instruction_time: 0.023417922647
+hardware_dynamic_dma_active_time: 0.009650131918
+hardware_dynamic_dma_active_time_percent: 0.09654761236887978
+hardware_dynamic_dma_packet_count: 5575624
+hardware_dynamic_dma_packet_percent: 0.6824179247147781
+hardware_dynamic_dma_size: 1787481504
+hardware_dynamic_dma_size_percent: 0.26098120006596853
+hardware_flops: 92312350720
+hbm_read_bytes: 5491232000
+hbm_write_bytes: 1006213392
+hfu_estimated_percent: 0.006601416164501025
+host_device_dma_active_time: 0.002741155716
+host_device_dma_bandwidth: 763829744.7964326
+host_device_dma_packet_count: 1666
+host_device_dma_transfer_bytes: 30156216
+input_queue_bytes: 450560
+inputs_and_weights_size_bytes: 4965674016
+inputs_outputs_weights_size_bytes: 8738451488
+instance_type: trn2.48xlarge
+matmul_instruction_count: 169648
+mbu_estimated_percent: 0.0907899765077983
+mbu_min_read_util_percent: 0.06938625876149948
+mfu_estimated_percent: 0.003081744318659528
+mfu_hlo_estimated_percent: 0.003081744318659528
+mfu_hlo_max_achievable_estimated_percent: 0.03394366247462159
+mfu_inst_estimated_percent: 0.0032679367202330506
+mfu_inst_max_achievable_estimated_percent: 0.03300616878363959
+mfu_max_achievable_estimated_percent: 0.03394366247462159
+mm_arithmetic_intensity: 29.002354557380173
+model_flops: 48448405504
+nc_idx: 4
+nd_idx: 32
+neuroncore_cycle_count: 119942472
+nki_version: 0.7.0+37713544100.gfede04bb
+output_queue_bytes: 0
+peak_flops_bandwidth_ratio: 439.34748603351954
+profiler_version: 2.33.0.1039-60059b2
+psum_read_bytes: 821561856
+psum_read_sbuf_write_bytes: 721464064
+psum_read_sbuf_write_count: 39128
+psum_write_bytes: 1229608448
+runtime_version: 2.35.30 (d2725)
+sbuf_read_bytes: 10927267216
+sbuf_write_bytes: 12271761808
+scalar_engine_active_time: 0.013150111144
+scalar_engine_active_time_percent: 0.1315641945754589
+scalar_engine_instruction_count: 68037
+scalar_engine_instruction_time: 0.023624612164
+software_dynamic_dma_active_time: 0.013125527776000002
+software_dynamic_dma_active_time_percent: 0.13131824296520594
+software_dynamic_dma_packet_count: 2513920
+software_dynamic_dma_packet_percent: 0.30768647048276127
+software_dynamic_dma_size: 4955502128
+software_dynamic_dma_size_percent: 0.7235279858285465
+spill_reload_bytes: 675842304
+spill_save_bytes: 969220880
+static_dma_active_time: 0.002344037914
+static_dma_active_time_percent: 0.023451623855700907
+static_dma_packet_count: 80851
+static_dma_packet_percent: 0.009895604802460592
+static_dma_size: 106097848
+static_dma_size_percent: 0.015490814105484989
+sync_engine_active_time: 0.011683666507
+sync_engine_active_time_percent: 0.11689271344167128
+sync_engine_instruction_count: 50089
+sync_engine_instruction_time: 0.019406837262
+tensor_engine_active_time: 0.008851476362
+tensor_engine_active_time_percent: 0.0885572255335337
+tensor_engine_instruction_count: 347464
+tensor_engine_instruction_time: 0.051784429178
+throttle_active_nc0_time_ns: 4137834
+throttle_active_nc1_time_ns: 4236442
+throttle_activity_0_active_time_nc0_percent: 0.0019123807213622002
+throttle_activity_0_active_time_nc1_percent: 0.0016394277969805555
+throttle_activity_0_avg_util_limit_nc0_percent: 1
+throttle_activity_0_avg_util_limit_nc1_percent: 1
+throttle_activity_1_active_time_nc0_percent: 0.04139819669831235
+throttle_activity_1_active_time_nc1_percent: 0.04239098330890911
+throttle_activity_1_avg_util_limit_nc0_percent: 0.5
+throttle_activity_1_avg_util_limit_nc1_percent: 0.5
+throttle_avg_util_limit_nc0_percent: 0.022611479070518376
+throttle_avg_util_limit_nc1_percent: 0.02283491945143511
+total_active_time: 0.035563140554
+total_active_time_percent: 0.3558020074754775
+total_exec_time: 0.036871034383000004
+total_time: 0.039480284979
+trace_count: 9594100
+transpose_flops: 45202046976
+vector_engine_active_time: 0.010447398526
+vector_engine_active_time_percent: 0.10452410306122553
+vector_engine_instruction_count: 83319
+vector_engine_instruction_time: 0.018686602793
+weight_queue_bytes: 62982144
+weight_size_bytes: 393728
+== OpcodeSummary (311, 6) ['engine', 'opcode', 'instruction_count', 'instruction_time_ns', 'active_time_ns', 'active_time_percent']
+    engine                       opcode  instruction_count  instruction_time_ns  active_time_ns  active_time_percent
+0   vector              EVENT_SEMAPHORE               1904               114796           51375         2.447488e-03
+1   vector                         CAST                443                91899           44701         2.129541e-03
+2   gpsimd                TENSOR_SCALAR                114                37644           19143         9.119664e-04
+3   tensor                        WRITE                  6                  772             700         3.334777e-05
+4     sync                          NOP                  9                  235             202         9.623215e-06
+5   tensor                        DRAIN                 23                 2006             876         4.173236e-05
+6   vector                        DRAIN                 23                  746             327         1.557817e-05
+7   gpsimd  TENSOR_SCALAR_AFFINE_SELECT                112                34352           17383         8.281205e-04
+8     sync            SET_ORDERING_MODE                  4                   78              78         3.715895e-06
+9     sync                        DRAIN                 25                  540             273         1.300563e-05
+10  gpsimd               COMPARE_BRANCH                  3                  282              81         3.858814e-06
+11  scalar                         COPY               4766              1146681          471998         2.248583e-02
+12  tensor              EVENT_SEMAPHORE               2208               194674          102535         4.884734e-03
+13  vector       COPY_PREDICATED_SCALAR                441               122301           57833         2.755146e-03
+14  vector  EVENT_SEMAPHORE_RANGE_CLEAR                  2                  617             303         1.443482e-05
+15  gpsimd                       NOTIFY                  5                   85              32         1.524470e-06
+16    sync                        WRITE                716                40572           21377         1.018393e-03
+17  tensor               COMPARE_BRANCH                  3                 4746            4746         2.260979e-04
+18  gpsimd                          NOP                  5                   85              85         4.049373e-06
+19  scalar  EVENT_SEMAPHORE_RANGE_CLEAR                  2                  501             232         1.105241e-05
+20  scalar                     ACTIVATE                913               357425          163765         7.801712e-03
+21  gpsimd                  TENSOR_LOAD                  4                 3585            3336         1.589260e-04
+22  tensor                       MATMUL              42412              8344682         1431876         6.821411e-02
+23  vector               COMPARE_BRANCH                  3                  305              86         4.097012e-06
+24  tensor                          NOP                  8                  170             170         8.098746e-06
+25  gpsimd                        WRITE                783                78432           39963         1.903824e-03
+26  scalar                  TENSOR_LOAD                  4                 3501            3258         1.552101e-04
+27  vector             STREAM_TRANSPOSE                148                29231           15681         7.470378e-04
+28  scalar                       NOTIFY                  5                   32              14         6.669555e-07
+29    sync              EVENT_SEMAPHORE               4598              2771886         1294343         6.166209e-02
+30  gpsimd  EVENT_SEMAPHORE_RANGE_CLEAR                  2                  572             279         1.329147e-05
+31  tensor                  TENSOR_LOAD                  3                 2955            2489         1.185752e-04
+32  vector                TENSOR_TENSOR               4527              1448495          685260         3.264556e-02
+33    sync                 DMA_DIRECT2D               7147              4803052         2521323         1.201150e-01
+34  vector                TENSOR_SCALAR               2678               785445          240990         1.148069e-02
+35  vector            SET_ORDERING_MODE                  4                  178             178         8.479863e-06
+36  vector                       MEMSET               1579               150089           59780         2.847900e-03
+37  gpsimd                 DMA_DIRECT2D               1581              1136156          551649         2.628038e-02
+38  gpsimd                         IOTA                551               140902           67260         3.204245e-03
+39  tensor                    LDWEIGHTS              42188              4582268          941632         4.485904e-02
+== ExecutionInfo (4, 6) ['execution_index', 'neff_name', 'execution_start_ts', 'execution_end_ts', 'num_subgraphs', 'row_count']
+   execution_index                              neff_name  execution_start_ts  execution_end_ts  num_subgraphs  row_count
+0                1  96f817d427a4779f018e898d3384833d.neff            11785230          20990906              2    2988095
+1                3  96f817d427a4779f018e898d3384833d.neff            30237207          39480285              2    2990070
+2                2  96f817d427a4779f018e898d3384833d.neff            20985214          30242007              2    2988983
+3                0  96f817d427a4779f018e898d3384833d.neff                   0           9238894              2    2990215
+== DtypeSummary (208, 8) ['engine', 'src1_dtype', 'src2_dtype', 'dst_dtype', 'instruction_count', 'instruction_time_ns', 'active_time_ns', 'active_time_percent']
+    engine src1_dtype src2_dtype dst_dtype  instruction_count  instruction_time_ns  active_time_ns  active_time_percent
+0   scalar      int32        NaN     uint8                470               162430           79441             0.003785
+1   gpsimd      int32        NaN     int32                259               792729          395656             0.018849
+2   vector      int32        NaN    uint32                 56                10093            5054             0.000241
+3   vector      uint8        NaN      fp32                  8                 1347             834             0.000040
+4   vector        NaN        NaN     int32                 56                11213            5458             0.000260
+5   gpsimd      int32      int32     int32               1050              1298261          635542             0.030277
+6   scalar      int32        NaN     int32               2113               544091          237221             0.011301
+7   vector      uint8        NaN     int32                  1                  145             145             0.000007
+8   tensor       fp32        NaN       NaN               2354               334907          134431             0.006404
+9   gpsimd      int32        NaN       NaN                  4                  468             242             0.000012
+10  tensor       bf16        NaN       NaN              39834              4247361          812071             0.038687
+11  scalar       bf16        NaN      fp32                176                56104           28700             0.001367
+12  vector       fp32        NaN      fp32               1934               588215          294184             0.014015
+13  gpsimd       fp32        NaN      fp32                170                54220           27517             0.001311
+14  vector       fp32        NaN       NaN                400                53704           26138             0.001245
+15  vector       bf16       fp32      fp32                226                65854           33361             0.001589
+16  gpsimd        NaN        NaN      fp32                132                81320           41398             0.001972
+17  vector      int32      int32      fp32                 56                15630            7816             0.000372
+18  gpsimd        NaN        NaN    uint32                 56                 9361            4673             0.000223
+19  vector       fp32        NaN      bf16                640               144661           57845             0.002756
+20  vector       bf16       bf16      fp32                112                31491           14174             0.000675
+21  scalar       bf16        NaN      bf16                170                47255           21044             0.001003
+22  vector       bf16        NaN      fp32                 52                 7899            4101             0.000195
+23  vector       bf16        NaN       NaN                 56                 3304            1711             0.000082
+24  gpsimd       bf16        NaN      bf16                 56                17776            9009             0.000429
+25  vector       fp32        NaN     int32                 60                11427            5711             0.000272
+26  vector     uint32        NaN    uint32                 56                10973            5491             0.000262
+27  vector       fp32        NaN     uint8               1875               575626          153215             0.007299
+28  gpsimd        NaN        NaN     int32                363                50221           21309             0.001015
+29  scalar      int32        NaN      fp32                 32                14031            7144             0.000340
+30  scalar      uint8        NaN     uint8                896               202053           63075             0.003005
+31  vector      int32        NaN     int32               1160               637325          304352             0.014499
+32  vector      int32        NaN     uint8                148                35518           22478             0.001071
+33  vector       bf16       bf16      bf16                836               227027          102429             0.004880
+34  vector        NaN        NaN      fp32                383               110507           52148             0.002484
+35  scalar       fp32        NaN     int32                  4                  757             754             0.000036
+36  vector       fp32       fp32     uint8                  6                 1022             664             0.000032
+37  vector       bf16        NaN      bf16               2468               399925          111194             0.005297
+38  vector       fp32       fp32      fp32               2475               501663          235046             0.011198
+39  scalar      uint8        NaN     int32                  3                  566             566             0.000027
+== Warning (2, 2) ['message', 'category']
+                                                                                                                                                                                                                                                                                                                       message      category
+0  Missing additional dynamic DMA metadata, reported DMA values may be inaccurate. To enable more accurate DMA data, re-capture with --enable-dge-notifs flag or set NEURON_RT_ENABLE_DGE_NOTIFICATIONS=1 before running. Note: DGE notifications are disabled by default as they can cause execution timeouts on some models.  Missing Data
+1                                                                                                                                                                                                                             Current NEFF is missing compiler metrics. Please re-compile using latest version of the compiler  Missing Data
+== ThrottleSummary (6, 5) ['nc_idx', 'throttle_type', 'throttle_active_time_ns', 'throttle_active_time_percent', 'max_achievable_util_with_throttling_percent']
+   nc_idx throttle_type  throttle_active_time_ns  throttle_active_time_percent  max_achievable_util_with_throttling_percent
+0       1           all                4236442.0                           NaN                                     0.022835
+1       1    activity_0                      NaN                      0.001639                                     1.000000
+2       1    activity_1                      NaN                      0.042391                                     0.500000
+3       0    activity_1                      NaN                      0.041398                                     0.500000
+4       0           all                4137834.0                           NaN                                     0.022611
+5       0    activity_0                      NaN                      0.001912                                     1.000000
+== HloInstruction (3008, 18) ['id', 'raw_bir_id', 'raw_penguin_id', 'raw_hlo_id', 'raw_framework_id', 'hlo_name', 'modular_flow_invocation_idx', 'start_ts', 'end_ts', 'time_intervals', 'element_count_per_interval', 'transpose_element_count_per_interval', 'hbm_transfer_size_per_interval', 'hbm_read_bytes', 'hbm_write_bytes', 'sbuf_read_bytes', 'sbuf_write_bytes', 'load_weight_bytes']
+sorted by time_intervals total 0.0
+    id  raw_bir_id  raw_penguin_id  raw_hlo_id  raw_framework_id                                                         hlo_name  modular_flow_invocation_idx  start_ts    end_ts          time_intervals element_count_per_interval transpose_element_count_per_interval hbm_transfer_size_per_interval  hbm_read_bytes  hbm_write_bytes  sbuf_read_bytes  sbuf_write_bytes  load_weight_bytes  _t
+0    0      185552           16808        3324              1598                      %negate.48 = negate(%shift-right-logical.9)                            0  18681718  18692477  [[18681718, 18692477]]                        [0]                                  [0]                            [0]               0                0              NaN               NaN                  0 NaN
+1    0      197165           25174        2407              1451  %select.2407 = select(%broadcast.2406, %add.2403, %select.2318)                            0  19538231  20814404  [[19538231, 20814404]]                        [0]                                  [0]                      [4861952]         4861952                0              NaN               NaN                  0 NaN
+2    0      161015           15556        2836              1521              %multiply.22 = multiply(%convert.851, %convert.851)                            0  13027120  13027828  [[13027120, 13027828]]                        [0]                                  [0]                            [0]               0                0              NaN               NaN                  0 NaN
+3    0      164922           18660        1203               846        %multiply.1203 = multiply(%broadcast.1202, %convert.1201)                            0  14139419  14146698  [[14139419, 14146698]]                  [4194304]                            [4194304]                        [65536]               0            65536              NaN               NaN               4096 NaN
+4    0      159068           15407        3796              1746                                        %rsqrt.5 = rsqrt(%add.76)                            0  12423017  12423440  [[12423017, 12423440]]                        [0]                                  [0]                            [0]               0                0              NaN               NaN                  0 NaN
+5    0      165455            1520        1245               868                         %all-reduce.1245 = all-reduce(%dot.1240)                            0  14295664  14296058  [[14295664, 14296058]]                        [0]                                  [0]                            [0]               0                0              NaN               NaN                  0 NaN
+6    0      346153           15406        3631              1689                     %add.76 = add(%multiply.121, %broadcast.131)                            0  12422591  12423001  [[12422591, 12423001]]                        [0]                                  [0]                            [0]               0                0              NaN               NaN                  0 NaN
+7    0      346609           16394        3745              1727                    %add.114 = add(%multiply.159, %broadcast.131)                            0  16354414  16354824  [[16354414, 16354824]]                        [0]                                  [0]                            [0]               0                0              NaN               NaN                  0 NaN
+8    0      196824           16996        3174              1577                                      %negate.16 = negate(%and.3)                            0  19516091  19520184  [[19516091, 19520184]]                        [0]                                  [0]                            [0]               0                0              NaN               NaN                  0 NaN
+9    0      197454           17249        2397              1445                                    %log.2397 = log(%negate.2396)                            0  19806072  20812622  [[19806072, 20812622]]                        [0]                                  [0]                            [0]               0                0              NaN               NaN                  0 NaN
+10   0      170144           25059        1688              1075        %multiply.1688 = multiply(%convert.1674, %broadcast.1687)                            0  15805240  15808323  [[15805240, 15808323]]                        [0]                                  [0]                            [0]               0                0              NaN               NaN                  0 NaN
+11   0      170251           16282        1704              1087                     %add.1704 = add(%add.1673, %all-reduce.1703)                            0  15935153  15935806  [[15935153, 15935806]]                        [0]                                  [0]                            [0]               0                0              NaN               NaN                  0 NaN
+12   0      175673           16848        2211              1326                    %dot.2211 = dot(%multiply.2210, %Arg_288.289)                            0  17194786  17616117  [[17194786, 17616117]]                 [50331648]                                  [0]                      [3145728]         3145728                0              NaN               NaN             196608 NaN
+13   0      164315           15816        2896              1531            %multiply.42 = multiply(%convert.1156, %convert.1156)                            0  14077373  14078167  [[14077373, 14078167]]                        [0]                                  [0]                            [0]               0                0              NaN               NaN                  0 NaN
+14   0      168968           16187        3856              1776                                      %rsqrt.35 = rsqrt(%add.106)                            0  15531511  15531932  [[15531511, 15531932]]                        [0]                                  [0]                            [0]               0                0              NaN               NaN                  0 NaN
+15   0      346569           16321        3736              1724                    %add.111 = add(%multiply.156, %broadcast.131)                            0  15995746  15996156  [[15995746, 15996156]]                        [0]                                  [0]                            [0]               0                0              NaN               NaN                  0 NaN
+16   0      167694           16092        1479               978                    %dot.1479 = dot(%multiply.1478, %Arg_168.169)                            0  15038981  15125666  [[15038981, 15125666]]                 [50331648]                                  [0]                      [3145728]         3145728                0              NaN               NaN             196608 Na
+== FrameworkNode (2864, 33) ['execution_index', 'node_name', 'children_names', 'parent_name', 'children_ids', 'start_ts', 'end_ts', 'time_intervals', 'element_count_per_interval', 'transpose_element_count_per_interval', 'hbm_transfer_size_per_interval', 'hfu', 'mfu', 'hfu_per_interval', 'mfu_per_interval', 'mbu_per_interval', 'hbm_read_bytes', 'hbm_write_bytes', 'sbuf_read_bytes', 'sbuf_write_bytes', 'tensor_engine_instruction_count', 'scalar_engine_instruction_count', 'sync_engine_instruction_count', 'gpsimd_engine_instruction_count', 'vector_engine_instruction_count', 'total_time_tensor', 'total_time_scalar', 'total_time_sync', 'total_time_gpsimd', 'total_time_vector', 'load_weight_bytes', 'total_channels_scalar', 'total_channels_vector']
+sorted by time_intervals total 0.0
+    execution_index                                                 node_name                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            children_names                             parent_name                                                                                             children_ids  start_ts    end_ts                             time_intervals element_count_per_interval transpose_element_count_per_interval hbm_transfer_size_per_interval       hfu       mfu           hfu_per_interval         mfu_per_interval            mbu_per_interval  hbm_read_bytes  hbm_write_bytes  sbuf_read_bytes  sbuf_write_bytes  tensor_engine_instruction_count  scalar_engine_instruction_count  sync_engine_instruction_count  gpsimd_engine_instruction_count  vector_engine_instruction_count    total_time_tensor    total_time_scalar      total_time_sync    total_time_gpsimd    total_time_vector  load_weight_bytes  total_channels_scalar  total_channels_vector  _t
+0                 1                 RMSNorm[input_layernorm][0]_multiply.2054                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        []                     DecoderLayer[25][0]                                                                                                 ["1249"]  17049527  17052567                      [[17049527,17052567]]                        [0]                                  [0]                            [0]  0.000000  0.000000                        [0]                      [0]                         [0]             NaN              NaN         229376.0          163840.0                                0                                0                              0                                0                               18                   []                   []                   []                   []  [17049527,17052567]                  0                      0                    512 NaN
+1                 1                              DecoderLayer[16][0]_add.1551                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        []  TransformerForCausalLM[model_graph][0]                                                                                                 ["1014"]  15360087  15360715                      [[15360087,15360715]]                        [0]                                  [0]                            [0]  0.000000  0.000000                        [0]                      [0]                         [0]             NaN              NaN          65536.0           65536.0                                0                                0                              0                                0                                2                   []                   []                   []                   []  [15360087,15360715]                  0                      0                    256 NaN
+2                 1                              DecoderLayer[12][0]_add.1307                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        []  TransformerForCausalLM[model_graph][0]                                                                                                  ["898"]  14525002  14525762                      [[14525002,14525762]]                        [0]                                  [0]                            [0]  0.000000  0.000000                        [0]                      [0]                         [0]             NaN              NaN          65536.0           65536.0                                0                                0                              0                                0                                2                   []                   []                   []                   []  [14525002,14525762]                  0                      0                    256 NaN
+3                 1                  RMSNorm[input_layernorm][0]_multiply.590                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        []                      DecoderLayer[1][0]         
+== FrameworkInstruction (2744, 23) ['id', 'raw_bir_id', 'raw_penguin_id', 'raw_hlo_id', 'raw_framework_id', 'modular_flow_invocation_idx', 'framework_name', 'start_ts', 'end_ts', 'time_intervals', 'element_count_per_interval', 'transpose_element_count_per_interval', 'hbm_transfer_size_per_interval', 'hbm_read_bytes', 'hbm_write_bytes', 'sbuf_read_bytes', 'sbuf_write_bytes', 'load_weight_bytes', 'tensor_engine_instruction_count', 'scalar_engine_instruction_count', 'sync_engine_instruction_count', 'gpsimd_engine_instruction_count', 'vector_engine_instruction_count']
+sorted by time_intervals total 0.0
+    id  raw_bir_id  raw_penguin_id  raw_hlo_id  raw_framework_id  modular_flow_invocation_idx framework_name  start_ts  end_ts time_intervals element_count_per_interval transpose_element_count_per_interval hbm_transfer_size_per_interval  hbm_read_bytes  hbm_write_bytes  sbuf_read_bytes  sbuf_write_bytes  load_weight_bytes  tensor_engine_instruction_count  scalar_engine_instruction_count  sync_engine_instruction_count  gpsimd_engine_instruction_count  vector_engine_instruction_count  _t
+0    0           0               0        2914              1534                          NaN            NaN         0       0            NaN                         []                                   []                             []               0                0              NaN               NaN                NaN                              NaN                              NaN                            NaN                              NaN                              NaN NaN
+1    0           0               0        1353               916                          NaN            NaN         0       0            NaN                         []                                   []                             []               0                0              NaN               NaN                NaN                              NaN                              NaN                            NaN                              NaN                              NaN NaN
+2    0           0               0         443               493                          NaN            NaN         0       0            NaN                         []                                   []                             []               0                0              NaN               NaN                NaN                              NaN                              NaN                            NaN                              NaN                              NaN NaN
+3    0           0               0        1841              1148                          NaN            NaN         0       0            NaN                         []                                   []                             []               0                0              NaN               NaN                NaN                              NaN                              NaN                            NaN                              NaN                              NaN NaN
+4    0           0               0        1109               800                          NaN            NaN         0       0            NaN                         []                                   []                             []               0                0              NaN               NaN                NaN                              NaN                              NaN                            NaN                              NaN                              NaN NaN
+5    0           0               0        1749              1104                          NaN            NaN         0       0            NaN                         []                                   []                             []               0                0              NaN               NaN                NaN                              NaN                              NaN                            NaN                              NaN                              NaN NaN
+6    0           0               0        3727              1721                          NaN            NaN         0       0            NaN                         []                                   []                             []               0                0              NaN               NaN                NaN                              NaN                              NaN                            NaN                              NaN                              NaN NaN
+7    0           0               0        2245              1344                          NaN            NaN         0       0            NaN                         []                                   []                             []               0                0              NaN               NaN                NaN                              NaN                              NaN                            NaN                              NaN                              NaN NaN
+8    0           0               0        1662              1065                          NaN            NaN         0       0            NaN                         []                                   []                             []               0                0              NaN               NaN                NaN                              NaN                              NaN                            NaN                              NaN                              NaN NaN
+9    0           0               0         991               746                          NaN            NaN         0       0            NaN                         []                                   []                             []               0                0              NaN               NaN                NaN                              NaN                              NaN                            NaN                              NaN                              NaN NaN
+10   0           0               0        1955              1205                          NaN            NaN         0       0            NaN                         []                                   []                             []               0                0              NaN               NaN                NaN                              NaN                              NaN                            NaN                              NaN                              NaN NaN
+11   0           0               0        1787              1126                          NaN            NaN         0       0            NaN                         []                                   []                             []               0                0              NaN               NaN                NaN                              NaN                              NaN                            NaN                              NaN                              NaN NaN
+12   0           0               0        1722              1093                          NaN            NaN         0       0            NaN                         []                                   []                             []               0                0              NaN               NaN                NaN                              NaN                              NaN                            NaN                              NaN                              NaN NaN
+13   0           0               0        3362              1605                          NaN            NaN         0       0

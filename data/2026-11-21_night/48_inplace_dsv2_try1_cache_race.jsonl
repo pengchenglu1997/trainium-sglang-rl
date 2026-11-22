@@ -1,0 +1,4 @@
+{"event": "open", "pid": 12190, "unix": 1795334914.7}
+{"event": "start_base", "ready_s": null, "log": "/home/ubuntu/w/results_night/server_logs/server_srv_dsv2_001.log", "start_no": 1}
+{"status": "fail", "stage": "inplace", "error_type": "RuntimeError", "message": "server did not become ready on the base model"}
+{"done": true}

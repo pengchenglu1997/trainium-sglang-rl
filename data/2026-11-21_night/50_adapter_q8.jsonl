@@ -1,0 +1,23 @@
+{"event": "open", "pid": 88066, "unix": 1795335654.6}
+{"event": "built", "seconds": 21.0, "rank": 16, "alpha": 32, "std": 0.01, "share_of_base_bytes": 0.01066, "adapted_matrices": 252, "adapter_bytes": 174587904, "base_bytes": 16381470720}
+{"event": "start_base", "ready_s": 196.1, "log": "/home/ubuntu/w/results_night/server_logs/server_srv_q8_001.log", "start_no": 1}
+{"event": "answers", "which": "A base", "answers": [{"status": 200, "tokens": 48, "sum_logprob": -5.1919, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -5.7699, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -4.6355, "error": null}]}
+{"event": "update", "to": "adapter1", "status": 200, "ok": true, "seconds": 35.82, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "answers", "which": "B1", "answers": [{"status": 200, "tokens": 48, "sum_logprob": -5.2577, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -5.818, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -3.7907, "error": null}]}
+{"event": "update", "to": "adapter2", "status": 200, "ok": true, "seconds": 13.96, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "answers", "which": "B2", "answers": [{"status": 200, "tokens": 48, "sum_logprob": -4.0092, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -3.0621, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -3.9951, "error": null}]}
+{"event": "update", "to": "adapter1", "status": 200, "ok": true, "seconds": 13.89, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "answers", "which": "B1 again", "answers": [{"status": 200, "tokens": 48, "sum_logprob": -5.2577, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -5.818, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -3.7907, "error": null}]}
+{"event": "update", "to": "adapter0", "status": 200, "ok": true, "seconds": 14.03, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "answers", "which": "A again", "answers": [{"status": 200, "tokens": 48, "sum_logprob": -5.1919, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -5.7699, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -4.6355, "error": null}]}
+{"event": "check", "what": "adapter1 changes the answers", "same_text": false, "max_logprob_diff": 0.806587}
+{"event": "check", "what": "adapter2 differs from adapter1", "same_text": false, "max_logprob_diff": 0.899487}
+{"event": "check", "what": "adapter1 again equals adapter1 (replace, not add)", "same_text": true, "max_logprob_diff": 0.0}
+{"event": "check", "what": "zero adapter gives the base back", "same_text": true, "max_logprob_diff": 0.0}
+{"event": "restart_merged1", "ready_s": 169.1, "log": "/home/ubuntu/w/results_night/server_logs/server_srv_q8_002.log", "start_no": 2, "stop_s": 5.7}
+{"event": "answers", "which": "D merged1, fresh start", "answers": [{"status": 200, "tokens": 48, "sum_logprob": -5.2577, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -5.818, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -3.7907, "error": null}]}
+{"event": "check", "what": "adapter sync equals a fresh start on the merged checkpoint", "same_text": true, "max_logprob_diff": 0.0}
+{"event": "fork", "prompt": 0, "tokens": 48, "first_different_token": null, "max_logprob_diff_before_fork": 0.0, "mean_logprob_diff_before_fork": 0.0, "logprob_at_fork": null}
+{"event": "fork", "prompt": 1, "tokens": 48, "first_different_token": null, "max_logprob_diff_before_fork": 0.0, "mean_logprob_diff_before_fork": 0.0, "logprob_at_fork": null}
+{"event": "fork", "prompt": 2, "tokens": 48, "first_different_token": null, "max_logprob_diff_before_fork": 0.0, "mean_logprob_diff_before_fork": 0.0, "logprob_at_fork": null}
+{"done": true}

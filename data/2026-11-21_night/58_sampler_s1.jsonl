@@ -1,0 +1,25 @@
+{"event": "open", "pid": 12192, "unix": 1795334914.7}
+{"event": "server_start", "mode": "topk_topp", "ready_s": 210.4, "log": "/home/ubuntu/w/results_night/server_logs/server_smp_s1_topk_topp_001.log", "start_no": 1}
+{"event": "accept", "mode": "topk_topp", "top_p": 1.0, "top_k": -1, "status": 200, "error": null}
+{"event": "accept", "mode": "topk_topp", "top_p": 0.95, "top_k": -1, "status": 200, "error": null}
+{"event": "accept", "mode": "topk_topp", "top_p": 1.0, "top_k": 20, "status": 200, "error": null}
+{"event": "accept", "mode": "topk_topp", "top_p": 0.95, "top_k": 20, "status": 200, "error": null}
+{"event": "accept", "mode": "topk_topp", "top_p": 0.5, "top_k": 5, "status": 200, "error": null}
+{"event": "next_dist", "mode": "topk_topp", "top": [["Red", 0.87105], ["red", 0.02357], ["Rain", 0.01722], ["The", 0.01454], ["sun", 0.0101], ["Blue", 0.0088], ["rain", 0.00719], ["V", 0.00655], ["Purple", 0.00646], ["R", 0.004]]}
+{"event": "speed", "sampling": "full vocabulary", "n": 0, "requests": 256, "seconds": 15.17, "completion_tokens": 41412, "tokens_per_s": 2729.8, "errors": 0, "first_error": null}
+{"event": "speed", "sampling": "full vocabulary", "n": 1, "requests": 256, "seconds": 14.8, "completion_tokens": 40340, "tokens_per_s": 2725.2, "errors": 0, "first_error": null}
+{"event": "speed", "sampling": "full vocabulary", "n": 2, "requests": 256, "seconds": 15.1, "completion_tokens": 40949, "tokens_per_s": 2712.7, "errors": 0, "first_error": null}
+{"event": "speed", "sampling": "top_p 0.95 top_k 20", "n": 0, "requests": 256, "seconds": 15.34, "completion_tokens": 41429, "tokens_per_s": 2700.4, "errors": 0, "first_error": null}
+{"event": "speed", "sampling": "top_p 0.95 top_k 20", "n": 1, "requests": 256, "seconds": 14.82, "completion_tokens": 40380, "tokens_per_s": 2724.3, "errors": 0, "first_error": null}
+{"event": "speed", "sampling": "top_p 0.95 top_k 20", "n": 2, "requests": 256, "seconds": 14.83, "completion_tokens": 40970, "tokens_per_s": 2763.6, "errors": 0, "first_error": null}
+{"event": "server_start", "mode": "temperature", "ready_s": 174.3, "log": "/home/ubuntu/w/results_night/server_logs/server_smp_s1_temperature_001.log", "start_no": 1}
+{"event": "accept", "mode": "temperature", "top_p": 1.0, "top_k": -1, "status": 200, "error": null}
+{"event": "accept", "mode": "temperature", "top_p": 0.95, "top_k": -1, "status": 400, "error": "{'object': 'error', 'message': 'top_k / top_p / min_p filtering is not applied by this Neuron device sampler (SGLANG_NEURON_SAMPLER=temperature samples the full vocabulary); use a topk_topp server for filtered sampling', 'type': 'BadRequestError', 'param': None, 'code': 400}"}
+{"event": "accept", "mode": "temperature", "top_p": 1.0, "top_k": 20, "status": 400, "error": "{'object': 'error', 'message': 'top_k / top_p / min_p filtering is not applied by this Neuron device sampler (SGLANG_NEURON_SAMPLER=temperature samples the full vocabulary); use a topk_topp server for filtered sampling', 'type': 'BadRequestError', 'param': None, 'code': 400}"}
+{"event": "accept", "mode": "temperature", "top_p": 0.95, "top_k": 20, "status": 400, "error": "{'object': 'error', 'message': 'top_k / top_p / min_p filtering is not applied by this Neuron device sampler (SGLANG_NEURON_SAMPLER=temperature samples the full vocabulary); use a topk_topp server for filtered sampling', 'type': 'BadRequestError', 'param': None, 'code': 400}"}
+{"event": "accept", "mode": "temperature", "top_p": 0.5, "top_k": 5, "status": 400, "error": "{'object': 'error', 'message': 'top_k / top_p / min_p filtering is not applied by this Neuron device sampler (SGLANG_NEURON_SAMPLER=temperature samples the full vocabulary); use a topk_topp server for filtered sampling', 'type': 'BadRequestError', 'param': None, 'code': 400}"}
+{"event": "next_dist", "mode": "temperature", "top": [["Red", 0.87105], ["red", 0.02357], ["Rain", 0.01722], ["The", 0.01454], ["sun", 0.0101], ["Blue", 0.0088], ["rain", 0.00719], ["V", 0.00655], ["Purple", 0.00646], ["R", 0.004]]}
+{"event": "speed", "sampling": "full vocabulary", "n": 0, "requests": 256, "seconds": 18.82, "completion_tokens": 41412, "tokens_per_s": 2201.0, "errors": 0, "first_error": null}
+{"event": "speed", "sampling": "full vocabulary", "n": 1, "requests": 256, "seconds": 18.48, "completion_tokens": 40340, "tokens_per_s": 2182.8, "errors": 0, "first_error": null}
+{"event": "speed", "sampling": "full vocabulary", "n": 2, "requests": 256, "seconds": 18.46, "completion_tokens": 40949, "tokens_per_s": 2217.8, "errors": 0, "first_error": null}
+{"done": true}

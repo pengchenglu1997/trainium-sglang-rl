@@ -1,0 +1,32 @@
+nc_exec_running | {"model_id":850448981144491,"model_name":"module.neff_4d1018ea916161cd87b8600c70ec97e0"}
+cc_exec_barrier | {"model_id":850448981144491,"model_name":"module.neff_4d1018ea916161cd87b8600c70ec97e0"}
+nrt_model_submit | {"model_id":850448981144491,"model_name":"module.neff_4d1018ea916161cd87b8600c70ec97e0"}
+cc_running | nan
+kbl_exec_wait | {"model_id":850448981144491,"model_name":"module.neff_4d1018ea916161cd87b8600c70ec97e0","nrta_seq_id":"1153202979583558422"}
+nrta_execute_schedule | {"model_id":850448981144491,"model_name":"module.neff_4d1018ea916161cd87b8600c70ec97e0","nrta_seq_id":"1153202979583558355"}
+nc_exec_running attribute keys: ['model_id', 'model_name']
+by model_id
+                            count         sum     median
+pcore_idx _k                                            
+0         1109496143943683     32   323740990  9609517.5
+          850448981144491     255  2329379576  9133128.0
+1         1109496143943683     32   323681497  9608758.5
+          850448981144491     255  2328992803  9131809.0
+by model_name
+                                                        count         sum     median
+pcore_idx _k                                                                        
+0         module.neff_4d1018ea916161cd87b8600c70ec97e0    255  2329379576  9133128.0
+          module.neff_c6b2bdc8a7153cea9ea83217fd712eff     32   323740990  9609517.5
+1         module.neff_4d1018ea916161cd87b8600c70ec97e0    255  2328992803  9131809.0
+          module.neff_c6b2bdc8a7153cea9ea83217fd712eff     32   323681497  9608758.5
+span ns 2661584444
+nc_exec_running: count 574, total 5305.8 ms, median 9134.5 us, per pcore ms {0: 2653.1, 1: 2652.7}
+cc_exec_barrier: count 287, total 9.8 ms, median 33.7 us, per pcore ms {0: 9.8}
+cc_running: count 16646, total 216.0 ms, median 11.8 us, per pcore ms {0: 216.0}
+nrt_model_submit: count 287, total 19.6 ms, median 62.5 us, per pcore ms {0: 19.6}
+kbl_exec_wait: count 287, total 2644.9 ms, median 9107.0 us, per pcore ms {0: 2644.9}
+nrta_execute_schedule: count 287, total 39.7 ms, median 76.9 us, per pcore ms {0: 39.7}
+dmem_buf_copyin: count 4034, total 3.0 ms, median 0.5 us, per pcore ms {0: 3.0}
+dmem_buf_copyout: count 317, total 6.7 ms, median 12.7 us, per pcore ms {0: 6.7}
+nrt_tensor_read: count 287, total 3.9 ms, median 13.0 us, per pcore ms {0: 3.9}
+nrta_tensor_write: count 914, total 3.6 ms, median 3.8 us, per pcore ms {0: 3.6}

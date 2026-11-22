@@ -1,0 +1,60 @@
+W0.1 padding share of the training length (max_len 576); folders: data/2026-11-20/trn2_seeds; data/2026-11-20/trn2_sgl_final
+
+== long1  (30_rl_loop_long1.jsonl; 150 steps, finished=True, max_new_tokens 256, questions/step 32, k 8)
+   saved fields: answers, completion_tokens (sum per step), answers_at_token_limit, train_sequences; no prompt tokens and no per-answer lengths in the jsonl
+   answers 38400, trained rows 17088 (44.5% of answers, zero-advantage rows are left out)
+   mean answer tokens (all answers) 149.0; per-step mean: min 109.0 median 152.5 max 185.5; first 10 steps 165.6, last 10 steps 156.9
+   answers at the 256-token limit: 4429 of 38400 = 11.5%; per-step share: min 0.8% median 11.3% max 29.7%
+   padding share at 576, from the sums (mean length over all answers stands in for the trained rows; end token not added):
+     upper bound (prompt length 0): 74.1%
+     ASSUMED prompt length 60: 63.7%
+     ASSUMED prompt length 100: 56.8%
+     ASSUMED prompt length 140: 49.8%
+     prompt tokens from the server logs (8 files, 41900 requests, training and evaluation together; 0 multi-sequence prefill lines skipped): mean 115.6 min 68 p25 100 median 112 p75 126 p95 157 max 268
+     with that measured mean prompt: 54.1%
+     buckets: not computable (needs the length distribution)
+
+== plain_s2  (30_rl_loop_plain_s2.jsonl; 150 steps, finished=True, max_new_tokens 256, questions/step 32, k 8)
+   saved fields: answers, completion_tokens (sum per step), answers_at_token_limit, train_sequences; no prompt tokens and no per-answer lengths in the jsonl
+   answers 38400, trained rows 16640 (43.3% of answers, zero-advantage rows are left out)
+   mean answer tokens (all answers) 158.1; per-step mean: min 128.7 median 158.0 max 204.1; first 10 steps 175.9, last 10 steps 162.1
+   answers at the 256-token limit: 5534 of 38400 = 14.4%; per-step share: min 1.9% median 12.9% max 48.8%
+   padding share at 576, from the sums (mean length over all answers stands in for the trained rows; end token not added):
+     upper bound (prompt length 0): 72.6%
+     ASSUMED prompt length 60: 62.1%
+     ASSUMED prompt length 100: 55.2%
+     ASSUMED prompt length 140: 48.3%
+     prompt lengths: no server logs at results_seeds_2026-11-20/work_plain_s2/plain_s2/server_logs
+     buckets: not computable (needs the length distribution)
+
+== plain_s3  (30_rl_loop_plain_s3.jsonl; 150 steps, finished=True, max_new_tokens 256, questions/step 32, k 8)
+   saved fields: answers, completion_tokens (sum per step), answers_at_token_limit, train_sequences; no prompt tokens and no per-answer lengths in the jsonl
+   answers 38400, trained rows 17352 (45.2% of answers, zero-advantage rows are left out)
+   mean answer tokens (all answers) 160.6; per-step mean: min 122.1 median 159.8 max 193.0; first 10 steps 172.0, last 10 steps 173.8
+   answers at the 256-token limit: 4956 of 38400 = 12.9%; per-step share: min 1.6% median 12.1% max 30.1%
+   padding share at 576, from the sums (mean length over all answers stands in for the trained rows; end token not added):
+     upper bound (prompt length 0): 72.1%
+     ASSUMED prompt length 60: 61.7%
+     ASSUMED prompt length 100: 54.7%
+     ASSUMED prompt length 140: 47.8%
+     prompt lengths: no server logs at results_seeds_2026-11-20/work_plain_s3/plain_s3/server_logs
+     buckets: not computable (needs the length distribution)
+
+== plain_s4  (30_rl_loop_plain_s4.jsonl; 150 steps, finished=True, max_new_tokens 256, questions/step 32, k 8)
+   saved fields: answers, completion_tokens (sum per step), answers_at_token_limit, train_sequences; no prompt tokens and no per-answer lengths in the jsonl
+   answers 38400, trained rows 17816 (46.4% of answers, zero-advantage rows are left out)
+   mean answer tokens (all answers) 166.9; per-step mean: min 125.1 median 167.7 max 192.9; first 10 steps 172.2, last 10 steps 155.4
+   answers at the 256-token limit: 4807 of 38400 = 12.5%; per-step share: min 1.6% median 11.7% max 27.7%
+   padding share at 576, from the sums (mean length over all answers stands in for the trained rows; end token not added):
+     upper bound (prompt length 0): 71.0%
+     ASSUMED prompt length 60: 60.6%
+     ASSUMED prompt length 100: 53.7%
+     ASSUMED prompt length 140: 46.7%
+     prompt lengths: no server logs at results_seeds_2026-11-20/work_plain_s4/plain_s4/server_logs
+     buckets: not computable (needs the length distribution)
+
+== pooled over the runs listed above
+   answers 153600, mean answer tokens 158.6, at the limit 12.8%
+   padding share at 576: upper bound 72.5%; ASSUMED P=60: 62.0%; ASSUMED P=100: 55.1%; ASSUMED P=140: 48.2%
+
+Runs without per-answer lengths: long1, plain_s2, plain_s3, plain_s4. 30_rl_loop.py now writes a step field token_counts = {answers: sorted answer tokens, trained_seq: sorted prompt+answer+end lengths of the trained rows}; rerun this script on a run made with it to get the measured shares.

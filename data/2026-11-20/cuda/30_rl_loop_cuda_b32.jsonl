@@ -1,0 +1,9 @@
+{"event": "open", "pid": 12405, "unix": 1795221603.7}
+{"event": "trainer_ready", "seconds": 8.5, "device": "cuda", "core": null, "trainable_params": 10092544, "max_len": 576, "micro_bs": 32, "lr": 0.0001, "sync_ok": true, "sync_error": null}
+{"event": "data", "train_rows": 7473, "train_rows_within_prompt_limit": 7473, "needed": 800, "eval_rows": 500}
+{"event": "start", "run_tag": "cuda_b32", "backend": "sglang_cuda_docker", "steps": 25, "questions_per_step": 32, "k": 8, "temperature": 0.7, "max_new_tokens": 256, "sync_every": 1, "rollout_mode": "parallel", "seed": 1, "replicas": 1, "replica_cores": null, "sync_payload": "merged", "train_compile": false, "lr": 0.0001, "max_limit_share": null}
+{"event": "sync", "method": "sglang_disk", "ckpt_root": "/home/ubuntu/w/models/rl_cuda_b32/cuda_b32"}
+{"event": "server_start", "replica": 0, "ready_s": 63.1, "log": "/home/ubuntu/w/work_cuda_b32/cuda_b32/server_logs/server_rl_cuda_b32_001.log", "start_no": 1}
+{"event": "eval", "when": "before", "greedy_accuracy": 0.598, "seconds": 7.7, "errors": 0, "n": 500}
+{"status": "fail", "stage": "loop", "error_type": "OutOfMemoryError", "message": "CUDA out of memory. Tried to allocate 10.42 GiB. GPU 0 has a total capacity of 94.97 GiB of which 3.45 GiB is free. Including non-PyTorch memory, this process has 56.36 GiB memory in use. Process 12776 has 35.14 GiB memory in use. Of the allocated memory 53.51 GiB is allocated by PyTorch, and 2.18 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting P"}
+{"done": true}

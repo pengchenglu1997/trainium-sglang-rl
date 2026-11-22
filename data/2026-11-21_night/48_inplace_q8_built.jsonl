@@ -1,0 +1,14 @@
+{"event": "open", "pid": 12199, "unix": 1795334914.7}
+{"event": "start_base", "ready_s": 431.7, "log": "/home/ubuntu/w/results_night/server_logs/server_srv_q8_built_001.log", "start_no": 1}
+{"event": "answers", "which": "A base, fresh start", "answers": [{"status": 200, "chars": 173, "tokens": 48, "sum_logprob": -5.1919, "error": null}, {"status": 200, "chars": 162, "tokens": 48, "sum_logprob": -5.7699, "error": null}, {"status": 200, "chars": 154, "tokens": 48, "sum_logprob": -4.6355, "error": null}]}
+{"event": "update", "to": "alt", "status": 200, "ok": true, "seconds": 5.7, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "answers", "which": "B alt, in place", "answers": [{"status": 200, "chars": 182, "tokens": 48, "sum_logprob": -5.4525, "error": null}, {"status": 200, "chars": 162, "tokens": 48, "sum_logprob": -5.2358, "error": null}, {"status": 200, "chars": 154, "tokens": 48, "sum_logprob": -4.4267, "error": null}]}
+{"event": "update", "to": "base", "status": 200, "ok": true, "seconds": 5.46, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "answers", "which": "C base, in place again", "answers": [{"status": 200, "chars": 173, "tokens": 48, "sum_logprob": -5.1919, "error": null}, {"status": 200, "chars": 162, "tokens": 48, "sum_logprob": -5.7699, "error": null}, {"status": 200, "chars": 154, "tokens": 48, "sum_logprob": -4.6355, "error": null}]}
+{"event": "update", "to": "Qwen3-8B_alt (extra 0)", "status": 200, "ok": true, "seconds": 5.84, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "update", "to": "Qwen3-8B (extra 1)", "status": 200, "ok": true, "seconds": 4.82, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "update", "to": "Qwen3-8B_alt (extra 2)", "status": 200, "ok": true, "seconds": 6.23, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "update", "to": "Qwen3-8B (extra 3)", "status": 200, "ok": true, "seconds": 4.86, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "check", "after_extra_updates_same_text": true, "after_extra_updates_max_logprob_diff": 0.0}
+{"event": "check", "update_changed_answers": true, "a_vs_b_max_logprob_diff": 0.61359, "back_to_base_same_text": true, "back_to_base_max_logprob_diff": 0.0}
+{"done": true}

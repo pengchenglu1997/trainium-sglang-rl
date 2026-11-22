@@ -106,6 +106,8 @@ def main():
     ap.add_argument("--sync-payload", choices=["merged", "adapter"], default="merged",
                     help="adapter: only the LoRA adapter is written and sent (a server that takes "
                          "an adapter folder in update_weights_from_disk; in-place sync only)")
+    ap.add_argument("--trainer8b", action="store_true",
+                    help="the single-core trainer for large models (trainer8b.py); not with --train-cores")
     ap.add_argument("--train-compile", action="store_true",
                     help="training forward under torch.compile (Neuron)")
     ap.add_argument("--overlap", action="store_true",
@@ -147,7 +149,11 @@ def main():
             import ptrainer
             tr = ptrainer.ParallelTrainer(a.base_model, worker_cores=a.train_cores.split(","), **tkw)
         else:
-            tr = T.Trainer(a.base_model, device=a.device, **tkw)
+            if a.trainer8b:     # one whole copy on one core, per-layer checkpointing (trainer8b.py); use --micro-bs 1
+                import trainer8b
+                tr = trainer8b.Trainer8b(a.base_model, device=a.device, **tkw)
+            else:
+                tr = T.Trainer(a.base_model, device=a.device, **tkw)
         res.write(event="trainer_ready", seconds=round(time.time() - t0, 1), device=a.device,
                   core=a.core, trainable_params=sum(p.numel() for p in tr.params),
                   max_len=tr.max_len, micro_bs=a.micro_bs, lr=a.lr, **tr.sync_check())
@@ -284,9 +290,19 @@ def main():
                 raise RuntimeError(f"no answers at step {step}")
             # answers that ran into the token limit (the model no longer stops by itself)
             answered = [x for tx in texts for x in tx if x is not None]
-            at_limit = sum(len(tr.tok(x, add_special_tokens=False)["input_ids"]) >= a.max_new_tokens - 1
-                           for x in answered)
+            ans_lens = [len(tr.tok(x, add_special_tokens=False)["input_ids"]) for x in answered]
+            at_limit = sum(n >= a.max_new_tokens - 1 for n in ans_lens)
             limit_share = round(at_limit / len(answered), 4)
+            # length log (63_padding_share.py reads it): answer tokens of every answer, and the full
+            # sequence length (prompt + answer + end token, as Trainer.encode builds it) of the rows
+            # that carry a gradient, i.e. the ones the trainer pads. Both sorted; counts only.
+            seq_lens = []
+            for q_, x_, v_ in items:
+                if abs(v_) >= 1e-12:
+                    e_ = tr.encode(q_, x_)
+                    if e_ is not None:
+                        seq_lens.append(len(e_[0]))
+            token_counts = {"answers": sorted(ans_lens), "trained_seq": sorted(seq_lens)}
             # --overlap: the next step's answers are sampled while this step trains (they come from the
             # weights now on the servers, one update behind the trainer). The sync below then waits for
             # them, because SGLang's update takes its lock only when no request is in flight.
@@ -345,6 +361,7 @@ def main():
                       reward_s=round(rew_s, 3), reward_mean=round(sum(rewards) / len(rewards), 4),
                       groups_without_signal=zero_groups,
                       answers_at_token_limit=at_limit, share_at_token_limit=limit_share,
+                      token_counts=token_counts,
                       rollout_overlapped=overlapped, step_wall_s=round(time.time() - t_prev, 2),
                       train_s=None if upd.get("skipped") else upd["seconds"],
                       train_sequences=upd["sequences"], train_skipped=upd.get("skipped"),

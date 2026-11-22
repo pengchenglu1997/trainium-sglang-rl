@@ -1,0 +1,6 @@
+{"event": "open", "pid": 88067, "unix": 1795335654.6}
+{"event": "server_start", "ready_s": 108.9, "log": "/home/ubuntu/w/results_night/server_logs/server_prof_p2_001.log", "start_no": 1}
+{"event": "pass", "which": "warm, no profile", "seconds": 4.832, "requests": 32, "completion_tokens": 4981, "longest_answer_tokens": 256, "errors": 0, "first_error": null}
+{"event": "pass", "which": "second, no profile", "seconds": 2.678, "requests": 32, "completion_tokens": 5035, "longest_answer_tokens": 256, "errors": 0, "first_error": null}
+{"event": "start_profile", "status": 500, "seconds": 0.0, "body": "Internal Server Error", "output_dir": "/cache/profile_p2"}
+{"done": true}

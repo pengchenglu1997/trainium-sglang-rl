@@ -1,0 +1,58 @@
+== /home/ubuntu/w/results_night/profile_pq/pid190 rows 48782
+columns: ['id', 'name', 'start_ts', 'end_ts', 'duration_ns', 'trace_event_source', 'instance_id', 'process_id', 'thread_id', 'nc_idx', 'pcore_idx', 'worker_gid', 'flow_id', 'framework_stream_id', 'extra_attributes_json']
+using name/start/duration columns: name start_ts duration_ns
+window (raw units): 2661584444.0
+                                    count       total     median         p95  share_of_window
+name                                                                                         
+nc_exec_running                       574  5305794866  9134460.5  9612225.95           1.9935
+kbl_exec_wait                         287  2644934750  9106991.0  9581327.40           0.9937
+cc_running                          16646   215967822    11782.0    22780.75           0.0811
+nrta_execute_schedule                 287    39663028    76895.0   103618.50           0.0149
+nrt_model_submit                      287    19563810    62549.0    86998.90           0.0074
+nrt_profile_add_node_info             287    16012752      539.0      821.50           0.0060
+kbl_exec_pre                          287    14690525    46474.0    69101.60           0.0055
+cc_exec_barrier                       287     9831255    33681.0    34817.80           0.0037
+kbl_exec_post                         287     9466636    31757.0    40893.50           0.0036
+dmem_buf_copyout                      317     6744580    12688.0    49258.00           0.0025
+exec_consume_cc_core_notifications    287     6276530    22029.0    27459.60           0.0024
+nrt_tensor_read                       287     3935596    13015.0    18330.60           0.0015
+nrta_tensor_write                     914     3565307     3800.0     4823.05           0.0013
+dmem_buf_copyin                      4034     2995404      484.0     1416.00           0.0011
+io_xu_complete                        914     2638497     2690.5     5471.35           0.0010
+nrt_tensor_free                     20494     2632702       81.0      300.00           0.0010
+nrt_dma_mem_alloc                     580     1970656     2820.0     4740.65           0.0007
+nrt_dma_mem_dealloc                   574     1382424     1783.5     4319.90           0.0005
+nc_model_switch                         4      221737    55742.5    60448.00           0.0001
+notification_consume_errors           574      127794      218.0      333.70           0.0000
+exec_consume_gpsimd_stdio             574       74341       86.0      252.00           0.0000
+core 0: 287 executions, exec median 9135186, exec total 2653120566, gap median 6464, gap total 4855620, span 2657976186
+core 1: 287 executions, exec median 9133806, exec total 2652674300, gap median 8243, gap total 5286582, span 2657960882
+== /home/ubuntu/w/results_night/profile_pq/pid193 rows 49356
+columns: ['id', 'name', 'start_ts', 'end_ts', 'duration_ns', 'trace_event_source', 'instance_id', 'process_id', 'thread_id', 'nc_idx', 'pcore_idx', 'worker_gid', 'flow_id', 'framework_stream_id', 'extra_attributes_json']
+using name/start/duration columns: name start_ts duration_ns
+window (raw units): 2661414051.0
+                                    count       total     median         p95  share_of_window
+name                                                                                         
+nc_exec_running                       574  5304991975  9133975.0  9609658.90           1.9933
+kbl_exec_wait                         287  2644690891  9106038.0  9580078.20           0.9937
+cc_running                          16646   214971297    11371.0    22752.00           0.0808
+nrta_execute_schedule                 287    41096860    77798.0   112200.80           0.0154
+nrt_model_submit                      287    20378973    63324.0    95079.00           0.0077
+nrt_profile_add_node_info             287    16633487      636.0      864.20           0.0062
+kbl_exec_pre                          287    15483360    46757.0    77464.00           0.0058
+kbl_exec_post                         287     9532796    32182.0    40924.30           0.0036
+cc_exec_barrier                       287     9514664    33326.0    34937.30           0.0036
+dmem_buf_copyout                      317     7968439    15430.0    48162.00           0.0030
+exec_consume_cc_core_notifications    287     6289665    21988.0    27351.10           0.0024
+io_xu_complete                        914     5391322     5598.5     7767.35           0.0020
+nrt_tensor_read                       287     4708353    15971.0    19701.50           0.0018
+nrta_tensor_write                     914     3563072     3734.5     4851.75           0.0013
+dmem_buf_copyin                      4034     3217224      502.0     1316.35           0.0012
+nrt_tensor_free                     21068     2774364       81.0      299.00           0.0010
+nrt_dma_mem_alloc                     580     2494559     2809.0     4410.10           0.0009
+nrt_dma_mem_dealloc                   574     1401667     1877.0     4474.40           0.0005
+nc_model_switch                         4      221233    55262.5    60816.25           0.0001
+notification_consume_errors           574      114891      221.5      314.00           0.0000
+exec_consume_gpsimd_stdio             574       72850       86.0      247.00           0.0000
+core 4: 287 executions, exec median 9134599, exec total 2652714587, gap median 7124, gap total 5251778, span 2657966365
+core 5: 287 executions, exec median 9133451, exec total 2652277388, gap median 8624, gap total 5675027, span 2657952415

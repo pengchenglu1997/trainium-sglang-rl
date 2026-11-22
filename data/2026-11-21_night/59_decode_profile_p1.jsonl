@@ -1,0 +1,8 @@
+{"event": "open", "pid": 12202, "unix": 1795334914.7}
+{"event": "server_start", "ready_s": 225.4, "log": "/home/ubuntu/w/results_night/server_logs/server_prof_p1_001.log", "start_no": 1}
+{"event": "pass", "which": "warm, no profile", "seconds": 2.876, "requests": 32, "completion_tokens": 4981, "longest_answer_tokens": 256, "errors": 0, "first_error": null}
+{"event": "pass", "which": "second, no profile", "seconds": 2.676, "requests": 32, "completion_tokens": 5035, "longest_answer_tokens": 256, "errors": 0, "first_error": null}
+{"event": "start_profile", "status": 200, "seconds": 0.06, "body": "Start profiling.\n", "output_dir": "/cache/profile_p1"}
+{"event": "pass", "which": "profiled", "seconds": 2.674, "requests": 32, "completion_tokens": 5035, "longest_answer_tokens": 256, "errors": 0, "first_error": null}
+{"event": "stop_profile", "status": 200, "seconds": 0.12, "body": "Stop profiling. This will take some time.\n"}
+{"done": true}

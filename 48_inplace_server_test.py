@@ -97,6 +97,7 @@ def main():
     ap.add_argument("--port", type=int, default=30005)
     ap.add_argument("--noise", type=float, default=0.01)
     ap.add_argument("--skip-fresh", action="store_true", help="leave out step 5")
+    ap.add_argument("--extra-updates", type=int, default=0, help="more in-place updates after step 4, timed")
     a = ap.parse_args()
     res = C.Results(a.results, f"48_inplace_{a.tag}")
     srv = server_ctl.Server(server_ctl.load_backend(a.backends_json, a.backend), a.port,
@@ -122,6 +123,15 @@ def main():
         res.write(event="update", to="base", **u2)
         Cc = ask(srv.base_url, name)
         res.write(event="answers", which="C base, in place again", answers=brief(Cc))
+        for i in range(a.extra_updates):      # timing only: alt, base, alt, ... (ends on base when even)
+            to = alt if i % 2 == 0 else base
+            res.write(event="update", to=f"{to.name} (extra {i})", **srv.update_weights_from_disk(str(to)))
+        if a.extra_updates % 2 == 1:
+            res.write(event="update", to="base (extra, back)", **srv.update_weights_from_disk(str(base)))
+        if a.extra_updates:
+            Ce = ask(srv.base_url, name)
+            ce = same(A, Ce)
+            res.write(event="check", after_extra_updates_same_text=ce[0], after_extra_updates_max_logprob_diff=ce[1])
         ab, cb = same(A, B), same(A, Cc)
         res.write(event="check", update_changed_answers=not ab[0], a_vs_b_max_logprob_diff=ab[1],
                   back_to_base_same_text=cb[0], back_to_base_max_logprob_diff=cb[1])

@@ -20,6 +20,44 @@ from sglang_neuron.parallel.state import initialize_neuron_parallel_state
 logger = logging.getLogger(__name__)
 
 
+class _LowRankSlice:
+    """EXPERIMENT (2026-11-22), not upstream. A LoRA delta ``scale * (B @ A)`` presented to a weight loader as a
+    checkpoint slice (``get_shape()`` and ``__getitem__`` with slices, ints and an Ellipsis, the forms the loaders
+    use): indexing it forms only the selected rows and columns, ``scale * (B[rows] @ A[:, cols])``, so a TP shard never
+    builds the full matrix. Any other index form raises, and the caller falls back to the full matrix."""
+
+    def __init__(self, b: torch.Tensor, a: torch.Tensor, scale: float):
+        self.b, self.a, self.scale = b, a, scale
+
+    def get_shape(self):
+        return [self.b.shape[0], self.a.shape[1]]
+
+    @property
+    def shape(self):
+        return torch.Size(self.get_shape())
+
+    def __getitem__(self, key):
+        if not isinstance(key, tuple):
+            key = (key,)
+        if any(k is Ellipsis for k in key):
+            i = next(n for n, k in enumerate(key) if k is Ellipsis)
+            key = key[:i] + (slice(None),) * (2 - (len(key) - 1)) + key[i + 1:]
+        key = key + (slice(None),) * (2 - len(key))
+        if len(key) != 2 or not all(isinstance(k, (slice, int)) for k in key):
+            raise TypeError(f"_LowRankSlice: index {key!r} is not rows and columns of slices or ints")
+        rows, cols = key
+        b = self.b[rows] if isinstance(rows, slice) else self.b[rows:rows + 1]
+        a = self.a[:, cols] if isinstance(cols, slice) else self.a[:, cols:cols + 1]
+        out = self.scale * (b @ a)
+        if isinstance(rows, int):
+            out = out[0]
+            if isinstance(cols, int):
+                out = out[0]
+        elif isinstance(cols, int):
+            out = out[:, 0]
+        return out
+
+
 class ModelHost(NeuronModel):
     """``name`` names the model in messages; ``build_graph(phase, config)`` builds one role graph on the host."""
 
@@ -96,15 +134,52 @@ class ModelHost(NeuronModel):
             return self._experiment_apply_adapter(path)
         t0 = time.time()
         (first_phase, first), *_ = self.model_graphs.items()
-        with torch.device("cpu"):
-            staged = self.build_graph(first_phase, self.hf_config)
-        staged.load_weights(path, torch.device("cpu"))
+        # RLKIT_KEEP_STAGED=1 (2026-11-21): keep the host graph between updates, so a later update only re-runs the
+        # loaders. Costs one host copy of this rank's shard for the life of the server.
+        keep = os.environ.get("RLKIT_KEEP_STAGED", "0") == "1"
+        staged = getattr(self, "_experiment_staged", None) if keep else None
+        reused = staged is not None
+        if staged is None:
+            with torch.device("cpu"):
+                staged = self.build_graph(first_phase, self.hf_config)
+        tb = time.time()
+        try:
+            staged.load_weights(path, torch.device("cpu"))
+        except Exception:  # noqa: BLE001
+            if not reused:
+                raise
+            logger.warning("[neuron] EXPERIMENT a second load into the kept host graph failed; building a new one")
+            self._experiment_staged = None
+            with torch.device("cpu"):
+                staged = self.build_graph(first_phase, self.hf_config)
+            staged.load_weights(path, torch.device("cpu"))
+            reused = False
+        if keep:
+            self._experiment_staged = staged
         t1 = time.time()
         new = dict(staged.named_parameters())
         live = dict(first.named_parameters())
         missing = sorted(set(live) - set(new))
         if missing:
             raise ValueError(f"in-place update: {len(missing)} live parameters have no staged tensor, e.g. {missing[:3]}")
+        # Coverage (2026-11-21): which tensors of the live graph are not parameters, and do the staged ones agree?
+        # A weight held in a buffer would be skipped by the loop below; this line makes that visible.
+        live_buf, new_buf = dict(first.named_buffers()), dict(staged.named_buffers())
+        buf_rows = []
+        for bname, b in live_buf.items():
+            s = new_buf.get(bname)
+            if s is None or s.shape != b.shape:
+                buf_rows.append((bname, tuple(b.shape), "no staged twin"))
+                continue
+            try:
+                d = float((b.detach().float().cpu() - s.detach().float().cpu()).abs().max()) if b.numel() else 0.0
+            except Exception as e:  # noqa: BLE001
+                d = f"compare failed {type(e).__name__}"
+            buf_rows.append((bname, tuple(b.shape), d))
+        logger.info("[neuron] EXPERIMENT in-place coverage %s: %d live parameters (%d elements), %d live buffers "
+                    "(%d elements); buffers [name, shape, max |live - staged|]: %s", self.name, len(live),
+                    sum(p.numel() for p in live.values()), len(live_buf), sum(b.numel() for b in live_buf.values()),
+                    buf_rows[:12])
         for name, p in live.items():
             q = new[name]
             if q.shape != p.shape or q.dtype != p.dtype:
@@ -125,8 +200,9 @@ class ModelHost(NeuronModel):
             state["base"].clear()
             state.get("base_dev", {}).clear()
         t2 = time.time()
-        logger.info("[neuron] EXPERIMENT in-place weight update from %s: %d tensors, %d bytes, stage %.2fs, copy %.2fs",
-                    path, len(live), nbytes, t1 - t0, t2 - t1)
+        logger.info("[neuron] EXPERIMENT in-place weight update from %s: %d tensors, %d bytes, stage %.2fs "
+                    "(host graph %s %.2fs, loaders %.2fs), copy %.2fs",
+                    path, len(live), nbytes, t1 - t0, "kept" if reused else "built", tb - t0, t1 - tb, t2 - t1)
 
     def _experiment_apply_adapter(self, path: str) -> None:
         """EXPERIMENT, not upstream. ``path`` holds a PEFT LoRA adapter (adapter_config.json,
@@ -201,7 +277,23 @@ class ModelHost(NeuronModel):
                     t = time.time()
                     source = base_dev[name].float() if on_device else base[name]
                     if any(hit):
-                        delta = loaders[name].load([scale * (fb[k] @ fa[k]) for k in keys], rank)
+                        delta = None
+                        if not on_device and lazy_delta:
+                            # 2026-11-22: hand the loader a lazy low-rank "slice"; it indexes it like a checkpoint
+                            # slice, so only this rank's shard of B @ A is ever formed (at Qwen3-8B the full
+                            # matrices were 13.5 s of a 14 s update).
+                            try:
+                                delta = loaders[name].load([_LowRankSlice(fb[k], fa[k], scale) for k in keys], rank)
+                                n_lazy[0] += 1
+                            except Exception as e:  # noqa: BLE001
+                                if not n_lazy[1]:
+                                    logger.warning("[neuron] EXPERIMENT lazy adapter delta not taken by the loader of "
+                                                   "%s (%s: %s); full matrices for it", name, type(e).__name__,
+                                                   str(e)[:160])
+                                n_lazy[1] += 1
+                                delta = None
+                        if delta is None:
+                            delta = loaders[name].load([scale * (fb[k] @ fa[k]) for k in keys], rank)
                         if delta.shape != p.shape:
                             raise ValueError(f"adapter delta for {name} is {tuple(delta.shape)}, live {tuple(p.shape)}")
                         new = (source + delta).to(p.dtype)
@@ -247,6 +339,9 @@ class ModelHost(NeuronModel):
         # RLKIT_DEVICE_WRITE: copy (device tensor into the parameter, the form that did not match), host, add
         write_mode = os.environ.get("RLKIT_DEVICE_WRITE", "copy")
         diag_all = os.environ.get("RLKIT_ADAPTER_DIAG", "0") == "1"     # compare every parameter with the host result
+        # RLKIT_LAZY_DELTA=0 goes back to forming the full B @ A before the loader cuts it (the path of 2026-11-20)
+        lazy_delta = os.environ.get("RLKIT_LAZY_DELTA", "1") == "1"
+        n_lazy = [0, 0]                                                 # parameters taken lazily, fallen back
         if want_device and state.get("on_device", True):
             try:
                 with torch.no_grad():
@@ -291,7 +386,7 @@ class ModelHost(NeuronModel):
             where = "host (device path failed)"
             touched, nbytes, t_delta, t_copy = apply(False)
         logger.info("[neuron] EXPERIMENT adapter update from %s on the %s (write " + write_mode + "): adapter %d bytes, %d live tensors (%d bytes) "
-                    "rewritten, delta %.2fs, copy %.2fs, total %.2fs", path, where,
+                    "rewritten, delta %.2fs, copy %.2fs, total %.2fs; lazy delta " + f"{n_lazy[0]} taken {n_lazy[1]} full", path, where,
                     sum(t.numel() * t.element_size() for t in raw.values()), touched, nbytes, t_delta, t_copy,
                     time.time() - t0)
 
