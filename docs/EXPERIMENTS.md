@@ -1,35 +1,35 @@
 # Experiment index
 
 One row per script: the question it answers, what it needs, where its results are, and which record states them.
-Every script prints its usage in its header. "In repo" means a result file is under `data/`; "report" means the first
-report of 20 November (`SESSION2_RECORD_2026-11-20.md`), which is not in this repository. Status uses the three words
-of the README: **measured** (a record or result file in this repository shows the run), **CPU-tested** (no Trainium),
-**not run** (written, no hardware run yet). **written; run not shown in this repo** marks scripts of the 19-20 November
-sessions whose results are only in the first report.
+Every script prints its usage in its header. "In repo" means a result file is under `data/`. Where the results column
+says "not in repo", the numbers are in the record named in the next column; the result files themselves stayed on the
+laptop. `SESSION2_RECORD` is `docs/SESSION2_RECORD_2026-11-20.md` (the first report, 20 November), `NIGHT_RECORD` is
+`docs/NIGHT_RECORD_2026-11-21.md`. Status uses three words: **measured** (a record in this repository shows the run),
+**CPU-tested** (no Trainium), **not run** (written, no hardware run yet).
 
 ## 1. What the server supports (RL needs from a running server)
 
 | Script | Question | Needs | Results | Record | Status |
 |---|---|---|---|---|---|
-| `20_rl_probes.py` | Which calls does an RL rollout need, and which does the server refuse? Weight-update and LoRA calls are sent with a path that does not exist, to read the refusal | a running server | not in repo | report | written; run not shown in this repo |
-| `21_gsm8k_acc.py` | GSM8K accuracy of a running server, question by question, so two engines compare pairwise (`compare` mode) | a running server | not in repo | report | written; run not shown in this repo |
-| `22_llmbench.sh` | Speed of a running server on the team's grid (concurrency 1-32, prompts of 128 / 1,024 / 3,072 tokens) | server, `LLMBENCH_DIR` | not in repo | report | written; run not shown in this repo |
-| `23_restart_time.py` | How long does a restart on unchanged weights take (the cost of restart-based sync)? | trn2 or GPU | not in repo | report; PR draft table | measured |
-| `57_ttft_probe.py` | Time to first token, and do the K requests of one question share the prompt's prefill? | a running server | not in repo | report | written; run not shown in this repo |
+| `20_rl_probes.py` | Which calls does an RL rollout need, and which does the server refuse? Weight-update and LoRA calls are sent with a path that does not exist, to read the refusal | a running server | not in repo | SESSION2_RECORD §3 | measured |
+| `21_gsm8k_acc.py` | GSM8K accuracy of a running server, question by question, so two engines compare pairwise (`compare` mode) | a running server | not in repo | SESSION2_RECORD §3 | measured |
+| `22_llmbench.sh` | Speed of a running server on the team's grid (concurrency 1-32, prompts of 128 / 1,024 / 3,072 tokens) | server, `LLMBENCH_DIR` | not in repo | SESSION2_RECORD §3 | measured |
+| `23_restart_time.py` | How long does a restart on unchanged weights take (the cost of restart-based sync)? | trn2 or GPU | not in repo | SESSION2_RECORD §3; PR draft table | measured |
+| `57_ttft_probe.py` | Time to first token, and do the K requests of one question share the prompt's prefill? | a running server | not in repo | SESSION2_RECORD §12.3 | measured |
 | `58_sampler_probe.py` | Does `topk_topp` take top_p / top_k, where does its top-p cut, and what does it cost? | trn2, patched or plain server | `data/2026-11-21_night/58_sampler_*.jsonl` | NIGHT_RECORD §3 | measured |
 
 ## 2. In-place weight sync
 
 | Script | Question | Needs | Results | Record | Status |
 |---|---|---|---|---|---|
-| `45_inplace_swap_probe.py` | Can the weights of a model running on a NeuronCore be replaced in place, with no new compile or warm-up? (no server) | one core | not in repo | PR draft, "Why this is safe" | measured |
-| `46_lora_swap_probe.py` | Adapter-only sync at the runtime level: adapter as a side branch against merged into the base (no server) | one core | not in repo | report | written; run not shown in this repo |
-| `53_device_delta_probe.py` | Why did the adapter delta computed on the device differ from the host-merged checkpoint? | one core | not in repo | PR draft, last open item | measured |
-| `54_vllm_backend_probe.py` | Does vLLM-Neuron's compile backend read weights as data? Run inside its container | vLLM-Neuron container | not in repo | report | written; run not shown in this repo |
+| `45_inplace_swap_probe.py` | Can the weights of a model running on a NeuronCore be replaced in place, with no new compile or warm-up? (no server) | one core | not in repo | SESSION2_RECORD §5; PR draft, "Why this is safe" | measured |
+| `46_lora_swap_probe.py` | Adapter-only sync at the runtime level: adapter as a side branch against merged into the base (no server) | one core | not in repo | SESSION2_RECORD §5 | measured |
+| `53_device_delta_probe.py` | Why did the adapter delta computed on the device differ from the host-merged checkpoint? | one core | not in repo | SESSION2_RECORD §11.3, §12.4; PR draft, last open item | measured |
+| `54_vllm_backend_probe.py` | Does vLLM-Neuron's compile backend read weights as data? Run inside its container | vLLM-Neuron container | not in repo | SESSION2_RECORD §11.3 | measured |
 | `48_inplace_server_test.py` | Does a patched server take new weights in place, and are they the right ones (equal to a fresh start, back to base)? | trn2, patched server | `data/2026-11-21_night/48_*.jsonl` | NIGHT_RECORD §2, §4 | measured |
-| `49_sync_stress.py` | What breaks after many in-place updates, and while requests are in flight? | trn2, patched server | not in repo | PR draft, measurements | measured |
+| `49_sync_stress.py` | What breaks after many in-place updates, and while requests are in flight? | trn2, patched server | not in repo | SESSION2_RECORD §7; PR draft, measurements | measured |
 | `50_adapter_server_test.py` | Is an adapter-only update equal to a fresh start on the merged checkpoint? | trn2, patched server | `data/2026-11-21_night/50_adapter_q8.jsonl` | NIGHT_RECORD §4 | measured |
-| `51_logprob_parity.py` | Do trainer and server give the same log-probabilities for the same tokens, before and after an adapter sync? | trn2, patched server, one more core | not in repo | PR draft, measurements | measured |
+| `51_logprob_parity.py` | Do trainer and server give the same log-probabilities for the same tokens, before and after an adapter sync? | trn2, patched server, one more core | not in repo | SESSION2_RECORD §8, §11.2; PR draft, measurements | measured |
 | `61_adapter_delta_cost.py` | Host-side cost of an adapter update by operation, on Qwen3-8B shapes | host only | not in repo | experiment plan §3 | measured (laptop) |
 | `62_lazy_delta_test.py` | Does the shard-only adapter delta (`_LowRankSlice`) equal the full-matrix path through the engine's own loaders? | CPU, sglang-neuron v0.1.0 source tree | none | experiment plan §3 | CPU-tested (24 of 24 cases) |
 | `68_update_under_load.py` | What does an in-place update do to requests that are running? (plan row W1.5) | trn2, patched server | none | experiment plan W1.5 | not run |
@@ -39,9 +39,9 @@ sessions whose results are only in the first report.
 
 | Script | Question | Needs | Results | Record | Status |
 |---|---|---|---|---|---|
-| `40_ddp_probe.py` | Does `torch.distributed` DDP train a LoRA on Neuron, and how does step time change with cores? | trn2, 1-N cores | not in repo | report | written; run not shown in this repo |
-| `52_train_step_probe.py` | Where does a training micro-batch's time go, eager against compiled? | one core | not in repo | report | written; run not shown in this repo |
-| `56_ptrainer_probe.py` | Does the multi-core trainer compute the same update as one core, and how much faster? | trn2, several cores | not in repo | report | measured |
+| `40_ddp_probe.py` | Does `torch.distributed` DDP train a LoRA on Neuron, and how does step time change with cores? | trn2, 1-N cores | not in repo | SESSION2_RECORD §3 | measured |
+| `52_train_step_probe.py` | Where does a training micro-batch's time go, eager against compiled? | one core | not in repo | SESSION2_RECORD §11.2 | measured |
+| `56_ptrainer_probe.py` | Does the multi-core trainer compute the same update as one core, and how much faster? | trn2, several cores | not in repo | SESSION2_RECORD §11.2, §12.3 | measured |
 | `63_padding_share.py` | How much of the fixed 576-position training length is padding, from saved loop runs? (plan row W0.1) | saved loop files | `data/2026-11-21_night/63_padding_share.txt` | experiment plan W0.1 | measured on saved runs |
 | `65_trainer8b_cpu_test.py` | Does `trainer8b.py` give the same gradients and update as `trainer.py`? | CPU | none | experiment plan W0.3 | CPU-tested (36 of 36 checks) |
 | `70_mem_probe.py` | Device memory of Qwen3 training on one core, stage by stage (plan rows W2.1, W2.2) | trn2, one core | none | experiment plan W2 | not run |
@@ -52,7 +52,7 @@ sessions whose results are only in the first report.
 
 | Script | Question | Needs | Results | Record | Status |
 |---|---|---|---|---|---|
-| `55_rollout_bench.py` | Sampled tokens per second of a set of rollout servers, as the loop asks | trn2, server per entry | not in repo | report | written; run not shown in this repo |
+| `55_rollout_bench.py` | Sampled tokens per second of a set of rollout servers, as the loop asks | trn2, server per entry | not in repo | SESSION2_RECORD §11.2, §12.3 | measured |
 | `59_decode_profile.py` | Where does a decode step go? Neuron system profile around one rollout pass | trn2 | `data/2026-11-21_night/59_decode_profile_p*.jsonl` | NIGHT_RECORD §5 | measured |
 | `59b_`, `59c_`, `59d_*.py` | Summarise a rank's system profile, peek at its table, summarise a device profile | profile folders | `data/2026-11-21_night/59b_`, `59c_`, `59d_*.txt` | NIGHT_RECORD §5 | measured |
 | `60_shape_cost.py` | What do compiled shapes (decode buckets, context) cost when the load does not fill them? | trn2, one server per setting | `data/2026-11-21_night/60_shape_cost_{A,B,C,D}.jsonl`, `shape_cost_rows.txt` | NIGHT_RECORD §6 | measured |
@@ -62,8 +62,8 @@ sessions whose results are only in the first report.
 
 | Script | Question | Needs | Results | Record | Status |
 |---|---|---|---|---|---|
-| `30_rl_loop.py` | How long is one RL step on each backend, where does the time go, and does accuracy rise? | trn2 or GPU; trainer; servers | `data/2026-11-20/**/30_rl_loop_*.jsonl` | report; PR draft; experiment plan §3 | measured |
-| `60_report_figures.py` | Figures of the first report from the loop result files | result files | none | report | helper |
+| `30_rl_loop.py` | How long is one RL step on each backend, where does the time go, and does accuracy rise? | trn2 or GPU; trainer; servers | `data/2026-11-20/**/30_rl_loop_*.jsonl` | SESSION2_RECORD §4, §8, §11-13; PR draft; experiment plan §3 | measured |
+| `60_report_figures.py` | Figures of the first report from the loop result files | result files | none | SESSION2_RECORD | helper |
 
 ## 6. Framework integration (Miles)
 
