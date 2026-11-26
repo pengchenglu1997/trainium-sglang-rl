@@ -1,0 +1,23 @@
+{"event": "open", "pid": 573560, "unix": 1795577864.8}
+{"event": "built", "seconds": 3.4, "rank": 16, "alpha": 32, "std": 0.01, "share_of_base_bytes": 0.02686, "adapted_matrices": 196, "adapter_bytes": 40370176, "base_bytes": 1503264768}
+{"event": "start_base", "ready_s": 272.0, "log": "/home/ubuntu/w/results_s3/server_logs/server_srv_h2_06b_001.log", "start_no": 1}
+{"event": "answers", "which": "A base", "answers": [{"status": 200, "tokens": 48, "sum_logprob": -7.3412, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -5.9271, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -8.4131, "error": null}]}
+{"event": "update", "to": "adapter1", "status": 200, "ok": true, "seconds": 12.16, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "answers", "which": "B1", "answers": [{"status": 200, "tokens": 48, "sum_logprob": -10.2922, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -5.4785, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -9.5007, "error": null}]}
+{"event": "update", "to": "adapter2", "status": 200, "ok": true, "seconds": 0.6, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "answers", "which": "B2", "answers": [{"status": 200, "tokens": 48, "sum_logprob": -10.8232, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -5.558, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -8.9142, "error": null}]}
+{"event": "update", "to": "adapter1", "status": 200, "ok": true, "seconds": 0.54, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "answers", "which": "B1 again", "answers": [{"status": 200, "tokens": 48, "sum_logprob": -10.2922, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -5.4785, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -9.5007, "error": null}]}
+{"event": "update", "to": "adapter0", "status": 200, "ok": true, "seconds": 0.55, "body": "{\"success\": true, \"message\": \"Succeeded to update model weights.\", \"num_paused_requests\": 0}"}
+{"event": "answers", "which": "A again", "answers": [{"status": 200, "tokens": 48, "sum_logprob": -7.3412, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -5.9271, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -8.4131, "error": null}]}
+{"event": "check", "what": "adapter1 changes the answers", "same_text": false, "max_logprob_diff": 1.589819, "max_logprob_diff_raw": 1.5898189544677734}
+{"event": "check", "what": "adapter2 differs from adapter1", "same_text": false, "max_logprob_diff": 1.600328, "max_logprob_diff_raw": 1.6003284454345703}
+{"event": "check", "what": "adapter1 again equals adapter1 (replace, not add)", "same_text": true, "max_logprob_diff": 0.0, "max_logprob_diff_raw": 0.0}
+{"event": "check", "what": "zero adapter gives the base back", "same_text": true, "max_logprob_diff": 0.0, "max_logprob_diff_raw": 0.0}
+{"event": "restart_merged1", "ready_s": 144.1, "log": "/home/ubuntu/w/results_s3/server_logs/server_srv_h2_06b_002.log", "start_no": 2, "stop_s": 5.5}
+{"event": "answers", "which": "D merged1, fresh start", "answers": [{"status": 200, "tokens": 48, "sum_logprob": -10.2377, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -5.564, "error": null}, {"status": 200, "tokens": 48, "sum_logprob": -8.5258, "error": null}]}
+{"event": "check", "what": "adapter sync equals a fresh start on the merged checkpoint", "same_text": false, "max_logprob_diff": 1.479256, "max_logprob_diff_raw": 1.4792556762695312}
+{"event": "fork", "prompt": 0, "tokens": 48, "first_different_token": null, "max_logprob_diff_before_fork": 0.049179, "mean_logprob_diff_before_fork": 0.007205, "logprob_at_fork": null}
+{"event": "fork", "prompt": 1, "tokens": 48, "first_different_token": null, "max_logprob_diff_before_fork": 0.082787, "mean_logprob_diff_before_fork": 0.00798, "logprob_at_fork": null}
+{"event": "fork", "prompt": 2, "tokens": 48, "first_different_token": 0, "max_logprob_diff_before_fork": null, "mean_logprob_diff_before_fork": null, "logprob_at_fork": [-1.0560188293457031, -0.9852542877197266]}
+{"done": true}

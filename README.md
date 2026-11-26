@@ -8,7 +8,8 @@ SGLang-Neuron v0.1.0 take new weights without a server restart.
 > (its README has the branch layout), and the results of later sessions, including the trn2 session of 2026-11-24, are
 > written up in that fork's
 > [docs/rl/RESULTS.md](https://github.com/pengchenglu1997/sglang-neuron/blob/main/docs/rl/RESULTS.md). The result files
-> of sessions after 2026-11-21 are not in this repository yet. The sections "Results so far" and "Plan and open work"
+> of that session are in [`data/2026-11-24_trn2/`](data/2026-11-24_trn2/README.md); the probe scripts that wrote them
+> (numbers 73 to 84) are not in this repository yet. The sections "Results so far" and "Plan and open work"
 > below are as of 2026-11-22.
 
 Three parts, each usable on its own:
@@ -175,6 +176,7 @@ that PR's diff to v0.1.0 to try it.
 |---|---|
 | `data/2026-11-20/` | the 34 `30_rl_loop_*.jsonl` files of the first report: `trn2_sgl_final`, `trn2_seeds` (Trainium2) and `cuda`, `gpu_sgl` (GPU, with the three earlier attempts kept) |
 | `data/2026-11-21_night/` | result files of the night session: `48_` (in-place update on other model families), `50_` (adapter), `58_` (sampler), `59*` (decode profile summaries), `60_` (shape cost), `63_` (padding share) |
+| `data/2026-11-24_trn2/` | result files of the trn2 session of 2026-11-24: upstream PR 20 check, stamp race, baseline pair, serving changes, sampler kernel, LoRA merge kernel, 30B start probe. Its own [README](data/2026-11-24_trn2/README.md) maps each file to a section of the fork's RESULTS.md |
 | `docs/SESSION2_RECORD_2026-11-20.md` | the first report's record: engines as released, restart-based sync, the patch, the loop layouts, CUDA baseline, seeds (parts that do not concern this repository are left out) |
 | `docs/NIGHT_RECORD_2026-11-21.md` | machine, setup and every number of the night session, with checksums of the archives |
 | `docs/experiment-plan-2026-11-22.md` | the plan for the next sessions: work packages W0 to W5, expected results, gates |

@@ -1,0 +1,3 @@
+{"event": "open", "step": "r2", "t_utc": "2026-11-25T01:22:00Z"}
+{"event": "step", "step": "r2", "status": "ok", "rc": 0, "timeout": false, "cap_min": 75, "seconds": 1071, "log": "/home/ubuntu/w/results_s3/logs/s3_r2.log", "t_utc": "2026-11-25T01:22:00Z"}
+{"done": true}

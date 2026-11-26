@@ -1,0 +1,6 @@
+{"event": "open", "pid": 1292577, "unix": 1795593077.2}
+{"event": "server_start", "ready_s": 264.6, "log": "/home/ubuntu/w/results_s3/server_logs/server_prof_pa_001.log", "start_no": 1}
+{"event": "pass", "which": "warm, no profile", "seconds": 5.183, "requests": 32, "completion_tokens": 4981, "longest_answer_tokens": 256, "errors": 0, "first_error": null}
+{"event": "pass", "which": "second, no profile", "seconds": 2.52, "requests": 32, "completion_tokens": 5030, "longest_answer_tokens": 256, "errors": 0, "first_error": null}
+{"event": "start_profile", "status": 500, "seconds": 0.0, "body": "Internal Server Error", "output_dir": "/cache/profile_pa"}
+{"done": true}

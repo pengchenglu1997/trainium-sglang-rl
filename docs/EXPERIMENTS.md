@@ -91,5 +91,6 @@ Which probes ran together on one machine, and on which cores.
 
 Result files are JSON lines written by `rl_common.py`: one line per step or probe, a finished run ends with
 `{"done": true}`, a failed step leaves a line with `"status": "fail"` before it. Counts and timings only; no question or
-answer text. A file without the last line was stopped (for example `48_inplace_dsv2_full_stopped_after_1h.jsonl`, kept
+answer text. (The files of `data/2026-11-24_trn2/` differ: several were written by probes that are not indexed in this
+file, and some hold model output text and server log lines; see that folder's README.) A file without the last line was stopped (for example `48_inplace_dsv2_full_stopped_after_1h.jsonl`, kept
 on purpose; `48_inplace_dsv2_try1_cache_race.jsonl` is the first attempt that died on a compile-cache race).

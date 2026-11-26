@@ -1,0 +1,2 @@
+{"event": "pair", "model": "Qwen3-0.6B", "tag": "q06c", "arms": "sgl", "vllm_exit": 9, "sgl_exit": 0, "precheck_failed": false, "precheck_failed_arms": ""}
+{"done": true}

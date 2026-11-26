@@ -1,0 +1,3 @@
+{"event": "open", "step": "r4a", "t_utc": "2026-11-25T02:37:13Z"}
+{"event": "step", "step": "r4a", "status": "ok", "rc": 0, "timeout": false, "cap_min": 80, "seconds": 3190, "log": "/home/ubuntu/w/results_s3/logs/s3_r4a.log", "t_utc": "2026-11-25T02:37:13Z"}
+{"done": true}

@@ -1,0 +1,7 @@
+{"event": "open", "pid": 939770, "unix": 1795586478.9}
+{"event": "start", "replicas": 1, "cores": 4, "replica_cores": "36-39", "extra": "--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32"}
+{"event": "server_start", "replica": 0, "ready_s": 264.8, "log": "/home/ubuntu/w/results_s3/server_logs/server_bench_roll_released_0_001.log", "start_no": 1}
+{"event": "pass", "n": 0, "questions": 64, "answers": 512, "seconds": 34.96, "completion_tokens": 79791, "tokens_per_s": 2282.7, "tokens_per_s_per_core": 570.7, "groups_with_missing_answers": 0, "first_error": null}
+{"event": "pass", "n": 1, "questions": 64, "answers": 512, "seconds": 34.76, "completion_tokens": 81150, "tokens_per_s": 2334.8, "tokens_per_s_per_core": 583.7, "groups_with_missing_answers": 0, "first_error": null}
+{"event": "pass", "n": 2, "questions": 64, "answers": 512, "seconds": 35.23, "completion_tokens": 80877, "tokens_per_s": 2295.4, "tokens_per_s_per_core": 573.8, "groups_with_missing_answers": 0, "first_error": null}
+{"done": true}
