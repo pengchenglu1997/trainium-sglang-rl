@@ -107,7 +107,9 @@ def ask(base_url, model):
 def cmp(x, y):
     eq = all(a["text"] is not None and a["text"] == b["text"] for a, b in zip(x, y))
     d = [abs(p - q) for a, b in zip(x, y) for p, q in zip(a["lp"], b["lp"]) if p is not None and q is not None]
-    return {"same_text": eq, "max_logprob_diff": round(max(d), 6) if d else None}
+    # max_logprob_diff_raw: the unrounded maximum (79_kernel_ran_check.py tests it with == 0.0; the rounded key hides < 5e-7)
+    return {"same_text": eq, "max_logprob_diff": round(max(d), 6) if d else None,
+            "max_logprob_diff_raw": max(d) if d else None}
 
 
 def brief(x):

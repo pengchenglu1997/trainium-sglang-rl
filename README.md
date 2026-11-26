@@ -9,7 +9,7 @@ SGLang-Neuron v0.1.0 take new weights without a server restart.
 > written up in that fork's
 > [docs/rl/RESULTS.md](https://github.com/pengchenglu1997/sglang-neuron/blob/main/docs/rl/RESULTS.md). The result files
 > of that session are in [`data/2026-11-24_trn2/`](data/2026-11-24_trn2/README.md); the probe scripts that wrote them
-> (numbers 73 to 84) are not in this repository yet. The sections "Results so far" and "Plan and open work"
+> (numbers 73 to 81) are at the top level, indexed in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 8. The sections "Results so far" and "Plan and open work"
 > below are as of 2026-11-22.
 
 Three parts, each usable on its own:
@@ -85,6 +85,7 @@ refer to them by name. Numbers in file names are the order in which the probes w
 | **Trainers** | `trainer.py`, `ptrainer.py`, `trainer8b.py` | LoRA trainer (one core); data-parallel version (LoRA values and gradients in shared memory); 8B variant |
 | **The loop** | `30_rl_loop.py` | the loop; main flags `--backend`, `--replicas`, `--sync-payload merged\|adapter`, `--train-compile`, `--train-cores`, `--overlap`, `--trainer8b`, `--len-buckets`, `--seed` |
 | **Server launchers** | `srv_sglang_neuron.sh`, `srv_vllm_neuron_docker.sh`, `srv_sglang_cuda_docker.sh`, `srv_other.sh` | one script per engine; backends registered in `backends.json`: `sglang_neuron`, `sglang_neuron_inplace`, `vllm_neuron`, `vllm_neuron_docker`, `vllm_cuda`, `sglang_cuda`, `sglang_cuda_docker` |
+| **Probes of 2026-11-24** | `73_` to `81_`, `22b_llmbench_grid.sh`, `lora_merge.py`, `mk_ulp.py`, `untie_ckpt.py`, `patch_manifest.py`, `selftest_74.py`, `selftest_75.py`, `selftest_81.py`, `r9_run.sh` | the trn2 session of 2026-11-24, as run; see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 8. The patch folders they mount are not here |
 | **Probes** | `20_` to `72_` | see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md): question, hardware, result files and record for each |
 | **Session scripts** | `50_run_trn2_session.sh`, `run_night_1121.sh`, `run_shape_1122.sh`, `run_w1w2.sh`, `scripts/run_trn2_seeds.sh`, `scripts/run_cuda_baseline.sh` | the order in which probes ran on one machine; each prints marker lines and a last line `*_DONE` |
 | **Tests without hardware** | `selftest_fake_server.py`, `62_lazy_delta_test.py`, `65_trainer8b_cpu_test.py`, `66_pull_weights_shim_test.py` | CPU only |

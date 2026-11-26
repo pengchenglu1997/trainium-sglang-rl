@@ -87,7 +87,48 @@ Which probes ran together on one machine, and on which cores.
 | `run_shape_1122.sh` | 22 Nov, trn2 | four servers A-D for `60_shape_cost.py` |
 | `run_w1w2.sh` | planned | rows W1.1-W1.7 and W2.1-W2.5 of the experiment plan; flags of w1.3 and the 8B example path unverified |
 
-## 8. How a result file reads
+## 8. Probes of the trn2 session of 2026-11-24
+
+Added 2026-11-25. The code is what was on the machine. Comments only were changed afterwards: a status note in
+`73_merge_kernel_bench.py`, `78_kernel_h1.sh` and `78_kernel_h2.sh`, whose headers said "not yet run", and reworded
+comment lines in `22b_llmbench_grid.sh`, `75_pr20_check.py`, `76_baseline_pair.sh` and `81_opt_sweep.py` that pointed to
+private notes. Results are in [`data/2026-11-24_trn2/`](../data/2026-11-24_trn2/README.md); the write-up is section 8 of
+the fork's [RESULTS.md](https://github.com/pengchenglu1997/sglang-neuron/blob/main/docs/rl/RESULTS.md).
+
+| Script | Question | Needs | Results (in `data/2026-11-24_trn2/`) | RESULTS.md | Status |
+|---|---|---|---|---|---|
+| `74_stamp_race.py` | Do two containers started together on one empty compile cache stop at start-up, with the released code and with the fix? | trn2, two containers, the fix as a patch folder | `74_stamp_race_r1.jsonl` | 8.2 | measured |
+| `75_pr20_check.py` | Does upstream pull request 20's in-place reload serve what a fresh start on the same checkpoint serves? | trn2, the three files of the pull request as a patch folder | `75_pr20_check_pr20_q06.jsonl`, `75_pr20_check_pr20_q8.jsonl`, `75_pr20_check_ulp1.jsonl` | 8.1, 8.6 | measured |
+| `76_baseline_pair.sh`, `76_serve_and_bench.py`, `77_pair_table.py` | vllm-neuron and SGLang-Neuron as released, one model, one benchmark client: tokens per second and TTFT | trn2, both images | `76_*.jsonl`, `77_pair_*.md`, `llmbench_q06*`, `llmbench_q8*` | 8.3 | measured |
+| `22b_llmbench_grid.sh` | Helper: one grid of the benchmark client (llmbench at commit `08f4163`), which it clones. Called by `76_baseline_pair.sh`, `80_moe30b_probe.sh` and `81_opt_sweep.py` | network for the clone | the `llmbench_*.csv` files | 8 (run conditions) | helper |
+| `untie_ckpt.py` | Helper: a copy of a tied-embedding checkpoint with its own `lm_head.weight`, which vllm-neuron's Qwen3 loader needs | host | none | 8.3 | helper |
+| `73_merge_kernel_bench.py`, `78_kernel_h1.sh`, `78_nki_version.py`, `lora_merge.py` | Can the LoRA merge kernel be called on device tensors outside a serving graph, and what does one merge cost? One NeuronCore, no server | trn2, one core | `73_merge_kernel_bench.jsonl`, `78_kernel_h1.jsonl` | 8.6 | measured, first run |
+| `78_kernel_h2.sh`, `79_kernel_ran_check.py` | Adapter updates on a Qwen3-0.6B server through the kernel, every read-back check on; and did the updates go through the kernel? | trn2, server with the kernel patch | `78_kernel_h2.jsonl`, `50_adapter_h2_06b.jsonl` | 8.6 | measured, first run |
+| `mk_ulp.py` | Helper: a checkpoint in which a few elements of every matrix are moved by one unit in the last place (the control of 8.6) | host | none | 8.6 | helper |
+| `80_moe30b_probe.sh` | Does the `integration` build start Qwen3-30B-A3B TP4 EP4 on trn2 and answer a known-answer prompt? One small benchmark cell | trn2, the `integration` build as a patch folder | `80_moe30b_r8.jsonl`, `llmbench_moe30b_r8.csv` | 8.7 | measured, one probe |
+| `81_opt_sweep.py`, `81_opt_table.py`, `r9_run.sh` | Serving settings of SGLang-Neuron on Qwen3-0.6B, one factor at a time, then combinations | trn2 | `81_opt_sweep_*.jsonl`, `opt_sweep_*.md`, `llmbench_r9*`, `llmbench_r13*` to `llmbench_r16*` | 8.4, 8.5 | measured |
+| `patch_manifest.py` | Helper: which files a patch folder would mount into the engine, with md5 | host | none | - | helper |
+| `selftest_74.py`, `selftest_75.py`, `selftest_81.py` | CPU self-tests of the log classifier of 74, of 75 and of the sweep logic of 81 | CPU, no device | none | - | CPU only; run again 2026-11-25: 74 passes 4 of 4, 75 passes 32 of 32, 81 passes 108 of 110 (two cases still expect the default variant order from before it was changed during the session) |
+
+Changed with these probes: `50_adapter_server_test.py` also writes the unrounded largest logprob difference;
+`srv_sglang_neuron.sh` takes extra mounts (`SGL_MOUNTS`); `srv_vllm_neuron_docker.sh` takes the compile timeout
+(`VLLM_COMPILE_TIMEOUT`). In the same change, comment lines that pointed to private notes were reworded in
+`21_gsm8k_acc.py`, `22_llmbench.sh`, `srv_other.sh`, `srv_vllm_neuron_docker.sh` and `trainer.py`; no code changed.
+
+Not in this repository:
+
+- The patch folders these scripts mount (`patches/sglang_neuron_v0.1.0_pr20`, `_stampfix`, `_sampler_kernel`,
+  `sglang_neuron_integration`). They are the changed files of the fork's branches: upstream pull request 20's head,
+  `fix/compile-cache-stamp-race`, `feat/sampler-kernel` and `integration`. Their `PATCH_INFO.md` and `BLOBS.txt` lists
+  are not here either.
+- The kernel files `78_kernel_h2.sh` expects in `patches/sglang_neuron_v0.1.0_inplace/models/`
+  (`rlkit_kernel_path.py`, `rlkit_lora_merge.py`): on the fork's branch `feat/lora-merge-kernel`. Without them the
+  script stops at its setup check.
+- The session driver that started the steps and wrote the `s3_*.jsonl` records.
+- The sampler-kernel probes `82_` to `84_`: in the fork under `tests/rlkit_sampler/hardware/`.
+- Planning notes that some headers refer to (task ids such as R1 to R9, U2, a ROADMAP, a kernel plan, a run list, a factor-layout note).
+
+## 9. How a result file reads
 
 Result files are JSON lines written by `rl_common.py`: one line per step or probe, a finished run ends with
 `{"done": true}`, a failed step leaves a line with `"status": "fail"` before it. Counts and timings only; no question or

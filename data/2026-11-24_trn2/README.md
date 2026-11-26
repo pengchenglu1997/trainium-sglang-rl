@@ -18,7 +18,7 @@ names its source file by the names used here.
 | `73_merge_kernel_bench.jsonl`, `78_kernel_h1.jsonl`, `78_kernel_h2.jsonl`, `50_adapter_h2_06b.jsonl`, `75_pr20_check_ulp1.jsonl` | LoRA merge kernel, first hardware run, and the one-ulp control | 8.6 |
 | `80_moe30b_r8.jsonl`, `llmbench_moe30b_r8.csv` | Qwen3-30B-A3B start probe | 8.7 |
 | `59_decode_profile_p*.jsonl` | the run lines of three device-profile captures; the profiles and their `summary.json` are not here, and RESULTS.md 8.8 does not name these three files | 8.8 |
-| `s3_*.jsonl` | the session driver's record of each step: status, seconds, time | - |
+| `s3_*.jsonl` | the session driver's record of each step: status, seconds, time (the driver itself is not public) | - |
 
 How the files read:
 
@@ -33,5 +33,6 @@ Not in this folder:
 
 - the per-request files of the benchmark client, server logs, the `.out` files of the kernel runs (for example
   `78_kernel_h1_bench.out`) and the device profiles;
-- the probe scripts numbered 73 to 84 that wrote these files. The sampler-kernel scripts are in the fork under
-  `tests/rlkit_sampler/hardware/`; the others are not public yet.
+- the scripts themselves: numbers 73 to 81 are at the top level of this repository (index:
+  [`docs/EXPERIMENTS.md`](../../docs/EXPERIMENTS.md) section 8); the sampler-kernel scripts 82 to 84 are in the fork
+  under `tests/rlkit_sampler/hardware/`.

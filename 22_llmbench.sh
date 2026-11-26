@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Speed of a running server with the team's tool and grid (HolboxAI/llmbench at commit 08f4163;
 # grid of the inference comparison rounds: concurrency 1 to 32, prompts of 128, 1,024 and 3,072
-# tokens, 256 output tokens, 64 requests per cell after 4 warm-up requests; Slack, 2026-11-19).
+# tokens, 256 output tokens, 64 requests per cell after 4 warm-up requests).
 #   22_llmbench.sh <tag> <base url> <model name of the API> <tokenizer dir or hub id> <results dir> [devices]
 # LLMBENCH_DIR: where the tool is cloned (default $HOME/w/llmbench). It needs Python 3.10 to
 # 3.13; uv fetches one. Nothing here starts or stops a server.
