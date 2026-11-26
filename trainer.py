@@ -21,7 +21,7 @@ LORA_TARGETS = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", 
 
 
 def set_neuron_env(core, compile_train=False):
-    """Before torch_neuronx is imported (the settings of the team's 4B run). With compile_train the
+    """Before torch_neuronx is imported (the settings of an earlier 4B run). With compile_train the
     TORCH_COMPILE=0 switch of that run is left out: the training forward goes through torch.compile."""
     if core is not None:
         os.environ["NEURON_RT_VISIBLE_CORES"] = str(core)

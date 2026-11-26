@@ -5,8 +5,8 @@
 #   srv_other.sh sglang_cuda <model dir> <port>
 #
 # vllm_neuron: the DLAMI's vLLM Neuron environment (vllm-neuron docs, setup guide, option B).
-#   Qwen3-0.6B is not in the vllm-neuron model list; the team ran it at TP 1/2/4/8 (Slack,
-#   2026-11-19) but the exact command is not in the messages read. The command below is put
+#   Qwen3-0.6B is not in the vllm-neuron model list; it was run elsewhere at TP 1/2/4/8,
+#   but the exact command was not available. The command below is put
 #   together from the documented flags and is NOT a tested recipe: confirm it with the teammate
 #   who ran it, or expect to adjust VLLM_EXTRA.
 #   VLLM_TP (default 1), VLLM_CORES (NEURON_RT_VISIBLE_CORES, default 16-19, away from the

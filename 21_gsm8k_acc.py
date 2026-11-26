@@ -6,7 +6,7 @@ wrong; no text), so two engines can be compared question by question.
         --tag sgl_tp4 [--limit 0] [--temperature 0] [--passes 1] [--concurrency 32]
     python 21_gsm8k_acc.py compare --a FILE --b FILE        (paired: both right, only a, only b)
 
-Settings follow the team's inference comparison (Slack, round 2 and 3): greedy, at most 512 new
+Settings follow an earlier inference comparison: greedy, at most 512 new
 tokens, 32 requests at once, thinking off; sampled passes at temperature 0.6 when asked. The
 prompt is this kit's own (rl_common.messages_for), so numbers are comparable between engines
 run with this script, not with other scripts' numbers."""

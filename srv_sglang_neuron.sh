@@ -17,6 +17,8 @@
 #   SGL_TOP_LOGPROBS  SGLANG_NEURON_MAX_TOP_LOGPROBS (default unset = 0)
 #   SGL_SCRIPT    script inside the image (default the Qwen3-0.6B example)
 #   SGL_EXTRA     extra launch_server flags appended (changes the compiled shapes)
+#   SGL_MOUNTS    extra docker mounts, "host:container[:ro]" items separated by spaces (no spaces inside an
+#                 item); default empty = nothing added
 set -u
 IMAGE="${SGL_IMAGE:-public.ecr.aws/neuron/pytorch-inference-sglang-neuron:v0.1.0-neuron-py314-sdk-2.33.0-ubuntu26.04}"
 cmd="${1:?start|alive|logs|stop}"
@@ -46,10 +48,12 @@ case "$cmd" in
     fi
     # SGL_ENV: extra environment for the server, "K=V K2=V2" (switches of the experimental patch)
     for kv in ${SGL_ENV:-}; do extra_env+=(-e "$kv"); done
+    mounts=()
+    for mt in ${SGL_MOUNTS:-}; do mounts+=(-v "$mt"); done
     docker rm -f "$name" >/dev/null 2>&1 || true
     # shellcheck disable=SC2086
     docker run -d --name "$name" --init --ipc=host --cap-add SYS_NICE "${devices[@]}" \
-      -v "$MODELS_ROOT":/models:ro -v "$SGL_CACHE":/cache ${patch[@]+"${patch[@]}"} \
+      -v "$MODELS_ROOT":/models:ro -v "$SGL_CACHE":/cache ${patch[@]+"${patch[@]}"} ${mounts[@]+"${mounts[@]}"} \
       -p "127.0.0.1:${port}:30000" -e HOST=0.0.0.0 -e PORT=30000 -e MODEL_PATH="$inside" \
       -e HF_HUB_OFFLINE=1 \
       -e SGLANG_NEURON_SAMPLER="${SGL_SAMPLER:-temperature}" \
