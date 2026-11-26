@@ -1,0 +1,8 @@
+{"event": "open", "pid": 502490, "unix": 1795574305.2}
+{"event": "config", "backend": "vllm_neuron_docker", "model_dir": "/home/ubuntu/w/models/Qwen3-8B", "name": "pair_vllm_q8", "port": 30071, "ready_timeout_s": 1200.0, "benches": ["bash 22b_llmbench_grid.sh {tag} {url} {served} {tok} {results} 4", "env LB_PROMPTS=1024 bash 22b_llmbench_grid.sh {tag}_rep {url} {served} {tok} {results} 4"], "unix": 1795574305.2, "env": {"DATA_ROOT": "/home/ubuntu/w", "LB_CONC": "1,8,32", "LB_PROMPTS": "1024", "MODELS_ROOT": "/home/ubuntu/w/models", "VLLM_CACHE": "/home/ubuntu/w/vllm_cache_0.29.0.1.2.0", "VLLM_COMPILE_TIMEOUT": "1800", "VLLM_DEVICES": "16,17,18,19", "VLLM_MAX_LEN": "4096", "VLLM_MAX_SEQS": "32", "VLLM_TP": "4"}}
+{"event": "cache", "dir": "/home/ubuntu/w/vllm_cache_0.29.0.1.2.0", "files_before_start": 135}
+{"event": "start", "ready_s": null, "log": "/home/ubuntu/w/results_s3/server_logs/server_pair_vllm_q8_001.log", "start_no": 1}
+{"event": "not_ready", "first_error": "(Worker_TP0 pid=708) 2026-11-25 02:39:53,683 - ERROR - parallel_trace.py:376 - Parallel trace lane failed; aborting siblings: lane=10 pid=1826 exit_code=0 status=ERROR err=Command failed (neuronx-cc compilation) with exit code 70: 2026-11-25T02:39:53Z WARNING: All log messages before absl::Initializ", "log": "/home/ubuntu/w/results_s3/server_logs/server_pair_vllm_q8_001.log", "note": "no bench was run; the container log is appended to the log file"}
+{"status": "fail", "stage": "serve_and_bench", "error_type": "RuntimeError", "message": "server not ready within 1200 s (or it ended): see /home/ubuntu/w/results_s3/server_logs/server_pair_vllm_q8_001.log"}
+{"event": "stop", "seconds": 0.2}
+{"done": true}

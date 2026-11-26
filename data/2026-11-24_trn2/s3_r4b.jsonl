@@ -1,0 +1,3 @@
+{"event": "open", "step": "r4b", "t_utc": "2026-11-25T03:16:29Z"}
+{"event": "step", "step": "r4b", "status": "fail", "rc": 1, "timeout": false, "cap_min": 70, "seconds": 2284, "log": "/home/ubuntu/w/results_s3/logs/s3_r4b.log", "t_utc": "2026-11-25T03:16:29Z"}
+{"done": true}

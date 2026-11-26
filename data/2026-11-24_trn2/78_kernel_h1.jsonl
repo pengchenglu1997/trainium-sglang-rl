@@ -1,0 +1,6 @@
+{"event": "start", "unix": 1795577864, "core": "48", "lnc": "2", "models": "8b", "image": "public.ecr.aws/neuron/pytorch-inference-sglang-neuron:v0.1.0-neuron-py314-sdk-2.33.0-ubuntu26.04", "cache": "/home/ubuntu/w/sgl_cache_v0.1.0_kernel_h1"}
+{"event": "files", "bench_md5": "30881381908a284860d4fb907e061c4f", "lora_merge_md5": "1cf6b9c9485f36fffc7d288dbeac7fb8"}
+{"event": "nki_version", "nki": "0.7.0+37713544100.gfede04bb", "helper_exit": 0, "output_file": "78_nki_version.out"}
+{"event": "bench_exit", "code": 0, "rows": 21, "invoke_mode": "eager", "failed_rows": 0, "integer_rows": 4, "integer_not_bit_exact": 0, "bench_done_row": 1, "bench_stdout": "78_kernel_h1_bench.out"}
+{"event": "verdict", "result": "pass", "meaning": "bench ran to its end; integer factors bit-exact; timings and read-back counts are in the bench file"}
+{"done": true}
