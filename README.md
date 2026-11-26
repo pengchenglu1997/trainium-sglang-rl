@@ -3,6 +3,14 @@
 RL post-training on AWS Trainium2 with SGLang-Neuron: a measured loop, and an experimental patch that lets
 SGLang-Neuron v0.1.0 take new weights without a server restart.
 
+> **Where the work continues.** This page describes the work up to 2026-11-22. Since then the engine changes and
+> kernels are developed in the fork [pengchenglu1997/sglang-neuron](https://github.com/pengchenglu1997/sglang-neuron)
+> (its README has the branch layout), and the results of later sessions, including the trn2 session of 2026-11-24, are
+> written up in that fork's
+> [docs/rl/RESULTS.md](https://github.com/pengchenglu1997/sglang-neuron/blob/main/docs/rl/RESULTS.md). The result files
+> of sessions after 2026-11-21 are not in this repository yet. The sections "Results so far" and "Plan and open work"
+> below are as of 2026-11-22.
+
 Three parts, each usable on its own:
 
 | Part | What it is | Where |
