@@ -84,11 +84,11 @@ refer to them by name. Numbers in file names are the order in which the probes w
 | **Core library** | `rl_common.py`, `rollout_client.py`, `server_ctl.py`, `backends.json`, `mk_alt.py` | results format and prompts, HTTP client, server start/stop from `backends.json`, perturbed checkpoint maker |
 | **Trainers** | `trainer.py`, `ptrainer.py`, `trainer8b.py` | LoRA trainer (one core); data-parallel version (LoRA values and gradients in shared memory); 8B variant |
 | **The loop** | `30_rl_loop.py` | the loop; main flags `--backend`, `--replicas`, `--sync-payload merged\|adapter`, `--train-compile`, `--train-cores`, `--overlap`, `--trainer8b`, `--len-buckets`, `--seed` |
-| **Server launchers** | `srv_sglang_neuron.sh`, `srv_vllm_neuron_docker.sh`, `srv_sglang_cuda_docker.sh`, `srv_other.sh` | one script per engine; backends registered in `backends.json`: `sglang_neuron`, `sglang_neuron_inplace`, `vllm_neuron`, `vllm_neuron_docker`, `vllm_cuda`, `sglang_cuda`, `sglang_cuda_docker` |
+| **Server launchers** | `srv_sglang_neuron.sh`, `srv_vllm_neuron_docker.sh` (with `nki_index_check.py`; CPU self-test `selftest_nki_index_check.py`), `srv_sglang_cuda_docker.sh`, `srv_other.sh` | one script per engine; backends registered in `backends.json`: `sglang_neuron`, `sglang_neuron_inplace`, `vllm_neuron`, `vllm_neuron_docker`, `vllm_cuda`, `sglang_cuda`, `sglang_cuda_docker` |
 | **Probes of 2026-11-24** | `73_` to `81_`, `82_cache_record.py` (added after the session), `22b_llmbench_grid.sh`, `lora_merge.py`, `mk_ulp.py`, `untie_ckpt.py`, `patch_manifest.py`, `selftest_74.py`, `selftest_75.py`, `selftest_81.py`, `selftest_cache_record.py`, `selftest_launcher_env.py`, `r9_run.sh` | the trn2 session of 2026-11-24, as run; see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 8. The patch folders they mount are not here |
 | **Probes** | `20_` to `72_` | see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md): question, hardware, result files and record for each |
 | **Session scripts** | `50_run_trn2_session.sh`, `run_night_1121.sh`, `run_shape_1122.sh`, `run_w1w2.sh`, `scripts/run_trn2_seeds.sh`, `scripts/run_cuda_baseline.sh` | the order in which probes ran on one machine; each prints marker lines and a last line `*_DONE` |
-| **Tests without hardware** | `selftest_fake_server.py`, `selftest_cache_record.py`, `selftest_launcher_env.py`, `62_lazy_delta_test.py`, `65_trainer8b_cpu_test.py`, `66_pull_weights_shim_test.py` | CPU only |
+| **Tests without hardware** | `selftest_fake_server.py`, `selftest_cache_record.py`, `selftest_launcher_env.py`, `selftest_nki_index_check.py`, `62_lazy_delta_test.py`, `65_trainer8b_cpu_test.py`, `66_pull_weights_shim_test.py` | CPU only |
 | **Report helpers** | `60_report_figures.py`, `59b_profile_sum.py`, `59c_profile_peek.py`, `59d_devprof_sum.py`, `63_padding_share.py` | figures and summaries read from result files |
 | **Patch** | `patches/sglang_neuron_v0.1.0_inplace/` (patched files, `orig/` holds the v0.1.0 originals), `patches/diff/`, `patches/PR_DRAFT_inplace_weight_update.md` | see [The patch](#the-patch) |
 | **Data** | `data/2026-11-20/`, `data/2026-11-21_night/` | result files, see [Data and records](#data-and-records) |
@@ -108,6 +108,7 @@ SGLang-Neuron v0.1.0 image. CUDA: one GPU and Docker. The probes and loop read t
 | `DATA_ROOT` | disk with models and GSM8K for the session scripts |
 | `PROFILE_ROOT` | host folder for Neuron profile output (`59_decode_profile.py`, `run_night_1121.sh`), mounted at `/profiles` in the server container; default `$DATA_ROOT/profiles`; never the compile cache folder |
 | `VLLM_ENV`, `VLLM_COMPILE_TIMEOUT` | `srv_vllm_neuron_docker.sh`: extra container environment (`NAME=value` items separated by spaces); the compile timeout in seconds, set under both `VLLM_NEURON_COMPILATION_TIMEOUT` and `NEURON_LIBTORCH_COMPILATION_TIMEOUT` (which one the compiler reads is not verified) |
+| `VLLM_NKI_INDEX_CHECK` | `srv_vllm_neuron_docker.sh`, default 1: before each start, `nki_index_check.py` reads `$VLLM_CACHE/neuron/compile_cache/nki/*.json` in a throwaway container of the server image with the same mounts. vllm-neuron 0.29.0.1.2.0 writes the kernel files those entries name to the container's own `/var/tmp`, which is gone with the container; a later start can fail with `NCC_EVRF059`. If any entry names a file that does not exist there, only that index folder is removed. With this image every entry seen names such a container-local file, so in practice any non-empty index is removed, including one with which a start reached ready; the keep branch (every readable entry names an existing file) applies only to entries naming files under `/cache` or `/models`, which this image does not write, and is covered by the CPU self-test only. Entries with an unreadable or empty kernel path are counted and on their own cause no removal. When the check is on, the launcher prints exactly one line starting `nki index check:` (also for a missing index folder, a missing helper file, or a failed check container, with its exit code). Skipped (and said so) while a running container mounts the cache folder, a folder inside it or a parent of it. A helper path that contains a comma makes the check container fail to start (the `--mount` option splits on commas); the launcher then prints the "check container failed" line and the start proceeds. Exactly `0` turns the check off |
 
 **RL loop.**
 
@@ -135,6 +136,7 @@ python 65_trainer8b_cpu_test.py
 python selftest_81.py
 python selftest_cache_record.py
 python selftest_launcher_env.py     # needs bash
+python selftest_nki_index_check.py
 MILES_DIR=<radixark/miles checkout> python 66_pull_weights_shim_test.py
 ```
 
