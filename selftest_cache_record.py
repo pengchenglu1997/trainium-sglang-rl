@@ -91,6 +91,7 @@ def test_main(tmp: Path):
     put(root / "sgl_cache_one" / "f1", 10)
     put(root / "vllm_cache_two" / "g" / "f2", 20)
     put(root / "models" / "big.safetensors", 999)
+    put(root / "cache_archives" / "sgl_cache_one.tar", 777)
     put(root / "results" / "r.jsonl", 5)
     res = tmp / "res"
     rc = CR.main(["--results", str(res), "--tag", "t", "--root", str(root), "--cache", str(tmp / "absent_cache")])
@@ -101,6 +102,11 @@ def test_main(tmp: Path):
           f"only folders with 'cache' in the name ({[f['name'] for f in folders]})")
     summ = [r for r in rows if r.get("event") == "summary"][0]
     check(summ["folders"] == 3 and summ["bytes"] == 30 and summ["files"] == 2, f"summary {summ}")
+    check("cache_archives" not in [f["name"] for f in folders] and summ["bytes"] == 30,
+          "--root does not record cache_archives (tar archives) as a cache; their bytes are not in the summary")
+    CR.main(["--results", str(res), "--tag", "arch", "--cache", str(root / "cache_archives")])
+    arch = [r for r in rows_of(res / "82_cache_record_arch.jsonl") if r.get("event") == "folder"]
+    check(len(arch) == 1 and arch[0]["bytes"] == 777, "--cache names cache_archives explicitly: it is recorded")
     check(rows[0]["event"] == "open" and rows[-1] == {"done": True}, "open line first, done line last")
     check(not any(r.get("status") == "fail" for r in rows), "no fail line")
     # same folder twice (flag and root) is recorded once
@@ -117,9 +123,25 @@ def test_profile_rule(tmp: Path):
     cache = tmp / "sgl_cache_x"
     cache.mkdir(parents=True)
     env = {"SGL_CACHE": str(cache), "DATA_ROOT": str(tmp / "d")}
-    check(DP.profile_root("/p/q", env) == "/p/q", "flag wins")
-    check(DP.profile_root(None, dict(env, PROFILE_ROOT="/pp")) == "/pp", "PROFILE_ROOT next")
+    check(DP.profile_root("/p/q", env) == os.path.abspath("/p/q"), "flag wins")
+    check(DP.profile_root(None, dict(env, PROFILE_ROOT="/pp")) == os.path.abspath("/pp"), "PROFILE_ROOT next")
     check(Path(DP.profile_root(None, env)) == tmp / "d" / "profiles", "DATA_ROOT/profiles last")
+    here = os.getcwd()
+    try:
+        os.chdir(tmp)   # relative roots resolve against the current folder
+        rel = DP.profile_root("profiles_rel", env)
+        check(os.path.isabs(rel) and rel == os.path.abspath("profiles_rel"), "a relative root is made absolute (docker would read it as a volume name)")
+        check(os.path.isabs(DP.profile_root(None, dict(env, PROFILE_ROOT="rel/p"))), "a relative PROFILE_ROOT is made absolute")
+        check(DP.mounts_with(rel, {}).startswith(os.path.abspath("profiles_rel") + ":"), "the mount value starts with the absolute path")
+        os.chdir(cache)
+        inside = None
+        try:
+            DP.profile_root("profiles", env)
+        except ValueError as ex:
+            inside = str(ex)
+        check(inside is not None and "compile-cache" in inside, "a relative root that resolves inside the cache folder is refused")
+    finally:
+        os.chdir(here)
 
     def refused(arg, e):
         try:

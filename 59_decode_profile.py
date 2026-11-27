@@ -31,11 +31,13 @@ PROFILE_MOUNT = "/profiles"   # where the profile root is mounted in the server 
 
 def profile_root(arg, environ=None):
     """Host folder for profile output: --profile-root, else PROFILE_ROOT, else DATA_ROOT/profiles. Refuses the compile-cache
-    folder (SGL_CACHE) and anything inside it, and a path with a space (SGL_MOUNTS splits its items on spaces)."""
+    folder (SGL_CACHE) and anything inside it, and a path with a space (SGL_MOUNTS splits its items on spaces).
+    The result is always absolute (docker reads a relative -v source as a named volume, not a host folder)."""
     env = os.environ if environ is None else environ
     root = arg or env.get("PROFILE_ROOT") or (str(Path(env["DATA_ROOT"]) / "profiles") if env.get("DATA_ROOT") else None)
     if not root:
         raise ValueError("no profile root: give --profile-root, or set PROFILE_ROOT or DATA_ROOT")
+    root = os.path.abspath(root)   # docker reads a relative -v source as a named volume, not a host folder
     if " " in root:
         raise ValueError(f"the profile root holds a space (SGL_MOUNTS splits items on spaces): {root}")
     cache = env.get("SGL_CACHE")

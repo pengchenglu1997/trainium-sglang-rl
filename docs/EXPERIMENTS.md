@@ -80,7 +80,7 @@ Which probes ran together on one machine, and on which cores.
 
 | Script | Session | Runs |
 |---|---|---|
-| `50_run_trn2_session.sh` | 19-20 Nov, trn2 | steps `prep sgl_up sgl_acc sgl_probes sgl_bench loop_sgl loop_hf loop_vllm ddp cache_record`; resumable, a finished step is skipped. `cache_record` (last, added later) stops the session's server and runs `82_cache_record.py` on the cache folders under `DATA_ROOT` |
+| `50_run_trn2_session.sh` | 19-20 Nov, trn2 | steps `prep sgl_up sgl_acc sgl_probes sgl_bench loop_sgl loop_hf loop_vllm ddp cache_record`; resumable, a finished step is skipped. `cache_record` (last, added later) stops the session's server and the loop servers (not a server started outside the script; with `KEEP_SGL=1` nothing is stopped and the counts may not be final) and runs `82_cache_record.py` on the cache folders under `DATA_ROOT`, `cache_archives` excluded. Only this script has the step: `80_moe30b_probe.sh` and the 2026-11-24 scripts write caches but record nothing; run the `82_cache_record.py` command by hand after them |
 | `scripts/run_trn2_seeds.sh` | 20 Nov, trn2 | the 150-step loop per seed on the whole machine, not overlapped then overlapped |
 | `scripts/run_cuda_baseline.sh` | 20 Nov, one GPU | the CUDA baseline loop and the swap probe |
 | `run_night_1121.sh` | 21 Nov night, trn2 | checks `gen glm4\|dsv2`, `sampler`, `q8`, `profile` side by side on their own cores. Profile output now goes to `$PROFILE_ROOT` (default `$DATA_ROOT/profiles`), not into the cache folder; the result files of that night name `/cache/profile_*` because they were produced before this change |
@@ -114,7 +114,7 @@ the fork's [RESULTS.md](https://github.com/pengchenglu1997/sglang-neuron/blob/ma
 
 Changed with these probes: `50_adapter_server_test.py` also writes the unrounded largest logprob difference;
 `srv_sglang_neuron.sh` takes extra mounts (`SGL_MOUNTS`); `srv_vllm_neuron_docker.sh` takes the compile timeout
-(`VLLM_COMPILE_TIMEOUT`), which it now sets under two names (`VLLM_NEURON_COMPILATION_TIMEOUT` and `NEURON_LIBTORCH_COMPILATION_TIMEOUT`; which one the compiler reads is not verified), and extra container environment (`VLLM_ENV`, `NAME=value` items separated by spaces). `59_decode_profile.py` writes its profile under `/profiles` in the container (the host folder `--profile-root`, `$PROFILE_ROOT` or `$DATA_ROOT/profiles`), never under `/cache`. In the same change, comment lines that pointed to private notes were reworded in
+(`VLLM_COMPILE_TIMEOUT`), which it now sets under two names (`VLLM_NEURON_COMPILATION_TIMEOUT` and `NEURON_LIBTORCH_COMPILATION_TIMEOUT`; which one the compiler reads is not verified; the docs describe the second as a per-NEFF compile timeout in one place and as a wait for another compiling process in another), and extra container environment (`VLLM_ENV`, `NAME=value` items separated by spaces). `59_decode_profile.py` writes its profile under `/profiles` in the container (the host folder `--profile-root`, `$PROFILE_ROOT` or `$DATA_ROOT/profiles`), never under `/cache`. In the same change, comment lines that pointed to private notes were reworded in
 `21_gsm8k_acc.py`, `22_llmbench.sh`, `srv_other.sh`, `srv_vllm_neuron_docker.sh` and `trainer.py`; no code changed.
 
 Not in this repository:

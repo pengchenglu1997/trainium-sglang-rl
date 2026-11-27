@@ -107,7 +107,7 @@ SGLang-Neuron v0.1.0 image. CUDA: one GPU and Docker. The probes and loop read t
 | `SGL_IMAGE`, `SGL_CORES`, `SGL_SAMPLER`, `SGL_EXTRA` | image, `NEURON_RT_VISIBLE_CORES` of the server, sampler mode, extra launch flags |
 | `DATA_ROOT` | disk with models and GSM8K for the session scripts |
 | `PROFILE_ROOT` | host folder for Neuron profile output (`59_decode_profile.py`, `run_night_1121.sh`), mounted at `/profiles` in the server container; default `$DATA_ROOT/profiles`; never the compile cache folder |
-| `VLLM_ENV`, `VLLM_COMPILE_TIMEOUT` | `srv_vllm_neuron_docker.sh`: extra container environment (`NAME=value` items separated by spaces); the compile timeout in seconds, set under both `VLLM_NEURON_COMPILATION_TIMEOUT` and `NEURON_LIBTORCH_COMPILATION_TIMEOUT` |
+| `VLLM_ENV`, `VLLM_COMPILE_TIMEOUT` | `srv_vllm_neuron_docker.sh`: extra container environment (`NAME=value` items separated by spaces); the compile timeout in seconds, set under both `VLLM_NEURON_COMPILATION_TIMEOUT` and `NEURON_LIBTORCH_COMPILATION_TIMEOUT` (which one the compiler reads is not verified) |
 
 **RL loop.**
 
@@ -120,7 +120,7 @@ bash scripts/run_cuda_baseline.sh
 python 60_report_figures.py <dir with the result folders> <out dir>
 ```
 
-**End of a session.** After the servers have stopped: `python 82_cache_record.py --results <dir> --tag <tag> --root $DATA_ROOT` writes the size in bytes and the file count of each compile-cache folder (every sub-folder of `$DATA_ROOT` with `cache` in its name) to `82_cache_record_<tag>.jsonl`; `50_run_trn2_session.sh` has it as its last step, `cache_record`.
+**End of a session.** After the servers have stopped: `python 82_cache_record.py --results <dir> --tag <tag> --root $DATA_ROOT` writes the size in bytes and the file count of each compile-cache folder (every sub-folder of `$DATA_ROOT` with `cache` in its name, except `cache_archives`, where the saved tar archives of the caches are) to `82_cache_record_<tag>.jsonl`; `50_run_trn2_session.sh` (the 19-20 Nov session script) has it as its last step, `cache_record`, which stops the servers that script starts first (with `KEEP_SGL=1` it stops none and the counts may not be final). No other script runs it: after `80_moe30b_probe.sh` or the scripts of the 2026-11-24 session, run the command above by hand once their servers have stopped.
 
 **Single checks on a patched server.** Each probe prints its usage in its header, for example
 `48_inplace_server_test.py` (update equals a fresh start), `49_sync_stress.py` (many updates, updates under load),

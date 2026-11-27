@@ -5,8 +5,8 @@
 
 A stand-in `docker` (a bash script on PATH) writes its arguments, one per line, to a file; the launcher is started with
 VLLM_DEV_GLOB pointing at a fake device file. Covered: the two compile-timeout names side by side with the default and with
-VLLM_COMPILE_TIMEOUT, VLLM_ENV (nothing added when unset, items passed one per -e, an item that overrides a built-in comes
-after it, a value with = or quotes or a glob character is passed unchanged), and refusal (exit 2, no docker run) of an item
+VLLM_COMPILE_TIMEOUT, VLLM_ENV (nothing added when unset, items passed one per -e, an item of the same name as a built-in is placed
+after it (that docker then keeps the last value is not tested), a value with = or quotes or a glob character is passed unchanged), and refusal (exit 2, no docker run) of an item
 without NAME=, with a bad name, or a name that starts with a digit. Last line: SELFTEST_LAUNCHER_ENV PASSED n checks, or
 FAILED (exit 1). Needs bash."""
 from __future__ import annotations
@@ -88,7 +88,7 @@ def main():
         e = env_items(args or [])
         check(rc == 0 and "FOO=1" in e and "BAR_2=a=b" in e, "VLLM_ENV items become one -e each, '=' in a value kept")
         check("NEURON_SKIP_EFA_AFFINITY=0" in e and e.index("NEURON_SKIP_EFA_AFFINITY=0") > e.index("NEURON_SKIP_EFA_AFFINITY=1"),
-              "an item of the same name as a built-in comes after it (docker keeps the last)")
+              "an item of the same name as a built-in is placed after it (argument order only; docker keeping the last value is not run here)")
         check(len(e) == 7 + 3, f"exactly the three items are added ({len(e)})")
         # the image and the vllm arguments still follow the -e options
         check(args is not None and "serve" in args and args.index("serve") > max(i for i, a in enumerate(args) if a == "-e"),

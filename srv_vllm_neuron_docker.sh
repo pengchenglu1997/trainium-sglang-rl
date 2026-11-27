@@ -16,13 +16,15 @@
 #   VLLM_TP (4)VLLM_MAX_SEQS (32)  VLLM_MAX_LEN (1024)  VLLM_EXTRA
 #   VLLM_COMPILE_TIMEOUT  seconds (default 1200), set in the container under two names, side by side:
 #   VLLM_NEURON_COMPILATION_TIMEOUT (the name the vllm-neuron quickstart exports; vLLM core logs it as unknown) and
-#   NEURON_LIBTORCH_COMPILATION_TIMEOUT (the name the vllm-neuron configuration reference lists, "individual NEFF
-#   compilation"). Which of the two the compiler reads is UNVERIFIED (the docs name both; no vllm-neuron Python file
-#   reads either), so both are set.
+#   NEURON_LIBTORCH_COMPILATION_TIMEOUT. The two vllm-neuron doc pages that list the second name describe it differently:
+#   the configuration reference says "Timeout in seconds for individual NEFF compilation", the compilation-cache page says
+#   "Seconds to wait for another process to finish compiling before timing out" (a lock wait). So the meaning of the name is
+#   itself unsettled, and which of the two names the compiler reads is UNVERIFIED (the docs name both; no vllm-neuron source
+#   was read here), so both are set.
 #   VLLM_ENV      extra environment variables for the container: "NAME=value NAME2=value2", items separated by spaces.
 #                 A value holds no space. Each item is checked to be NAME=value with NAME of letters, digits and
 #                 underscores, and is passed as one docker argument (no shell evaluation, no globbing). It comes after the
-#                 built-in variables, so it overrides one of the same name. Default empty = nothing added. A bad item
+#                 built-in variables; that a repeated name then takes the last value is docker behaviour that was NOT RUN here. Default empty = nothing added. A bad item
 #                 stops the start (exit 2) before anything is started.
 #   VLLM_DEV_GLOB (/dev/neuron*) pattern of the device files to pass in; only a test needs to change it
 set -u

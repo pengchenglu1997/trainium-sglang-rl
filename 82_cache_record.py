@@ -2,7 +2,7 @@
 """End-of-session step: record the size in bytes and the file count of each compile-cache folder.
 
     python 82_cache_record.py --results DIR --tag t1 --cache DIR [--cache DIR ...]
-    python 82_cache_record.py --results DIR --tag t1 --root DIR        every sub-folder of DIR whose name holds "cache"
+    python 82_cache_record.py --results DIR --tag t1 --root DIR        every sub-folder of DIR whose name holds "cache", except cache_archives
 
 Run it after the servers that write into the folders have stopped: a folder a container is still writing to gives a count
 that is not final (the record says nothing about that; stop the servers first). Nothing is changed or deleted.
@@ -17,7 +17,8 @@ read, so a number with unreadable > 0 is a lower bound. "profile_entries" lists 
 the cache folder (the profile scripts of this kit write outside it, see 59_decode_profile.py); non-empty means profile data
 is mixed into the count.
 A folder that does not exist is recorded with exists false and no numbers; a missing --cache is not an error, so the step
-can run after a session that never started the server."""
+can run after a session that never started the server.
+--root skips a sub-folder named cache_archives (tar archives of the caches, not a cache); give it with --cache if it is wanted."""
 from __future__ import annotations
 
 import argparse
@@ -30,6 +31,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import rl_common as C  # noqa: E402
 
 PROFILE_PREFIXES = ("profile_", "devprof_")
+# sub-folders of --root that hold "cache" in the name but are not compile caches: the save procedure writes tar archives of the caches there
+NOT_CACHE = ("cache_archives",)
 
 
 def scan(folder: Path) -> dict:
@@ -96,7 +99,7 @@ def folders_from(args) -> list[Path]:
     for r in args.root:
         root = Path(r)
         if root.is_dir():
-            out += sorted(p for p in root.iterdir() if p.is_dir() and "cache" in p.name)
+            out += sorted(p for p in root.iterdir() if p.is_dir() and "cache" in p.name and p.name not in NOT_CACHE)
     seen, uniq = set(), []
     for p in out:
         k = os.path.abspath(p)

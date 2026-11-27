@@ -127,9 +127,10 @@ step_ddp() {
 }
 
 step_cache_record() {   # end of session: bytes and file count of every compile-cache folder under DATA_ROOT
-  # the session's own server is stopped first (a cache a container still writes has no final count); KEEP_SGL=1 keeps it and
-  # the numbers are then not final
-  [ "${KEEP_SGL:-0}" = 1 ] || bash srv_sglang_neuron.sh stop "$SRV" 2>/dev/null
+  # the servers this script starts are stopped first (the session server $SRV, the loop servers rl_sgl and vllm rl_*): a cache a
+  # container still writes has no final count. KEEP_SGL=1 keeps them up and the numbers are then not final; a server started
+  # outside this script is not stopped here, so the numbers may not be final then either
+  [ "${KEEP_SGL:-0}" = 1 ] || { bash srv_sglang_neuron.sh stop "$SRV" 2>/dev/null; stop_loop_servers; }
   "$PY" 82_cache_record.py --results "$R" --tag session --root "$DATA_ROOT" > "$R/logs/cache_record.out" 2>&1
   cat "$R/logs/cache_record.out"
   ok_file "$R/82_cache_record_session.jsonl" && say "cache_record ok" || { say "cache_record FAILED"; return 1; }
