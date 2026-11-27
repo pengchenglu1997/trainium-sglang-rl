@@ -5,7 +5,7 @@
 
 Scans every file under DIR (text and binary) for things that must not be published:
   instance ids (i- and 8 to 17 hex digits), spot request ids (sir-), 12-digit numbers (account ids),
-  IPv4 addresses other than 127.0.0.1 and 0.0.0.0, host names ip-N-N-N-N, e-mail addresses, "arn:aws",
+  IPv4 addresses other than 127.0.0.1 and 0.0.0.0, MAC addresses (six colon-separated hex pairs), host names ip-N-N-N-N, e-mail addresses, "arn:aws",
   access-key-like strings (AKIA / ASIA), Windows paths (a drive letter and a slash), home folders other than
   /home/ubuntu, "user@host" forms such as "ubuntu@", key file names (.pem, .ppk, id_rsa), prices (an amount per hour or
   day, USD, spot or on-demand price), a carriage return (the files are kept with LF line ends),
@@ -25,7 +25,8 @@ PATTERNS = [
     ("spot-request-id", re.compile(r"\bsir-[0-9a-z]{8}\b")),
     ("account-id-12-digits", re.compile(r"(?<![0-9A-Za-z.])[0-9]{12}(?![0-9A-Za-z])")),
     ("ipv4", re.compile(r"(?<![0-9.])(?!127\.0\.0\.1\b|0\.0\.0\.0\b)(?:25[0-5]|2[0-4][0-9]|1?[0-9]?[0-9])(?:\.(?:25[0-5]|2[0-4][0-9]|1?[0-9]?[0-9])){3}(?!\.?[0-9])")),
-    ("ip-hostname", re.compile(r"\bip-[0-9]+-[0-9]+-[0-9]+-[0-9]+\b")),
+    ("mac-address", re.compile(r"(?<![0-9A-Fa-f:])(?:[0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}(?![0-9A-Fa-f:])")),
+    ("ip-hostname",re.compile(r"\bip-[0-9]+-[0-9]+-[0-9]+-[0-9]+\b")),
     ("email", re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")),
     ("user-at-host", re.compile(r"\b[A-Za-z0-9_-]+@(?=[A-Za-z0-9._-]+\b)")),
     ("arn", re.compile(r"arn:aws")),

@@ -1,5 +1,5 @@
-scrub_check: 927 files, 2678150 bytes scanned
-patterns: instance-id, spot-request-id, account-id-12-digits, ipv4, ip-hostname, email, user-at-host, arn, access-key, windows-path, other-home-folder, key-file, price
+scrub_check: 927 files, 2678786 bytes scanned
+patterns: instance-id, spot-request-id, account-id-12-digits, ipv4, mac-address, ip-hostname, email, user-at-host, arn, access-key, windows-path, other-home-folder, key-file, price
 private word list: 25 entries
 hits: 0
 accepted on purpose: 5

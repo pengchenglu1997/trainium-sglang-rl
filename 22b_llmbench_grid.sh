@@ -77,7 +77,10 @@ targets:
       temperature: ${LB_TEMP:-0}
 EOF
 # LB_EXTRA_BODY "top_k=50 top_p=0.95": more request fields, one "name=value" per item (added 2026-11-26; unset = as before)
+# Values are written into the YAML as they are, so each must be a plain YAML scalar (a number, true/false, or a word); globbing is off for the split.
+set -f
 for kv in ${LB_EXTRA_BODY:-}; do echo "      ${kv%%=*}: ${kv#*=}" >> "$cfg"; done
+set +f
 cd "$dir" || fail "cd $dir"
 uv sync -q || fail "uv sync"
 uv run llm-bench validate --config "$cfg" || fail "validate"

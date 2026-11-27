@@ -71,7 +71,10 @@ container then points at files that no longer exist, and a later start can stop 
 is the first look: `starts.jsonl` has the config, the `parallel_trace_finished` time, the verdict and the cache file count of
 each start, next to the cache listings and the index entries. The Qwen3-0.6B starts ended `ready` or `pass_stopped`; the
 Qwen3-8B starts on a cache folder that a 0.6B container had left behind (`i12_r1_q8`, `i12_r1b_q8`) and an untouched copy of such a folder
-(`i12_a1_ctl`) ended `fail`, and the copy with the index folder deleted first (`i12_a1_fix`) ended `pass_stopped`. `i34_nki_index/`
+(`i12_a1_ctl`) ended `fail`, and the copy with the index folder deleted first (`i12_a1_fix`) ended `pass_stopped`. Two more
+Qwen3-8B starts are in `starts.jsonl`: `i12_a2_nopool`, on a stale cache with `VLLM_NEURON_DISABLE_PARALLEL_TRACE=1`, ended `fail`
+(turning parallel trace off did not avoid the failure), and `i12_f34a` and `i12_f34b`, each on a cache folder that held 23 files
+before the start (as `i12_a1_fix`) with no extra environment variable, ended `ready`. `i34_nki_index/`
 holds the test of the launcher check that the repository now carries (`nki_index_check.py`, called by
 `srv_vllm_neuron_docker.sh`): the old launcher on a stale cache stopped with 28 `NCC_EVRF059` lines (`results/starts.jsonl`,
 `i34_a_old`); the new launcher removed the index folder and the same model reached ready (`i34_b_new`, `i34_c_new`); a start of
@@ -99,7 +102,9 @@ taken from the released code (`patch_dead.diff`). `extra/i37x/`: kernel off with
 `cmp_*.txt` are the pairwise comparisons; `grid_*.txt` count how many of the 380 top-20 logprob gaps lie on a 1/16 grid:
 2 of 380 for `r1` with the kernel off, 380 of 380 for `r1` with the kernel on, 2 of 380 for the kernel on with the mask applied
 (`grid_r3_kon_mask.txt`), 380 of 380 for both `r4` runs, 2 of 380 for the mask removed on the released path (`grid_r5.txt`).
-In these runs the grid pattern goes with the kernel-on server that skips the mask; why the compiler output changes with the mask line
+In these runs the grid pattern appears with the kernel on when the mask is skipped (`r1` kon, `r4` kon_dead) and with the kernel off
+when the fp32 logits are rounded to bf16 (`r4` koff_bf16, 380 of 380 in `grid_r4.txt`); it is absent with the mask applied
+(`r3` kon and koff) and with the mask removed on the released path (`r5`). Why the compiler output changes with the mask line
 was not determined. The answer dumps `out_*.json` (0.6 MB each) are not published.
 
 `dp_layouts/` Replica layouts against TP4 on Qwen3-0.6B, on top of the `all` configuration (temperature kernel and LM head switch on): data-parallel 4 x TP1 and 2 x TP2 against the
@@ -161,7 +166,7 @@ hardware runs was not part of the checks above.
   for reading these files is in this README.
 - Model output text in the `.jsonl` and `.json` files is the answer to public GSM8K questions or short fixed prompts; the
   names in them are those of the public questions. Paths such as `/home/ubuntu/w/...` are folders on the test machine.
-  Instance ids and the addresses of the container network were replaced by `<redacted>`.
+  Instance ids and the addresses of the container network (IP addresses, gateway and MAC address) were replaced by `<redacted>`.
 
 ## Scrub
 

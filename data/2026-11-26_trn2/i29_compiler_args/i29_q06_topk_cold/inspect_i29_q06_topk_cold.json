@@ -347,7 +347,7 @@
                     "EndpointID": "165063d32c05011dd3d67cedd20e92224de83a239f42028dcc28fc21ea516667",
                     "Gateway": "<redacted>",
                     "IPAddress": "<redacted>",
-                    "MacAddress": "2a:01:b2:d7:d7:5b",
+                    "MacAddress": "<redacted>",
                     "IPPrefixLen": 16,
                     "IPv6Gateway": "",
                     "GlobalIPv6Address": "",
