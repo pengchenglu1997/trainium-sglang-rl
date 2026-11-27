@@ -1,0 +1,4 @@
+{"event": "open", "pid": 250017, "unix": 1795741855.0}
+{"event": "server_start", "ready_s": null, "log": "/home/ubuntu/w/results_s4/server_logs/server_prof_q06_lmh_on_nd_001.log", "start_no": 1, "launcher_exit": 125}
+{"status": "fail", "stage": "profile", "error_type": "RuntimeError", "message": "server did not become ready"}
+{"done": true}

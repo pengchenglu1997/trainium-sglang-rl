@@ -1,0 +1,8 @@
+{"t": "2026-11-27T02:03:56Z", "event": "open", "name": "lmh_off_b", "cores": "52-55", "port": 30302, "sets": ["t0", "t08"], "cache_src": "/home/ubuntu/w/sgl_cache_s4_q06_lmh_off", "cache": "/home/ubuntu/w/sgl_cache_cc_lmh_off_b", "cache_files_at_start": 70, "cache_files_in_original": 70, "env": {"DATA_ROOT": "/home/ubuntu/w", "MODELS_ROOT": "/home/ubuntu/w/models", "SGL_CACHE": "/home/ubuntu/w/sgl_cache_cc_lmh_off_b", "SGL_CORES": "52-55", "SGL_SAMPLER": "temperature", "SGL_EXTRA": "--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32", "SGL_SCRIPT": "/opt/sglang-neuron/examples/qwen3_0p6b/run_server.sh", "SGL_TOP_LOGPROBS": "", "SGL_PATCH_DIR": "/home/ubuntu/w/sglang_rl/patches/sglang_neuron_lmhead_int_26213e7", "SGL_ENV": "SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=0", "SGL_MOUNTS": ""}}
+{"t": "2026-11-27T02:06:40Z", "event": "server_start", "ready_s": 164.5, "log": "/home/ubuntu/w/cc/results/server_logs/server_cc_lmh_off_b_001.log", "start_no": 1}
+{"t": "2026-11-27T02:06:44Z", "event": "set_done", "set": "t0", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T02:06:49Z", "event": "set_done", "set": "t08", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T02:06:49Z", "event": "log_lines", "counts": {"sampler by the kernel": 0, "topk_topp sampler by the kernel": 0}, "pretransposed_mentions": 0, "examples": []}
+{"t": "2026-11-27T02:06:53Z", "event": "stop", "seconds": 4.0}
+{"t": "2026-11-27T02:06:53Z", "event": "end", "status": "ok"}
+{"t": "2026-11-27T02:06:53Z", "done": true}

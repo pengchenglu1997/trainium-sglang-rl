@@ -1,0 +1,7 @@
+cache_a files=211 du=54M
+cache_b files=211 du=54M
+cache_c files=157 du=116M
+i12_cache_p2 files=211
+i12_cache_p4 files=157
+cache_d files=157
+cache_e files=211

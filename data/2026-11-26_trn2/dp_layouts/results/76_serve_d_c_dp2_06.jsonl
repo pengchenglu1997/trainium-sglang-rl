@@ -1,0 +1,7 @@
+{"event": "open", "pid": 767639, "unix": 1795747249.8}
+{"event": "config", "backend": "sglang_neuron", "model_dir": "/home/ubuntu/w/models/Qwen3-0.6B", "name": "dp_c_dp2_06", "port": 30403, "ready_timeout_s": 2400.0, "benches": [], "unix": 1795747249.8, "env": {"DATA_ROOT": "/home/ubuntu/w", "MODELS_ROOT": "/home/ubuntu/w/models", "SGL_CACHE": "/home/ubuntu/w/sgl_cache_dp_dp2_06", "SGL_CORES": "12-15", "SGL_ENV": "RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1", "SGL_EXTRA": "--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --tp-size 2 --dp-size 2", "SGL_PATCH_DIR": "/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk", "SGL_SAMPLER": "temperature", "SGL_SCRIPT": "/opt/sglang-neuron/examples/qwen3_0p6b/run_server.sh"}}
+{"event": "cache", "dir": "/home/ubuntu/w/sgl_cache_dp_dp2_06", "files_before_start": null}
+{"event": "start", "ready_s": 521.4, "log": "/home/ubuntu/w/dp/results/server_logs/server_dp_c_dp2_06_001.log", "start_no": 1}
+{"event": "precheck", "served": "/models/Qwen3-0.6B", "flag": null, "status": 200, "usage": {"prompt_tokens": 16, "total_tokens": 80, "completion_tokens": 64, "reasoning_tokens": 0}, "completion_tokens": 64, "text_chunks": 64, "finish_reason": "length", "text_start": " Yes\nQuestion: Is Paris the capital of France? Answer yes or no.\nAnswer:\nAnswer:", "ttft_s": 0.0497, "total_s": 0.25, "error": null, "wanted_tokens": 64, "ok": true}
+{"event": "stop", "seconds": 4.3}
+{"done": true}

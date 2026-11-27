@@ -1,0 +1,5 @@
+== S 01:17:26 phaseA4 start
+== S 01:22:16 prof q06_topk_kon exit 0: S4_PROFILE_DONE q06_topk_kon; profile files: 7
+== S 01:22:58 prof q06_topk_koff exit 0: S4_PROFILE_DONE q06_topk_koff; profile files: 7
+== S 01:22:58 phaseA4 end
+S_DONE phaseA4

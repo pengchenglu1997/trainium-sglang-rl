@@ -1,0 +1,11 @@
+22b_llmbench_grid.sh: line 48: python: command not found
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+Config valid: 1 target(s), run 'b_q06_vllm_p1'
+INFO httpx: HTTP Request: POST http://127.0.0.1:30141/v1/completions "HTTP/1.1 200 OK"
+            Connectivity             
+┏━━━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━┓
+┃ target        ┃ reachable ┃ error ┃
+┡━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━┩
+│ b_q06_vllm_p1 │ yes       │       │
+└───────────────┴───────────┴───────┘
+LLMBENCH_DONE b_q06_vllm_p1 csv=/home/ubuntu/w/results_s4/llmbench_b_q06_vllm_p1.csv rows=3

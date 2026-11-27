@@ -1,0 +1,14 @@
+== P1 02:40:49 copy caches
+== P1 02:40:49 cache q06_all: original 79 files, copy 79 files
+== P1 02:40:49 cache q8_all: original 79 files, copy 79 files
+== D 02:40:49 start c_dp4_06 cache /home/ubuntu/w/sgl_cache_dp_dp4_06 cores 4-7 port 30401 extra: --context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --tp-size 1 --dp-size 4 --max-total-tokens 65536
+== D 02:40:49 start c_dp2_06 cache /home/ubuntu/w/sgl_cache_dp_dp2_06 cores 12-15 port 30403 extra: --context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --tp-size 2 --dp-size 2
+== D 02:40:49 start c_dp4_8 cache /home/ubuntu/w/sgl_cache_dp_dp4_8 cores 8-11 port 30402 extra: --context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --tp-size 1 --dp-size 4 --max-total-tokens 16384
+== D 02:42:22 start c_dp4_8 exit 2: SERVE_AND_BENCH_FAILED d_c_dp4_8: RuntimeError: server not ready within 2400 s (or it ended): see /home/ubuntu/w/dp/results/server_logs/server_dp_c_dp4_8_001.log
+D_DONE start c_dp4_8
+== D 02:49:35 start c_dp2_06 exit 0: SERVE_AND_BENCH_DONE d_c_dp2_06 ready_s=521.4 precheck=ok benches_done=0/0 result=/home/ubuntu/w/dp/results/76_serve_d_c_dp2_06.jsonl
+D_DONE start c_dp2_06
+== D 02:51:42 start c_dp4_06 exit 0: SERVE_AND_BENCH_DONE d_c_dp4_06 ready_s=647.1 precheck=ok benches_done=0/0 result=/home/ubuntu/w/dp/results/76_serve_d_c_dp4_06.jsonl
+D_DONE start c_dp4_06
+== P1 02:51:42 phase 1 end
+P1_DONE

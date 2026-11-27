@@ -1,0 +1,11 @@
+--- /home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk/rlkit_sampler_topk.py	2026-11-27 01:16:43.000000000 +0000
++++ /home/ubuntu/w/i37/patch_mask/rlkit_sampler_topk.py	2026-11-27 04:12:43.164081353 +0000
+@@ -68,7 +68,7 @@
+     rows, width = logits.shape
+     rank64 = rank.to(torch.int64)
+     logits = logits.float()
+-    if width * group.world_size > vocabulary_size:                   # padded columns exist: the engine's mask
++    if True:  # i37 test: the engine's mask always, as sampling._tempered_scores (was: only when padded)
+         ids = torch.arange(width, dtype=torch.int64, device=logits.device) + rank64 * width
+         logits = logits.masked_fill(ids.unsqueeze(0) >= vocabulary_size, float("-inf"))
+     # per-row columns, as sampling._tempered_scores (v0.1.0 lines 316-319)

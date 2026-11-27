@@ -1,0 +1,16 @@
+==================== q8_all sampler rows 3376 of 1398698
+by source file, per step (both pcores): rows, instr ms {'_functional_collectives.py': {'size': 4.0, 'sum': 0.001}, 'rlkit_sampler_kernel.py': {'size': 456.0, 'sum': 0.724}, 'sampling.py': {'size': 384.0, 'sum': 0.063}}
+ exec  pcore  after_lmhead_union_ms  after_lmhead_span_ms  span_ms  start_after_t0_ms  end_before_t1_ms  union_ms  instr_ms  rows
+    0      0                 0.3892                0.4155  14.3577             0.0153            0.0040    0.4092    0.4543   510
+    0      1                 0.2834                0.4217  14.3383             0.0147            0.0240    0.3036    0.3335   333
+    1      0                 0.3886                0.4161  13.8776             0.0081            0.0040    0.4086    0.4541   510
+    1      1                 0.2836                0.4152  13.8580             0.0077            0.0240    0.3039    0.3336   333
+    2      0                 0.3892                0.4179  13.9618             0.0004            0.0040    0.4093    0.4543   512
+    2      1                 0.2836                0.4168  13.9229             0.0167            0.0266    0.3039    0.3336   333
+    3      0                 0.3892                0.4153  13.9166             0.0040            0.0040    0.4093    0.4544   512
+    3      1                 0.2832                0.4187  13.8793             0.0214            0.0239    0.3035    0.3336   333
+mean by pcore:
+       after_lmhead_union_ms  after_lmhead_span_ms  span_ms  start_after_t0_ms  end_before_t1_ms  union_ms  instr_ms   rows
+pcore                                                                                                                      
+0                     0.3891                0.4162  14.0284             0.0070            0.0040    0.4091    0.4543  511.0
+1                     0.2834                0.4181  13.9996             0.0151            0.0247    0.3037    0.3336  333.0

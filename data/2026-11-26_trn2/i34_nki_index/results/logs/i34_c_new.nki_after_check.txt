@@ -1,0 +1,1 @@
+dir /home/ubuntu/w/i34/cache_c/neuron/compile_cache/nki: 0 json entries

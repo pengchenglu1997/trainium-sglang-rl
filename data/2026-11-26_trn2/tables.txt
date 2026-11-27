@@ -1,0 +1,302 @@
+== 1. llmbench cells: tok/s (output_token_throughput_tps), TTFT p50 in s (ttft_p50_s), errors (n_error) ==
+prompt length 1024 tokens, 256 output tokens, 64 requests per cell after 4 warm-up requests, unless the yaml next to the csv says otherwise
+dp_layouts/results/llmbench_d_ctl06_a_t08.csv                          c1 320.8 / 0.028 / err 0 | c8 1635.6 / 0.076 / err 0 | c32 3343.7 / 0.261 / err 0
+dp_layouts/results/llmbench_d_ctl06_a_t0_p1.csv                        c1 320.3 / 0.028 / err 0 | c8 1648.7 / 0.075 / err 0 | c32 3347.4 / 0.254 / err 0
+dp_layouts/results/llmbench_d_ctl06_a_t0_p2.csv                        c1 322.8 / 0.028 / err 0 | c8 1651.2 / 0.076 / err 0 | c32 3344.2 / 0.261 / err 0
+dp_layouts/results/llmbench_d_ctl06_b_t08.csv                          c1 324.3 / 0.028 / err 0 | c8 1640.2 / 0.074 / err 0 | c32 3345.3 / 0.256 / err 0
+dp_layouts/results/llmbench_d_ctl06_b_t0_p1.csv                        c1 326.4 / 0.027 / err 0 | c8 1642.1 / 0.075 / err 0 | c32 3334.9 / 0.265 / err 0
+dp_layouts/results/llmbench_d_ctl06_b_t0_p2.csv                        c1 323.8 / 0.028 / err 0 | c8 1659.8 / 0.075 / err 0 | c32 3346.9 / 0.257 / err 0
+dp_layouts/results/llmbench_d_dp2_06_t08.csv                           c1 266.5 / 0.038 / err 0 | c8 1188.1 / 0.067 / err 0 | c32 2326.3 / 0.222 / err 0
+dp_layouts/results/llmbench_d_dp2_06_t0_p1.csv                         c1 267.1 / 0.036 / err 0 | c8 1191.4 / 0.069 / err 0 | c32 2334.1 / 0.216 / err 0
+dp_layouts/results/llmbench_d_dp2_06_t0_p2.csv                         c1 266.5 / 0.038 / err 0 | c8 1197.0 / 0.065 / err 0 | c32 2332.9 / 0.217 / err 0
+dp_layouts/results/llmbench_d_dp4_06_t08.csv                           c1 220.4 / 0.050 / err 0 | c8 849.8 / 0.061 / err 0 | c32 3084.0 / 0.186 / err 0
+dp_layouts/results/llmbench_d_dp4_06_t0_p1.csv                         c1 221.2 / 0.043 / err 0 | c8 850.7 / 0.063 / err 0 | c32 3099.3 / 0.166 / err 0
+dp_layouts/results/llmbench_d_dp4_06_t0_p2.csv                         c1 221.3 / 0.043 / err 0 | c8 847.8 / 0.072 / err 0 | c32 3089.3 / 0.184 / err 0
+host_step/llmbench_p1c_t0_p1.csv                                       c1 324.1 / 0.028 / err 0 | c8 1638.3 / 0.075 / err 0 | c32 3337.5 / 0.263 / err 0
+host_step/llmbench_p1c_t0_p2.csv                                       c1 322.5 / 0.029 / err 0 | c8 1650.6 / 0.077 / err 0 | c32 3339.2 / 0.258 / err 0
+host_step/llmbench_p1m_t0_p1.csv                                       c1 321.5 / 0.028 / err 0 | c8 1640.3 / 0.075 / err 0 | c32 3331.2 / 0.267 / err 0
+host_step/llmbench_p1m_t0_p2.csv                                       c1 318.9 / 0.029 / err 0 | c8 1653.1 / 0.076 / err 0 | c32 3339.7 / 0.260 / err 0
+host_step/llmbench_p1t_t0_p1.csv                                       c1 325.6 / 0.028 / err 0 | c8 1634.9 / 0.077 / err 0 | c32 3342.6 / 0.258 / err 0
+host_step/llmbench_p1t_t0_p2.csv                                       c1 324.4 / 0.029 / err 0 | c8 1662.1 / 0.075 / err 0 | c32 3344.7 / 0.257 / err 0
+host_step/llmbench_p2c_for_p2v1_p1.csv                                 c1 319.4 / 0.028 / err 0 | c8 1639.3 / 0.077 / err 0 | c32 3329.4 / 0.270 / err 0
+host_step/llmbench_p2c_for_p2v1_p2.csv                                 c1 320.1 / 0.030 / err 0 | c8 1649.6 / 0.076 / err 0 | c32 3313.1 / 0.271 / err 0
+host_step/llmbench_p2c_for_p2v2_p1.csv                                 c1 321.8 / 0.029 / err 0 | c8 1661.2 / 0.074 / err 0 | c32 3328.0 / 0.271 / err 0
+host_step/llmbench_p2c_for_p2v2_p2.csv                                 c1 321.9 / 0.029 / err 0 | c8 1665.0 / 0.075 / err 0 | c32 3334.9 / 0.258 / err 0
+host_step/llmbench_p2c_for_p2v3_p1.csv                                 c1 322.9 / 0.029 / err 0 | c8 1661.8 / 0.075 / err 0 | c32 3337.9 / 0.260 / err 0
+host_step/llmbench_p2c_for_p2v3_p2.csv                                 c1 319.8 / 0.030 / err 0 | c8 1656.6 / 0.077 / err 0 | c32 3332.2 / 0.264 / err 0
+host_step/llmbench_p2c_for_p2v4_p1.csv                                 c1 322.5 / 0.029 / err 0 | c8 1664.7 / 0.075 / err 0 | c32 3336.1 / 0.255 / err 0
+host_step/llmbench_p2c_for_p2v4_p2.csv                                 c1 323.7 / 0.028 / err 0 | c8 1664.6 / 0.075 / err 0 | c32 3344.6 / 0.253 / err 0
+host_step/llmbench_p2v1_p1.csv                                         c1 322.1 / 0.029 / err 0 | c8 1620.1 / 0.092 / err 0 | c32 3337.4 / 0.262 / err 0
+host_step/llmbench_p2v1_p2.csv                                         c1 320.4 / 0.030 / err 0 | c8 1632.9 / 0.085 / err 0 | c32 3313.1 / 0.272 / err 0
+host_step/llmbench_p2v2_p1.csv                                         c1 323.1 / 0.029 / err 0 | c8 1632.4 / 0.081 / err 0 | c32 3343.9 / 0.259 / err 0
+host_step/llmbench_p2v2_p2.csv                                         c1 322.2 / 0.030 / err 0 | c8 1652.1 / 0.076 / err 0 | c32 3350.0 / 0.256 / err 0
+host_step/llmbench_p2v3_p1.csv                                         c1 321.4 / 0.029 / err 0 | c8 1635.8 / 0.079 / err 0 | c32 3344.3 / 0.252 / err 0
+host_step/llmbench_p2v3_p2.csv                                         c1 318.9 / 0.029 / err 0 | c8 1641.6 / 0.079 / err 0 | c32 3345.0 / 0.257 / err 0
+host_step/llmbench_p2v4_p1.csv                                         c1 323.5 / 0.029 / err 0 | c8 1644.9 / 0.074 / err 0 | c32 3341.1 / 0.260 / err 0
+host_step/llmbench_p2v4_p2.csv                                         c1 323.7 / 0.029 / err 0 | c8 1643.8 / 0.078 / err 0 | c32 3343.1 / 0.256 / err 0
+host_step/llmbench_p3c_for_p3v5_p1.csv                                 c1 319.5 / 0.028 / err 0 | c8 1631.0 / 0.082 / err 0 | c32 3338.4 / 0.259 / err 0
+host_step/llmbench_p3c_for_p3v5_p2.csv                                 c1 319.3 / 0.029 / err 0 | c8 1650.7 / 0.075 / err 0 | c32 3337.0 / 0.261 / err 0
+host_step/llmbench_p3c_for_p3v6_p1.csv                                 c1 324.4 / 0.029 / err 0 | c8 1663.6 / 0.074 / err 0 | c32 3321.9 / 0.265 / err 0
+host_step/llmbench_p3c_for_p3v6_p2.csv                                 c1 321.4 / 0.028 / err 0 | c8 1663.6 / 0.075 / err 0 | c32 3295.5 / 0.266 / err 0
+host_step/llmbench_p3c_for_p3v7_p1.csv                                 c1 320.8 / 0.029 / err 0 | c8 1664.0 / 0.075 / err 0 | c32 3215.7 / 0.267 / err 0
+host_step/llmbench_p3c_for_p3v7_p2.csv                                 c1 318.0 / 0.029 / err 0 | c8 1662.4 / 0.075 / err 0 | c32 3337.8 / 0.257 / err 0
+host_step/llmbench_p3t_t0_p1.csv                                       c1 173.6 / 0.025 / err 0 | c8 1031.5 / 0.095 / err 0 | c32 2435.9 / 0.332 / err 0
+host_step/llmbench_p3v5_p1.csv                                         c1 172.5 / 0.026 / err 0 | c8 993.6 / 0.100 / err 0 | c32 2364.3 / 0.340 / err 0
+host_step/llmbench_p3v5_p2.csv                                         c1 171.2 / 0.025 / err 0 | c8 1000.9 / 0.099 / err 0 | c32 2356.2 / 0.340 / err 0
+host_step/llmbench_p3v6_p1.csv                                         c1 322.1 / 0.028 / err 0 | c8 1639.2 / 0.078 / err 0 | c32 3339.4 / 0.261 / err 0
+host_step/llmbench_p3v6_p2.csv                                         c1 320.9 / 0.028 / err 0 | c8 1645.4 / 0.082 / err 0 | c32 3338.9 / 0.255 / err 0
+host_step/llmbench_p3v7_p1.csv                                         c1 327.3 / 0.028 / err 0 | c8 1217.9 / 0.076 / err 0 | c32 2462.1 / 0.268 / err 0
+host_step/llmbench_p3v7_p2.csv                                         c1 328.1 / 0.028 / err 0 | c8 1217.1 / 0.076 / err 0 | c32 2496.9 / 0.257 / err 0
+host_step/llmbench_p8t_t0_p1.csv                                       c1 115.0 / 0.069 / err 0 | c8 638.0 / 0.209 / err 0 | c32 1497.2 / 0.736 / err 0
+host_step/llmbench_p8t_t0_p2.csv                                       c1 115.5 / 0.058 / err 0 | c8 641.1 / 0.214 / err 0 | c32 1500.7 / 0.723 / err 0
+i12_vllm_start/llmbench_b_q06_vllm_p1.csv                              c1 210.1 / 0.023 / err 0 | c8 1229.3 / 0.078 / err 0 | c32 2378.2 / 0.281 / err 0
+i12_vllm_start/llmbench_b_q06_vllm_p2.csv                              c1 210.1 / 0.023 / err 0 | c8 1227.3 / 0.079 / err 0 | c32 2376.0 / 0.277 / err 0
+i37_topk_kernel/extra/i37x/bench/llmbench_b_i37m_koff_k50_p1.csv       c1 214.9 / 0.028 / err 0 | c8 1260.5 / 0.082 / err 0 | c32 2617.6 / 0.272 / err 0
+i37_topk_kernel/extra/i37x/bench/llmbench_b_i37m_koff_k50_p2.csv       c1 214.7 / 0.030 / err 0 | c8 1258.7 / 0.087 / err 0 | c32 2616.9 / 0.274 / err 0
+i37_topk_kernel/extra/i37x/bench/llmbench_b_i37m_koff_t08.csv          c1 214.4 / 0.030 / err 0 | c8 1264.4 / 0.081 / err 0 | c32 2601.0 / 0.276 / err 0
+i37_topk_kernel/extra/i37x/bench/llmbench_b_i37m_kon_k50_p1.csv        c1 241.6 / 0.028 / err 0 | c8 1362.0 / 0.078 / err 0 | c32 2822.6 / 0.265 / err 0
+i37_topk_kernel/extra/i37x/bench/llmbench_b_i37m_kon_k50_p2.csv        c1 241.5 / 0.029 / err 0 | c8 1363.2 / 0.079 / err 0 | c32 2822.4 / 0.269 / err 0
+i37_topk_kernel/extra/i37x/bench/llmbench_b_i37m_kon_t08.csv           c1 241.5 / 0.028 / err 0 | c8 1363.4 / 0.081 / err 0 | c32 2825.2 / 0.272 / err 0
+kv_decode/llmbench_b_q06_ctl2_t0_p1.csv                                c1 325.7 / 0.027 / err 0 | c8 1644.4 / 0.075 / err 0 | c32 3349.2 / 0.256 / err 0
+kv_decode/llmbench_b_q06_ctl2_t0_p2.csv                                c1 326.2 / 0.028 / err 0 | c8 1659.4 / 0.074 / err 0 | c32 3345.8 / 0.257 / err 0
+kv_decode/llmbench_b_q06_ctl3_t0_p1.csv                                c1 327.2 / 0.025 / err 0 | c8 1653.2 / 0.073 / err 0 | c32 3346.6 / 0.258 / err 0
+kv_decode/llmbench_b_q06_ctl3_t0_p2.csv                                c1 327.1 / 0.026 / err 0 | c8 1658.8 / 0.073 / err 0 | c32 3357.5 / 0.253 / err 0
+kv_decode/llmbench_b_q06_ctl_t0_p1.csv                                 c1 322.4 / 0.028 / err 0 | c8 1635.0 / 0.078 / err 0 | c32 3342.7 / 0.255 / err 0
+kv_decode/llmbench_b_q06_ctl_t0_p2.csv                                 c1 321.1 / 0.029 / err 0 | c8 1652.3 / 0.075 / err 0 | c32 3341.1 / 0.258 / err 0
+kv_decode/llmbench_b_q06_ctx16k_t0_p1.csv                              c1 309.9 / 0.027 / err 0 | c8 1457.8 / 0.075 / err 0 | c32 2591.3 / 0.262 / err 0
+kv_decode/llmbench_b_q06_ctx16k_t0_p2.csv                              c1 310.9 / 0.028 / err 0 | c8 1461.0 / 0.075 / err 0 | c32 2594.9 / 0.258 / err 0
+kv_decode/llmbench_b_q06_ctx2k_t0_p1.csv                               c1 315.2 / 0.027 / err 0 | c8 1635.3 / 0.082 / err 0 | c32 3271.0 / 0.265 / err 0
+kv_decode/llmbench_b_q06_ctx2k_t0_p2.csv                               c1 309.8 / 0.028 / err 0 | c8 1573.2 / 0.083 / err 0 | c32 3335.2 / 0.259 / err 0
+kv_decode/llmbench_b_q06_ctx3k_t0_p1.csv                               c1 360.4 / 0.025 / err 0 | c8 1488.2 / 0.074 / err 0 | c32 3059.9 / 0.264 / err 0
+kv_decode/llmbench_b_q06_ctx3k_t0_p2.csv                               c1 333.2 / 0.029 / err 0 | c8 1486.3 / 0.075 / err 0 | c32 3063.2 / 0.261 / err 0
+kv_decode/llmbench_b_q06_p2k_t0_p1.csv                                 c1 322.6 / 0.034 / err 0 | c8 1521.0 / 0.133 / err 0 | c32 2874.2 / 0.461 / err 0
+kv_decode/llmbench_b_q06_p2k_t0_p2.csv                                 c1 320.9 / 0.039 / err 0 | c8 1532.2 / 0.133 / err 0 | c32 2868.8 / 0.463 / err 0
+kv_decode/llmbench_b_q8_ctl2_t0_p1.csv                                 c1 114.9 / 0.069 / err 0 | c8 638.3 / 0.208 / err 0 | c32 1498.3 / 0.732 / err 0
+kv_decode/llmbench_b_q8_ctl2_t0_p2.csv                                 c1 115.4 / 0.059 / err 0 | c8 640.5 / 0.209 / err 0 | c32 1497.7 / 0.735 / err 0
+kv_decode/llmbench_b_q8_ctl3_t0_p1.csv                                 c1 115.0 / 0.069 / err 0 | c8 638.5 / 0.208 / err 0 | c32 1497.6 / 0.737 / err 0
+kv_decode/llmbench_b_q8_ctl3_t0_p2.csv                                 c1 115.6 / 0.057 / err 0 | c8 642.3 / 0.209 / err 0 | c32 1504.0 / 0.718 / err 0
+kv_decode/llmbench_b_q8_ctl_t0_p1.csv                                  c1 114.9 / 0.071 / err 0 | c8 638.5 / 0.213 / err 0 | c32 1498.1 / 0.732 / err 0
+kv_decode/llmbench_b_q8_ctl_t0_p2.csv                                  c1 115.4 / 0.060 / err 0 | c8 640.4 / 0.211 / err 0 | c32 1500.6 / 0.727 / err 0
+kv_decode/llmbench_b_q8_ctx2k_t0_p1.csv                                c1 115.0 / 0.069 / err 0 | c8 638.4 / 0.208 / err 0 | c32 1498.5 / 0.730 / err 0
+kv_decode/llmbench_b_q8_ctx2k_t0_p2.csv                                c1 115.6 / 0.056 / err 0 | c8 641.2 / 0.211 / err 0 | c32 1502.9 / 0.721 / err 0
+kv_decode/llmbench_b_q8_ctx3k_t0_p1.csv                                c1 117.3 / 0.069 / err 0 | c8 602.9 / 0.208 / err 0 | c32 1465.2 / 0.738 / err 0
+kv_decode/llmbench_b_q8_ctx3k_t0_p2.csv                                c1 118.0 / 0.057 / err 0 | c8 603.8 / 0.210 / err 0 | c32 1470.8 / 0.721 / err 0
+kv_decode/llmbench_b_q8_p2k_t0_p1.csv                                  c1 112.7 / 0.115 / err 0 | c8 541.6 / 0.530 / err 0 | c32 1056.2 / 1.913 / err 0
+kv_decode/llmbench_b_q8_p2k_t0_p2.csv                                  c1 111.9 / 0.131 / err 0 | c8 543.6 / 0.533 / err 0 | c32 1058.2 / 1.903 / err 0
+lm_head/results/llmbench_b_lmh_q06_s0k_t08.csv                         c1 318.5 / 0.028 / err 0 | c8 1625.5 / 0.075 / err 0 | c32 2735.8 / 0.260 / err 0
+lm_head/results/llmbench_b_lmh_q06_s0k_t0_p1.csv                       c1 319.5 / 0.027 / err 0 | c8 1613.9 / 0.078 / err 0 | c32 2738.6 / 0.257 / err 0
+lm_head/results/llmbench_b_lmh_q06_s0k_t0_p2.csv                       c1 317.7 / 0.028 / err 0 | c8 1636.6 / 0.077 / err 0 | c32 2738.5 / 0.261 / err 0
+lm_head/results/llmbench_b_lmh_q06_s0n_t08.csv                         c1 210.3 / 0.030 / err 0 | c8 1149.5 / 0.081 / err 0 | c32 2454.9 / 0.266 / err 0
+lm_head/results/llmbench_b_lmh_q06_s0n_t0_p1.csv                       c1 205.7 / 0.031 / err 0 | c8 1155.1 / 0.081 / err 0 | c32 2452.9 / 0.269 / err 0
+lm_head/results/llmbench_b_lmh_q06_s0n_t0_p2.csv                       c1 210.5 / 0.029 / err 0 | c8 1166.7 / 0.078 / err 0 | c32 2446.6 / 0.265 / err 0
+lm_head/results/llmbench_b_lmh_q06_s1k_t08.csv                         c1 325.1 / 0.028 / err 0 | c8 1644.7 / 0.074 / err 0 | c32 3342.3 / 0.256 / err 0
+lm_head/results/llmbench_b_lmh_q06_s1k_t0_p1.csv                       c1 325.8 / 0.027 / err 0 | c8 1639.9 / 0.078 / err 0 | c32 3337.3 / 0.260 / err 0
+lm_head/results/llmbench_b_lmh_q06_s1k_t0_p2.csv                       c1 326.3 / 0.028 / err 0 | c8 1654.6 / 0.074 / err 0 | c32 3326.7 / 0.261 / err 0
+lm_head/results/llmbench_b_lmh_q06_s1n_r2_t08.csv                      c1 324.8 / 0.028 / err 0 | c8 1608.1 / 0.082 / err 0 | c32 2965.5 / 0.256 / err 0
+lm_head/results/llmbench_b_lmh_q06_s1n_r2_t0_p1.csv                    c1 325.1 / 0.027 / err 0 | c8 1612.3 / 0.080 / err 0 | c32 2969.0 / 0.261 / err 0
+lm_head/results/llmbench_b_lmh_q06_s1n_r2_t0_p2.csv                    c1 324.3 / 0.029 / err 0 | c8 1639.4 / 0.075 / err 0 | c32 2974.0 / 0.255 / err 0
+lm_head/results/llmbench_b_lmh_q06_s1n_t08.csv                         c1 328.5 / 0.027 / err 0 | c8 1623.3 / 0.073 / err 0 | c32 2973.4 / 0.255 / err 0
+lm_head/results/llmbench_b_lmh_q06_s1n_t0_p1.csv                       c1 329.7 / 0.025 / err 0 | c8 1629.0 / 0.074 / err 0 | c32 2972.7 / 0.254 / err 0
+lm_head/results/llmbench_b_lmh_q06_s1n_t0_p2.csv                       c1 328.6 / 0.026 / err 0 | c8 1640.2 / 0.074 / err 0 | c32 2971.1 / 0.257 / err 0
+lm_head/results/llmbench_b_lmh_q8_s0k_t08.csv                          c1 114.7 / 0.057 / err 0 | c8 645.2 / 0.214 / err 0 | c32 1498.7 / 0.725 / err 0
+lm_head/results/llmbench_b_lmh_q8_s0k_t0_p1.csv                        c1 114.2 / 0.068 / err 0 | c8 644.9 / 0.213 / err 0 | c32 1501.1 / 0.720 / err 0
+lm_head/results/llmbench_b_lmh_q8_s0k_t0_p2.csv                        c1 114.7 / 0.057 / err 0 | c8 646.5 / 0.212 / err 0 | c32 1500.2 / 0.723 / err 0
+lm_head/results/llmbench_b_lmh_q8_s1k_t08.csv                          c1 115.6 / 0.055 / err 0 | c8 639.3 / 0.208 / err 0 | c32 1504.4 / 0.717 / err 0
+lm_head/results/llmbench_b_lmh_q8_s1k_t0_p1.csv                        c1 115.1 / 0.067 / err 0 | c8 638.5 / 0.207 / err 0 | c32 1497.5 / 0.738 / err 0
+lm_head/results/llmbench_b_lmh_q8_s1k_t0_p2.csv                        c1 115.6 / 0.055 / err 0 | c8 640.6 / 0.207 / err 0 | c32 1504.1 / 0.719 / err 0
+serving/llmbench_b_q06_all_t08.csv                                     c1 325.0 / 0.029 / err 0 | c8 1634.4 / 0.078 / err 0 | c32 3340.6 / 0.253 / err 0
+serving/llmbench_b_q06_all_t0_p1.csv                                   c1 324.0 / 0.029 / err 0 | c8 1641.9 / 0.075 / err 0 | c32 3324.2 / 0.255 / err 0
+serving/llmbench_b_q06_all_t0_p2.csv                                   c1 324.6 / 0.029 / err 0 | c8 1652.3 / 0.074 / err 0 | c32 3313.3 / 0.263 / err 0
+serving/llmbench_b_q06_lmh_off_k50_p1.partial.csv                      no cell rows
+serving/llmbench_b_q06_lmh_off_k50_p2.partial.csv                      no cell rows
+serving/llmbench_b_q06_lmh_off_t08.csv                                 c1 211.8 / 0.028 / err 0 | c8 1160.3 / 0.074 / err 0 | c32 2459.2 / 0.263 / err 0
+serving/llmbench_b_q06_lmh_off_t0_p1.csv                               c1 212.1 / 0.027 / err 0 | c8 1163.4 / 0.076 / err 0 | c32 2460.1 / 0.264 / err 0
+serving/llmbench_b_q06_lmh_off_t0_p2.csv                               c1 211.9 / 0.028 / err 0 | c8 1168.7 / 0.075 / err 0 | c32 2466.3 / 0.260 / err 0
+serving/llmbench_b_q06_lmh_on_k50_p1.partial.csv                       no cell rows
+serving/llmbench_b_q06_lmh_on_k50_p2.partial.csv                       no cell rows
+serving/llmbench_b_q06_lmh_on_t08.csv                                  c1 328.1 / 0.028 / err 0 | c8 1617.4 / 0.073 / err 0 | c32 2984.2 / 0.254 / err 0
+serving/llmbench_b_q06_lmh_on_t0_p1.csv                                c1 327.9 / 0.028 / err 0 | c8 1621.4 / 0.076 / err 0 | c32 2974.9 / 0.264 / err 0
+serving/llmbench_b_q06_lmh_on_t0_p2.csv                                c1 326.8 / 0.028 / err 0 | c8 1635.5 / 0.076 / err 0 | c32 2982.3 / 0.264 / err 0
+serving/llmbench_b_q06_main_t08.csv                                    c1 311.9 / 0.029 / err 0 | c8 1614.6 / 0.078 / err 0 | c32 2738.6 / 0.256 / err 0
+serving/llmbench_b_q06_main_t0_p1.csv                                  c1 316.5 / 0.028 / err 0 | c8 1541.9 / 0.078 / err 0 | c32 2556.6 / 0.280 / err 0
+serving/llmbench_b_q06_main_t0_p2.csv                                  c1 291.7 / 0.031 / err 0 | c8 1581.9 / 0.077 / err 0 | c32 2700.3 / 0.270 / err 0
+serving/llmbench_b_q06_rel_t0.csv                                      c1 209.4 / 0.030 / err 0 | c8 1169.0 / 0.075 / err 0 | c32 2458.1 / 0.262 / err 0
+serving/llmbench_b_q06_rel_t08_p1.csv                                  c1 209.8 / 0.029 / err 0 | c8 1140.3 / 0.076 / err 0 | c32 2451.1 / 0.270 / err 0
+serving/llmbench_b_q06_rel_t08_p2.csv                                  c1 194.7 / 0.037 / err 0 | c8 1134.9 / 0.081 / err 0 | c32 2414.8 / 0.284 / err 0
+serving/llmbench_b_q06_topk_all_k50_p1.csv                             c1 245.0 / 0.030 / err 0 | c8 1394.5 / 0.081 / err 0 | c32 2885.3 / 0.266 / err 0
+serving/llmbench_b_q06_topk_all_k50_p2.csv                             c1 245.0 / 0.030 / err 0 | c8 1400.0 / 0.077 / err 0 | c32 2882.0 / 0.269 / err 0
+serving/llmbench_b_q06_topk_all_t08.csv                                c1 245.0 / 0.030 / err 0 | c8 1399.8 / 0.077 / err 0 | c32 2860.0 / 0.270 / err 0
+serving/llmbench_b_q06_topk_k50_p1.csv                                 c1 217.7 / 0.027 / err 0 | c8 1267.1 / 0.078 / err 0 | c32 2620.9 / 0.270 / err 0
+serving/llmbench_b_q06_topk_k50_p2.csv                                 c1 217.6 / 0.027 / err 0 | c8 1266.1 / 0.080 / err 0 | c32 2623.1 / 0.269 / err 0
+serving/llmbench_b_q06_topk_koff_k50_p1.csv                            c1 214.4 / 0.028 / err 0 | c8 1256.2 / 0.085 / err 0 | c32 2610.9 / 0.282 / err 0
+serving/llmbench_b_q06_topk_koff_k50_p2.csv                            c1 210.2 / 0.032 / err 0 | c8 1264.1 / 0.079 / err 0 | c32 2620.8 / 0.274 / err 0
+serving/llmbench_b_q06_topk_koff_t08.csv                               c1 214.7 / 0.030 / err 0 | c8 1255.9 / 0.083 / err 0 | c32 2622.5 / 0.273 / err 0
+serving/llmbench_b_q06_topk_kon_k50_p1.csv                             c1 239.4 / 0.028 / err 0 | c8 1272.6 / 0.091 / err 0 | c32 2769.7 / 0.297 / err 0
+serving/llmbench_b_q06_topk_kon_k50_p2.csv                             c1 225.6 / 0.034 / err 0 | c8 1333.7 / 0.079 / err 0 | c32 2863.2 / 0.261 / err 0
+serving/llmbench_b_q06_topk_kon_t08.csv                                c1 240.2 / 0.029 / err 0 | c8 1380.5 / 0.076 / err 0 | c32 2857.6 / 0.263 / err 0
+serving/llmbench_b_q06_topk_t08.csv                                    c1 217.0 / 0.029 / err 0 | c8 1262.4 / 0.084 / err 0 | c32 2566.5 / 0.286 / err 0
+serving/llmbench_b_q8_all_t08.csv                                      c1 115.5 / 0.058 / err 0 | c8 639.0 / 0.208 / err 0 | c32 1502.3 / 0.719 / err 0
+serving/llmbench_b_q8_all_t0_p1.csv                                    c1 115.0 / 0.069 / err 0 | c8 638.0 / 0.208 / err 0 | c32 1492.1 / 0.745 / err 0
+serving/llmbench_b_q8_all_t0_p2.csv                                    c1 115.5 / 0.058 / err 0 | c8 640.2 / 0.208 / err 0 | c32 1500.8 / 0.725 / err 0
+serving/llmbench_b_q8_main_t0_p1.csv                                   c1 114.1 / 0.069 / err 0 | c8 645.0 / 0.212 / err 0 | c32 1496.5 / 0.733 / err 0
+serving/llmbench_b_q8_main_t0_p2.csv                                   c1 114.7 / 0.058 / err 0 | c8 647.2 / 0.208 / err 0 | c32 1499.1 / 0.724 / err 0
+serving/llmbench_b_q8_rel_t0_p1.csv                                    c1 107.9 / 0.076 / err 0 | c8 600.5 / 0.232 / err 0 | c32 1421.0 / 0.748 / err 0
+serving/llmbench_b_q8_rel_t0_p2.csv                                    c1 109.5 / 0.061 / err 0 | c8 606.7 / 0.212 / err 0 | c32 1421.3 / 0.747 / err 0
+serving/llmbench_b_q8_vllm_p1.csv                                      c1 92.3 / 0.063 / err 0 | c8 537.1 / 0.263 / err 0 | c32 1126.9 / 0.909 / err 0
+serving/llmbench_b_q8_vllm_p2.csv                                      c1 92.4 / 0.063 / err 0 | c8 534.9 / 0.268 / err 0 | c32 1112.4 / 0.955 / err 0
+
+== 2. seconds from launch to ready (ready_s), per start ==
+devprof/records/s4_profile_q06_lmh_off.jsonl                           [511.3]
+devprof/records/s4_profile_q06_lmh_off_nd.jsonl                        [169.5]
+devprof/records/s4_profile_q06_lmh_on.jsonl                            [476.0]
+devprof/records/s4_profile_q06_lmh_on_nd.jsonl                         [169.4]
+devprof/records/s4_profile_q06_lmh_on_nd.portfail.jsonl                [None]
+devprof/records/s4_profile_q06_main.jsonl                              [557.2]
+devprof/records/s4_profile_q06_main_nd.jsonl                           [265.1]
+devprof/records/s4_profile_q06_rel.jsonl                               [633.0]
+devprof/records/s4_profile_q06_rel_nd.jsonl                            [270.3]
+devprof/records/s4_profile_q06_topk.jsonl                              [421.5]
+devprof/records/s4_profile_q06_topk_koff.jsonl                         [315.3]
+devprof/records/s4_profile_q06_topk_kon.jsonl                          [275.0]
+devprof/records/s4_profile_q06_topk_nd.jsonl                           [285.2]
+devprof/records/s4_profile_q8_main.jsonl                               [859.3]
+devprof/records/s4_profile_q8_main_nd.jsonl                            [330.5]
+devprof/records/s4_profile_q8_rel.jsonl                                [915.0]
+devprof/records/s4_profile_q8_rel_nd.jsonl                             [330.3]
+devprof/records/s4_profile_q8_rel_nd.portfail.jsonl                    [None]
+dp_layouts/results/76_serve_d_c_dp2_06.jsonl                           [521.4]
+dp_layouts/results/76_serve_d_c_dp4_06.jsonl                           [647.1]
+dp_layouts/results/76_serve_d_c_dp4_8.jsonl                            [None]
+dp_layouts/results/76_serve_d_ctl06_a.jsonl                            [164.3]
+dp_layouts/results/76_serve_d_ctl06_b.jsonl                            [179.3]
+dp_layouts/results/76_serve_d_dp2_06.jsonl                             [204.4]
+dp_layouts/results/76_serve_d_dp4_06.jsonl                             [224.5]
+i37_topk_kernel/extra/i37x/bench/76_serve_b_i37m_koff.jsonl            [304.9]
+i37_topk_kernel/extra/i37x/bench/76_serve_b_i37m_kon.jsonl             [264.6]
+kv_decode/76_serve_b_q06_ctl.jsonl                                     [164.3]
+kv_decode/76_serve_b_q06_ctl2.jsonl                                    [164.2]
+kv_decode/76_serve_b_q06_ctl3.jsonl                                    [179.3]
+kv_decode/76_serve_b_q06_ctx16k.jsonl                                  [440.9]
+kv_decode/76_serve_b_q06_ctx2k.jsonl                                   [264.7]
+kv_decode/76_serve_b_q06_ctx3k.jsonl                                   [440.6]
+kv_decode/76_serve_b_q06_p2k.jsonl                                     [139.1]
+kv_decode/76_serve_b_q8_ctl.jsonl                                      [204.5]
+kv_decode/76_serve_b_q8_ctl2.jsonl                                     [204.4]
+kv_decode/76_serve_b_q8_ctl3.jsonl                                     [209.5]
+kv_decode/76_serve_b_q8_ctx2k.jsonl                                    [390.4]
+kv_decode/76_serve_b_q8_ctx3k.jsonl                                    [687.2]
+kv_decode/76_serve_b_q8_p2k.jsonl                                      [194.5]
+lm_head/results/76_serve_b_lmh_q06_s0k.jsonl                           [284.9]
+lm_head/results/76_serve_b_lmh_q06_s0n.jsonl                           [254.6]
+lm_head/results/76_serve_b_lmh_q06_s1k.jsonl                           [279.8]
+lm_head/results/76_serve_b_lmh_q06_s1n.jsonl                           [279.8]
+lm_head/results/76_serve_b_lmh_q06_s1n_r2.jsonl                        [264.8]
+lm_head/results/76_serve_b_lmh_q8_s0k.jsonl                            [335.0]
+lm_head/results/76_serve_b_lmh_q8_s1k.jsonl                            [340.1]
+prof_all/records/s4_profile_q06_all.jsonl                              [466.3]
+prof_all/records/s4_profile_q06_topk_all.jsonl                         [285.1]
+prof_all/records/s4_profile_q8_all.jsonl                               [722.7]
+serving/76_serve_b_q06_all.jsonl                                       [194.4]
+serving/76_serve_b_q06_lmh_off.jsonl                                   [179.3]
+serving/76_serve_b_q06_lmh_on.jsonl                                    [159.1]
+serving/76_serve_b_q06_main.jsonl                                      [269.9]
+serving/76_serve_b_q06_rel.jsonl                                       [285.0]
+serving/76_serve_b_q06_topk.jsonl                                      [284.9]
+serving/76_serve_b_q06_topk_all.jsonl                                  [194.5]
+serving/76_serve_b_q06_topk_koff.jsonl                                 [159.4]
+serving/76_serve_b_q06_topk_kon.jsonl                                  [164.2]
+serving/76_serve_b_q8_all.jsonl                                        [219.5]
+serving/76_serve_b_q8_main.jsonl                                       [345.2]
+serving/76_serve_b_q8_rel.jsonl                                        [355.4]
+serving/s4_profile_q06_all.jsonl                                       [466.3]
+serving/s4_profile_q06_lmh_off.jsonl                                   [511.3]
+serving/s4_profile_q06_lmh_off_nd.jsonl                                [169.5]
+serving/s4_profile_q06_lmh_on.jsonl                                    [476.0]
+serving/s4_profile_q06_lmh_on_nd.jsonl                                 [169.4]
+serving/s4_profile_q06_lmh_on_nd.portfail.jsonl                        [None]
+serving/s4_profile_q06_main.jsonl                                      [557.2]
+serving/s4_profile_q06_main_nd.jsonl                                   [265.1]
+serving/s4_profile_q06_rel.jsonl                                       [633.0]
+serving/s4_profile_q06_rel_nd.jsonl                                    [270.3]
+serving/s4_profile_q06_rel_restored.jsonl                              [284.9]
+serving/s4_profile_q06_topk.jsonl                                      [421.5]
+serving/s4_profile_q06_topk_all.jsonl                                  [285.1]
+serving/s4_profile_q06_topk_koff.jsonl                                 [315.3]
+serving/s4_profile_q06_topk_kon.jsonl                                  [275.0]
+serving/s4_profile_q06_topk_nd.jsonl                                   [285.2]
+serving/s4_profile_q8_all.jsonl                                        [722.7]
+serving/s4_profile_q8_main.jsonl                                       [859.3]
+serving/s4_profile_q8_main_nd.jsonl                                    [330.5]
+serving/s4_profile_q8_rel.jsonl                                        [915.0]
+serving/s4_profile_q8_rel_nd.jsonl                                     [330.3]
+serving/s4_profile_q8_rel_nd.portfail.jsonl                            [None]
+
+== 3. rollout passes of the profile runs: tokens per second of pass 0 / 1 / 2 (32 requests x 256 tokens), errors ==
+devprof/records/s4_profile_q06_lmh_off.jsonl                           68.9 / 68.7 / 71.1  errors 0
+devprof/records/s4_profile_q06_lmh_off_nd.jsonl                        3036.3 / 1538.1 / 3039.5  errors 0
+devprof/records/s4_profile_q06_lmh_on.jsonl                            203.7 / 189.4 / 188.6  errors 0
+devprof/records/s4_profile_q06_lmh_on_nd.jsonl                         3600.5 / 1794.8 / 3589.7  errors 0
+devprof/records/s4_profile_q06_lmh_on_nd.portfail.jsonl                no pass (server did not start)
+devprof/records/s4_profile_q06_main.jsonl                              73.6 / 73.8 / 75.2  errors 0
+devprof/records/s4_profile_q06_main_nd.jsonl                           3249.0 / 1718.1 / 3296.4  errors 0
+devprof/records/s4_profile_q06_rel.jsonl                               70.4 / 70.3 / 70.7  errors 0
+devprof/records/s4_profile_q06_rel_nd.jsonl                            3029.9 / 1642.7 / 3039.2  errors 0
+devprof/records/s4_profile_q06_topk.jsonl                              170.6 / 161.2 / 169.0  errors 0
+devprof/records/s4_profile_q06_topk_koff.jsonl                         3243.6 / 1790.2 / 3225.8  errors 0
+devprof/records/s4_profile_q06_topk_kon.jsonl                          3619.6 / 1762.8 / 3586.8  errors 0
+devprof/records/s4_profile_q06_topk_nd.jsonl                           3251.3 / 1549.5 / 3219.7  errors 0
+devprof/records/s4_profile_q8_main.jsonl                               45.9 / 44.6 / 45.0  errors 0
+devprof/records/s4_profile_q8_main_nd.jsonl                            1783.1 / 1111.1 / 1769.3  errors 0
+devprof/records/s4_profile_q8_rel.jsonl                                44.9 / 43.2 / 43.7  errors 0
+devprof/records/s4_profile_q8_rel_nd.jsonl                             1678.4 / 1130.5 / 1670.2  errors 0
+devprof/records/s4_profile_q8_rel_nd.portfail.jsonl                    no pass (server did not start)
+prof_all/records/s4_profile_q06_all.jsonl                              3973.1 / 1511.5 / 4072.1  errors 0
+prof_all/records/s4_profile_q06_topk_all.jsonl                         3685.7 / 1950.7 / 3650.7  errors 0
+prof_all/records/s4_profile_q8_all.jsonl                               1785.5 / 1182.3 / 1771.2  errors 0
+serving/s4_profile_q06_all.jsonl                                       3973.1 / 1511.5 / 4072.1  errors 0
+serving/s4_profile_q06_lmh_off.jsonl                                   68.9 / 68.7 / 71.1  errors 0
+serving/s4_profile_q06_lmh_off_nd.jsonl                                3036.3 / 1538.1 / 3039.5  errors 0
+serving/s4_profile_q06_lmh_on.jsonl                                    203.7 / 189.4 / 188.6  errors 0
+serving/s4_profile_q06_lmh_on_nd.jsonl                                 3600.5 / 1794.8 / 3589.7  errors 0
+serving/s4_profile_q06_lmh_on_nd.portfail.jsonl                        no pass (server did not start)
+serving/s4_profile_q06_main.jsonl                                      73.6 / 73.8 / 75.2  errors 0
+serving/s4_profile_q06_main_nd.jsonl                                   3249.0 / 1718.1 / 3296.4  errors 0
+serving/s4_profile_q06_rel.jsonl                                       70.4 / 70.3 / 70.7  errors 0
+serving/s4_profile_q06_rel_nd.jsonl                                    3029.9 / 1642.7 / 3039.2  errors 0
+serving/s4_profile_q06_rel_restored.jsonl                              3039.3 / 1666.0 / 3043.8  errors 0
+serving/s4_profile_q06_topk.jsonl                                      170.6 / 161.2 / 169.0  errors 0
+serving/s4_profile_q06_topk_all.jsonl                                  3685.7 / 1950.7 / 3650.7  errors 0
+serving/s4_profile_q06_topk_koff.jsonl                                 3243.6 / 1790.2 / 3225.8  errors 0
+serving/s4_profile_q06_topk_kon.jsonl                                  3619.6 / 1762.8 / 3586.8  errors 0
+serving/s4_profile_q06_topk_nd.jsonl                                   3251.3 / 1549.5 / 3219.7  errors 0
+serving/s4_profile_q8_all.jsonl                                        1785.5 / 1182.3 / 1771.2  errors 0
+serving/s4_profile_q8_main.jsonl                                       45.9 / 44.6 / 45.0  errors 0
+serving/s4_profile_q8_main_nd.jsonl                                    1783.1 / 1111.1 / 1769.3  errors 0
+serving/s4_profile_q8_rel.jsonl                                        44.9 / 43.2 / 43.7  errors 0
+serving/s4_profile_q8_rel_nd.jsonl                                     1678.4 / 1130.5 / 1670.2  errors 0
+serving/s4_profile_q8_rel_nd.portfail.jsonl                            no pass (server did not start)
+
+== 4. correctness/summary.jsonl: 20 prompts, 48 tokens, one request at a time ==
+-- correctness/summary.jsonl
+  check=check1 kind=switch a=lmh_off_a b=lmh_on set=t0 requests=20 errors=0 same_tokens=20 tokens_compared_before_fork=868 bit_equal_logprobs=831 max_abs_dlogprob_before_fork=0.07608985900878906 fork_positions_i_pos=[]
+  check=check1 kind=switch a=lmh_off_a b=lmh_on set=t08 requests=20 errors=0 same_tokens=20 tokens_compared_before_fork=896 bit_equal_logprobs=896 max_abs_dlogprob_before_fork=0.0 fork_positions_i_pos=[]
+  check=check1 kind=A/A control a=lmh_off_a b=lmh_off_b set=t0 requests=20 errors=0 same_tokens=20 tokens_compared_before_fork=868 bit_equal_logprobs=868 max_abs_dlogprob_before_fork=0.0 fork_positions_i_pos=[]
+  check=check1 kind=A/A control a=lmh_off_a b=lmh_off_b set=t08 requests=20 errors=0 same_tokens=20 tokens_compared_before_fork=896 bit_equal_logprobs=896 max_abs_dlogprob_before_fork=0.0 fork_positions_i_pos=[]
+  check=check2 kind=switch a=koff_a b=kon set=t0 requests=20 errors=0 same_tokens=14 tokens_compared_before_fork=655 bit_equal_logprobs=122 max_abs_dlogprob_before_fork=0.05550193786621094 fork_positions_i_pos=[[9, 4], [10, 5], [11, 8], [12, 16], [16, 5], [17, 27]]
+  check=check2 kind=switch a=koff_a b=kon set=rl requests=20 errors=0 same_tokens=13 tokens_compared_before_fork=743 bit_equal_logprobs=206 max_abs_dlogprob_before_fork=0.11642265319824219 fork_positions_i_pos=[[0, 19], [4, 17], [6, 33], [9, 11], [11, 29], [13, 20], [16, 25]]
+  check=check2 kind=switch a=koff_a b=kon set=minp requests=20 errors=0 same_tokens=10 tokens_compared_before_fork=671 bit_equal_logprobs=198 max_abs_dlogprob_before_fork=0.10942268371582031 fork_positions_i_pos=[[0, 19], [4, 17], [5, 19], [6, 33], [9, 11], [11, 29], [13, 20], [16, 12], [17, 30], [18, 14]]
+  check=check2 kind=switch a=koff_a b=kon set=t08 requests=20 errors=0 same_tokens=14 tokens_compared_before_fork=723 bit_equal_logprobs=198 max_abs_dlogprob_before_fork=0.10323333740234375 fork_positions_i_pos=[[0, 19], [4, 17], [6, 33], [9, 11], [16, 25], [17, 8]]
+  check=check2 kind=A/A control a=koff_a b=koff_b set=t0 requests=20 errors=0 same_tokens=20 tokens_compared_before_fork=878 bit_equal_logprobs=878 max_abs_dlogprob_before_fork=0.0 fork_positions_i_pos=[]
+  check=check2 kind=A/A control a=koff_a b=koff_b set=rl requests=20 errors=0 same_tokens=20 tokens_compared_before_fork=900 bit_equal_logprobs=900 max_abs_dlogprob_before_fork=0.0 fork_positions_i_pos=[]
+  check=check2 kind=A/A control a=koff_a b=koff_b set=minp requests=20 errors=0 same_tokens=20 tokens_compared_before_fork=891 bit_equal_logprobs=891 max_abs_dlogprob_before_fork=0.0 fork_positions_i_pos=[]
+  check=check2 kind=A/A control a=koff_a b=koff_b set=t08 requests=20 errors=0 same_tokens=20 tokens_compared_before_fork=893 bit_equal_logprobs=893 max_abs_dlogprob_before_fork=0.0 fork_positions_i_pos=[]
+  check=check3 kind=switch a=rel b=all set=t0 requests=20 errors=0 same_tokens=17 tokens_compared_before_fork=769 bit_equal_logprobs=128 max_abs_dlogprob_before_fork=0.10285568237304688 fork_positions_i_pos=[[5, 8], [11, 8], [12, 16]]
+  check=check3 kind=A/A control (extra) a=rel b=rel_b set=t0 requests=20 errors=0 same_tokens=20 tokens_compared_before_fork=868 bit_equal_logprobs=868 max_abs_dlogprob_before_fork=0.0 fork_positions_i_pos=[]
+  check=check4 kind=switch a=q8_rel b=q8_all set=t0 requests=20 errors=0 same_tokens=20 tokens_compared_before_fork=932 bit_equal_logprobs=869 max_abs_dlogprob_before_fork=0.036197662353515625 fork_positions_i_pos=[]
+  check=check4 kind=A/A control (extra) a=q8_rel b=q8_rel_b set=t0 requests=20 errors=0 same_tokens=20 tokens_compared_before_fork=932 bit_equal_logprobs=913 max_abs_dlogprob_before_fork=0.036197662353515625 fork_positions_i_pos=[]
+  check=check3 kind=gsm8k a=rel b=all | GSM8K first 200 test questions: paired questions 200 | both right 104 | only a 7 | only b 9 | accuracy a 0.5550 b 0.5650 | exact McNemar p 0.804
+  check=check3 kind=gsm8k a=rel b=rel_b | GSM8K first 200 test questions: paired questions 200 | both right 111 | only a 0 | only b 0 | accuracy a 0.5550 b 0.5550 | exact McNemar p 1.000
+-- lm_head/cc/results/summary.jsonl
+  check=q06 kind=switch a=q06_s0k b=q06_s1k set=t0 requests=20 errors=0 same_tokens=20 tokens_compared_before_fork=860 bit_equal_logprobs=826 max_abs_dlogprob_before_fork=0.025180816650390625 fork_positions_i_pos=[]
+  check=q8 kind=switch a=q8_s0k b=q8_s1k set=t0 requests=20 errors=0 same_tokens=20 tokens_compared_before_fork=932 bit_equal_logprobs=876 max_abs_dlogprob_before_fork=0.03195953369140625 fork_positions_i_pos=[]
+  check=q06 kind=gsm8k a=q06_s0k b=q06_s1k | GSM8K first 200 test questions: paired questions 200 | both right 113 | only a 0 | only b 0 | accuracy a 0.5650 b 0.5650 | exact McNemar p 1.000

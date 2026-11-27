@@ -4,3 +4,4 @@ results*/
 work_*/
 *.safetensors
 sso_token*.json
+!data/**/results/

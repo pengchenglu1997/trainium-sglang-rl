@@ -1,0 +1,18 @@
+rows 331522, launches 41233, kinds ['fence', 'finish', 'gc0', 'idle', 'input', 'launch', 'recv', 'result', 'select', 'stream', 'submit', 'wait']
+
+== p8t_t0_p1: busy iteration wall 194.06 s
+   D1 n= 17343 async= 17343 share= 78.0% mean=  8.723 med=  8.453 p10=  8.396 p90=  8.511 ms | mean ms/iter: fence=0.001 finish=0.002 idle=0.001 input=0.008 launch=2.273 recv=0.213 result=5.899 select=0.225 stream=0.116 submit=1.102 wait=5.690
+   D4 n=   510 async=   510 share=  3.0% mean= 11.396 med= 11.100 p10= 11.061 p90= 11.142 ms | mean ms/iter: fence=0.001 finish=0.009 idle=0.001 input=0.008 launch=2.215 recv=0.204 result=8.532 select=0.255 stream=0.126 submit=1.088 wait=8.284
+   D7 n=     3 async=     3 share=  0.1% mean= 33.127 med= 26.509 p10= 26.411 p90= 46.461 ms | mean ms/iter: finish=3.441 idle=0.052 input=0.173 launch=2.194 recv=0.781 result=22.086 select=1.067 stream=0.367 submit=1.072 wait=17.777
+   D8 n=  2037 async=  2037 share= 11.9% mean= 11.347 med= 11.124 p10= 11.061 p90= 11.200 ms | mean ms/iter: fence=0.001 finish=0.008 idle=0.000 input=0.008 launch=2.292 recv=0.226 result=8.416 select=0.277 stream=0.145 submit=1.119 wait=8.124
+  D32 n=   509 async=   509 share=  4.2% mean= 16.082 med= 15.792 p10= 15.737 p90= 15.860 ms | mean ms/iter: fence=0.001 finish=0.023 idle=0.000 input=0.008 launch=2.321 recv=0.210 result=13.060 select=0.291 stream=0.211 submit=1.138 wait=12.553
+    P n=   205 async=   205 share=  2.9% mean= 27.180 med= 42.092 p10=  3.998 p90= 42.744 ms | mean ms/iter: fence=0.138 gc0=0.009 idle=0.001 input=0.040 launch=3.064 recv=0.293 result=22.886 select=0.753 stream=0.087 submit=1.654 wait=22.398
+
+== p8t_t0_p2: busy iteration wall 193.17 s
+   D1 n= 17349 async= 17349 share= 78.1% mean=  8.694 med=  8.456 p10=  8.405 p90=  8.510 ms | mean ms/iter: fence=0.001 finish=0.003 idle=0.001 input=0.009 launch=2.233 recv=0.214 result=5.907 select=0.227 stream=0.117 submit=1.091 wait=5.695
+   D4 n=   510 async=   510 share=  3.0% mean= 11.416 med= 11.101 p10= 11.050 p90= 11.168 ms | mean ms/iter: fence=0.000 finish=0.007 idle=0.001 input=0.008 launch=2.259 recv=0.200 result=8.493 select=0.255 stream=0.126 submit=1.103 wait=8.246
+   D7 n=     7 async=     7 share=  0.1% mean= 28.938 med= 26.229 p10= 26.125 p90= 45.289 ms | mean ms/iter: finish=3.416 idle=0.022 input=0.174 launch=2.243 recv=0.758 result=21.918 select=0.958 stream=0.360 submit=1.082 wait=17.690
+   D8 n=  2033 async=  2033 share= 11.8% mean= 11.231 med= 11.077 p10= 11.033 p90= 11.125 ms | mean ms/iter: fence=0.000 finish=0.002 idle=0.000 input=0.007 launch=2.239 recv=0.196 result=8.443 select=0.257 stream=0.138 submit=1.087 wait=8.170
+  D31 n=     1 async=     1 share=  0.0% mean= 44.367 med= 44.367 p10= 44.367 p90= 44.367 ms | mean ms/iter: finish=11.988 input=0.169 launch=2.533 recv=0.733 result=39.783 select=0.998 stream=0.665 submit=1.253 wait=26.244
+  D32 n=   508 async=   508 share=  4.2% mean= 15.912 med= 15.793 p10= 15.730 p90= 15.853 ms | mean ms/iter: fence=0.001 input=0.008 launch=2.381 recv=0.207 result=12.944 select=0.291 stream=0.211 submit=1.178 wait=12.464
+    P n=   205 async=   205 share=  2.8% mean= 26.162 med= 42.098 p10=  4.005 p90= 42.623 ms | mean ms/iter: fence=0.302 idle=0.001 input=0.022 launch=3.123 recv=0.272 result=21.954 select=0.667 stream=0.080 submit=1.747 wait=21.512

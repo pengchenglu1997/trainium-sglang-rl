@@ -1,0 +1,8 @@
+{"t": "2026-11-27T04:02:15Z", "event": "open", "name": "q8_s0k", "cores": "56-59", "port": 30556, "sets": ["t0"], "cache_src": "/home/ubuntu/w/sgl_cache_lmh_q8_s0k", "cache": "/home/ubuntu/w/sgl_cache_lmh_cc_q8_s0k", "cache_files_at_start": 79, "cache_files_in_original": 79, "env": {"DATA_ROOT": "/h
+{"t": "2026-11-27T04:07:40Z", "event": "server_start", "ready_s": 325.1, "log": "/home/ubuntu/w/lmh/cc/results/server_logs/server_lmh_cc_q8_s0k_001.log", "start_no": 1}
+{"t": "2026-11-27T04:07:49Z", "event": "set_done", "set": "t0", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T04:07:49Z", "event": "log_lines", "counts": {"sampler by the kernel": 4, "topk_topp sampler by the kernel": 0}, "pretransposed_mentions": 0, "examples": ["[2026-11-27 04:03:15 TP2] [rlkit] sampler by the kernel: rows=1 shard_width=37984 segments=32 partitions=32 partials=[32,4] pid
+{"t": "2026-11-27T04:07:53Z", "event": "stop", "seconds": 4.4}
+{"t": "2026-11-27T04:07:53Z", "event": "end", "status": "ok"}
+{"t": "2026-11-27T04:07:53Z", "done": true}
+CC_COLLECT_DONE q8_s0k

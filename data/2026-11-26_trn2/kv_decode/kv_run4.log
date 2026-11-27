@@ -1,0 +1,5 @@
+== S 04:40:48 bench q8_ctx3k exit 0: SERVE_AND_BENCH_DONE b_q8_ctx3k ready_s=687.2 precheck=ok benches_done=3/3 result=/home/ubuntu/w/kv/results/76_serve_b_q8_ctx3k.jsonl
+S_DONE bench q8_ctx3k
+== S 04:51:20 bench q8_ctl3 exit 0: SERVE_AND_BENCH_DONE b_q8_ctl3 ready_s=209.5 precheck=ok benches_done=3/3 result=/home/ubuntu/w/kv/results/76_serve_b_q8_ctl3.jsonl
+S_DONE bench q8_ctl3
+KV_RUN4_DONE

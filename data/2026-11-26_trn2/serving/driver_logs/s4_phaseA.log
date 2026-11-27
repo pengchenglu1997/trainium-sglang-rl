@@ -1,0 +1,13 @@
+== S 00:46:07 phaseA start; df /dev/root 387G 88G 300G 23% /
+== S 00:55:41 prof q06_topk exit 0: S4_PROFILE_DONE q06_topk; profile files: 7
+== S 01:00:59 prof q06_main exit 0: S4_PROFILE_DONE q06_main; profile files: 7
+== S 01:02:35 prof q06_rel exit 0: S4_PROFILE_DONE q06_rel; profile files: 7
+== S 01:09:34 prof q8_main exit 0: S4_PROFILE_DONE q8_main; profile files: 7
+== S 01:10:47 prof q8_rel exit 0: S4_PROFILE_DONE q8_rel; profile files: 7
+== S 01:10:47 cache q8_rel: 72415059 bytes, 70 files
+== S 01:10:47 cache q8_main: 70736901 bytes, 79 files
+== S 01:10:47 cache q06_topk: 18593892 bytes, 94 files
+== S 01:10:47 cache q06_main: 29410902 bytes, 79 files
+== S 01:10:47 cache q06_rel: 34012462 bytes, 70 files
+== S 01:10:47 phaseA end
+S_DONE phaseA

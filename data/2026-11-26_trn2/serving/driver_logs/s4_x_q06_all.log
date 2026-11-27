@@ -1,0 +1,4 @@
+== S 01:41:24 prof q06_all exit 0: S4_PROFILE_DONE q06_all; profile files: 7
+S_DONE prof q06_all
+== S 01:48:27 bench q06_all exit 0: SERVE_AND_BENCH_DONE b_q06_all ready_s=194.4 precheck=ok benches_done=3/3 result=/home/ubuntu/w/results_s4/76_serve_b_q06_all.jsonl
+S_DONE bench q06_all

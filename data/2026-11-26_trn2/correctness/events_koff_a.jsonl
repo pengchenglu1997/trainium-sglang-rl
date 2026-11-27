@@ -1,0 +1,10 @@
+{"t": "2026-11-27T02:06:59Z", "event": "open", "name": "koff_a", "cores": "48-51", "port": 30311, "sets": ["t0", "rl", "minp", "t08"], "cache_src": "/home/ubuntu/w/sgl_cache_s4_q06_topk_koff", "cache": "/home/ubuntu/w/sgl_cache_cc_koff_a", "cache_files_at_start": 94, "cache_files_in_original": 94, "env": {"DATA_ROOT": "/home/ubuntu/w", "MODELS_ROOT": "/home/ubuntu/w/models", "SGL_CACHE": "/home/ubuntu/w/sgl_cache_cc_koff_a", "SGL_CORES": "48-51", "SGL_SAMPLER": "topk_topp", "SGL_EXTRA": "--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32", "SGL_SCRIPT": "/opt/sglang-neuron/examples/qwen3_0p6b/run_server.sh", "SGL_TOP_LOGPROBS": "", "SGL_PATCH_DIR": "/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk", "SGL_ENV": "", "SGL_MOUNTS": ""}}
+{"t": "2026-11-27T02:09:43Z", "event": "server_start", "ready_s": 164.3, "log": "/home/ubuntu/w/cc/results/server_logs/server_cc_koff_a_001.log", "start_no": 1}
+{"t": "2026-11-27T02:09:47Z", "event": "set_done", "set": "t0", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T02:09:52Z", "event": "set_done", "set": "rl", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T02:09:56Z", "event": "set_done", "set": "minp", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T02:10:01Z", "event": "set_done", "set": "t08", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T02:10:01Z", "event": "log_lines", "counts": {"sampler by the kernel": 0, "topk_topp sampler by the kernel": 0}, "pretransposed_mentions": 0, "examples": []}
+{"t": "2026-11-27T02:10:07Z", "event": "stop", "seconds": 6.0}
+{"t": "2026-11-27T02:10:07Z", "event": "end", "status": "ok"}
+{"t": "2026-11-27T02:10:07Z", "done": true}

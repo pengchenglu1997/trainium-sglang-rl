@@ -1,0 +1,11 @@
+== S 02:49:29 bench q06_ctl exit 0: SERVE_AND_BENCH_DONE b_q06_ctl ready_s=164.3 precheck=ok benches_done=3/3 result=/home/ubuntu/w/kv/results/76_serve_b_q06_ctl.jsonl
+S_DONE bench q06_ctl
+== S 02:54:37 bench q06_p2k exit 0: SERVE_AND_BENCH_DONE b_q06_p2k ready_s=139.1 precheck=ok benches_done=3/3 result=/home/ubuntu/w/kv/results/76_serve_b_q06_p2k.jsonl
+S_DONE bench q06_p2k
+== S 03:05:07 bench q8_ctl exit 0: SERVE_AND_BENCH_DONE b_q8_ctl ready_s=204.5 precheck=ok benches_done=3/3 result=/home/ubuntu/w/kv/results/76_serve_b_q8_ctl.jsonl
+S_DONE bench q8_ctl
+== S 03:15:52 bench q8_p2k exit 0: SERVE_AND_BENCH_DONE b_q8_p2k ready_s=194.5 precheck=ok benches_done=3/3 result=/home/ubuntu/w/kv/results/76_serve_b_q8_p2k.jsonl
+S_DONE bench q8_p2k
+== S 03:18:50 prof q06_p2k_prof exit 0: S4_PROFILE_DONE q06_p2k_prof; profile files: 7
+S_DONE prof q06_p2k_prof
+KV_RUN_DONE c06 v06 c8 v8 pv06

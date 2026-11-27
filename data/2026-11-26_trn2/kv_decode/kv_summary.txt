@@ -1,0 +1,70 @@
+## start-up (ready_s from 76_serve_b_<tag>.jsonl)
+q06_ctl: ready_s 164.3, cache files before start 79
+q06_ctl2: ready_s 164.2, cache files before start 79
+q06_ctl3: ready_s 179.3, cache files before start 79
+q06_ctx16k: ready_s 440.9, cache files before start 79
+q06_ctx2k: ready_s 264.7, cache files before start 79
+q06_ctx3k: ready_s 440.6, cache files before start 79
+q06_p2k: ready_s 139.1, cache files before start 79
+q8_ctl: ready_s 204.5, cache files before start 79
+q8_ctl2: ready_s 204.4, cache files before start 79
+q8_ctl3: ready_s 209.5, cache files before start 79
+q8_ctx2k: ready_s 390.4, cache files before start 79
+q8_ctx3k: ready_s 687.2, cache files before start 79
+q8_p2k: ready_s 194.5, cache files before start 79
+## llmbench cells: conc tok/s ttft_p50_s n_error
+q06_ctl2_t0_p1 | c1 325.7 0.027 e0 | c8 1644.4 0.075 e0 | c32 3349.2 0.256 e0
+q06_ctl2_t0_p2 | c1 326.2 0.028 e0 | c8 1659.4 0.074 e0 | c32 3345.8 0.257 e0
+q06_ctl3_t0_p1 | c1 327.2 0.025 e0 | c8 1653.2 0.073 e0 | c32 3346.6 0.258 e0
+q06_ctl3_t0_p2 | c1 327.1 0.026 e0 | c8 1658.8 0.073 e0 | c32 3357.5 0.253 e0
+q06_ctl_t0_p1 | c1 322.4 0.028 e0 | c8 1635.0 0.078 e0 | c32 3342.7 0.255 e0
+q06_ctl_t0_p2 | c1 321.1 0.029 e0 | c8 1652.3 0.075 e0 | c32 3341.1 0.258 e0
+q06_ctx16k_t0_p1 | c1 309.9 0.027 e0 | c8 1457.8 0.075 e0 | c32 2591.3 0.262 e0
+q06_ctx16k_t0_p2 | c1 310.9 0.028 e0 | c8 1461.0 0.075 e0 | c32 2594.9 0.258 e0
+q06_ctx2k_t0_p1 | c1 315.2 0.027 e0 | c8 1635.3 0.082 e0 | c32 3271.0 0.265 e0
+q06_ctx2k_t0_p2 | c1 309.8 0.028 e0 | c8 1573.2 0.083 e0 | c32 3335.2 0.259 e0
+q06_ctx3k_t0_p1 | c1 360.4 0.025 e0 | c8 1488.2 0.074 e0 | c32 3059.9 0.264 e0
+q06_ctx3k_t0_p2 | c1 333.2 0.029 e0 | c8 1486.3 0.075 e0 | c32 3063.2 0.261 e0
+q06_p2k_t0_p1 | c1 322.6 0.034 e0 | c8 1521.0 0.133 e0 | c32 2874.2 0.461 e0
+q06_p2k_t0_p2 | c1 320.9 0.039 e0 | c8 1532.2 0.133 e0 | c32 2868.8 0.463 e0
+q8_ctl2_t0_p1 | c1 114.9 0.069 e0 | c8 638.3 0.208 e0 | c32 1498.3 0.732 e0
+q8_ctl2_t0_p2 | c1 115.4 0.059 e0 | c8 640.5 0.209 e0 | c32 1497.7 0.735 e0
+q8_ctl3_t0_p1 | c1 115.0 0.069 e0 | c8 638.5 0.208 e0 | c32 1497.6 0.737 e0
+q8_ctl3_t0_p2 | c1 115.6 0.057 e0 | c8 642.3 0.209 e0 | c32 1504.0 0.718 e0
+q8_ctl_t0_p1 | c1 114.9 0.071 e0 | c8 638.5 0.213 e0 | c32 1498.1 0.732 e0
+q8_ctl_t0_p2 | c1 115.4 0.060 e0 | c8 640.4 0.211 e0 | c32 1500.6 0.727 e0
+q8_ctx2k_t0_p1 | c1 115.0 0.069 e0 | c8 638.4 0.208 e0 | c32 1498.5 0.730 e0
+q8_ctx2k_t0_p2 | c1 115.6 0.056 e0 | c8 641.2 0.211 e0 | c32 1502.9 0.721 e0
+q8_ctx3k_t0_p1 | c1 117.3 0.069 e0 | c8 602.9 0.208 e0 | c32 1465.2 0.738 e0
+q8_ctx3k_t0_p2 | c1 118.0 0.057 e0 | c8 603.8 0.210 e0 | c32 1470.8 0.721 e0
+q8_p2k_t0_p1 | c1 112.7 0.115 e0 | c8 541.6 0.530 e0 | c32 1056.2 1.913 e0
+q8_p2k_t0_p2 | c1 111.9 0.131 e0 | c8 543.6 0.533 e0 | c32 1058.2 1.903 e0
+## other containers (not kv_) at each snapshot
+2026-11-27T02:44:00Z before bench q06_ctl :: 9 host_p1t host_p1m host_p1c lmh_q06_s1k_prof lmh_q8_s0k_prof lmh_q06_s0k_prof lmh_q8_s1k_prof dp_c_dp4_06 dp_c_dp2_06
+2026-11-27T02:49:29Z after bench q06_ctl :: 9 host_p1t host_p1m host_p1c lmh_q06_s1k_prof lmh_q8_s0k_prof lmh_q06_s0k_prof lmh_q8_s1k_prof dp_c_dp4_06 dp_c_dp2_06
+2026-11-27T02:49:29Z before bench q06_p2k :: 9 host_p1t host_p1m host_p1c lmh_q06_s1k_prof lmh_q8_s0k_prof lmh_q06_s0k_prof lmh_q8_s1k_prof dp_c_dp4_06 dp_c_dp2_06
+2026-11-27T02:54:37Z after bench q06_p2k :: 7 host_p8t host_p2v2 host_p2v1 host_p2c dp_ctl06_a lmh_q8_s0k_prof lmh_q8_s1k_prof
+2026-11-27T02:54:37Z before bench q8_ctl :: 7 host_p8t host_p2v2 host_p2v1 host_p2c dp_ctl06_a lmh_q8_s0k_prof lmh_q8_s1k_prof
+2026-11-27T03:05:07Z after bench q8_ctl :: 6 host_p2v3 dp_dp4_06 lmh_q06_s1n_prof host_p8t host_p2v2 host_p2c
+2026-11-27T03:05:07Z before bench q8_p2k :: 6 host_p2v3 dp_dp4_06 lmh_q06_s1n_prof host_p8t host_p2v2 host_p2c
+2026-11-27T03:15:52Z after bench q8_p2k :: 5 lmh_q06_s1k dp_dp2_06 host_p2v4 host_p8t host_p2c
+2026-11-27T03:15:52Z before prof q06_p2k_prof :: 5 lmh_q06_s1k dp_dp2_06 host_p2v4 host_p8t host_p2c
+2026-11-27T03:18:50Z after prof q06_p2k_prof :: 3 dp_ctl06_b lmh_q06_s1k host_p8t
+2026-11-27T03:18:51Z before bench q06_ctl2 :: 3 dp_ctl06_b lmh_q06_s1k host_p8t
+2026-11-27T03:24:19Z after bench q06_ctl2 :: 2 lmh_q06_s1n host_p8t
+2026-11-27T03:24:19Z before bench q06_ctx2k :: 2 lmh_q06_s1n host_p8t
+2026-11-27T03:31:30Z after bench q06_ctx2k :: 5 lmh_q8_s0k host_p3v7 host_p3v6 host_p3v5 host_p3c
+2026-11-27T03:31:30Z before bench q8_ctl2 :: 5 lmh_q8_s0k host_p3v7 host_p3v6 host_p3v5 host_p3c
+2026-11-27T03:41:55Z after bench q8_ctl2 :: 5 host_p3t lmh_q8_s0k host_p3v7 host_p3v6 host_p3c
+2026-11-27T03:41:55Z before bench q8_ctx2k :: 5 host_p3t lmh_q8_s0k host_p3v7 host_p3v6 host_p3c
+2026-11-27T03:55:29Z after bench q8_ctx2k :: 1 lmh_q8_s1k
+2026-11-27T03:55:37Z before bench q06_ctl3 :: 1 lmh_q8_s1k
+2026-11-27T04:01:15Z after bench q06_ctl3 :: 1 lmh_q8_s1k
+2026-11-27T04:01:15Z before bench q06_ctx3k :: 1 lmh_q8_s1k
+2026-11-27T04:11:17Z after bench q06_ctx3k :: 4 i37_r1_koff i37_r1_kon i29_q06_topk_cold lmh_q06_s0n_prof
+2026-11-27T04:11:17Z before bench q06_ctx16k :: 4 i37_r1_koff i37_r1_kon i29_q06_topk_cold lmh_q06_s0n_prof
+2026-11-27T04:21:30Z after bench q06_ctx16k :: 5 i37_r3_kon_mask i29_q06_temp_cold i37_r2_koff_b i34_b_new lmh_q06_s0n
+2026-11-27T04:22:19Z before bench q8_ctx3k :: 5 i37_r3_kon_mask i29_q06_temp_cold i37_r2_koff_b i34_b_new lmh_q06_s0n
+2026-11-27T04:40:48Z after bench q8_ctx3k :: 1 i34_e_new
+2026-11-27T04:40:48Z before bench q8_ctl3 :: 1 i34_e_new
+2026-11-27T04:51:20Z after bench q8_ctl3 :: 0 

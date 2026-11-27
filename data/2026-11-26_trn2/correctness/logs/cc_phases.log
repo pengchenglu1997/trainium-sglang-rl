@@ -1,0 +1,17 @@
+== CC 02:03:55 phase 1 start
+== CC 02:06:47 collect lmh_on exit 0: CC_COLLECT_DONE lmh_on
+== CC 02:06:53 collect lmh_off_b exit 0: CC_COLLECT_DONE lmh_off_b
+== CC 02:06:55 collect lmh_off_a exit 0: CC_COLLECT_DONE lmh_off_a
+== CC 02:06:58 collect all exit 0: CC_COLLECT_DONE all
+== CC 02:06:58 phase 1 end
+== CC 02:06:58 phase 2 start
+== CC 02:10:05 collect kon exit 0: CC_COLLECT_DONE kon
+== CC 02:10:07 collect koff_b exit 0: CC_COLLECT_DONE koff_b
+== CC 02:10:07 collect koff_a exit 0: CC_COLLECT_DONE koff_a
+== CC 02:11:46 collect rel exit 0: CC_COLLECT_DONE rel
+== CC 02:11:46 phase 2 end
+== CC 02:11:46 phase 3 start
+== CC 02:16:00 collect q8_all exit 0: CC_COLLECT_DONE q8_all
+== CC 02:17:59 collect q8_rel exit 0: CC_COLLECT_DONE q8_rel
+== CC 02:17:59 phase 3 end
+CC_PHASES_DONE all

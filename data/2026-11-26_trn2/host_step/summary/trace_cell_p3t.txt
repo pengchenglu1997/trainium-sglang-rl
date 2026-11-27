@@ -1,0 +1,5 @@
+== p3t_t0_p1
+  cell   D1: decode n= 17340  99.020 s (mean 5.710 ms, host-paced 100.0%) | prefill n=  69  1.232 s (mean 17.86 ms) | gaps n=   1  2.032 s | sum 102.283 s, prefill share 1.2%, gap share 2.0%
+  cell   D4: decode n=   510   3.643 s (mean 7.143 ms, host-paced 100.0%) | prefill n=   8  0.148 s (mean 18.52 ms) | gaps n=   0  0.000 s | sum   3.791 s, prefill share 3.9%, gap share 0.0%
+  cell   D8: decode n=  2040  14.699 s (mean 7.206 ms, host-paced 100.0%) | prefill n=  64  1.181 s (mean 18.45 ms) | gaps n=   0  0.000 s | sum  15.880 s, prefill share 7.4%, gap share 0.0%
+  cell  D32: decode n=   499   5.297 s (mean 10.615 ms, host-paced 100.0%) | prefill n=  64  1.173 s (mean 18.34 ms) | gaps n=   1  0.077 s | sum   6.547 s, prefill share 17.9%, gap share 1.2%

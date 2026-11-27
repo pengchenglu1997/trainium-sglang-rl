@@ -1,0 +1,16 @@
+==================== q06_rel_nd sampler rows 39456 of 578485
+by source file, per step (both pcores): rows, instr ms {'(label only)': {'size': 2103.0, 'sum': 0.613}, '_functional_collectives.py': {'size': 4.0, 'sum': 0.001}, 'sampling.py': {'size': 7757.0, 'sum': 4.356}}
+ exec  pcore  span_ms  start_after_t0_ms  end_before_t1_ms  union_ms  instr_ms  rows
+    0      0   9.2181             0.0153            0.0074    1.6820    2.5038  4971
+    0      1   9.2021             0.0150            0.0236    1.6419    2.4693  4893
+    1      0   9.1321             0.0082            0.0074    1.6820    2.5015  4971
+    1      1   9.1158             0.0079            0.0241    1.6403    2.4649  4893
+    2      0   9.1630             0.0189            0.0073    1.6810    2.5007  4971
+    2      1   9.1474             0.0180            0.0239    1.6396    2.4655  4893
+    3      0   9.1506             0.0207            0.0071    1.6817    2.5052  4971
+    3      1   9.1350             0.0200            0.0234    1.6421    2.4692  4893
+mean by pcore:
+       span_ms  start_after_t0_ms  end_before_t1_ms  union_ms  instr_ms    rows
+pcore                                                                          
+0       9.1660             0.0157            0.0073    1.6816    2.5028  4971.0
+1       9.1501             0.0152            0.0237    1.6410    2.4672  4893.0

@@ -1,0 +1,6 @@
+{"name": "i34_f_new2", "unix": 1795755724.164, "utc": "05:02:04", "event": "config", "model": "Qwen3-8B", "launcher": "new2", "cores": "12,13,14,15", "port": 30345, "cache": "/home/ubuntu/w/i34/cache_f", "cache_files_before": 211, "nki_entries_before": "dir /home/ubuntu/w/i34/cache_f/neuron/compile_cache/nki: 94 json entries", "cap_s": 1500}
+{"name": "i34_f_new2", "unix": 1795755725.143, "utc": "05:02:05", "event": "launched", "rc": 0, "launcher_s": 0.9, "check_line": "nki index check: removed /cache/neuron/compile_cache/nki (94 entries, 0 point at existing files, 94 at missing files, 0 unreadable; first missing: /var/tmp/nki-intermediate-cache/nki_0.7.0+37713544100.gfede04bb/c2db2f2a6455342a6/vllm_neuron.functional.attention.attention_decode._torch_compatible_attention_block_tkg_kernel_lnc0_c2db2f2a6455342a6.colz)", "container_started": "2026-11-27T05:02:04.966662357Z"}
+{"name": "i34_f_new2", "unix": 1795756258.258, "utc": "05:10:58", "event": "ready", "elapsed_s": 534, "ready_line_no": "1730"}
+{"name": "i34_f_new2", "unix": 1795756258.476, "utc": "05:10:58", "event": "completion", "bytes": 614}
+{"name": "i34_f_new2", "unix": 1795756259.724, "utc": "05:10:59", "event": "end", "verdict": "ready", "evrf059_lines": 0, "cache_files_after": 157}
+{"name": "i34_f_new2", "unix": 1795756259.778, "utc": "05:10:59", "event": "stopped", "still_listed": ""}

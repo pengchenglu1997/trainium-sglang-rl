@@ -1,0 +1,8 @@
+rows 144896, launches 20615, kinds ['fence', 'finish', 'gc0', 'idle', 'input', 'launch', 'recv', 'result', 'select', 'stream', 'submit']
+
+== p3t_t0_p1: busy iteration wall 126.47 s
+   D1 n= 17340 async=     0 share= 78.3% mean=  5.710 med=  5.638 p10=  5.542 p90=  5.835 ms | mean ms/iter: fence=0.001 finish=0.002 idle=0.001 input=0.008 launch=5.023 recv=0.194 result=0.194 select=0.217 stream=0.110 submit=0.946
+   D4 n=   510 async=     0 share=  2.9% mean=  7.143 med=  7.019 p10=  6.980 p90=  7.093 ms | mean ms/iter: fence=0.000 finish=0.007 idle=0.001 input=0.008 launch=6.326 recv=0.187 result=0.226 select=0.247 stream=0.119 submit=0.941
+   D8 n=  2040 async=     0 share= 11.6% mean=  7.206 med=  7.111 p10=  7.043 p90=  7.195 ms | mean ms/iter: fence=0.000 finish=0.012 idle=0.001 input=0.008 launch=6.371 recv=0.188 result=0.271 select=0.249 stream=0.135 submit=0.939
+  D32 n=   500 async=     0 share=  4.2% mean= 10.747 med= 10.572 p10= 10.525 p90= 10.709 ms | mean ms/iter: fence=0.000 finish=0.023 idle=0.000 input=0.007 launch=9.627 recv=0.203 result=0.482 select=0.272 stream=0.204 submit=0.944
+    P n=   205 async=     0 share=  3.0% mean= 18.218 med= 18.068 p10= 17.519 p90= 19.008 ms | mean ms/iter: fence=0.116 gc0=0.008 idle=0.001 input=0.043 launch=16.412 recv=0.262 result=0.685 select=0.703 stream=0.130 submit=1.343

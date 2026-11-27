@@ -1,0 +1,7 @@
+{"t": "2026-11-27T04:18:00Z", "event": "open", "name": "r2_kon_mask", "cores": "0-3", "port": 30302, "cache_src": "/home/ubuntu/w/sgl_cache_s4_q06_topk_koff", "cache": "/home/ubuntu/w/sgl_cache_i37_r2_kon_mask", "cache_files_at_start": 94, "env": {"DATA_ROOT": "/home/ubuntu/w", "MODELS_ROOT": "/home
+{"t": "2026-11-27T04:18:39Z", "event": "server_start", "ready_s": null, "log": "/home/ubuntu/w/i37/results/server_logs/server_i37_r2_kon_mask_001.log", "start_no": 1}
+{"t": "2026-11-27T04:18:39Z", "event": "not_ready", "last_lines": ["    raise EOFError", "EOFError", "During handling of the above exception, another exception occurred:", "Traceback (most recent call last):", "  File \"<frozen runpy>\", line 203, in _run_module_as_main", "  File \"<frozen runpy>\",
+{"t": "2026-11-27T04:18:39Z", "event": "log_lines", "counts": {"sampler by the kernel": 0, "topk_topp sampler by the kernel": 0}, "examples": []}
+{"t": "2026-11-27T04:18:39Z", "event": "stop", "seconds": 0.1, "cache_files_at_end": 94}
+{"t": "2026-11-27T04:18:39Z", "event": "end", "status": "failed"}
+I37_COLLECT_FAILED r2_kon_mask

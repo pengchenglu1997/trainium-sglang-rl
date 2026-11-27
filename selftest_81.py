@@ -194,6 +194,7 @@ def test_cfg_text():
              "lb_warm": "lb_warm", "url": "url", "model": "model", "tok": "tok", "lb_maxlen": "lb_maxlen", "devices": "devices"}
     for k, v in vals.items():
         body = body.replace("${" + shell[k] + "}", v)
+    body = body.replace("${LB_TEMP:-0}", "0")   # the request temperature, default 0 (variable added 2026-11-26)
     check(body == SW.CFG.format(seed=42, **vals), "llm-bench config text equals the heredoc of 22b_llmbench_grid.sh (seed 42)")
     check(SW.CFG.format(seed=43, **vals).replace("seed: 43", "seed: 42") == body, "the seed is the only templated difference")
     check("${" not in body, "every variable of the heredoc was substituted (none unknown)")

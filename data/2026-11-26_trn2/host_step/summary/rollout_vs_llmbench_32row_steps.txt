@@ -1,0 +1,24 @@
+== /home/ubuntu/w/results_s4/server_logs/server_prof_q06_all_001.log: 19 lines with 32 rows
+   step ms median 6.512, p10 6.448, p90 25.039; #token range 4992-12672
+   last 12 (#token, ms): 8192 84.91; 8320 6.46; 10112 6.46; 12288 6.51; 12288 6.49; 4992 17.61; 8192 6.45; 8192 6.45; 8960 6.45; 11904 6.46; 12288 6.49; 12672 6.47
+== /home/ubuntu/w/results_s4/server_logs/server_prof_q06_lmh_on_nd_001.log: 19 lines with 32 rows
+   step ms median 7.576, p10 7.549, p90 64.601; #token range 4992-12672
+   last 12 (#token, ms): 8192 64.60; 8192 7.54; 9344 7.55; 12288 7.56; 12288 7.57; 4992 16.46; 8192 7.55; 8192 7.55; 8960 7.55; 12160 7.56; 12288 7.58; 12672 7.57
+== /home/ubuntu/w/results_s4/server_logs/server_prof_q06_main_nd_001.log: 19 lines with 32 rows
+   step ms median 8.354, p10 8.329, p90 65.224; #token range 4992-12672
+   last 12 (#token, ms): 8192 65.22; 8192 8.35; 9344 8.35; 12288 8.35; 12288 8.35; 4992 17.41; 8192 8.33; 8192 8.33; 8960 8.33; 12160 8.33; 12288 8.34; 12672 8.34
+== /home/ubuntu/w/results_s4/server_logs/server_prof_q06_rel_nd_001.log: 19 lines with 32 rows
+   step ms median 9.182, p10 9.147, p90 66.211; #token range 4992-12672
+   last 12 (#token, ms): 8192 66.21; 8192 9.16; 9344 9.16; 12288 9.18; 12288 9.18; 4992 18.34; 8192 9.15; 8192 9.15; 8960 9.15; 12160 9.15; 12288 9.16; 12672 9.16
+== /home/ubuntu/w/results_s4/server_logs/server_prof_q8_main_nd_001.log: 19 lines with 32 rows
+   step ms median 13.819, p10 13.806, p90 82.273; #token range 4992-12672
+   last 12 (#token, ms): 8192 82.27; 8192 13.82; 9344 13.82; 12288 13.82; 12288 13.82; 4992 41.65; 8192 13.78; 8192 13.81; 8960 13.81; 12160 13.81; 12288 13.81; 12672 13.81
+== /home/ubuntu/w/results_s4/server_logs/server_prof_q8_all_001.log: 19 lines with 32 rows
+   step ms median 13.814, p10 13.775, p90 71.187; #token range 4992-12672
+   last 12 (#token, ms): 8192 71.19; 8192 13.81; 9344 13.81; 12288 13.82; 12288 13.81; 4992 41.63; 8192 13.76; 8192 13.78; 8960 13.77; 12160 13.78; 12288 13.79; 12672 13.79
+== /home/ubuntu/w/host/results/server_logs/host_p1c.log: 26 lines with 32 rows
+   step ms median 7.583, p10 7.572, p90 24.794; #token range 36864-40960
+   last 12 (#token, ms): 36864 7.58; 36864 7.57; 40960 7.58; 40960 7.57; 40960 7.58; 40960 7.57; 36864 24.79; 36864 7.59; 36864 7.59; 40960 7.58; 40960 7.59; 40960 7.58
+== /home/ubuntu/w/host/results/server_logs/host_p8t.log: 26 lines with 32 rows
+   step ms median 15.795, p10 15.781, p90 51.831; #token range 36864-40960
+   last 12 (#token, ms): 36864 15.80; 36864 15.80; 40960 15.80; 40960 15.79; 40960 15.79; 40960 15.79; 36864 51.59; 36864 15.80; 36864 15.79; 40960 15.79; 40960 15.79; 40960 15.79

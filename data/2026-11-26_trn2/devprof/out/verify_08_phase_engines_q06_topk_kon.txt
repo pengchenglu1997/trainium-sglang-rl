@@ -1,0 +1,21 @@
+ActiveTime busy union per engine per phase, pcore0 (us per step):
+      _len  cc_instruction  gpsimd  scalar    sync  tensor  vector
+A1  6140.5           314.9  1851.2  1652.4  1295.6  1247.9  1344.4
+A2     NaN             NaN     NaN     NaN     NaN     NaN     NaN
+B      NaN             NaN     NaN     NaN     NaN     NaN     NaN
+C      NaN             NaN     NaN     NaN     NaN     NaN     NaN
+
+phase A2 top opcodes by instruction time (us per step):
+Empty DataFrame
+Columns: [ph, engine, opcode, duration_ns]
+Index: []
+
+phase B top opcodes by instruction time (us per step):
+Empty DataFrame
+Columns: [ph, engine, opcode, duration_ns]
+Index: []
+
+phase C top opcodes by instruction time (us per step):
+Empty DataFrame
+Columns: [ph, engine, opcode, duration_ns]
+Index: []

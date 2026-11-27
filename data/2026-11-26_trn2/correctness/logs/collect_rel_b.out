@@ -1,0 +1,9 @@
+{"t": "2026-11-27T02:12:29Z", "event": "open", "name": "rel_b", "cores": "56-59", "port": 30331, "sets": ["t0", "gsm8k"], "cache_src": "/home/ubuntu/w/sgl_cache_s4_q06_rel", "cache": "/home/ubuntu/w/sgl_cache_cc_rel_b", "cache_files_at_start": 70, "cache_files_in_original": 70, "env": {"DATA_ROOT": 
+{"t": "2026-11-27T02:17:09Z", "event": "server_start", "ready_s": 280.2, "log": "/home/ubuntu/w/cc/results/server_logs/server_cc_rel_b_001.log", "start_no": 1}
+{"t": "2026-11-27T02:17:13Z", "event": "set_done", "set": "t0", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T02:17:27Z", "event": "gsm8k", "cmd": ["/opt/aws_neuronx_venv_torch_neuronx_2_14_0/bin/python", "/home/ubuntu/w/sglang_rl/21_gsm8k_acc.py", "--base-url", "http://127.0.0.1:30331", "--model", "/models/Qwen3-0.6B", "--data", "/home/ubuntu/w/models/gsm8k/test.jsonl", "--results", "/hom
+{"t": "2026-11-27T02:17:27Z", "event": "log_lines", "counts": {"sampler by the kernel": 0, "topk_topp sampler by the kernel": 0}, "pretransposed_mentions": 0, "examples": []}
+{"t": "2026-11-27T02:17:32Z", "event": "stop", "seconds": 5.3}
+{"t": "2026-11-27T02:17:32Z", "event": "end", "status": "ok"}
+{"t": "2026-11-27T02:17:32Z", "done": true}
+CC_COLLECT_DONE rel_b

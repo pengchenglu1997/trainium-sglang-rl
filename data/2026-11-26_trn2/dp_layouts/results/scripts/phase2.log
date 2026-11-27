@@ -1,0 +1,15 @@
+== P2 02:52:21 phase 2 start
+== D 02:52:21 bench ctl06_a cache /home/ubuntu/w/sgl_cache_dp_ctl_q06_all cores 0-3 port 30410 extra: --context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32
+== D 02:59:01 bench ctl06_a exit 0: SERVE_AND_BENCH_DONE d_ctl06_a ready_s=164.3 precheck=ok benches_done=4/4 result=/home/ubuntu/w/dp/results/76_serve_d_ctl06_a.jsonl
+D_DONE bench ctl06_a
+== D 02:59:01 bench dp4_06 cache /home/ubuntu/w/sgl_cache_dp_dp4_06 cores 0-3 port 30411 extra: --context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --tp-size 1 --dp-size 4 --max-total-tokens 65536
+== D 03:08:25 bench dp4_06 exit 0: SERVE_AND_BENCH_DONE d_dp4_06 ready_s=224.5 precheck=ok benches_done=4/4 result=/home/ubuntu/w/dp/results/76_serve_d_dp4_06.jsonl
+D_DONE bench dp4_06
+== D 03:08:25 bench dp2_06 cache /home/ubuntu/w/sgl_cache_dp_dp2_06 cores 0-3 port 30412 extra: --context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --tp-size 2 --dp-size 2
+== D 03:16:39 bench dp2_06 exit 0: SERVE_AND_BENCH_DONE d_dp2_06 ready_s=204.4 precheck=ok benches_done=4/4 result=/home/ubuntu/w/dp/results/76_serve_d_dp2_06.jsonl
+D_DONE bench dp2_06
+== D 03:16:39 bench ctl06_b cache /home/ubuntu/w/sgl_cache_dp_ctl_q06_all cores 0-3 port 30413 extra: --context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32
+== D 03:23:30 bench ctl06_b exit 0: SERVE_AND_BENCH_DONE d_ctl06_b ready_s=179.3 precheck=ok benches_done=4/4 result=/home/ubuntu/w/dp/results/76_serve_d_ctl06_b.jsonl
+D_DONE bench ctl06_b
+== P2 03:23:30 phase 2 end
+P2_DONE

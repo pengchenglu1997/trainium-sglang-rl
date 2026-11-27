@@ -1,0 +1,7 @@
+{"t": "2026-11-27T04:18:00Z", "event": "open", "name": "r2_koff_b", "cores": "4-7", "port": 30303, "cache_src": "/home/ubuntu/w/sgl_cache_s4_q06_topk_koff", "cache": "/home/ubuntu/w/sgl_cache_i37_r2_koff_b", "cache_files_at_start": 94, "env": {"DATA_ROOT": "/home/ubuntu/w", "MODELS_ROOT": "/home/ubu
+{"t": "2026-11-27T04:23:05Z", "event": "server_start", "ready_s": 305.1, "log": "/home/ubuntu/w/i37/results/server_logs/server_i37_r2_koff_b_001.log", "start_no": 1}
+{"t": "2026-11-27T04:23:11Z", "event": "set_done", "set": "t0", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T04:23:11Z", "event": "log_lines", "counts": {"sampler by the kernel": 0, "topk_topp sampler by the kernel": 0}, "examples": []}
+{"t": "2026-11-27T04:23:17Z", "event": "stop", "seconds": 6.5, "cache_files_at_end": 106}
+{"t": "2026-11-27T04:23:17Z", "event": "end", "status": "ok"}
+I37_COLLECT_DONE r2_koff_b

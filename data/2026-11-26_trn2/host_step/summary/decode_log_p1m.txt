@@ -1,0 +1,20 @@
+lines parsed: 41248
+
+== p1m_t0_p1: decode lines 20407, prefill lines 206, window 75 s; decode lines by #running-req: 1:17347, 4:510, 7:6, 8:2034, 31:1, 32:509
+   prefill new-token mean 418, cached mean 596, new-seq mean 1.00
+   steady decode rows=  1 n=17273 mean=3.008 med=2.968 p10=2.934 p90=3.016 ms
+   steady decode rows=  4 n=  508 mean=4.322 med=4.314 p10=4.277 p90=4.351 ms
+   steady decode rows=  8 n= 2026 mean=4.358 med=4.351 p10=4.308 p90=4.395 ms
+   steady decode rows= 32 n=  507 mean=7.604 med=7.580 p10=7.535 p90=7.625 ms
+   decode interval holding prefill rows=  1 n=  73 mean wall 32.646 ms, mean prefill iterations inside 1.00
+   decode interval holding prefill rows=  8 n=   8 mean wall 118.194 ms, mean prefill iterations inside 7.38
+
+== p1m_t0_p2: decode lines 20420, prefill lines 206, window 75 s; decode lines by #running-req: 1:17360, 4:510, 7:6, 8:2034, 31:14, 32:496
+   prefill new-token mean 127, cached mean 887, new-seq mean 1.00
+   steady decode rows=  1 n=17284 mean=3.028 med=2.976 p10=2.937 p90=3.117 ms
+   steady decode rows=  4 n=  508 mean=4.310 med=4.301 p10=4.268 p90=4.338 ms
+   steady decode rows=  8 n= 2026 mean=4.316 med=4.310 p10=4.276 p90=4.347 ms
+   steady decode rows= 31 n=   12 mean=8.611 med=7.599 p10=7.570 p90=7.631 ms
+   steady decode rows= 32 n=  494 mean=7.583 med=7.580 p10=7.534 p90=7.628 ms
+   decode interval holding prefill rows=  1 n=  75 mean wall 34.047 ms, mean prefill iterations inside 1.00
+   decode interval holding prefill rows=  8 n=   8 mean wall 113.656 ms, mean prefill iterations inside 7.25

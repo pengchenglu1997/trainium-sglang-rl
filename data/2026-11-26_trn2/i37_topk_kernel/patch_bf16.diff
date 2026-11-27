@@ -1,0 +1,13 @@
+--- /home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk/sampling.py	2026-11-27 01:16:43.000000000 +0000
++++ /home/ubuntu/w/i37/patch_bf16/sampling.py	2026-11-27 04:20:55.205089431 +0000
+@@ -375,6 +375,10 @@
+         from sglang_neuron import rlkit_sampler_topk
+         return rlkit_sampler_topk.sample_filtered_sharded_logits_kernel(
+             logits, group, rank, vocabulary_size, temperatures, row_keys, filters, top_logprobs, candidates)
++    # i37 diagnostic: round the fp32 logits to bf16 values (nearest even) by int32 bit operations
++    _b = logits.float().contiguous().view(torch.int32)
++    _b = (_b + (0x7FFF + ((_b >> 16) & 1))) & -65536
++    logits = _b.view(torch.float32)
+     logits, sampled, inverse, score = _tempered_scores(logits, rank, vocabulary_size, temperatures, row_keys)
+     # Shard candidates via the NKI rotational top-k, on the fp32 masked logits (the values the merge
+     # uses). fp32 selects the rotational kernel deliberately: the GpSIMD nisa.topk kernel deadlocks

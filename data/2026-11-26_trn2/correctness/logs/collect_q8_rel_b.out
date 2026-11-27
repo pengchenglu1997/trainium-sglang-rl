@@ -1,0 +1,8 @@
+{"t": "2026-11-27T02:12:29Z", "event": "open", "name": "q8_rel_b", "cores": "60-63", "port": 30332, "sets": ["t0"], "cache_src": "/home/ubuntu/w/sgl_cache_s4_q8_rel", "cache": "/home/ubuntu/w/sgl_cache_cc_q8_rel_b", "cache_files_at_start": 70, "cache_files_in_original": 70, "env": {"DATA_ROOT": "/ho
+{"t": "2026-11-27T02:18:14Z", "event": "server_start", "ready_s": 345.5, "log": "/home/ubuntu/w/cc/results/server_logs/server_cc_q8_rel_b_001.log", "start_no": 1}
+{"t": "2026-11-27T02:18:23Z", "event": "set_done", "set": "t0", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T02:18:23Z", "event": "log_lines", "counts": {"sampler by the kernel": 0, "topk_topp sampler by the kernel": 0}, "pretransposed_mentions": 0, "examples": []}
+{"t": "2026-11-27T02:18:28Z", "event": "stop", "seconds": 4.9}
+{"t": "2026-11-27T02:18:28Z", "event": "end", "status": "ok"}
+{"t": "2026-11-27T02:18:28Z", "done": true}
+CC_COLLECT_DONE q8_rel_b

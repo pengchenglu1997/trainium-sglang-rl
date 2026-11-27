@@ -1,0 +1,13 @@
+== p8t_t0_p1
+  cell   D1: decode n= 17276 147.414 s (mean 8.533 ms, host-paced 0.0%) | prefill n=  72  0.351 s (mean 4.88 ms) | gaps n=  68  5.997 s | sum 153.762 s, prefill share 0.2%, gap share 3.9%
+  cell   D4: decode n=   509   5.752 s (mean 11.301 ms, host-paced 0.4%) | prefill n=   8  0.266 s (mean 33.23 ms) | gaps n=   1  0.060 s | sum   6.078 s, prefill share 4.4%, gap share 1.0%
+  cell   D7: decode n=     3   0.099 s (mean 33.127 ms, host-paced 0.0%) | prefill n=   0  0.000 s (mean 0.00 ms) | gaps n=   0  0.000 s | sum   0.099 s, prefill share 0.0%, gap share 0.0%
+  cell   D8: decode n=  2037  23.114 s (mean 11.347 ms, host-paced 0.4%) | prefill n=  61  2.306 s (mean 37.80 ms) | gaps n=   0  0.000 s | sum  25.420 s, prefill share 9.1%, gap share 0.0%
+  cell  D32: decode n=   508   8.083 s (mean 15.912 ms, host-paced 0.4%) | prefill n=  64  2.649 s (mean 41.39 ms) | gaps n=   1  0.103 s | sum  10.835 s, prefill share 24.4%, gap share 0.9%
+== p8t_t0_p2
+  cell   D1: decode n= 17348 150.774 s (mean 8.691 ms, host-paced 0.4%) | prefill n=  78  0.386 s (mean 4.95 ms) | gaps n=   2  2.126 s | sum 153.286 s, prefill share 0.3%, gap share 1.4%
+  cell   D4: decode n=   509   5.753 s (mean 11.303 ms, host-paced 0.4%) | prefill n=   8  0.265 s (mean 33.14 ms) | gaps n=   1  0.069 s | sum   6.087 s, prefill share 4.4%, gap share 1.1%
+  cell   D7: decode n=     7   0.203 s (mean 28.938 ms, host-paced 0.0%) | prefill n=   0  0.000 s (mean 0.00 ms) | gaps n=   0  0.000 s | sum   0.203 s, prefill share 0.0%, gap share 0.0%
+  cell   D8: decode n=  2033  22.832 s (mean 11.231 ms, host-paced 0.4%) | prefill n=  57  2.145 s (mean 37.63 ms) | gaps n=   0  0.000 s | sum  24.977 s, prefill share 8.6%, gap share 0.0%
+  cell  D31: decode n=     1   0.044 s (mean 44.367 ms, host-paced 0.0%) | prefill n=   0  0.000 s (mean 0.00 ms) | gaps n=   0  0.000 s | sum   0.044 s, prefill share 0.0%, gap share 0.0%
+  cell  D32: decode n=   508   8.084 s (mean 15.912 ms, host-paced 0.4%) | prefill n=  62  2.567 s (mean 41.41 ms) | gaps n=   0  0.000 s | sum  10.651 s, prefill share 24.1%, gap share 0.0%

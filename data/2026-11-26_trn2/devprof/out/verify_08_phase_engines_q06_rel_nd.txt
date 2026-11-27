@@ -1,0 +1,45 @@
+ActiveTime busy union per engine per phase, pcore0 (us per step):
+      _len  cc_instruction  gpsimd  scalar   sync  tensor  vector
+A1  5848.5            22.2  1563.4  1316.7  997.7   869.3  1173.9
+A2  1077.4             NaN   257.1   661.4  665.9   189.5    77.6
+B    801.4             NaN    57.8   223.4  718.9   286.6    48.7
+C   1461.8             0.3   966.6   364.2  151.8   109.6   589.2
+
+phase A2 top opcodes by instruction time (us per step):
+ph engine          opcode  duration_ns
+A2   Sync    DMA_DIRECT2D        665.7
+A2 Scalar    DMA_DIRECT2D        551.4
+A2 Tensor          MATMUL        359.1
+A2 GpSimd    DMA_DIRECT2D        210.7
+A2 Scalar            COPY        191.0
+A2 Tensor       LDWEIGHTS        146.9
+A2 Vector            COPY         70.1
+A2 Scalar EVENT_SEMAPHORE         63.0
+A2 GpSimd EVENT_SEMAPHORE         46.9
+A2 GpSimd   TENSOR_TENSOR         33.1
+
+phase B top opcodes by instruction time (us per step):
+ph engine                 opcode  duration_ns
+ B   Sync           DMA_DIRECT2D        719.1
+ B Tensor                 MATMUL        308.4
+ B Scalar           DMA_DIRECT2D        164.6
+ B Tensor              LDWEIGHTS        142.9
+ B Scalar                   COPY         65.8
+ B GpSimd          TENSOR_TENSOR         48.4
+ B Vector COPY_PREDICATED_SCALAR         32.2
+ B Scalar                   CAST         24.7
+ B GpSimd                   IOTA         15.0
+ B   Sync        EVENT_SEMAPHORE          9.3
+
+phase C top opcodes by instruction time (us per step):
+ph engine             opcode  duration_ns
+ C GpSimd      TENSOR_TENSOR        561.0
+ C GpSimd TENSOR_SCALAR_ADDR        380.5
+ C Vector      TENSOR_TENSOR        234.7
+ C Vector    COPY_PREDICATED        209.6
+ C Tensor             MATMUL        184.3
+ C   Sync       DMA_DIRECT2D        148.4
+ C Scalar               COPY        130.5
+ C Scalar       DMA_DIRECT2D        128.5
+ C Tensor          LDWEIGHTS         79.0
+ C Vector      TENSOR_REDUCE         76.8

@@ -1,0 +1,9 @@
+== S 03:24:19 bench q06_ctl2 exit 0: SERVE_AND_BENCH_DONE b_q06_ctl2 ready_s=164.2 precheck=ok benches_done=3/3 result=/home/ubuntu/w/kv/results/76_serve_b_q06_ctl2.jsonl
+S_DONE bench q06_ctl2
+== S 03:31:30 bench q06_ctx2k exit 0: SERVE_AND_BENCH_DONE b_q06_ctx2k ready_s=264.7 precheck=ok benches_done=3/3 result=/home/ubuntu/w/kv/results/76_serve_b_q06_ctx2k.jsonl
+S_DONE bench q06_ctx2k
+== S 03:41:55 bench q8_ctl2 exit 0: SERVE_AND_BENCH_DONE b_q8_ctl2 ready_s=204.4 precheck=ok benches_done=3/3 result=/home/ubuntu/w/kv/results/76_serve_b_q8_ctl2.jsonl
+S_DONE bench q8_ctl2
+== S 03:55:29 bench q8_ctx2k exit 0: SERVE_AND_BENCH_DONE b_q8_ctx2k ready_s=390.4 precheck=ok benches_done=3/3 result=/home/ubuntu/w/kv/results/76_serve_b_q8_ctx2k.jsonl
+S_DONE bench q8_ctx2k
+KV_RUN2_DONE c06b L06 c8b L8

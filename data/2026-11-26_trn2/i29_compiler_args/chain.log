@@ -1,0 +1,14 @@
+== 04:18:36 first run done
+== 2026-11-27T04:18:36Z i29_q06_temp_cold sampler=temperature cache before: 0 entries
+a209c91ac0d716ea6cecb68349ed7a0cc1b11d314fa3be78626613a2b05e1750
+== ready=1 after 612 s
+== smoke done
+I29_COLD2_DONE i29_q06_temp_cold ready=1
+== 04:28:57 temp done
+== 2026-11-27T04:28:57Z i29_q06_topk_cold2 sampler=topk_topp cache before: 0 entries
+ae8000f776b332ae76a0ed5982b799a5768b8bdebb63a36a7995022120a987dd
+== ready=1 after 442 s
+== smoke done
+I29_COLD2_DONE i29_q06_topk_cold2 ready=1
+== 04:36:27 topk2 done
+CHAIN_DONE

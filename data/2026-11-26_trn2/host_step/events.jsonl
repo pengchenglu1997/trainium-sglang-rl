@@ -1,0 +1,119 @@
+{"event":"start","name":"host_p1c","size":"06","cores":"32-35","port":30500,"cache":"/home/ubuntu/w/sgl_cache_host_p1c","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 ","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 ","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","unix":1795747308}
+{"event":"start","name":"host_p1m","size":"06","cores":"36-39","port":30501,"cache":"/home/ubuntu/w/sgl_cache_host_p1m","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --decode-log-interval 1","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 SGLANG_LOG_FORWARD_ITERS=1","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","unix":1795747308}
+{"event":"start","name":"host_p1t","size":"06","cores":"40-43","port":30502,"cache":"/home/ubuntu/w/sgl_cache_host_p1t","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 ","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 SGLANG_NEURON_HOST_TRACE=/htrace/p1t SGLANG_NEURON_HOST_TRACE_RANKS=0","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","mounts":"/home/ubuntu/w/host/results/htrace:/htrace","unix":1795747415}
+{"event":"ready","name":"host_p1c","ready_s":161}
+{"event":"ready","name":"host_p1m","ready_s":162}
+{"event":"bench_start","tag":"p1c_t0_p1","port":30500,"unix":1795747471}
+{"event":"bench_end","tag":"p1c_t0_p1","rc":0,"last":"LLMBENCH_DONE p1c_t0_p1 csv=/home/ubuntu/w/host/results/llmbench_p1c_t0_p1.csv rows=3","unix":1795747547}
+{"event":"bench_start","tag":"p1m_t0_p1","port":30501,"unix":1795747547}
+{"event":"ready","name":"host_p1t","ready_s":166}
+{"event":"bench_end","tag":"p1m_t0_p1","rc":0,"last":"LLMBENCH_DONE p1m_t0_p1 csv=/home/ubuntu/w/host/results/llmbench_p1m_t0_p1.csv rows=3","unix":1795747622}
+{"event":"bench_start","tag":"p1c_t0_p2","port":30500,"unix":1795747622}
+{"event":"bench_end","tag":"p1c_t0_p2","rc":0,"last":"LLMBENCH_DONE p1c_t0_p2 csv=/home/ubuntu/w/host/results/llmbench_p1c_t0_p2.csv rows=3","unix":1795747698}
+{"event":"bench_start","tag":"p1m_t0_p2","port":30501,"unix":1795747698}
+{"event":"bench_end","tag":"p1m_t0_p2","rc":0,"last":"LLMBENCH_DONE p1m_t0_p2 csv=/home/ubuntu/w/host/results/llmbench_p1m_t0_p2.csv rows=3","unix":1795747773}
+{"event":"stopped","name":"host_p1c","unix":1795747777}
+{"event":"stopped","name":"host_p1m","unix":1795747780}
+{"event":"bench_start","tag":"p1t_t0_p1","port":30502,"unix":1795747782}
+{"event":"bench_end","tag":"p1t_t0_p1","rc":0,"last":"LLMBENCH_DONE p1t_t0_p1 csv=/home/ubuntu/w/host/results/llmbench_p1t_t0_p1.csv rows=3","unix":1795747857}
+{"event":"bench_start","tag":"p1t_t0_p2","port":30502,"unix":1795747857}
+{"event":"bench_end","tag":"p1t_t0_p2","rc":0,"last":"LLMBENCH_DONE p1t_t0_p2 csv=/home/ubuntu/w/host/results/llmbench_p1t_t0_p2.csv rows=3","unix":1795747932}
+{"event":"stopped","name":"host_p1t","unix":1795747937}
+{"event":"start","name":"host_p2c","size":"06","cores":"32-35","port":30510,"cache":"/home/ubuntu/w/sgl_cache_host_p2c","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 ","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 ","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","mounts":"","unix":1795748069}
+{"event":"start","name":"host_p2v1","size":"06","cores":"36-39","port":30511,"cache":"/home/ubuntu/w/sgl_cache_host_p2v1","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --scheduler-recv-interval 8","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 ","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","mounts":"","unix":1795748070}
+{"event":"start","name":"host_p2v2","size":"06","cores":"40-43","port":30512,"cache":"/home/ubuntu/w/sgl_cache_host_p2v2","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --stream-interval 4","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 ","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","mounts":"","unix":1795748070}
+{"event":"start","name":"host_p8t","size":"8","cores":"44-47","port":30520,"cache":"/home/ubuntu/w/sgl_cache_host_p8t","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 ","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 SGLANG_NEURON_HOST_TRACE=/htrace/p8t SGLANG_NEURON_HOST_TRACE_RANKS=0","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","mounts":"/home/ubuntu/w/host/results/htrace:/htrace","unix":1795748070}
+{"event":"ready","name":"host_p2c","ready_s":167}
+{"event":"ready","name":"host_p2v1","ready_s":167}
+{"event":"ready","name":"host_p2v2","ready_s":168}
+{"event":"bench_start","tag":"p2c_for_p2v1_p1","port":30510,"unix":1795748240}
+{"event":"bench_end","tag":"p2c_for_p2v1_p1","rc":0,"last":"LLMBENCH_DONE p2c_for_p2v1_p1 csv=/home/ubuntu/w/host/results/llmbench_p2c_for_p2v1_p1.csv rows=3","unix":1795748315}
+{"event":"bench_start","tag":"p2v1_p1","port":30511,"unix":1795748315}
+{"event":"bench_end","tag":"p2v1_p1","rc":0,"last":"LLMBENCH_DONE p2v1_p1 csv=/home/ubuntu/w/host/results/llmbench_p2v1_p1.csv rows=3","unix":1795748391}
+{"event":"bench_start","tag":"p2c_for_p2v1_p2","port":30510,"unix":1795748391}
+{"event":"bench_end","tag":"p2c_for_p2v1_p2","rc":0,"last":"LLMBENCH_DONE p2c_for_p2v1_p2 csv=/home/ubuntu/w/host/results/llmbench_p2c_for_p2v1_p2.csv rows=3","unix":1795748467}
+{"event":"bench_start","tag":"p2v1_p2","port":30511,"unix":1795748467}
+{"event":"bench_end","tag":"p2v1_p2","rc":0,"last":"LLMBENCH_DONE p2v1_p2 csv=/home/ubuntu/w/host/results/llmbench_p2v1_p2.csv rows=3","unix":1795748543}
+{"event":"stopped","name":"host_p2v1","unix":1795748548}
+{"event":"start","name":"host_p2v3","size":"06","cores":"36-39","port":30513,"cache":"/home/ubuntu/w/sgl_cache_host_p2v3","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --tokenizer-worker-num 2","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 ","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","mounts":"","unix":1795748548}
+{"event":"bench_start","tag":"p2c_for_p2v2_p1","port":30510,"unix":1795748548}
+{"event":"bench_end","tag":"p2c_for_p2v2_p1","rc":0,"last":"LLMBENCH_DONE p2c_for_p2v2_p1 csv=/home/ubuntu/w/host/results/llmbench_p2c_for_p2v2_p1.csv rows=3","unix":1795748624}
+{"event":"bench_start","tag":"p2v2_p1","port":30512,"unix":1795748624}
+{"event":"bench_end","tag":"p2v2_p1","rc":0,"last":"LLMBENCH_DONE p2v2_p1 csv=/home/ubuntu/w/host/results/llmbench_p2v2_p1.csv rows=3","unix":1795748699}
+{"event":"bench_start","tag":"p2c_for_p2v2_p2","port":30510,"unix":1795748699}
+{"event":"bench_end","tag":"p2c_for_p2v2_p2","rc":0,"last":"LLMBENCH_DONE p2c_for_p2v2_p2 csv=/home/ubuntu/w/host/results/llmbench_p2c_for_p2v2_p2.csv rows=3","unix":1795748774}
+{"event":"bench_start","tag":"p2v2_p2","port":30512,"unix":1795748774}
+{"event":"bench_end","tag":"p2v2_p2","rc":0,"last":"LLMBENCH_DONE p2v2_p2 csv=/home/ubuntu/w/host/results/llmbench_p2v2_p2.csv rows=3","unix":1795748849}
+{"event":"stopped","name":"host_p2v2","unix":1795748854}
+{"event":"start","name":"host_p2v4","size":"06","cores":"40-43","port":30514,"cache":"/home/ubuntu/w/sgl_cache_host_p2v4","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --detokenizer-worker-num 2","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 ","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","mounts":"","unix":1795748854}
+{"event":"ready","name":"host_p2v3","ready_s":306}
+{"event":"bench_start","tag":"p2c_for_p2v3_p1","port":30510,"unix":1795748855}
+{"event":"bench_end","tag":"p2c_for_p2v3_p1","rc":0,"last":"LLMBENCH_DONE p2c_for_p2v3_p1 csv=/home/ubuntu/w/host/results/llmbench_p2c_for_p2v3_p1.csv rows=3","unix":1795748930}
+{"event":"bench_start","tag":"p2v3_p1","port":30513,"unix":1795748930}
+{"event":"bench_end","tag":"p2v3_p1","rc":0,"last":"LLMBENCH_DONE p2v3_p1 csv=/home/ubuntu/w/host/results/llmbench_p2v3_p1.csv rows=3","unix":1795749006}
+{"event":"bench_start","tag":"p2c_for_p2v3_p2","port":30510,"unix":1795749006}
+{"event":"bench_end","tag":"p2c_for_p2v3_p2","rc":0,"last":"LLMBENCH_DONE p2c_for_p2v3_p2 csv=/home/ubuntu/w/host/results/llmbench_p2c_for_p2v3_p2.csv rows=3","unix":1795749081}
+{"event":"bench_start","tag":"p2v3_p2","port":30513,"unix":1795749081}
+{"event":"bench_end","tag":"p2v3_p2","rc":0,"last":"LLMBENCH_DONE p2v3_p2 csv=/home/ubuntu/w/host/results/llmbench_p2v3_p2.csv rows=3","unix":1795749157}
+{"event":"stopped","name":"host_p2v3","unix":1795749163}
+{"event":"ready","name":"host_p2v4","ready_s":309}
+{"event":"bench_start","tag":"p2c_for_p2v4_p1","port":30510,"unix":1795749164}
+{"event":"bench_end","tag":"p2c_for_p2v4_p1","rc":0,"last":"LLMBENCH_DONE p2c_for_p2v4_p1 csv=/home/ubuntu/w/host/results/llmbench_p2c_for_p2v4_p1.csv rows=3","unix":1795749239}
+{"event":"bench_start","tag":"p2v4_p1","port":30514,"unix":1795749239}
+{"event":"bench_end","tag":"p2v4_p1","rc":0,"last":"LLMBENCH_DONE p2v4_p1 csv=/home/ubuntu/w/host/results/llmbench_p2v4_p1.csv rows=3","unix":1795749314}
+{"event":"bench_start","tag":"p2c_for_p2v4_p2","port":30510,"unix":1795749314}
+{"event":"bench_end","tag":"p2c_for_p2v4_p2","rc":0,"last":"LLMBENCH_DONE p2c_for_p2v4_p2 csv=/home/ubuntu/w/host/results/llmbench_p2c_for_p2v4_p2.csv rows=3","unix":1795749389}
+{"event":"bench_start","tag":"p2v4_p2","port":30514,"unix":1795749389}
+{"event":"bench_end","tag":"p2v4_p2","rc":0,"last":"LLMBENCH_DONE p2v4_p2 csv=/home/ubuntu/w/host/results/llmbench_p2v4_p2.csv rows=3","unix":1795749464}
+{"event":"stopped","name":"host_p2v4","unix":1795749468}
+{"event":"stopped","name":"host_p2c","unix":1795749474}
+{"event":"ready","name":"host_p8t","ready_s":1404}
+{"event":"bench_start","tag":"p8t_t0_p1","port":30520,"unix":1795749475}
+{"event":"bench_end","tag":"p8t_t0_p1","rc":0,"last":"LLMBENCH_DONE p8t_t0_p1 csv=/home/ubuntu/w/host/results/llmbench_p8t_t0_p1.csv rows=3","unix":1795749674}
+{"event":"bench_start","tag":"p8t_t0_p2","port":30520,"unix":1795749674}
+{"event":"bench_end","tag":"p8t_t0_p2","rc":0,"last":"LLMBENCH_DONE p8t_t0_p2 csv=/home/ubuntu/w/host/results/llmbench_p8t_t0_p2.csv rows=3","unix":1795749871}
+{"event":"stopped","name":"host_p8t","unix":1795749876}
+{"event":"start","name":"host_p3c","size":"06","cores":"32-35","port":30530,"cache":"/home/ubuntu/w/sgl_cache_host_p3c","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 ","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 ","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","mounts":"","unix":1795749885}
+{"event":"start","name":"host_p3v5","size":"06","cores":"36-39","port":30531,"cache":"/home/ubuntu/w/sgl_cache_host_p3v5","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --disable-overlap-schedule","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 ","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","mounts":"","unix":1795749885}
+{"event":"start","name":"host_p3v6","size":"06","cores":"40-43","port":30532,"cache":"/home/ubuntu/w/sgl_cache_host_p3v6","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 ","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 SGLANG_NEURON_MAX_INFLIGHT_LAUNCHES=3","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","mounts":"","unix":1795749885}
+{"event":"start","name":"host_p3v7","size":"06","cores":"44-47","port":30534,"cache":"/home/ubuntu/w/sgl_cache_host_p3v7","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --context-length 2560","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 ","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","mounts":"","unix":1795749885}
+{"event":"ready","name":"host_p3c","ready_s":162}
+{"event":"ready","name":"host_p3v5","ready_s":414}
+{"event":"ready","name":"host_p3v6","ready_s":415}
+{"event":"bench_start","tag":"p3c_for_p3v5_p1","port":30530,"unix":1795750302}
+{"event":"bench_end","tag":"p3c_for_p3v5_p1","rc":0,"last":"LLMBENCH_DONE p3c_for_p3v5_p1 csv=/home/ubuntu/w/host/results/llmbench_p3c_for_p3v5_p1.csv rows=3","unix":1795750377}
+{"event":"bench_start","tag":"p3v5_p1","port":30531,"unix":1795750377}
+{"event":"bench_end","tag":"p3v5_p1","rc":0,"last":"LLMBENCH_DONE p3v5_p1 csv=/home/ubuntu/w/host/results/llmbench_p3v5_p1.csv rows=3","unix":1795750510}
+{"event":"bench_start","tag":"p3c_for_p3v5_p2","port":30530,"unix":1795750510}
+{"event":"bench_end","tag":"p3c_for_p3v5_p2","rc":0,"last":"LLMBENCH_DONE p3c_for_p3v5_p2 csv=/home/ubuntu/w/host/results/llmbench_p3c_for_p3v5_p2.csv rows=3","unix":1795750585}
+{"event":"bench_start","tag":"p3v5_p2","port":30531,"unix":1795750585}
+{"event":"bench_end","tag":"p3v5_p2","rc":0,"last":"LLMBENCH_DONE p3v5_p2 csv=/home/ubuntu/w/host/results/llmbench_p3v5_p2.csv rows=3","unix":1795750718}
+{"event":"stopped","name":"host_p3v5","unix":1795750723}
+{"event":"start","name":"host_p3t","size":"06","cores":"36-39","port":30533,"cache":"/home/ubuntu/w/sgl_cache_host_p3t","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --disable-overlap-schedule","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 SGLANG_NEURON_HOST_TRACE=/htrace/p3t SGLANG_NEURON_HOST_TRACE_RANKS=0","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","mounts":"/home/ubuntu/w/host/results/htrace:/htrace","unix":1795750723}
+{"event":"bench_start","tag":"p3c_for_p3v6_p1","port":30530,"unix":1795750723}
+{"event":"bench_end","tag":"p3c_for_p3v6_p1","rc":0,"last":"LLMBENCH_DONE p3c_for_p3v6_p1 csv=/home/ubuntu/w/host/results/llmbench_p3c_for_p3v6_p1.csv rows=3","unix":1795750798}
+{"event":"bench_start","tag":"p3v6_p1","port":30532,"unix":1795750798}
+{"event":"bench_end","tag":"p3v6_p1","rc":0,"last":"LLMBENCH_DONE p3v6_p1 csv=/home/ubuntu/w/host/results/llmbench_p3v6_p1.csv rows=3","unix":1795750874}
+{"event":"bench_start","tag":"p3c_for_p3v6_p2","port":30530,"unix":1795750874}
+{"event":"bench_end","tag":"p3c_for_p3v6_p2","rc":0,"last":"LLMBENCH_DONE p3c_for_p3v6_p2 csv=/home/ubuntu/w/host/results/llmbench_p3c_for_p3v6_p2.csv rows=3","unix":1795750949}
+{"event":"bench_start","tag":"p3v6_p2","port":30532,"unix":1795750949}
+{"event":"bench_end","tag":"p3v6_p2","rc":0,"last":"LLMBENCH_DONE p3v6_p2 csv=/home/ubuntu/w/host/results/llmbench_p3v6_p2.csv rows=3","unix":1795751025}
+{"event":"stopped","name":"host_p3v6","unix":1795751027}
+{"event":"ready","name":"host_p3v7","ready_s":1142}
+{"event":"bench_start","tag":"p3c_for_p3v7_p1","port":30530,"unix":1795751029}
+{"event":"start","name":"host_p4v8","size":"8","cores":"40-43","port":30541,"cache":"/home/ubuntu/w/sgl_cache_host_p4v8","extra":"--context-length 4096 --chunked-prefill-size 2048 --max-running-requests 32 --max-total-tokens 131072 --cuda-graph-bs-decode 1 8 32 --context-length 2560","env":"RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1 ","patch":"/home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk","mounts":"","unix":1795751037}
+{"event":"bench_end","tag":"p3c_for_p3v7_p1","rc":0,"last":"LLMBENCH_DONE p3c_for_p3v7_p1 csv=/home/ubuntu/w/host/results/llmbench_p3c_for_p3v7_p1.csv rows=3","unix":1795751104}
+{"event":"bench_start","tag":"p3v7_p1","port":30534,"unix":1795751104}
+{"event":"bench_end","tag":"p3v7_p1","rc":0,"last":"LLMBENCH_DONE p3v7_p1 csv=/home/ubuntu/w/host/results/llmbench_p3v7_p1.csv rows=3","unix":1795751185}
+{"event":"bench_start","tag":"p3c_for_p3v7_p2","port":30530,"unix":1795751185}
+{"event":"stopped","name":"host_p4v8","unix":1795751243}
+{"event":"note","text":"phase 4 (8B --context-length 2560) stopped by hand before its bench: the 0.6B 1280-context graph was slower (attention cache block length 1-2)","unix":1795751243}
+{"event":"bench_end","tag":"p3c_for_p3v7_p2","rc":0,"last":"LLMBENCH_DONE p3c_for_p3v7_p2 csv=/home/ubuntu/w/host/results/llmbench_p3c_for_p3v7_p2.csv rows=3","unix":1795751261}
+{"event":"bench_start","tag":"p3v7_p2","port":30534,"unix":1795751261}
+{"event":"bench_end","tag":"p3v7_p2","rc":0,"last":"LLMBENCH_DONE p3v7_p2 csv=/home/ubuntu/w/host/results/llmbench_p3v7_p2.csv rows=3","unix":1795751342}
+{"event":"stopped","name":"host_p3v7","unix":1795751346}
+{"event":"stopped","name":"host_p3c","unix":1795751351}
+{"event":"ready","name":"host_p3t","ready_s":628}
+{"event":"bench_start","tag":"p3t_t0_p1","port":30533,"unix":1795751353}
+{"event":"bench_end","tag":"p3t_t0_p1","rc":0,"last":"LLMBENCH_DONE p3t_t0_p1 csv=/home/ubuntu/w/host/results/llmbench_p3t_t0_p1.csv rows=3","unix":1795751483}
+{"event":"stopped","name":"host_p3t","unix":1795751489}

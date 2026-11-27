@@ -1,0 +1,6 @@
+      8 Token-gen bucket length of 1024: reducing block length by 16x, cache block length reduced from 128 to 8. Number of blocks per batch increased from 8 to 128.
+     16 Token-gen bucket length of 1024: reducing block length by 32x, cache block length reduced from 128 to 4. Number of blocks per batch increased from 8 to 256.
+     16 Token-gen bucket length of 2048: reducing block length by 16x, cache block length reduced from 128 to 8. Number of blocks per batch increased from 16 to 256.
+      8 Token-gen bucket length of 2048: reducing block length by 8x, cache block length reduced from 128 to 16. Number of blocks per batch increased from 16 to 128.
+      8 Token-gen bucket length of 4096: reducing block length by 4x, cache block length reduced from 128 to 32. Number of blocks per batch increased from 32 to 128.
+     16 Token-gen bucket length of 4096: reducing block length by 8x, cache block length reduced from 128 to 16. Number of blocks per batch increased from 32 to 256.

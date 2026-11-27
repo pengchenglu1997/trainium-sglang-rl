@@ -1,0 +1,1 @@
+{"file": "out_r3_koff_mask_t0.json", "gaps": 380, "on_1_16_grid": 2, "on_1_8_grid": 0, "on_1_64_grid": 9, "per_prompt_on_1_16": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]}

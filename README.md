@@ -9,7 +9,9 @@ SGLang-Neuron v0.1.0 take new weights without a server restart.
 > written up in that fork's
 > [docs/rl/RESULTS.md](https://github.com/pengchenglu1997/sglang-neuron/blob/main/docs/rl/RESULTS.md). The result files
 > of that session are in [`data/2026-11-24_trn2/`](data/2026-11-24_trn2/README.md); the probe scripts that wrote them
-> (numbers 73 to 81) are at the top level, indexed in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 8. The sections "Results so far" and "Plan and open work"
+> (numbers 73 to 81) are at the top level, indexed in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 8. The trn2 session of
+> 2026-11-26 (UTC 2026-11-27 00:34 to 05:13) is in [`data/2026-11-26_trn2/`](data/2026-11-26_trn2/README.md); its scripts
+> (`s4_*`) are at the top level, indexed in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 10. The sections "Results so far" and "Plan and open work"
 > below are as of 2026-11-22.
 
 Three parts, each usable on its own:
@@ -86,12 +88,13 @@ refer to them by name. Numbers in file names are the order in which the probes w
 | **The loop** | `30_rl_loop.py` | the loop; main flags `--backend`, `--replicas`, `--sync-payload merged\|adapter`, `--train-compile`, `--train-cores`, `--overlap`, `--trainer8b`, `--len-buckets`, `--seed` |
 | **Server launchers** | `srv_sglang_neuron.sh`, `srv_vllm_neuron_docker.sh` (with `nki_index_check.py`; CPU self-test `selftest_nki_index_check.py`), `srv_sglang_cuda_docker.sh`, `srv_other.sh` | one script per engine; backends registered in `backends.json`: `sglang_neuron`, `sglang_neuron_inplace`, `vllm_neuron`, `vllm_neuron_docker`, `vllm_cuda`, `sglang_cuda`, `sglang_cuda_docker` |
 | **Probes of 2026-11-24** | `73_` to `81_`, `82_cache_record.py` (added after the session), `22b_llmbench_grid.sh`, `lora_merge.py`, `mk_ulp.py`, `untie_ckpt.py`, `patch_manifest.py`, `selftest_74.py`, `selftest_75.py`, `selftest_81.py`, `selftest_cache_record.py`, `selftest_launcher_env.py`, `r9_run.sh` | the trn2 session of 2026-11-24, as run; see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 8. The patch folders they mount are not here |
+| **Session scripts of 2026-11-26** | `s4_prep.sh`, `s4_run.sh`, `s4_x.sh`, `s4_8b.sh`, `s4_profile.py`, `s4_table.py`; `22b_llmbench_grid.sh` (two new request variables) | the trn2 session of 2026-11-26, as run (comment lines reworded, one clone address made a variable); see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 10. The patch folders they mount are not here |
 | **Probes** | `20_` to `72_` | see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md): question, hardware, result files and record for each |
 | **Session scripts** | `50_run_trn2_session.sh`, `run_night_1121.sh`, `run_shape_1122.sh`, `run_w1w2.sh`, `scripts/run_trn2_seeds.sh`, `scripts/run_cuda_baseline.sh` | the order in which probes ran on one machine; each prints marker lines and a last line `*_DONE` |
 | **Tests without hardware** | `selftest_fake_server.py`, `selftest_cache_record.py`, `selftest_launcher_env.py`, `selftest_nki_index_check.py`, `62_lazy_delta_test.py`, `65_trainer8b_cpu_test.py`, `66_pull_weights_shim_test.py` | CPU only |
 | **Report helpers** | `60_report_figures.py`, `59b_profile_sum.py`, `59c_profile_peek.py`, `59d_devprof_sum.py`, `63_padding_share.py` | figures and summaries read from result files |
 | **Patch** | `patches/sglang_neuron_v0.1.0_inplace/` (patched files, `orig/` holds the v0.1.0 originals), `patches/diff/`, `patches/PR_DRAFT_inplace_weight_update.md` | see [The patch](#the-patch) |
-| **Data** | `data/2026-11-20/`, `data/2026-11-21_night/` | result files, see [Data and records](#data-and-records) |
+| **Data** | `data/2026-11-20/`, `data/2026-11-21_night/`, `data/2026-11-24_trn2/`, `data/2026-11-26_trn2/` | result files, see [Data and records](#data-and-records) |
 | **Docs** | `docs/SESSION2_RECORD_2026-11-20.md`, `docs/NIGHT_RECORD_2026-11-21.md`, `docs/experiment-plan-2026-11-22.md`, `docs/EXPERIMENTS.md`, `64_miles_sequence.md` | records, plan, experiment index |
 
 ## Running it
@@ -107,6 +110,7 @@ SGLang-Neuron v0.1.0 image. CUDA: one GPU and Docker. The probes and loop read t
 | `SGL_IMAGE`, `SGL_CORES`, `SGL_SAMPLER`, `SGL_EXTRA` | image, `NEURON_RT_VISIBLE_CORES` of the server, sampler mode, extra launch flags |
 | `DATA_ROOT` | disk with models and GSM8K for the session scripts |
 | `PROFILE_ROOT` | host folder for Neuron profile output (`59_decode_profile.py`, `run_night_1121.sh`), mounted at `/profiles` in the server container; default `$DATA_ROOT/profiles`; never the compile cache folder |
+| `LLMBENCH_URL`; `LB_TEMP`, `LB_EXTRA_BODY` | `s4_prep.sh`: the address `git clone` uses for llmbench (required, no default; the repository named in the header of `22b_llmbench_grid.sh`). `22b_llmbench_grid.sh`: the request temperature (default 0) and more request fields (`name=value` items separated by spaces, default none) |
 | `VLLM_ENV`, `VLLM_COMPILE_TIMEOUT` | `srv_vllm_neuron_docker.sh`: extra container environment (`NAME=value` items separated by spaces); the compile timeout in seconds, set under both `VLLM_NEURON_COMPILATION_TIMEOUT` and `NEURON_LIBTORCH_COMPILATION_TIMEOUT` (which one the compiler reads is not verified) |
 | `VLLM_NKI_INDEX_CHECK` | `srv_vllm_neuron_docker.sh`, default 1: before each start, `nki_index_check.py` reads `$VLLM_CACHE/neuron/compile_cache/nki/*.json` in a throwaway container of the server image with the same mounts. vllm-neuron 0.29.0.1.2.0 writes the kernel files those entries name to the container's own `/var/tmp`, which is gone with the container; a later start can fail with `NCC_EVRF059`. If any entry names a file that does not exist there, only that index folder is removed. With this image every entry seen names such a container-local file, so in practice any non-empty index is removed, including one with which a start reached ready; the keep branch (every readable entry names an existing file) applies only to entries naming files under `/cache` or `/models`, which this image does not write, and is covered by the CPU self-test only. Entries with an unreadable or empty kernel path are counted and on their own cause no removal. When the check is on, the launcher prints exactly one line starting `nki index check:` (also for a missing index folder, a missing helper file, or a failed check container, with its exit code). Skipped (and said so) while a running container mounts the cache folder, a folder inside it or a parent of it. A helper path that contains a comma makes the check container fail to start (the `--mount` option splits on commas); the launcher then prints the "check container failed" line and the start proceeds. Exactly `0` turns the check off |
 
@@ -187,10 +191,14 @@ that PR's diff to v0.1.0 to try it.
 | `data/2026-11-20/` | the 34 `30_rl_loop_*.jsonl` files of the first report: `trn2_sgl_final`, `trn2_seeds` (Trainium2) and `cuda`, `gpu_sgl` (GPU, with the three earlier attempts kept) |
 | `data/2026-11-21_night/` | result files of the night session: `48_` (in-place update on other model families), `50_` (adapter), `58_` (sampler), `59*` (decode profile summaries), `60_` (shape cost), `63_` (padding share) |
 | `data/2026-11-24_trn2/` | result files of the trn2 session of 2026-11-24: upstream PR 20 check, stamp race, baseline pair, serving changes, sampler kernel, LoRA merge kernel, 30B start probe. Its own [README](data/2026-11-24_trn2/README.md) maps each file to a section of the fork's RESULTS.md |
+| `data/2026-11-26_trn2/` | result files of the trn2 session of 2026-11-26: serving benchmarks of the sampler kernels and the LM head switch on Qwen3-0.6B and Qwen3-8B, device-profile captures and their analysis, token-level correctness checks with A/A controls, replica layouts, host-side step time, attention-cache settings, vllm-neuron start tests, compiler arguments. Its own [README](data/2026-11-26_trn2/README.md) says what each sub-folder is, the conditions and the limits; `scrub_check.py` and `scrub_report.txt` are the check that no machine or account detail is in the folder |
 | `docs/SESSION2_RECORD_2026-11-20.md` | the first report's record: engines as released, restart-based sync, the patch, the loop layouts, CUDA baseline, seeds (parts that do not concern this repository are left out) |
 | `docs/NIGHT_RECORD_2026-11-21.md` | machine, setup and every number of the night session, with checksums of the archives |
 | `docs/experiment-plan-2026-11-22.md` | the plan for the next sessions: work packages W0 to W5, expected results, gates |
 | `64_miles_sequence.md` | the calls Miles's disk-delta weight sync sends to a rollout engine, and the gaps against SGLang-Neuron |
+
+Not in the repository (size) from the session of 2026-11-26: server logs, per-request benchmark files, raw device profiles and
+parquet tables, answer dumps of 0.6 MB and more, the written session summaries; `data/2026-11-26_trn2/README.md` lists them.
 
 Not in the repository (size): server logs and raw Neuron profiles of 21 November (the record gives their checksums),
 and the result files of the probes of 19-20 November other than the loop files (their numbers are in `docs/SESSION2_RECORD_2026-11-20.md`).

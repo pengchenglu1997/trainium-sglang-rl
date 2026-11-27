@@ -1,0 +1,13 @@
+--- /home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk/rlkit_sampler_topk.py	2026-11-27 01:16:43.000000000 +0000
++++ /home/ubuntu/w/i37/patch_dead/rlkit_sampler_topk.py	2026-11-27 04:20:55.207644164 +0000
+@@ -106,6 +106,10 @@
+     parts = parts.reshape(rows, segs * n_chunks(seg_w), NPART)
+     value, token_f = _max_smallest_id(parts[:, :, 0], BIG - parts[:, :, 1], vocabulary_size - 1)
+     local_id = (token_f.to(torch.int64) - rank64 * width).clamp(0, width - 1)
++    # i37 diagnostic: winner from the released code; the kernel output is kept alive but does not decide
++    _, _, _, _score = S._tempered_scores(logits, rank, vocabulary_size, temperatures, row_keys)
++    value, local_id = S._first_max(_score)
++    value = value + 0.0 * parts[:, :1, 0]
+     token = local_id + rank64 * width                                # v0.1.0 line 373
+ 
+     # the rest of the shard-local stage: the engine's code (v0.1.0 lines 370-371, 374-378)

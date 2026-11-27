@@ -1,0 +1,37 @@
+ActiveTime busy union per engine per phase, pcore0 (us per step):
+      _len  cc_instruction  gpsimd  scalar    sync  tensor  vector
+A1  5957.6            22.2  1581.5  1319.0  1095.8   811.8  1146.8
+A2     0.0             NaN     0.0     NaN     NaN     NaN     0.0
+B    192.5             NaN   129.1    54.4    18.1    74.9    59.8
+C   1431.4             0.3   982.6   353.1   133.6   127.6   614.3
+
+phase A2 top opcodes by instruction time (us per step):
+Empty DataFrame
+Columns: [ph, engine, opcode, duration_ns]
+Index: []
+
+phase B top opcodes by instruction time (us per step):
+ph engine                 opcode  duration_ns
+ B Tensor                 MATMUL        286.8
+ B Tensor              LDWEIGHTS        146.7
+ B GpSimd           DMA_DIRECT2D         68.5
+ B Scalar                   COPY         36.5
+ B GpSimd          TENSOR_TENSOR         35.9
+ B Vector COPY_PREDICATED_SCALAR         30.1
+ B Scalar           DMA_DIRECT2D         22.5
+ B Vector                   COPY         21.6
+ B   Sync           DMA_DIRECT2D         18.8
+ B GpSimd                   IOTA         17.2
+
+phase C top opcodes by instruction time (us per step):
+ph engine             opcode  duration_ns
+ C GpSimd      TENSOR_TENSOR        564.4
+ C GpSimd TENSOR_SCALAR_ADDR        381.6
+ C Vector      TENSOR_TENSOR        261.6
+ C Vector    COPY_PREDICATED        205.8
+ C Tensor             MATMUL        182.0
+ C Scalar               COPY        133.6
+ C   Sync       DMA_DIRECT2D        129.6
+ C Scalar       DMA_DIRECT2D        114.9
+ C Vector      TENSOR_REDUCE         76.6
+ C Scalar           ACTIVATE         76.3

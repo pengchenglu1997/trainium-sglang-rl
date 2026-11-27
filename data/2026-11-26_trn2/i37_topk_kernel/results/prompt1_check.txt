@@ -1,0 +1,10 @@
+{"server": "r1_koff", "answer": "first", "unequal_vs_r1_koff_first": 0, "first_unequal": null}
+{"server": "r1_koff", "answer": "repeat", "unequal_vs_r1_koff_first": 0, "first_unequal": null}
+{"server": "r2_koff_b", "answer": "first", "unequal_vs_r1_koff_first": 34, "first_unequal": 1}
+{"server": "r2_koff_b", "answer": "repeat", "unequal_vs_r1_koff_first": 0, "first_unequal": null}
+{"server": "r3_koff_mask", "answer": "first", "unequal_vs_r1_koff_first": 0, "first_unequal": null}
+{"server": "r3_koff_mask", "answer": "repeat", "unequal_vs_r1_koff_first": 0, "first_unequal": null}
+{"server": "r3_kon_mask", "answer": "first", "unequal_vs_r1_koff_first": 0, "first_unequal": null}
+{"server": "r3_kon_mask", "answer": "repeat", "unequal_vs_r1_koff_first": 0, "first_unequal": null}
+{"server": "r1_kon", "answer": "first", "unequal_vs_r1_koff_first": 36, "first_unequal": 0}
+{"server": "r1_kon", "answer": "repeat", "unequal_vs_r1_koff_first": 33, "first_unequal": 0}

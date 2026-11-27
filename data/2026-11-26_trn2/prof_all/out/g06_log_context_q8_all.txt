@@ -1,0 +1,10 @@
+========== q8_all profiler_start lines 1 stop lines 1
+ start: USDT:2026-11-27 01:45:35 192:192 SyncAct | stop: USDT:2026-11-27 01:45:37 192:192 SyncAct
+    ('2026-11-27 01:45:33', 'running', '32', 'tokens', '12544')
+    ('2026-11-27 01:45:34', 'running', '32', 'tokens', '6272')
+       ...
+    ('2026-11-27 01:45:37', 'running', '32', 'tokens', '8192')
+    ('2026-11-27 01:45:38', 'running', '32', 'tokens', '8192')
+  pass 0 s 4.588 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 1 s 6.929 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 2 s 4.625 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0

@@ -135,6 +135,35 @@ Not in this repository:
 
 Result files are JSON lines written by `rl_common.py`: one line per step or probe, a finished run ends with
 `{"done": true}`, a failed step leaves a line with `"status": "fail"` before it. Counts and timings only; no question or
-answer text. (The files of `data/2026-11-24_trn2/` differ: several were written by probes that are not indexed in this
-file, and some hold model output text and server log lines; see that folder's README.) A file without the last line was stopped (for example `48_inplace_dsv2_full_stopped_after_1h.jsonl`, kept
+answer text. (The files of `data/2026-11-24_trn2/` and `data/2026-11-26_trn2/` differ: several were written by probes
+that are not indexed in this file, and some hold model output text and server log lines; see each folder's README.) A file without the last line was stopped (for example `48_inplace_dsv2_full_stopped_after_1h.jsonl`, kept
 on purpose; `48_inplace_dsv2_try1_cache_race.jsonl` is the first attempt that died on a compile-cache race).
+
+## 10. Scripts of the trn2 session of 2026-11-26
+
+Added 2026-11-27. The code is what was on the machine (UTC 2026-11-27 00:34 to 05:13, one trn2.48xlarge, several jobs at
+the same time on separate chips). Changed afterwards: comment lines that pointed to private notes and issue numbers were reworded in
+`s4_run.sh`, `s4_8b.sh` and `s4_profile.py`; the llmbench clone address in `s4_prep.sh` is now the variable `LLMBENCH_URL`
+(as run, the script cloned the repository named in the header of `22b_llmbench_grid.sh`); `selftest_81.py` replaces the new
+`${LB_TEMP:-0}` of the `22b` config text by its default before comparing it with the text `81_opt_sweep.py` writes (125 of 125
+checks pass again). Results, conditions and limits are in
+[`data/2026-11-26_trn2/`](../data/2026-11-26_trn2/README.md). Status words as above.
+
+| Script | Question | Needs | Results (in `data/2026-11-26_trn2/`) | Status |
+|---|---|---|---|---|
+| `s4_prep.sh` | Helper: the image, Qwen3-0.6B, Qwen3-8B, GSM8K and llmbench at its pinned commit on a fresh machine | network, Docker, `LLMBENCH_URL` | `serving/driver_logs/s4_prep.log` | helper |
+| `s4_profile.py` | One server, three identical rollout passes of 32 concurrent requests of 256 tokens (`ignore_eos`); the device profile comes from the launch-time capture window (`SGLANG_NEURON_PROFILE_SERVE_*` in `SGL_ENV`), not from `/start_profile` | trn2, one chip | `serving/s4_profile_*.jsonl` | measured |
+| `s4_run.sh` | Driver: `phaseA`, `phaseA2` to `phaseA4` start two to seven servers at once on separate chips, each with its own cache, and capture a device profile (with and without `NEURON_RT_ENABLE_DGE_NOTIFICATIONS`); `b1` to `b7` benchmark one server at a time (llmbench, prompt 1,024, concurrency 1/8/32) at temperature 0 twice and at temperature 0.8 or with top-k 50 and top-p 0.95 | trn2, the patch folders it names (not here) | `serving/` | measured |
+| `s4_x.sh` | The generic form of the two steps of `s4_run.sh` (`prof`, `bench`) for any tag, model size, sampler, cores, patch folder and environment | trn2 | `serving/` (tags `q06_all`, `q06_topk_all`, `q8_all`, `q06_lmh_on`, `q06_lmh_off`) | measured |
+| `s4_8b.sh` | Qwen3-8B, temperature 0, two passes: the vllm-neuron server that was already running, then SGLang-Neuron released and fork main | trn2, a running vllm-neuron server | `serving/llmbench_b_q8_*.csv` | measured |
+| `s4_table.py` | One line per benchmark summary: tokens per second and TTFT p50 at each concurrency | host | none (the tables of the folder are made by `make_tables.py` there) | helper |
+| `22b_llmbench_grid.sh` | Changed: `LB_TEMP` (request temperature, default 0 as before) and `LB_EXTRA_BODY` (more request fields, `name=value` items) | network for the clone | the `.yaml` next to each `llmbench_*.csv` | helper |
+
+The scripts of the single lines (correctness collection and comparison, host trace summaries, replica layouts, attention-cache
+settings, the pre-transposed LM head runs, the device-profile analysis, the compiler-argument poller, the launcher test) are
+kept next to their results in the sub-folders of `data/2026-11-26_trn2/` (`scripts/`, `logs/` or the folder itself).
+
+Not in this repository: the patch folders `s4_run.sh` and `s4_x.sh` mount (`sglang_neuron_main_2c6d86d`, `sglang_neuron_int_topk`,
+`sglang_neuron_lmhead_int_26213e7`, and the patch folders of the `i37` runs), which are fork-branch states; the sampler-kernel
+probes `82_` to `84_` (in the fork); further drivers of the session that repeat steps of `s4_run.sh`; the CPU reference run of the
+session; server logs and device profiles.

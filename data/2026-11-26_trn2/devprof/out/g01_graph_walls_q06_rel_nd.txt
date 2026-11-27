@@ -1,0 +1,30 @@
+============================== q06_rel_nd
+n executions 4 neff names ['bd940fb848f9f71118348a22d6bcd71c.neff']
+walls ms [9.241, 9.148, 9.189, 9.178] mean 9.189 min 9.148 max 9.241
+gaps between executions ms [20.086, -0.004, -0.005]
+Metadata: {'profile_schema_version': '12.0.1', 'ntff_version': 7, 'num_physical_cores': 2, 'neuroncore_version': 'v3', 'runtime_version': '2.35.30 (d2725)', 'collectives_version': '0.35.43 ("354a)', 'driver_version': '2.31.0 ()', 'explorer_version': '2.33.0.1039-60059b2', 'compiler_version': '2.28.7631.0+8f7b0cf5', 'nki_version': '0.7.0+37713544100.gfede04bb', 'neuron_device_idx': 4, 'capture_type': 'hardware'}
+NeffHeader: {'uuid': 'd71201b8856cca23007ff5d326b55d8f', 'enabled_features': 'imcpy-bound-check, fma-multi-dim, virtual-core, v3-2x-4x-dve-perf-mode, dge, pool-rsqrt, dge-cast, vector-dge, hw-dge, Feature bit', 'data_size': np.int64(3525555)}
+IN/OUT shapes with <=2 dims (count over TensorInfo rows):
+type        shape   n
+  IN       [1024] 228
+  IN        [128] 224
+  IN  [1024 1024] 112
+  IN  [1024 1536] 112
+  IN   [512 1024] 112
+  IN   [768 1024] 112
+  IN       [32 2]  12
+  IN         [32]  12
+  IN          [1]   8
+  IN       [2 32]   4
+  IN       [32 8]   4
+  IN [37984 1024]   4
+  IN         [64]   4
+ OUT         [32]   8
+IN shapes with >=4 dims (KV cache candidates):
+type            shape   n
+  IN [1025 2 128 128] 224
+ OUT [1025 2 128 128] 224
+WEIGHT shapes (top): {'[128 128 1 1]': 8, '[1 1 1 128]': 4}
+vocab-sized tensors: {('IN', '[37984 1024]'): 4}
+CcOp per profile: {'ALLGATHER': {'n': 4, 'in_B': 512.0}, 'ALLREDUCE': {'n': 228, 'in_B': 65536.0}, 'BARRIER': {'n': 4, 'in_B': 0.0}}
+Throttle rows 100 sum duration by pcore {0: 3972067, 1: 3794717}

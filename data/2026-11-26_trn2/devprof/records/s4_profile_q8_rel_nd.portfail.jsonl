@@ -1,0 +1,4 @@
+{"event": "open", "pid": 270056, "unix": 1795741978.3}
+{"event": "server_start", "ready_s": null, "log": "/home/ubuntu/w/results_s4/server_logs/server_prof_q8_rel_nd_001.log", "start_no": 1, "launcher_exit": 125}
+{"status": "fail", "stage": "profile", "error_type": "RuntimeError", "message": "server did not become ready"}
+{"done": true}

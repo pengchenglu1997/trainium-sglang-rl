@@ -1,0 +1,54 @@
+==================== q06_rel_nd Unknown 4.19-Mflop transposes total rows 9472 per step 2368.0
+ exec    n  first_ms  last_end_ms  union_ms  instr_ms  n_before_last_allreduce  n_A2  n_from_lmhead  cut_l_ms  lmhead_start_ms
+    0 1184     5.877        7.001     0.191     0.362                       12  1160             12     5.899            6.978
+    1 1184     5.784        6.906     0.191     0.362                       12  1160             12     5.806            6.883
+    2 1184     5.826        6.950     0.191     0.362                       12  1160             12     5.848            6.927
+    3 1184     5.816        6.939     0.191     0.362                       12  1160             12     5.841            6.915
+==================== q06_main_nd Unknown 4.19-Mflop transposes total rows 9472 per step 2368.0
+ exec    n  first_ms  last_end_ms  union_ms  instr_ms  n_before_last_allreduce  n_A2  n_from_lmhead  cut_l_ms  lmhead_start_ms
+    0 1184     6.297        7.378     0.205      0.36                       16  1168              0     6.321            7.383
+    1 1184     5.992        7.072     0.205      0.36                       16  1168              0     6.016            7.077
+    2 1184     6.039        7.120     0.205      0.36                       16  1168              0     6.061            7.125
+    3 1184     6.036        7.119     0.205      0.36                       16  1168              0     6.060            7.124
+==================== q06_lmh_off_nd Unknown 4.19-Mflop transposes total rows 9472 per step 2368.0
+ exec    n  first_ms  last_end_ms  union_ms  instr_ms  n_before_last_allreduce  n_A2  n_from_lmhead  cut_l_ms  lmhead_start_ms
+    0 1184     5.972        7.092     0.191     0.361                       12  1160             12     5.994            7.070
+    1 1184     5.789        6.913     0.191     0.362                       12  1160             12     5.811            6.889
+    2 1184     5.836        6.958     0.191     0.361                       12  1160             12     5.858            6.935
+    3 1184     5.827        6.950     0.191     0.361                       12  1160             12     5.849            6.926
+==================== q06_lmh_on_nd Unknown 4.19-Mflop transposes total rows 0 per step 0.0
+ exec  n  first_ms  last_end_ms  union_ms  instr_ms  n_before_last_allreduce  n_A2  n_from_lmhead  cut_l_ms  lmhead_start_ms
+    0  0       NaN          NaN       0.0       0.0                        0     0              0     6.056            6.056
+    1  0       NaN          NaN       0.0       0.0                        0     0              0     5.887            5.887
+    2  0       NaN          NaN       0.0       0.0                        0     0              0     5.945            5.945
+    3  0       NaN          NaN       0.0       0.0                        0     0              0     5.941            5.941
+==================== q06_topk_nd Unknown 4.19-Mflop transposes total rows 9472 per step 2368.0
+ exec    n  first_ms  last_end_ms  union_ms  instr_ms  n_before_last_allreduce  n_A2  n_from_lmhead  cut_l_ms  lmhead_start_ms
+    0 1184     6.238        6.595     0.138     0.333                        8     0           1176     6.241            6.241
+    1 1184     6.018        6.376     0.133     0.324                        8     0           1176     6.020            6.020
+    2 1184     6.077        6.435     0.133     0.324                        0     0           1184     6.077            6.077
+    3 1184     6.067        6.426     0.132     0.322                        8     0           1176     6.070            6.070
+==================== q06_topk_koff Unknown 4.19-Mflop transposes total rows 9472 per step 2368.0
+ exec    n  first_ms  last_end_ms  union_ms  instr_ms  n_before_last_allreduce  n_A2  n_from_lmhead  cut_l_ms  lmhead_start_ms
+    0 1184     6.145        6.500     0.134     0.326                       12     0           1172     6.149            6.149
+    1 1184     6.050        6.405     0.139     0.335                        8     0           1176     6.052            6.052
+    2 1184     6.094        6.450     0.138     0.333                        8     0           1176     6.097            6.097
+    3 1184     6.073        6.428     0.137     0.332                       11     0           1173     6.077            6.077
+==================== q06_topk_kon Unknown 4.19-Mflop transposes total rows 9472 per step 2368.0
+ exec    n  first_ms  last_end_ms  union_ms  instr_ms  n_before_last_allreduce  n_A2  n_from_lmhead  cut_l_ms  lmhead_start_ms
+    0 1184     6.361        6.667     0.110     0.308                        8     0           1176     6.371            6.371
+    1 1184     6.036        6.344     0.110     0.307                        8     0           1176     6.049            6.049
+    2 1184     6.058        6.368     0.110     0.307                        8     0           1176     6.070            6.070
+    3 1184     6.061        6.365     0.108     0.303                        8     0           1176     6.072            6.072
+==================== q8_rel_nd Unknown 4.19-Mflop transposes total rows 37888 per step 9472.0
+ exec    n  first_ms  last_end_ms  union_ms  instr_ms  n_before_last_allreduce  n_A2  n_from_lmhead  cut_l_ms  lmhead_start_ms
+    0 4736    13.061       13.767     0.326     1.095                       64    25           4647    13.088           13.118
+    1 4736    12.839       13.549     0.330     1.103                       64    25           4647    12.870           12.897
+    2 4736    12.877       13.591     0.331     1.105                       64    25           4647    12.905           12.935
+    3 4736    12.886       13.596     0.328     1.101                       64    25           4647    12.912           12.944
+==================== q8_main_nd Unknown 4.19-Mflop transposes total rows 37888 per step 9472.0
+ exec    n  first_ms  last_end_ms  union_ms  instr_ms  n_before_last_allreduce  n_A2  n_from_lmhead  cut_l_ms  lmhead_start_ms
+    0 4736    13.464       14.055     0.304     1.061                       80    16           4640    13.502           13.524
+    1 4736    12.855       13.439     0.308     1.070                       80    16           4640    12.895           12.914
+    2 4736    12.908       13.497     0.316     1.086                       80    16           4640    12.947           12.967
+    3 4736    12.905       13.489     0.317     1.088                       80    16           4640    12.944           12.964

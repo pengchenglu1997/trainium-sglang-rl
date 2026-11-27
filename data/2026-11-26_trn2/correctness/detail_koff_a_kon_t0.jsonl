@@ -1,0 +1,20 @@
+{"i": 0, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-1.1727924346923828, -1.2044830322265625]}
+{"i": 1, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-0.7074165344238281, -0.6880321502685547]}
+{"i": 2, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-0.8529205322265625, -0.8502101898193359]}
+{"i": 3, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-0.8503208160400391, -0.8467960357666016]}
+{"i": 4, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-0.9134902954101562, -0.8855304718017578]}
+{"i": 5, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-0.053619384765625, -0.05367469787597656]}
+{"i": 6, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-0.7338924407958984, -0.7566184997558594]}
+{"i": 7, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-0.4530925750732422, -0.4600982666015625]}
+{"i": 8, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-1.1533775329589844, -1.145233154296875]}
+{"i": 9, "fork": 4, "first_unequal_logprob_pos": 0, "lp0": [-1.4925041198730469, -1.52490234375], "at_fork": {"tok_a": " Translate", "lp_a": -1.0378074645996094, "tok_b": " \"", "lp_b": -1.0361557006835938}}
+{"i": 10, "fork": 5, "first_unequal_logprob_pos": 0, "lp0": [-0.2836952209472656, -0.27065086364746094], "at_fork": {"tok_a": " of", "lp_a": -0.6682834625244141, "tok_b": ",", "lp_b": -0.7051830291748047}}
+{"i": 11, "fork": 8, "first_unequal_logprob_pos": 0, "lp0": [-0.25209808349609375, -0.24885177612304688], "at_fork": {"tok_a": " produces", "lp_a": -1.1249504089355469, "tok_b": " provides", "lp_b": -1.1411895751953125}}
+{"i": 12, "fork": 16, "first_unequal_logprob_pos": 0, "lp0": [-0.2888755798339844, -0.2959556579589844], "at_fork": {"tok_a": ".", "lp_a": -0.9578495025634766, "tok_b": ",", "lp_b": -0.9577808380126953}}
+{"i": 13, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-0.001674652099609375, -0.0015773773193359375]}
+{"i": 14, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-0.6578483581542969, -0.6483211517333984]}
+{"i": 15, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-0.6394538879394531, -0.6008491516113281]}
+{"i": 16, "fork": 5, "first_unequal_logprob_pos": 0, "lp0": [-0.3250007629394531, -0.3224315643310547], "at_fork": {"tok_a": " are", "lp_a": -0.7384052276611328, "tok_b": " is", "lp_b": -0.7387561798095703}}
+{"i": 17, "fork": 27, "first_unequal_logprob_pos": 0, "lp0": [-0.2214527130126953, -0.23079490661621094], "at_fork": {"tok_a": ".", "lp_a": -0.8057518005371094, "tok_b": ",", "lp_b": -0.8091106414794922}}
+{"i": 18, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-0.4593944549560547, -0.4585990905761719]}
+{"i": 19, "fork": null, "first_unequal_logprob_pos": 0, "lp0": [-1.2506351470947266, -1.2102031707763672]}

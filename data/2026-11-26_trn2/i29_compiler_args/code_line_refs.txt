@@ -1,0 +1,27 @@
+92:COMPILER_ARGS = [
+94:    "--verbose=35",
+95:    "-O1",
+96:    "--internal-hlo2tensorizer-options=--modular-flow-mac-threshold=10",
+97:    "--internal-backend-options=--enable-verifier=false",
+98:    f"--hbm-scratchpad-page-size={SCRATCHPAD_PAGE_MB}",
+617:        page = f"--hbm-scratchpad-page-size={serving_policy.current().scratchpad_page_mb}"
+101:    def neuron_compiler_args(self, phase: str, default_args: list[str]) -> list[str]:
+104:        if phase != "decode" or sampling.MAX_TOP_LOGPROBS > 0 or sampling.sampler_mode() == "topk_topp":
+110:                arg = "-O2"
+230:        if self.mode == "topk_topp":
+28:SCRATCHPAD_PAGE_MB = 3584
+189:# reads the two variables when the graph is first called (the call that compiles it); both are part of the NEFF's
+204:GENERIC_MODEL_TYPE_ARG = "--model-type=generic"
+206:SPLIT_FINDER_OPTION = SPLITTER_OPTION + "false"
+232:def torchneuronx_compiler_env(compiler_args: List[str]) -> dict:
+47:    def get_neuronx_cc_args(
+65:            "compile",
+75:            self.optimization_level,
+82:        args.extend(self.extra_flags)
+276:        cmd = [
+281:        result = subprocess.run(cmd, capture_output=True, text=True, cwd=workdir)
+207:class SampledExecution(nn.Module):
+231:            return sampling.sample_filtered_sharded_logits(logits, self.group, rank, self.vocabulary_size,
+233:        return sampling.sample_sharded_logits(logits, self.group, rank, self.vocabulary_size, temperatures, keys)
+no_i29_procs
+Fri Nov 27 04:37:09 UTC 2026
