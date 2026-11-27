@@ -85,10 +85,10 @@ refer to them by name. Numbers in file names are the order in which the probes w
 | **Trainers** | `trainer.py`, `ptrainer.py`, `trainer8b.py` | LoRA trainer (one core); data-parallel version (LoRA values and gradients in shared memory); 8B variant |
 | **The loop** | `30_rl_loop.py` | the loop; main flags `--backend`, `--replicas`, `--sync-payload merged\|adapter`, `--train-compile`, `--train-cores`, `--overlap`, `--trainer8b`, `--len-buckets`, `--seed` |
 | **Server launchers** | `srv_sglang_neuron.sh`, `srv_vllm_neuron_docker.sh`, `srv_sglang_cuda_docker.sh`, `srv_other.sh` | one script per engine; backends registered in `backends.json`: `sglang_neuron`, `sglang_neuron_inplace`, `vllm_neuron`, `vllm_neuron_docker`, `vllm_cuda`, `sglang_cuda`, `sglang_cuda_docker` |
-| **Probes of 2026-11-24** | `73_` to `81_`, `22b_llmbench_grid.sh`, `lora_merge.py`, `mk_ulp.py`, `untie_ckpt.py`, `patch_manifest.py`, `selftest_74.py`, `selftest_75.py`, `selftest_81.py`, `r9_run.sh` | the trn2 session of 2026-11-24, as run; see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 8. The patch folders they mount are not here |
+| **Probes of 2026-11-24** | `73_` to `81_`, `82_cache_record.py` (added after the session), `22b_llmbench_grid.sh`, `lora_merge.py`, `mk_ulp.py`, `untie_ckpt.py`, `patch_manifest.py`, `selftest_74.py`, `selftest_75.py`, `selftest_81.py`, `selftest_cache_record.py`, `selftest_launcher_env.py`, `r9_run.sh` | the trn2 session of 2026-11-24, as run; see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 8. The patch folders they mount are not here |
 | **Probes** | `20_` to `72_` | see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md): question, hardware, result files and record for each |
 | **Session scripts** | `50_run_trn2_session.sh`, `run_night_1121.sh`, `run_shape_1122.sh`, `run_w1w2.sh`, `scripts/run_trn2_seeds.sh`, `scripts/run_cuda_baseline.sh` | the order in which probes ran on one machine; each prints marker lines and a last line `*_DONE` |
-| **Tests without hardware** | `selftest_fake_server.py`, `62_lazy_delta_test.py`, `65_trainer8b_cpu_test.py`, `66_pull_weights_shim_test.py` | CPU only |
+| **Tests without hardware** | `selftest_fake_server.py`, `selftest_cache_record.py`, `selftest_launcher_env.py`, `62_lazy_delta_test.py`, `65_trainer8b_cpu_test.py`, `66_pull_weights_shim_test.py` | CPU only |
 | **Report helpers** | `60_report_figures.py`, `59b_profile_sum.py`, `59c_profile_peek.py`, `59d_devprof_sum.py`, `63_padding_share.py` | figures and summaries read from result files |
 | **Patch** | `patches/sglang_neuron_v0.1.0_inplace/` (patched files, `orig/` holds the v0.1.0 originals), `patches/diff/`, `patches/PR_DRAFT_inplace_weight_update.md` | see [The patch](#the-patch) |
 | **Data** | `data/2026-11-20/`, `data/2026-11-21_night/` | result files, see [Data and records](#data-and-records) |
@@ -106,6 +106,8 @@ SGLang-Neuron v0.1.0 image. CUDA: one GPU and Docker. The probes and loop read t
 | `SGL_PATCH_DIR` | folder of patched plugin files to copy over the installed package |
 | `SGL_IMAGE`, `SGL_CORES`, `SGL_SAMPLER`, `SGL_EXTRA` | image, `NEURON_RT_VISIBLE_CORES` of the server, sampler mode, extra launch flags |
 | `DATA_ROOT` | disk with models and GSM8K for the session scripts |
+| `PROFILE_ROOT` | host folder for Neuron profile output (`59_decode_profile.py`, `run_night_1121.sh`), mounted at `/profiles` in the server container; default `$DATA_ROOT/profiles`; never the compile cache folder |
+| `VLLM_ENV`, `VLLM_COMPILE_TIMEOUT` | `srv_vllm_neuron_docker.sh`: extra container environment (`NAME=value` items separated by spaces); the compile timeout in seconds, set under both `VLLM_NEURON_COMPILATION_TIMEOUT` and `NEURON_LIBTORCH_COMPILATION_TIMEOUT` |
 
 **RL loop.**
 
@@ -118,6 +120,8 @@ bash scripts/run_cuda_baseline.sh
 python 60_report_figures.py <dir with the result folders> <out dir>
 ```
 
+**End of a session.** After the servers have stopped: `python 82_cache_record.py --results <dir> --tag <tag> --root $DATA_ROOT` writes the size in bytes and the file count of each compile-cache folder (every sub-folder of `$DATA_ROOT` with `cache` in its name) to `82_cache_record_<tag>.jsonl`; `50_run_trn2_session.sh` has it as its last step, `cache_record`.
+
 **Single checks on a patched server.** Each probe prints its usage in its header, for example
 `48_inplace_server_test.py` (update equals a fresh start), `49_sync_stress.py` (many updates, updates under load),
 `50_adapter_server_test.py` (adapter update). The full list is in `docs/EXPERIMENTS.md`.
@@ -128,6 +132,9 @@ python 60_report_figures.py <dir with the result folders> <out dir>
 python selftest_fake_server.py
 python 62_lazy_delta_test.py <sglang-neuron v0.1.0 source root>
 python 65_trainer8b_cpu_test.py
+python selftest_81.py
+python selftest_cache_record.py
+python selftest_launcher_env.py     # needs bash
 MILES_DIR=<radixark/miles checkout> python 66_pull_weights_shim_test.py
 ```
 

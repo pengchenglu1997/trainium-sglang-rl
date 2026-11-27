@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # One trn2 session of the SGLang / RL plan (../NEXT_ROUND_PLAN_2026-11-20.md), in order.
 #   bash 50_run_trn2_session.sh [step ...]      default: all steps
-# Steps: prep sgl_up sgl_acc sgl_probes sgl_bench loop_sgl loop_hf loop_vllm ddp
+# Steps: prep sgl_up sgl_acc sgl_probes sgl_bench loop_sgl loop_hf loop_vllm ddp cache_record (last: size and file count of each cache folder)
 # Start it detached: nohup setsid bash 50_run_trn2_session.sh > $R/session_$(date +%s).out 2>&1 &
 # It can be started again: a step whose result file is finished without a fail line is skipped.
 # One marker line per step: "== S <time> <step> ok|FAILED|skipped ...".
@@ -126,7 +126,16 @@ step_ddp() {
   [ "$fails" = 0 ] && say "ddp ok" || { say "ddp FAILED ($fails of 5)"; return 1; }
 }
 
-ALL="prep sgl_up sgl_acc sgl_probes sgl_bench loop_sgl loop_hf loop_vllm ddp"
+step_cache_record() {   # end of session: bytes and file count of every compile-cache folder under DATA_ROOT
+  # the session's own server is stopped first (a cache a container still writes has no final count); KEEP_SGL=1 keeps it and
+  # the numbers are then not final
+  [ "${KEEP_SGL:-0}" = 1 ] || bash srv_sglang_neuron.sh stop "$SRV" 2>/dev/null
+  "$PY" 82_cache_record.py --results "$R" --tag session --root "$DATA_ROOT" > "$R/logs/cache_record.out" 2>&1
+  cat "$R/logs/cache_record.out"
+  ok_file "$R/82_cache_record_session.jsonl" && say "cache_record ok" || { say "cache_record FAILED"; return 1; }
+}
+
+ALL="prep sgl_up sgl_acc sgl_probes sgl_bench loop_sgl loop_hf loop_vllm ddp cache_record"
 stop_loop_servers() {   # a loop killed hard can leave its container on cores 0-3
   bash srv_sglang_neuron.sh stop rl_sgl 2>/dev/null
   pkill -f "vllm serve .*--served-model-name rl_" 2>/dev/null || true

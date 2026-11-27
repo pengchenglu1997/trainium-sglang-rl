@@ -12,6 +12,8 @@ set -u
 source /opt/aws_neuronx_venv_torch_neuronx_2_14_0/bin/activate
 export DATA_ROOT=$HOME/w PY=/opt/aws_neuronx_venv_torch_neuronx_2_14_0/bin/python
 export MODELS_ROOT=$DATA_ROOT/models SGL_CACHE=$DATA_ROOT/sgl_cache_v0.1.0_night1121
+# profile output (59_decode_profile.py) goes here, mounted at /profiles in the server container: outside the compile cache
+export PROFILE_ROOT="${PROFILE_ROOT:-$DATA_ROOT/profiles}"
 cd "$(dirname "$0")"
 export SGL_PATCH_DIR="$PWD/patches/sglang_neuron_v0.1.0_inplace"
 IMAGE="public.ecr.aws/neuron/pytorch-inference-sglang-neuron:v0.1.0-neuron-py314-sdk-2.33.0-ubuntu26.04"
@@ -104,7 +106,7 @@ case "$WHAT" in
       59_decode_profile.py --model "$M/Qwen3-0.6B" --train-jsonl "$M/gsm8k/train.jsonl" --results "$R" --tag p1 \
       --cores 16-19 > "$R/logs/profile.out" 2>&1
     grep -h '"event": "pass"\|profile' "$R/59_decode_profile_p1.jsonl" | cut -c1-260
-    sudo find "$SGL_CACHE/profile_p1" -maxdepth 3 | head -20
+    sudo find "$PROFILE_ROOT/profile_p1" -maxdepth 3 | head -20
     ;;
   boundary)   # check 2b: where the top-p filter cuts, on prompts with a flatter first-token distribution
     SGL_EXTRA="$SMALL" SGL_ENV="RLKIT_DECODE_LADDER=0" "$PY" 58_sampler_probe.py --model "$M/Qwen3-0.6B" \
@@ -119,11 +121,11 @@ case "$WHAT" in
     grep -h '"event": "update"\|"event": "check"\|"status": "fail"' "$R/50_adapter_q8.jsonl" | cut -c1-300
     ;;
   devprofile) # check 4b: device profile of 4 decode steps of TP rank 0 (launch-time window of the profiling guide)
-    SGL_EXTRA="$SMALL" SGL_ENV="RLKIT_DECODE_LADDER=0 SGLANG_NEURON_PROFILE_SERVE_RANKS=0 SGLANG_NEURON_PROFILE_DIR=/cache/devprof_p2" \
+    SGL_EXTRA="$SMALL" SGL_ENV="RLKIT_DECODE_LADDER=0 SGLANG_NEURON_PROFILE_SERVE_RANKS=0 SGLANG_NEURON_PROFILE_DIR=/profiles/devprof_p2" \
       "$PY" 59_decode_profile.py --model "$M/Qwen3-0.6B" --train-jsonl "$M/gsm8k/train.jsonl" --results "$R" \
       --tag p2 --cores 16-19 --port 30091 > "$R/logs/devprofile.out" 2>&1
     cut -c1-240 "$R/59_decode_profile_p2.jsonl"
-    sudo find "$SGL_CACHE/devprof_p2" -maxdepth 3 | head -20
+    sudo find "$PROFILE_ROOT/devprof_p2" -maxdepth 3 | head -20
     ;;
   *) echo "usage: run_night_1121.sh prep|gen glm4|gen dsv2|sampler|q8|profile|boundary|adapter8|devprofile"; exit 2 ;;
 esac
