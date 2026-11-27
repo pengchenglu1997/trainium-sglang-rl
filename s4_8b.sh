@@ -4,9 +4,9 @@
 #   sgl     SGLang-Neuron released temperature sampler, then fork main with the sampler kernel, cores 4-7, warm caches
 set -u
 cd "$(dirname "${BASH_SOURCE[0]}")" || exit 2
-VENV=/opt/aws_neuronx_venv_torch_neuronx_2_14_0
+VENV="${VENV:-/opt/aws_neuronx_venv_torch_neuronx_2_14_0}"
 [ -f "$VENV/bin/activate" ] && source "$VENV/bin/activate"
-export DATA_ROOT="$HOME/w" MODELS_ROOT="$HOME/w/models"
+export DATA_ROOT="${DATA_ROOT:-$HOME/w}"; export MODELS_ROOT="$DATA_ROOT/models"
 PY="$VENV/bin/python"; [ -x "$PY" ] || PY=python3
 M="$MODELS_ROOT"; R="$DATA_ROOT/results_s4"
 say() { echo "== S $(date -u +%H:%M:%S) $*"; }

@@ -3,16 +3,13 @@
 RL post-training on AWS Trainium2 with SGLang-Neuron: a measured loop, and an experimental patch that lets
 SGLang-Neuron v0.1.0 take new weights without a server restart.
 
-> **Where the work continues.** This page describes the work up to 2026-11-22. Since then the engine changes and
-> kernels are developed in the fork [pengchenglu1997/sglang-neuron](https://github.com/pengchenglu1997/sglang-neuron)
-> (its README has the branch layout), and the results of later sessions, including the trn2 session of 2026-11-24, are
-> written up in that fork's
-> [docs/rl/RESULTS.md](https://github.com/pengchenglu1997/sglang-neuron/blob/main/docs/rl/RESULTS.md). The result files
-> of that session are in [`data/2026-11-24_trn2/`](data/2026-11-24_trn2/README.md); the probe scripts that wrote them
-> (numbers 73 to 81) are at the top level, indexed in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 8. The trn2 session of
-> 2026-11-26 (UTC 2026-11-27 00:34 to 05:13) is in [`data/2026-11-26_trn2/`](data/2026-11-26_trn2/README.md); its scripts
-> (`s4_*`) are at the top level, indexed in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 10. The sections "Results so far" and "Plan and open work"
-> below are as of 2026-11-22.
+**Current state**
+
+- Last hardware session: the trn2 session of 2026-11-26 (UTC 2026-11-27 00:34 to 05:13).
+- Its result files: [`data/2026-11-26_trn2/`](data/2026-11-26_trn2/README.md); the scripts that wrote them are `s4_*` at the top level.
+- Reproduce its fastest Qwen3-0.6B number: [`REPRODUCE.md`](REPRODUCE.md).
+- Write-up and results table of the engine changes: [`docs/rl/RESULTS.md`](https://github.com/pengchenglu1997/sglang-neuron/blob/main/docs/rl/RESULTS.md) in the fork [pengchenglu1997/sglang-neuron](https://github.com/pengchenglu1997/sglang-neuron).
+- The results table and the plan of 2026-11-22 were moved out of this page: [`docs/archive/README_front_page_2026-11-22.md`](docs/archive/README_front_page_2026-11-22.md).
 
 Three parts, each usable on its own:
 
@@ -30,12 +27,10 @@ Status: experimental, one run per claim unless a record says otherwise. [Limits]
 2. [Architecture](#architecture)
 3. [Repository map](#repository-map)
 4. [Running it](#running-it)
-5. [Results so far](#results-so-far)
-6. [The patch](#the-patch)
-7. [Data and records](#data-and-records)
-8. [Limits](#limits)
-9. [Plan and open work](#plan-and-open-work)
-10. [License](#license)
+5. [The patch](#the-patch)
+6. [Data and records](#data-and-records)
+7. [Limits](#limits)
+8. [License](#license)
 
 ## Status of each piece
 
@@ -88,10 +83,10 @@ refer to them by name. Numbers in file names are the order in which the probes w
 | **The loop** | `30_rl_loop.py` | the loop; main flags `--backend`, `--replicas`, `--sync-payload merged\|adapter`, `--train-compile`, `--train-cores`, `--overlap`, `--trainer8b`, `--len-buckets`, `--seed` |
 | **Server launchers** | `srv_sglang_neuron.sh`, `srv_vllm_neuron_docker.sh` (with `nki_index_check.py`; CPU self-test `selftest_nki_index_check.py`), `srv_sglang_cuda_docker.sh`, `srv_other.sh` | one script per engine; backends registered in `backends.json`: `sglang_neuron`, `sglang_neuron_inplace`, `vllm_neuron`, `vllm_neuron_docker`, `vllm_cuda`, `sglang_cuda`, `sglang_cuda_docker` |
 | **Probes of 2026-11-24** | `73_` to `81_`, `82_cache_record.py` (added after the session), `22b_llmbench_grid.sh`, `lora_merge.py`, `mk_ulp.py`, `untie_ckpt.py`, `patch_manifest.py`, `selftest_74.py`, `selftest_75.py`, `selftest_81.py`, `selftest_cache_record.py`, `selftest_launcher_env.py`, `r9_run.sh` | the trn2 session of 2026-11-24, as run; see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 8. The patch folders they mount are not here |
-| **Session scripts of 2026-11-26** | `s4_prep.sh`, `s4_run.sh`, `s4_x.sh`, `s4_8b.sh`, `s4_profile.py`, `s4_table.py`; `22b_llmbench_grid.sh` (two new request variables) | the trn2 session of 2026-11-26, as run (comment lines reworded, one clone address made a variable); see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 10. The patch folders they mount are not here |
+| **Session scripts of 2026-11-26** | `s4_prep.sh`, `s4_run.sh`, `s4_x.sh`, `s4_8b.sh`, `s4_profile.py`, `s4_table.py`; `22b_llmbench_grid.sh` (two new request variables) | the trn2 session of 2026-11-26, as run (comment lines reworded, one clone address made a variable; `s4_x.sh`, `s4_run.sh` and `s4_8b.sh` since read `DATA_ROOT` and `VENV` from the environment); see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 10. The as-run patch folders are not here; `make_patch_dir.py` builds one from a fork commit ([`REPRODUCE.md`](REPRODUCE.md)) |
 | **Probes** | `20_` to `72_` | see [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md): question, hardware, result files and record for each |
 | **Session scripts** | `50_run_trn2_session.sh`, `run_night_1121.sh`, `run_shape_1122.sh`, `run_w1w2.sh`, `scripts/run_trn2_seeds.sh`, `scripts/run_cuda_baseline.sh` | the order in which probes ran on one machine; each prints marker lines and a last line `*_DONE` |
-| **Tests without hardware** | `selftest_fake_server.py`, `selftest_cache_record.py`, `selftest_launcher_env.py`, `selftest_nki_index_check.py`, `62_lazy_delta_test.py`, `65_trainer8b_cpu_test.py`, `66_pull_weights_shim_test.py` | CPU only |
+| **Tests without hardware** | `selftest_fake_server.py`, `selftest_cache_record.py`, `selftest_launcher_env.py`, `selftest_nki_index_check.py`, `selftest_make_patch_dir.py`, `62_lazy_delta_test.py`, `65_trainer8b_cpu_test.py`, `66_pull_weights_shim_test.py` | CPU only |
 | **Report helpers** | `60_report_figures.py`, `59b_profile_sum.py`, `59c_profile_peek.py`, `59d_devprof_sum.py`, `63_padding_share.py` | figures and summaries read from result files |
 | **Patch** | `patches/sglang_neuron_v0.1.0_inplace/` (patched files, `orig/` holds the v0.1.0 originals), `patches/diff/`, `patches/PR_DRAFT_inplace_weight_update.md` | see [The patch](#the-patch) |
 | **Data** | `data/2026-11-20/`, `data/2026-11-21_night/`, `data/2026-11-24_trn2/`, `data/2026-11-26_trn2/` | result files, see [Data and records](#data-and-records) |
@@ -141,27 +136,9 @@ python selftest_81.py
 python selftest_cache_record.py
 python selftest_launcher_env.py     # needs bash
 python selftest_nki_index_check.py
+python selftest_make_patch_dir.py   # needs git
 MILES_DIR=<radixark/miles checkout> python 66_pull_weights_shim_test.py
 ```
-
-## Results so far
-
-Trn2 numbers are one run each unless the record says more. Sources are the records named in the last column.
-
-| Question | Qwen3-0.6B | Qwen3-8B | Source |
-|---|---|---|---|
-| Restart-based sync (the only path in v0.1.0) | 455-460 s (21 decode shapes), 139 s (one bucket) | not run | `patches/PR_DRAFT_inplace_weight_update.md` |
-| Full update in place | 0.34-0.41 s | 4.7-6.2 s (loaders 3.6-4.7 s, copy 0.3-1.1 s) | PR draft; NIGHT_RECORD §4 |
-| Adapter update in place | 0.67 s | 13.9-14.0 s (13.5 s forming deltas on the host) | PR draft; NIGHT_RECORD §4 |
-| In place equals a fresh start | yes, same text and logprobs | yes; also GLM-4-9B-0414 and DeepSeek-V2-Lite, patch unchanged | NIGHT_RECORD §2 |
-| Many updates, requests in flight | 100 updates, no drift; 40 updates with 8 threads: no HTTP error, no answer on neither weight set | not run | PR draft |
-| RL step, 32 questions x 8 answers | 5.4 s on trn2 (CUDA 6.7 s) | not run | `docs/experiment-plan-2026-11-22.md` §3 |
-| GSM8K-500 greedy accuracy after 150 steps | 0.57 to 0.70-0.75 (4 trn2 seeds); CUDA 0.71 (1 seed) | not run | experiment plan §3 |
-| `topk_topp` sampler | takes top_p / top_k; 2,713-2,730 tok/s against 2,183-2,218 for `temperature` | not run | NIGHT_RECORD §3 |
-| Decode step, 32 rows, compiled context 1024 / 4096 / 8192 | 10.4 / 14.8 / 26.5 ms | not run | NIGHT_RECORD §6 |
-| Decode step, 1 row | 9.3 ms (one bucket), 4.6 ms (default buckets) | not run | NIGHT_RECORD §6 |
-| Where a decode step goes | device busy back to back, gaps 6-9 µs | not run | NIGHT_RECORD §5 |
-| Training | LoRA, 16 processes, 1.2 s a step | weights alone take 16.38 GB of a 25.8 GB core; not run | experiment plan §3 |
 
 ## The patch
 
@@ -212,14 +189,6 @@ and the result files of the probes of 19-20 November other than the loop files (
   shown.
 - The AWS setup for Trainium changes after 22 November; machine details in the records (region, image, security group)
   may no longer hold.
-
-## Plan and open work
-
-`docs/experiment-plan-2026-11-22.md`: W0 (laptop work: padding share, Miles call replay, 8B trainer variant) is done
-except W0.4; W1 (serving and sync probes) and W2 (8B training probes) are written and wait for a machine; W3 (8B
-loop), W4 (answer length and Miles end to end) and W5 (upstream PRs) follow the gates in the plan. Open items outside
-the plan: serving an unmerged LoRA, LoRA through Miles, Qwen3.5-class models (no training kernel for the Gated
-DeltaNet layers found).
 
 ## License
 

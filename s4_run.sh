@@ -14,7 +14,7 @@
 # No profile switches in phaseB. Marker lines "== S <UTC> ..."; every command ends with S_DONE.
 set -u
 cd "$(dirname "${BASH_SOURCE[0]}")" || exit 2
-VENV=/opt/aws_neuronx_venv_torch_neuronx_2_14_0
+VENV="${VENV:-/opt/aws_neuronx_venv_torch_neuronx_2_14_0}"
 [ -f "$VENV/bin/activate" ] && source "$VENV/bin/activate"
 export DATA_ROOT="${DATA_ROOT:-$HOME/w}"
 export PY="$VENV/bin/python"; [ -x "$PY" ] || export PY=python3

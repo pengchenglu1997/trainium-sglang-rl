@@ -157,6 +157,7 @@ checks pass again). Results, conditions and limits are in
 | `s4_x.sh` | The generic form of the two steps of `s4_run.sh` (`prof`, `bench`) for any tag, model size, sampler, cores, patch folder and environment | trn2 | `serving/` (tags `q06_all`, `q06_topk_all`, `q8_all`, `q06_lmh_on`, `q06_lmh_off`) | measured |
 | `s4_8b.sh` | Qwen3-8B, temperature 0, two passes: the vllm-neuron server that was already running, then SGLang-Neuron released and fork main | trn2, a running vllm-neuron server | `serving/llmbench_b_q8_*.csv` | measured |
 | `s4_table.py` | One line per benchmark summary: tokens per second and TTFT p50 at each concurrency | host | none (the tables of the folder are made by `make_tables.py` there) | helper |
+| `make_patch_dir.py` | Added after the session; helper: builds a patch folder from a fork checkout and a commit (the `sglang_neuron/*.py` files that differ from `upstream-main`, with sha256), CPU self-test `selftest_make_patch_dir.py`; how to use it: [`REPRODUCE.md`](../REPRODUCE.md) | git | `lm_head/patch_sha256.txt` (the as-run files) | helper, not started on a machine |
 | `22b_llmbench_grid.sh` | Changed: `LB_TEMP` (request temperature, default 0 as before) and `LB_EXTRA_BODY` (more request fields, `name=value` items) | network for the clone | the `.yaml` next to each `llmbench_*.csv` | helper |
 
 The scripts of the single lines (correctness collection and comparison, host trace summaries, replica layouts, attention-cache

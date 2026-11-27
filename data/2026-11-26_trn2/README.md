@@ -54,6 +54,8 @@ The first attempt of the `lmh_off` and `lmh_on` benchmarks (`driver_logs/s4_b6.l
 bench commands did not end in `LLMBENCH_DONE`); it left the four header-only `llmbench_*_k50_*.partial.csv` files. The second
 attempt (`driver_logs/s4_x_lmh.log`, temperature-0 and `t08` passes) completed 3 of 3. The server records of the first attempt
 (`*.prev.*`) are not published. A cache restored from a tar archive before one rerun is logged in `driver_logs/s4_restore.log`.
+What this showed (`tables.txt` section 1, c32, temperature 0, passes 1 and 2): Qwen3-8B released 1,421.0 and 1,421.3 tokens per second,
+`main` 1,496.5 and 1,499.1, `all` 1,492.1 and 1,500.8, vllm-neuron 1,126.9 and 1,112.4; Qwen3-0.6B `all` 3,324.2 and 3,313.3.
 
 `correctness/` Token-level comparisons between servers (20 short prompts, 48 new tokens, one request at a time, `top_logprobs`
 recorded, `out_*_t0.json`; sampled sets `t08`, `rl`, `minp` were also taken and are not published, `summary.jsonl` holds their
@@ -64,6 +66,8 @@ comparison. `gsm8k2/` is a second collection of two of the pairs. On Qwen3-0.6B 
 on Qwen3-8B the extra A/A control `q8_rel` against `q8_rel_b` is not bit-equal and shows the same largest logprob
 difference as the switch comparison `q8_rel` against `q8_all` (both lines of `summary.jsonl`, check4), so a difference of that size
 there is not attributable to the switch.
+What this showed (`tables.txt` section 4): Qwen3-0.6B, released against `all`, temperature 0: 17 of 20 prompts with the same tokens,
+largest logprob difference before a fork 0.103; GSM8K 200 questions, accuracy 0.5550 against 0.5650, exact McNemar p 0.804.
 
 `i12_vllm_start/` and `i34_nki_index/` Start tests of vllm-neuron on Qwen3-0.6B and Qwen3-8B. The image writes the kernel files
 its NKI compile-result index names into the container's own `/var/tmp`; an index left in a cache folder by an earlier
@@ -78,7 +82,8 @@ before the start (as `i12_a1_fix`) with no extra environment variable, ended `re
 holds the test of the launcher check that the repository now carries (`nki_index_check.py`, called by
 `srv_vllm_neuron_docker.sh`): the old launcher on a stale cache stopped with 28 `NCC_EVRF059` lines (`results/starts.jsonl`,
 `i34_a_old`); the new launcher removed the index folder and the same model reached ready (`i34_b_new`, `i34_c_new`); a start of
-the old launcher on the cache the new launcher had left also reached ready (`i34_d_old`). The launcher copies used in the test
+the old launcher on the cache the new launcher had left also reached ready (`i34_d_old`); `i34_e_new` repeated `i34_b_new` on a
+second copy of the same stale cache (94 index entries): index folder removed, ready, 0 `NCC_EVRF059` lines (`results/starts.jsonl`). The launcher copies used in the test
 are not repeated here. `retest/` is a rerun with a later version of the launcher (`i34_f_new2`, ready) with the CPU self-test
 outputs on the machine and on a Windows git bash (`selftests_linux.txt`, `selftests_windows.txt`);
 `selftests_linux_run1_fake_docker_not_executable.txt` is a first run that failed.
@@ -112,26 +117,37 @@ TP4 server, with the TP4 control run twice (`ctl06_a` first, `ctl06_b` last) and
 data-parallel 4 x TP1 server did not become ready (`76_serve_d_c_dp4_8.jsonl`, `ready_s` null). Its server log (not published)
 holds, at line 153, a `ValueError`: the loaded weights leave no GPU memory for the KV cache under `--mem-fraction-static=0.6`, and
 it asks for a value above 0.637. No higher value was tried, so whether that layout can serve Qwen3-8B is not known.
-`dp_table.txt` is the table made during the run.
+`results/dp_table.txt` is the table made during the run.
+What this showed (`results/dp_table.txt`, c32, temperature 0, passes 1 and 2): the four TP4 control passes 3,334.9 to 3,347.4 tokens per second;
+4 x TP1 3,099.3 and 3,089.3; 2 x TP2 2,334.1 and 2,332.9.
 
 `host_step/` The host side of one decode step on Qwen3-0.6B and Qwen3-8B, measured with two engine switches
 (`--decode-log-interval 1` with `SGLANG_LOG_FORWARD_ITERS=1`, and `SGLANG_NEURON_HOST_TRACE`) and single flag changes
 benchmarked against a control that stayed up (`events.jsonl`: starts and ready seconds; `summary/`: tables made from the server logs
 and the host trace; `scripts/`: the summary scripts). The host trace TSV files (7 to 16 MB each), the process listing
 and the server logs are not published.
+What this showed (`tables.txt` section 1, c32, temperature 0, passes 1 and 2): `p2v1` to `p2v4` 3,313.1 to 3,350.0 tokens per second
+against their controls 3,313.1 to 3,344.6; `p3v6` 3,339.4 and 3,338.9; `p3v5` 2,364.3 and 2,356.2; `p3v7` 2,462.1 and 2,496.9;
+`p1m` 3,331.2 and 3,339.7, `p1t` 3,342.6 and 3,344.7 against `p1c` 3,337.5 and 3,339.2.
 
 `kv_decode/` Decode and prefill settings that change the shape of the attention cache reads: `--cuda-graph-bs-prefill 2048`
 (`p2k`), and `--context-length` 2048, 3072 and 16384 (`ctx2k`, `ctx3k`, `ctx16k`), each against a back-to-back control (`ctl`,
 `ctl2`, `ctl3`), on Qwen3-0.6B and Qwen3-8B. `kv_summary.txt` is the table made during the run, `kv_tokcmp_*.txt` the token
 comparison, `kv_server_log_facts.txt` the counts taken from the server logs (the prefill-kernel `chunk_num_blocks` warnings and the decode bucket lines of each start; the logs are not published). One device-profile
 capture (`p2k_prof`) was taken and not analysed; the profile archive (49 MB) is not published.
+What this showed (`kv_summary.txt`, c32, temperature 0, passes 1 and 2): Qwen3-0.6B controls 3,341.1 to 3,357.5 tokens per second (six passes);
+`ctx2k` 3,271.0 and 3,335.2; `ctx3k` 3,059.9 and 3,063.2; `ctx16k` 2,591.3 and 2,594.9; `p2k` 2,874.2 and 2,868.8 with TTFT p50 0.461 and
+0.463 s (controls 0.253 to 0.258 s). Qwen3-8B `p2k` 1,056.2 and 1,058.2 against controls 1,497.6 to 1,504.0.
 
 `lm_head/` The pre-transposed LM head switch (`s0` / `s1`) with and without the temperature kernel (`k` / `n`), Qwen3-0.6B
 (five server starts) and Qwen3-8B (two starts): benchmark files in `results/`, the 20-prompt and 200-question GSM8K comparison in
 `cc/results/` (`summary.jsonl`; `cc/results/server_logs` are not published), the phase logs and the scripts. The benchmark
 cells of the two Qwen3-8B starts are in `tables.txt` section 1 (`llmbench_b_lmh_q8_s0k_*` and `llmbench_b_lmh_q8_s1k_*`); the
 switch settings differ by less than 1% in tokens per second at each concurrency there, one start each. The patch files and the
-profile archive (0.5 GB) are not published.
+profile archive (0.5 GB) are not published; `patch_sha256.txt` lists the sha256 of the seven patch files (paths relative to the
+patch folder).
+What this showed (`tables.txt` section 1, Qwen3-0.6B c32, temperature 0, passes 1 and 2): `s0k` 2,738.6 and 2,738.5 tokens per second;
+`s1k` 3,337.3 and 3,326.7; `s0n` 2,452.9 and 2,446.6; `s1n` 2,972.7 and 2,971.1. Qwen3-8B: `s0k` 1,501.1 and 1,500.2; `s1k` 1,497.5 and 1,504.1.
 
 `devprof/` and `prof_all/` Analysis of device profiles of one decode step of TP rank 0 (four steps from step 300; neuron-explorer
 tables converted to parquet on the machine). `devprof/` covers the `_nd` captures of the released and main variants,
@@ -144,6 +160,22 @@ summary tables are the `out/` files, read with the script name in each file name
 
 `cpu_reference/` of the session (CPU fp32 reference logprobs) is not published: it was CPU work and its comparison with the
 hardware runs was not part of the checks above.
+
+## Tag glossary
+
+Read from the scripts and the `76_serve_*.jsonl` config lines. `q06` / `q8`: Qwen3-0.6B / 8B. "All-on": `RLKIT_SAMPLER_KERNEL=1 SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=1`.
+- `s0k`, `s1k`, `s0n`, `s1n` (`lm_head/scripts/phaseB.sh`, `phaseC.sh`): `s0` / `s1` is `SGLANG_NEURON_LM_HEAD_PRETRANSPOSED=0` / `1`; `k` adds
+  `RLKIT_SAMPLER_KERNEL=1`, `n` does not. `s1n_r2` is a second start of `s1n` from a copy of its cache.
+- `ctl`, `ctl2`, `ctl3` (`kv_decode/`): all-on with no extra flag, started three times. `ctl06_a`, `ctl06_b` (`dp_layouts/`): the same, before and after the layouts.
+- `ctx2k`, `ctx3k`, `ctx16k`: all-on plus `--context-length 2048`, `3072`, `16384`. `p2k`: all-on plus `--cuda-graph-bs-prefill 2048`.
+- `dp2`, `dp4`: all-on plus `--tp-size 2 --dp-size 2`, and `--tp-size 1 --dp-size 4 --max-total-tokens 65536`.
+- `host_step/`, all-on Qwen3-0.6B (`scripts/p1.sh`, `p1b.sh`, `p2.sh`, `p3.sh`); `p1c`, `p2c`, `p3c` are the controls of each phase:
+  - `p1m`: `--decode-log-interval 1` and `SGLANG_LOG_FORWARD_ITERS=1`. `p1t`: `SGLANG_NEURON_HOST_TRACE` (rank 0). `p8t`: the same for Qwen3-8B.
+  - `p2v1` `--scheduler-recv-interval 8`; `p2v2` `--stream-interval 4`; `p2v3` `--tokenizer-worker-num 2`; `p2v4` `--detokenizer-worker-num 2`.
+  - `p3v5` `--disable-overlap-schedule`; `p3v6` `SGLANG_NEURON_MAX_INFLIGHT_LAUNCHES=3`; `p3v7` `--context-length 2560`;
+    `p3t` `--disable-overlap-schedule` with the host trace.
+- `i12`, `i29`, `i34`, `i37`: prefixes of the start names in `i12_vllm_start/`, `i29_compiler_args/`, `i34_nki_index/`, `i37_topk_kernel/`;
+  the number is a working-line id, the folder name says what it tests. A suffix `_prof` is a start with the device-profile capture window.
 
 ## Limits
 
