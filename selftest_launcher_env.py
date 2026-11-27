@@ -10,8 +10,11 @@ after it (that docker then keeps the last value is not tested), a value with = o
 without NAME=, with a bad name, or a name that starts with a digit. The NKI index check branch: the check container's
 arguments (helper by --mount read-only, entrypoint python3, same cache mount), VLLM_NKI_INDEX_CHECK=0 (no check run), a
 failing check container (one line with the exit code), the in-use skip on a cache path with a space (same folder, a folder
-inside it, a parent; a name that is only a string prefix, or another path with a space, does not count), and a launcher
-copied without the helper (one line, no check run). Last line: SELFTEST_LAUNCHER_ENV PASSED n checks, or
+inside it, a parent, a mount source of /; a name that is only a string prefix, or another path with a space, does not count;
+the stand-in prints the sources space-joined unless the -f format contains `println .Source`, so a return to a space-joined
+format fails the path-with-a-space case), and a launcher copied without the helper (one line, no check run). Before every
+launch it checks that `docker` resolves to the stand-in file (no function, alias or real docker; BASH_ENV, ENV and exported
+bash functions are dropped from the environment) and stops otherwise. Last line: SELFTEST_LAUNCHER_ENV PASSED n checks, or
 FAILED (exit 1). Needs bash."""
 from __future__ import annotations
 
@@ -23,6 +26,7 @@ import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+CONTAINER = f"selftest_launcher_env_{os.getpid()}"  # cannot collide with a container of the user's
 CHECKS = [0]
 FAILS: list[str] = []
 
@@ -45,7 +49,14 @@ case "$1" in
     printf '%s\n' "$@" > "$FAKE_DOCKER_OUT.run$n"
     case " $* " in *" /nki_index_check.py "*) exit "${FAKE_CHECK_RC:-0}" ;; esac ;;
   ps) [ -n "${FAKE_PS:-}" ] && printf '%s\n' "$FAKE_PS" ;;
-  inspect) [ -n "${FAKE_MOUNTS:-}" ] && printf '%s\n' "$FAKE_MOUNTS" ;;
+  inspect)
+    # one source per line only when the -f format asks for it ({{println .Source}}); any other format (for example
+    # {{range .Mounts}}{{.Source}} {{end}}) gets the sources joined by spaces, as real docker would print them
+    [ -n "${FAKE_MOUNTS:-}" ] || exit 0
+    case " $* " in
+      *"println .Source"*) printf '%s\n' "$FAKE_MOUNTS" ;;
+      *) printf '%s\n' "$FAKE_MOUNTS" | tr '\n' ' '; echo ;;
+    esac ;;
 esac
 exit 0
 """
@@ -57,20 +68,27 @@ def launch(tmp: Path, env_extra: dict, tag: str, script: Path | None = None):
     fake = bindir / "docker"
     fake.write_text(FAKE_DOCKER, encoding="utf-8", newline="\n")
     fake.chmod(0o755)  # without the x bit, Linux bash skips the stand-in and runs the real docker
-    if shutil.which("docker", path=bindir.as_posix()) is None and os.name != "nt":
-        sys.exit("the stand-in docker is not executable; stopping before the real docker could run")
     models = tmp / "models"
     (models / "m").mkdir(parents=True, exist_ok=True)
     dev = tmp / "dev_neuron0"
     dev.write_text("", encoding="utf-8")
     out = tmp / f"docker_args_{tag}.txt"
-    env = {k: v for k, v in os.environ.items() if not k.startswith("VLLM_")}
+    # BASH_ENV, ENV and exported bash functions (BASH_FUNC_*) could define a `docker` that wins over the stand-in
+    env = {k: v for k, v in os.environ.items()
+           if not k.startswith(("VLLM_", "BASH_FUNC_")) and k not in ("BASH_ENV", "ENV")}
     env.update({"PATH": bindir.as_posix() + os.pathsep + env["PATH"], "FAKE_DOCKER_OUT": out.as_posix(),
                 "MODELS_ROOT": models.as_posix(), "VLLM_CACHE": (tmp / "cache").as_posix(),
                 "VLLM_DEV_GLOB": dev.as_posix()})
     env.update(env_extra)
     sh = script.as_posix() if script else "srv_vllm_neuron_docker.sh"
-    p = subprocess.run(["bash", sh, "start", (models / "m").as_posix(), "8000", "t"],
+    # guard: with this very environment, `docker` must be the stand-in file, never a function, alias or a real docker
+    g = subprocess.run(["bash", "-c", 'type -t docker; type -P docker; [ "$(type -P docker)" -ef "$1" ] && echo same',
+                        "guard", fake.as_posix()], cwd=HERE, env=env, capture_output=True, text=True)
+    gl = g.stdout.splitlines()
+    if not (len(gl) == 3 and gl[0] == "file" and gl[2] == "same"):
+        sys.exit(f"stopping before the launcher runs: `docker` does not resolve to the stand-in {fake.as_posix()} "
+                 f"(type -t, type -P, same-file: {gl} {g.stderr.strip()[:200]}); a real docker could be run")
+    p = subprocess.run(["bash", sh, "start", (models / "m").as_posix(), "8000", CONTAINER],
                        cwd=HERE, env=env, capture_output=True, text=True)
     args = out.read_text(encoding="utf-8").splitlines() if out.exists() else None
     return p.returncode, p.stdout + p.stderr, args
@@ -117,9 +135,14 @@ def nki_checks(tmp: Path):
     for tag, mounts, skip in (("use_same", f"/elsewhere\n{cache.as_posix()}", True),
                               ("use_sub", f"{cache.as_posix()}/neuron", True),
                               ("use_parent", tmp.as_posix(), True),
+                              ("use_root", "/", True),  # a mount source of / is a parent of every folder
                               ("use_prefix_only", (tmp / "my").as_posix(), False),
                               ("use_other", "/elsewhere\n/data/vllm cache", False)):
-        rc, msg, _ = launch(tmp, {"VLLM_CACHE": cache.as_posix(), "FAKE_PS": "abc123", "FAKE_MOUNTS": mounts}, tag)
+        cpath = cache.as_posix()
+        if tag == "use_root" and os.name == "nt":
+            # Git Bash does not turn C:/... into /c/... for a folder that does not exist yet, and only the /c/... form is under /
+            cpath = subprocess.run(["bash", "-c", 'cygpath -u "$1"', "_", cpath], capture_output=True, text=True).stdout.strip()
+        rc, msg, _ = launch(tmp, {"VLLM_CACHE": cpath, "FAKE_PS": "abc123", "FAKE_MOUNTS": mounts}, tag)
         r = runs(tmp, tag)
         ln = check_lines(msg)
         if skip:

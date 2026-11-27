@@ -79,7 +79,8 @@ case "$cmd" in
             [ -n "$src" ] || continue
             s="$(realpath -m "$src" 2>/dev/null || printf '%s' "$src")"
             case "$s/" in "$cache_real"/*) users="$users $c"; break ;; esac
-            case "$cache_real/" in "${s%/}"/*) users="$users $c"; break ;; esac
+            p="${s%/}"  # "" for a mount source of /; the pattern "${s%/}"/* does not match then, "$p"/* does
+            case "$cache_real/" in "$p"/*) users="$users $c"; break ;; esac
           done < <(docker inspect -f '{{range .Mounts}}{{println .Source}}{{end}}' "$c")
         done
         if [ -n "$users" ]; then
