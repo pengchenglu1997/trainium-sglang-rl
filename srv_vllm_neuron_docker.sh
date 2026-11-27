@@ -30,10 +30,12 @@
 #   VLLM_NKI_INDEX_CHECK (1) before the start, check $VLLM_CACHE/neuron/compile_cache/nki with nki_index_check.py
 #                 (next to this script), run in a throwaway container of the same image with the same mounts. If an
 #                 entry names a kernel file that does not exist there (vllm-neuron writes them to the container's own
-#                 /var/tmp, gone with that container; a later start that looks such an entry up fails with
-#                 NCC_EVRF059), only that index folder is removed. One line starting "nki index check:" says what
-#                 was done. Skipped (and said so) while another running container mounts the same cache folder.
-#                 0 = no check.
+#                 /var/tmp, gone with that container; a later start can fail with NCC_EVRF059), only that index
+#                 folder is removed. With this image every entry names such a file, so in practice any non-empty
+#                 index is removed. When the check is on, exactly one line starting "nki index check:" says what
+#                 was done (also for a missing index folder or a missing helper file). Skipped (and said so)
+#                 while another running container mounts the cache folder, a folder inside it or a parent of it.
+#                 Exactly 0 = no check (any other value leaves it on).
 set -u
 IMAGE="${VLLM_IMAGE:-public.ecr.aws/neuron/pytorch-inference-vllm-neuronx:0.29.0.1.2.0-neuronx-py314-sdk2.33.1-ubuntu26.04}"
 cmd="${1:?start|alive|logs|stop}"
@@ -64,21 +66,32 @@ case "$cmd" in
     for d in ${VLLM_DEV_GLOB:-/dev/neuron*}; do [ -e "$d" ] && devices+=(--device "$d"); done
     [ "${#devices[@]}" -gt 0 ] || { echo "no /dev/neuron* devices"; exit 2; }
     docker rm -f "$name" >/dev/null 2>&1 || true
-    nki_dir="$VLLM_CACHE/neuron/compile_cache/nki"
-    if [ "${VLLM_NKI_INDEX_CHECK:-1}" != 0 ] && [ -d "$nki_dir" ]; then
-      cache_real="$(realpath "$VLLM_CACHE")"; users=""
-      for c in $(docker ps -q); do
-        for src in $(docker inspect -f '{{range .Mounts}}{{.Source}} {{end}}' "$c"); do
-          [ "$(realpath "$src" 2>/dev/null)" = "$cache_real" ] && users="$users $c"
-        done
-      done
-      if [ -n "$users" ]; then
-        echo "nki index check: skipped, cache folder in use by running container(s):$users"
+    if [ "${VLLM_NKI_INDEX_CHECK:-1}" != 0 ]; then
+      helper="$(dirname "$(readlink -f "$0")")/nki_index_check.py"
+      if [ ! -f "$helper" ]; then
+        echo "nki index check: skipped, helper not found at $helper"
       else
-        docker run --rm -v "$MODELS_ROOT":/models:ro -v "$VLLM_CACHE":/cache \
-          -v "$(cd "$(dirname "$0")" && pwd)/nki_index_check.py":/nki_index_check.py:ro \
-          --entrypoint python3 "$IMAGE" /nki_index_check.py /cache/neuron/compile_cache/nki \
-          || echo "nki index check: the check container failed (exit $?); index left as it was"
+        # a running container uses the cache when one of its mount sources is the cache folder, inside it,
+        # or a parent of it (one source per line, so paths with spaces stay whole)
+        cache_real="$(realpath -m "$VLLM_CACHE")"; users=""
+        for c in $(docker ps -q); do
+          while IFS= read -r src; do
+            [ -n "$src" ] || continue
+            s="$(realpath -m "$src" 2>/dev/null || printf '%s' "$src")"
+            case "$s/" in "$cache_real"/*) users="$users $c"; break ;; esac
+            case "$cache_real/" in "${s%/}"/*) users="$users $c"; break ;; esac
+          done < <(docker inspect -f '{{range .Mounts}}{{println .Source}}{{end}}' "$c")
+        done
+        if [ -n "$users" ]; then
+          echo "nki index check: skipped, cache folder in use by running container(s):$users"
+        else
+          # the existence test of the index folder is done by the helper, as root in the container
+          docker run --rm -v "$MODELS_ROOT":/models:ro -v "$VLLM_CACHE":/cache \
+            --mount "type=bind,src=$helper,dst=/nki_index_check.py,readonly" \
+            --entrypoint python3 "$IMAGE" /nki_index_check.py /cache/neuron/compile_cache/nki
+          rc=$?
+          [ "$rc" -eq 0 ] || echo "nki index check: the check container failed (exit $rc); index state unknown, see the output above"
+        fi
       fi
     fi
     # shellcheck disable=SC2086
