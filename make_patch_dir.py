@@ -3,7 +3,7 @@
 
 Usage:  python make_patch_dir.py --fork <fork checkout> --ref <commit or branch> --out <new folder> [--base <ref>]
 
-The folder holds every sglang_neuron/**/*.py file that differs between --base and --ref, at its path relative to
+The folder holds every sglang_neuron/**/*.py file that --ref changed since its merge base with --base, at its path relative to
 the package (sglang_neuron/sampling.py becomes sampling.py), which is where srv_sglang_neuron.sh mounts it.
 --base defaults to the first of fork/upstream-main, origin/upstream-main, upstream-main that exists.
 Also written: PATCH_MANIFEST.txt (not a .py file, so it is not mounted): the commit ids and one
@@ -50,7 +50,8 @@ def find_base(fork, base):
 
 def changed_files(fork, base_id, ref_id):
     """(kept, deleted): package-relative .py paths changed between the two commits."""
-    out = git(fork, "diff", "--name-status", "--no-renames", base_id, ref_id, "--", "sglang_neuron")
+    merge_base = git(fork, "merge-base", base_id, ref_id)  # upstream-only commits after the fork point are not --ref's changes
+    out = git(fork, "diff", "--name-status", "--no-renames", merge_base, ref_id, "--", "sglang_neuron")
     kept, deleted = [], []
     for line in out.splitlines():
         status, path = line.split("\t", 1)

@@ -1,17 +1,17 @@
 # Front page of 2026-11-22, moved out of the README
 
 These parts of the top-level README describe the state of 2026-11-22. They are moved here without changes
-(the links in them are relative to the repository root).
+(the links below the banner are relative to the repository root, so they do not resolve from this folder).
 
 > **Where the work continues.** This page describes the work up to 2026-11-22. Since then the engine changes and
 > kernels are developed in the fork [pengchenglu1997/sglang-neuron](https://github.com/pengchenglu1997/sglang-neuron)
 > (its README has the branch layout), and the results of later sessions, including the trn2 session of 2026-11-24, are
 > written up in that fork's
 > [docs/rl/RESULTS.md](https://github.com/pengchenglu1997/sglang-neuron/blob/main/docs/rl/RESULTS.md). The result files
-> of that session are in [`data/2026-11-24_trn2/`](data/2026-11-24_trn2/README.md); the probe scripts that wrote them
-> (numbers 73 to 81) are at the top level, indexed in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 8. The trn2 session of
-> 2026-11-26 (UTC 2026-11-27 00:34 to 05:13) is in [`data/2026-11-26_trn2/`](data/2026-11-26_trn2/README.md); its scripts
-> (`s4_*`) are at the top level, indexed in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) section 10. The sections "Results so far" and "Plan and open work"
+> of that session are in [`data/2026-11-24_trn2/`](../../data/2026-11-24_trn2/README.md); the probe scripts that wrote them
+> (numbers 73 to 81) are at the top level, indexed in [`docs/EXPERIMENTS.md`](../EXPERIMENTS.md) section 8. The trn2 session of
+> 2026-11-26 (UTC 2026-11-27 00:34 to 05:13) is in [`data/2026-11-26_trn2/`](../../data/2026-11-26_trn2/README.md); its scripts
+> (`s4_*`) are at the top level, indexed in [`docs/EXPERIMENTS.md`](../EXPERIMENTS.md) section 10. The sections "Results so far" and "Plan and open work"
 > below are as of 2026-11-22.
 
 ## Results so far

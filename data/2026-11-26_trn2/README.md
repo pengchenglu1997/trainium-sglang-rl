@@ -126,9 +126,9 @@ What this showed (`results/dp_table.txt`, c32, temperature 0, passes 1 and 2): t
 benchmarked against a control that stayed up (`events.jsonl`: starts and ready seconds; `summary/`: tables made from the server logs
 and the host trace; `scripts/`: the summary scripts). The host trace TSV files (7 to 16 MB each), the process listing
 and the server logs are not published.
-What this showed (`tables.txt` section 1, c32, temperature 0, passes 1 and 2): `p2v1` to `p2v4` 3,313.1 to 3,350.0 tokens per second
-against their controls 3,313.1 to 3,344.6; `p3v6` 3,339.4 and 3,338.9; `p3v5` 2,364.3 and 2,356.2; `p3v7` 2,462.1 and 2,496.9;
-`p1m` 3,331.2 and 3,339.7, `p1t` 3,342.6 and 3,344.7 against `p1c` 3,337.5 and 3,339.2.
+What this showed (`tables.txt` section 1, c32, temperature 0, passes 1 and 2): `p3v5` 2,364.3 and 2,356.2 and `p3v7`
+2,462.1 and 2,496.9 tokens per second, against their controls `p3c` 3,215.7 to 3,338.4; all other single changes
+(`p1m`, `p1t`, `p2v1` to `p2v4`, `p3v6`) 3,313.1 to 3,350.0, against controls 3,295.5 to 3,344.6.
 
 `kv_decode/` Decode and prefill settings that change the shape of the attention cache reads: `--cuda-graph-bs-prefill 2048`
 (`p2k`), and `--context-length` 2048, 3072 and 16384 (`ctx2k`, `ctx3k`, `ctx16k`), each against a back-to-back control (`ctl`,
@@ -168,12 +168,14 @@ Read from the scripts and the `76_serve_*.jsonl` config lines. `q06` / `q8`: Qwe
   `RLKIT_SAMPLER_KERNEL=1`, `n` does not. `s1n_r2` is a second start of `s1n` from a copy of its cache.
 - `ctl`, `ctl2`, `ctl3` (`kv_decode/`): all-on with no extra flag, started three times. `ctl06_a`, `ctl06_b` (`dp_layouts/`): the same, before and after the layouts.
 - `ctx2k`, `ctx3k`, `ctx16k`: all-on plus `--context-length 2048`, `3072`, `16384`. `p2k`: all-on plus `--cuda-graph-bs-prefill 2048`.
-- `dp2`, `dp4`: all-on plus `--tp-size 2 --dp-size 2`, and `--tp-size 1 --dp-size 4 --max-total-tokens 65536`.
+- `dp2`, `dp4`: all-on plus `--tp-size 2 --dp-size 2`, and `--tp-size 1 --dp-size 4 --max-total-tokens 65536` (16384 for Qwen3-8B, `dp4_8`).
 - `host_step/`, all-on Qwen3-0.6B (`scripts/p1.sh`, `p1b.sh`, `p2.sh`, `p3.sh`); `p1c`, `p2c`, `p3c` are the controls of each phase:
   - `p1m`: `--decode-log-interval 1` and `SGLANG_LOG_FORWARD_ITERS=1`. `p1t`: `SGLANG_NEURON_HOST_TRACE` (rank 0). `p8t`: the same for Qwen3-8B.
   - `p2v1` `--scheduler-recv-interval 8`; `p2v2` `--stream-interval 4`; `p2v3` `--tokenizer-worker-num 2`; `p2v4` `--detokenizer-worker-num 2`.
   - `p3v5` `--disable-overlap-schedule`; `p3v6` `SGLANG_NEURON_MAX_INFLIGHT_LAUNCHES=3`; `p3v7` `--context-length 2560`;
     `p3t` `--disable-overlap-schedule` with the host trace.
+  - `p4v8` (`scripts/p4.sh`): Qwen3-8B all-on with `--context-length 2560`, against the control `p4c8`. `p4v8` was started and stopped by hand
+    before it was ready (`events.jsonl`, `summary/ready_s.txt`); `p4c8` was never started. There is no p4 benchmark file.
 - `i12`, `i29`, `i34`, `i37`: prefixes of the start names in `i12_vllm_start/`, `i29_compiler_args/`, `i34_nki_index/`, `i37_topk_kernel/`;
   the number is a working-line id, the folder name says what it tests. A suffix `_prof` is a start with the device-profile capture window.
 
