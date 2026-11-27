@@ -17,8 +17,8 @@ estimated unless it says so. Result folders (laptop):
 
 | what | id | type | region | from – to | notes |
 |---|---|---|---|---|---|
-| trn2 | `i-02723f4d32211623a` (spot `sir-a1yfnkhh`) | trn2.48xlarge | ap-south-2b | 08:57 – guard 21:58 | guard moved twice by the user's word (18:59 → 20:58 → 21:58) |
-| GPU 2 | `i-0a0f77b344e86726a` (spot `sir-svq8i7ig`) | g7e.2xlarge | us-east-1b | 19:51 – about 20:00 | started for the SGLang CUDA reference, stopped on the user's word before it produced anything; disk deleted with it |
+| trn2 | `<instance id redacted>` (spot `<spot request id redacted>`) | trn2.48xlarge | ap-south-2 | 08:57 – guard 21:58 | guard moved twice by the user's word (18:59 → 20:58 → 21:58) |
+| GPU 2 | `<instance id redacted>` (spot `<spot request id redacted>`) | g7e.2xlarge | us-east-1 | 19:51 – about 20:00 | started for the SGLang CUDA reference, stopped on the user's word before it produced anything; disk deleted with it |
 
 Idle time: the first five trn2 steps ended 09:54; the session that drove the machine stopped, and nothing ran until
 17:38. The loops, probes and patches below all ran after 17:38.
@@ -281,10 +281,10 @@ whenever a worker met a shape for the first time (steps of 43 s), with no gain u
 
 Machines (both launched on the user's instruction):
 
-- GPU 3: `i-08265430d0b8a1842`, g7e.2xlarge spot (`sir-js7839vk`), us-east-1b, one NVIDIA RTX PRO 6000 Blackwell
+- GPU 3: `<instance id redacted>`, g7e.2xlarge spot (`<spot request id redacted>`), us-east-1, one NVIDIA RTX PRO 6000 Blackwell
   Server Edition (97,887 MiB), fresh 120 GB disk (deleted with the machine). Terminate call sent 01:15 UTC, state
   `shutting-down` at the last look; final state and spot request not re-checked (AWS login expired at 02:32 UTC).
-- trn2 #2: `i-00b4e8b11e58024e2`, trn2.48xlarge spot (`sir-e78fpjkk`), ap-south-2b. Powered off from inside at about
+- trn2 #2: `<instance id redacted>`, trn2.48xlarge spot (`<spot request id redacted>`), ap-south-2. Powered off from inside at about
   02:35 UTC (`shutdown -h`, instance set to terminate on shutdown); ssh refused afterwards. Final state and spot request
   not re-checked for the same reason.
 
