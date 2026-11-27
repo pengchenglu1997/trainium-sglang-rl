@@ -8,9 +8,9 @@
 #       k: temperature 0.8 top-k 50 top-p 0.95 twice, then temperature 0.8 without filters.
 set -u
 cd "$(dirname "${BASH_SOURCE[0]}")" || exit 2
-VENV=/opt/aws_neuronx_venv_torch_neuronx_2_14_0
+VENV="${VENV:-/opt/aws_neuronx_venv_torch_neuronx_2_14_0}"
 [ -f "$VENV/bin/activate" ] && source "$VENV/bin/activate"
-export DATA_ROOT="$HOME/w" MODELS_ROOT="$HOME/w/models"
+export DATA_ROOT="${DATA_ROOT:-$HOME/w}"; export MODELS_ROOT="$DATA_ROOT/models"
 PY="$VENV/bin/python"; [ -x "$PY" ] || PY=python3
 M="$MODELS_ROOT"; R="$DATA_ROOT/results_s4"; PROF="$DATA_ROOT/profiles_s4"
 unset SGL_PATCH_DIR SGL_ENV SGL_EXTRA SGL_SCRIPT SGL_TOP_LOGPROBS SGL_SAMPLER SGL_MOUNTS SGL_CORES SGL_CACHE

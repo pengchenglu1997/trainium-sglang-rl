@@ -1,0 +1,2 @@
+# sha256sum -c fails on CRLF lines: keep these lists LF in every checkout
+*sha256*.txt text eol=lf
