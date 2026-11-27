@@ -14,7 +14,19 @@
 #   NEURON_RT_VISIBLE_CORES with its multi-process workers, and "4" resolved to one core,
 #   both seen 2026-11-20)
 #   VLLM_TP (4)VLLM_MAX_SEQS (32)  VLLM_MAX_LEN (1024)  VLLM_EXTRA
-#   VLLM_COMPILE_TIMEOUT  seconds, becomes VLLM_NEURON_COMPILATION_TIMEOUT in the container (default 1200)
+#   VLLM_COMPILE_TIMEOUT  seconds (default 1200), set in the container under two names, side by side:
+#   VLLM_NEURON_COMPILATION_TIMEOUT (the name the vllm-neuron quickstart exports; vLLM core logs it as unknown) and
+#   NEURON_LIBTORCH_COMPILATION_TIMEOUT. The two vllm-neuron doc pages that list the second name describe it differently:
+#   the configuration reference says "Timeout in seconds for individual NEFF compilation", the compilation-cache page says
+#   "Seconds to wait for another process to finish compiling before timing out" (a lock wait). So the meaning of the name is
+#   itself unsettled, and which of the two names the compiler reads is UNVERIFIED (the docs name both; no vllm-neuron source
+#   was read here), so both are set.
+#   VLLM_ENV      extra environment variables for the container: "NAME=value NAME2=value2", items separated by spaces.
+#                 A value holds no space. Each item is checked to be NAME=value with NAME of letters, digits and
+#                 underscores, and is passed as one docker argument (no shell evaluation, no globbing). It comes after the
+#                 built-in variables; that a repeated name then takes the last value is docker behaviour that was NOT RUN here. Default empty = nothing added. A bad item
+#                 stops the start (exit 2) before anything is started.
+#   VLLM_DEV_GLOB (/dev/neuron*) pattern of the device files to pass in; only a test needs to change it
 set -u
 IMAGE="${VLLM_IMAGE:-public.ecr.aws/neuron/pytorch-inference-vllm-neuronx:0.29.0.1.2.0-neuronx-py314-sdk2.33.1-ubuntu26.04}"
 cmd="${1:?start|alive|logs|stop}"
@@ -27,9 +39,22 @@ case "$cmd" in
       "$MODELS_ROOT"/*) inside="/models/${model#"$MODELS_ROOT"/}" ;;
       *) echo "model dir must be under MODELS_ROOT ($MODELS_ROOT)"; exit 2 ;;
     esac
+    # VLLM_ENV: split on spaces without globbing, one -e per item
+    extra_env=()
+    read -r -a env_items <<< "${VLLM_ENV:-}"
+    for kv in ${env_items[@]+"${env_items[@]}"}; do
+      case "$kv" in
+        [A-Za-z_]*=*) ;;
+        *) echo "VLLM_ENV item '$kv' is not NAME=value"; exit 2 ;;
+      esac
+      case "${kv%%=*}" in
+        *[!A-Za-z0-9_]*) echo "VLLM_ENV item '$kv': the name has a character other than letters, digits, underscore"; exit 2 ;;
+      esac
+      extra_env+=(-e "$kv")
+    done
     mkdir -p "$VLLM_CACHE"
     devices=()
-    for d in /dev/neuron*; do [ -e "$d" ] && devices+=(--device "$d"); done
+    for d in ${VLLM_DEV_GLOB:-/dev/neuron*}; do [ -e "$d" ] && devices+=(--device "$d"); done
     [ "${#devices[@]}" -gt 0 ] || { echo "no /dev/neuron* devices"; exit 2; }
     docker rm -f "$name" >/dev/null 2>&1 || true
     # shellcheck disable=SC2086
@@ -37,8 +62,9 @@ case "$cmd" in
       -v "$MODELS_ROOT":/models:ro -v "$VLLM_CACHE":/cache \
       -p "127.0.0.1:${port}:8000" \
       -e HF_HUB_OFFLINE=1 -e VLLM_CACHE_ROOT=/cache -e NEURON_SKIP_EFA_AFFINITY=1 \
-      -e VLLM_NEURON_COMPILATION_TIMEOUT="${VLLM_COMPILE_TIMEOUT:-1200}" -e VLLM_EXECUTE_MODEL_TIMEOUT_SECONDS=1200 \
-      -e NEURON_VISIBLE_DEVICES="${VLLM_DEVICES:-16,17,18,19}" \
+      -e VLLM_NEURON_COMPILATION_TIMEOUT="${VLLM_COMPILE_TIMEOUT:-1200}" \
+      -e NEURON_LIBTORCH_COMPILATION_TIMEOUT="${VLLM_COMPILE_TIMEOUT:-1200}" -e VLLM_EXECUTE_MODEL_TIMEOUT_SECONDS=1200 \
+      -e NEURON_VISIBLE_DEVICES="${VLLM_DEVICES:-16,17,18,19}" ${extra_env[@]+"${extra_env[@]}"} \
       --entrypoint vllm "$IMAGE" serve "$inside" --served-model-name "$name" \
       --host 0.0.0.0 --port 8000 --tensor-parallel-size "${VLLM_TP:-4}" \
       --max-num-seqs "${VLLM_MAX_SEQS:-32}" --max-model-len "${VLLM_MAX_LEN:-1024}" \

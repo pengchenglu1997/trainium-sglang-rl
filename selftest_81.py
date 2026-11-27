@@ -257,8 +257,18 @@ def test_variants():
     check(vs["V1"]["sampler"] == "greedy" and vs["V2"]["sampler"] == "topk_topp", "V1 and V2 samplers")
     check(vs["V9"]["replicas"][0]["extra"] == "--chunked-prefill-size 4096" and vs["V9"]["extra_bench"][0]["prompts"] == "3072", "V9")
     check(vs["V10"]["replicas"][0]["extra"] == "--context-length 2048", "V10")
+    check(vs["V14"]["replicas"][0]["extra"] == "--chunked-prefill-size 1024" and vs["V15"]["replicas"][0]["extra"] == "--chunked-prefill-size 512",
+          "V14 and V15 flags")
+    check(vs["V16"]["env"] == "NEURON_RT_XU_WORKER_ENABLE_LOW_LATENCY_COMPLETION=1" and vs["V17"]["env"] == "SGLANG_NEURON_MAX_INFLIGHT_LAUNCHES=4",
+          "V16 and V17 environment")
     check(vs["V0"]["replicas"][0]["extra"] == "" and vs["V0"]["sampler"] is None, "V0 has no change")
-    check(SW.DEFAULT_ORDER == ["V12", "V9", "V4", "V5", "V3", "V10", "V7", "V8", "V13", "V1", "V2", "V11"], "default order: warm and cheap first")
+    # Order of 2026-11-24 (comment above DEFAULT_ORDER in 81_opt_sweep.py): by expected effect, the variants that run V0's graphs
+    # (V5, V3, V10, V12) late, V11 last because it is composed from the finished ones; V14 to V17 were added to it.
+    check(SW.DEFAULT_ORDER == ["V7", "V13", "V1", "V14", "V16", "V8", "V2", "V15", "V17", "V4", "V9", "V12", "V5", "V3", "V10", "V11"],
+          "default order: by expected effect first, V11 last")
+    check(len(set(SW.DEFAULT_ORDER)) == len(SW.DEFAULT_ORDER) and SW.DEFAULT_ORDER[-1] == "V11"
+          and not set(SW.DEFAULT_ORDER) & set(SW.SELECTABLE_ONLY), "default order: no repeat, V11 last, none also selectable-only")
+    check(all(x in vs for x in SW.DEFAULT_ORDER + SW.SELECTABLE_ONLY if x != "V11"), "every id of the order lists is a defined variant")
     check("V6" not in SW.DEFAULT_ORDER and "V6" in SW.SELECTABLE_ONLY, "V6 (TP8, UNVERIFIED) is selectable by name only")
     check(vs["V13"]["replicas"][0]["extra"] == "--tp-size 1 --dp-size 4 --max-total-tokens 65536 --max-running-requests 8",
           f"V13 flags: 8 running requests per replica ({vs['V13']['replicas'][0]['extra']})")
@@ -423,10 +433,10 @@ def test_dry_run():
     buf2 = io.StringIO()
     with contextlib.redirect_stdout(buf2):
         SW.main(["--model", "Qwen3-0.6B", "--results", str(Path(tempfile.gettempdir()) / "r9_dry_unused"), "--tag", "r9", "--dry-run"])
-    check("== V6:" not in buf2.getvalue() and "order: V0 V12 V9 V4 V5 V3 V10 V7 V8 V13 V1 V2 V11" in buf2.getvalue(),
-          "the default dry run has no V6 and the new order")
+    check("== V6:" not in buf2.getvalue() and "order: V0 " + " ".join(SW.DEFAULT_ORDER) in buf2.getvalue(),
+          "the default dry run has no V6 and prints V0 then DEFAULT_ORDER")
     check(rc == 0 and "DRY_RUN_DONE" in t, "dry run exits 0")
-    for vid in ["V0", "V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13"]:
+    for vid in ["V0"] + SW.DEFAULT_ORDER + SW.SELECTABLE_ONLY:
         check(f"== {vid}:" in t, f"dry run prints {vid}")
     check("optsweep_r9_V7_r3" in t and "30084" in t, "dry run prints the four V7 containers and ports")
 
