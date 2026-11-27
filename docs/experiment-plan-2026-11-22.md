@@ -43,8 +43,8 @@ The plan ends with one table and one figure per question below, for 0.6B and 8B,
 | Training | LoRA, 16 processes, 1.2 s a step | not run; weights on one core 16.38 GB of 25.8 GB |
 | Accuracy, GSM8K-500 | 0.57 -> 0.70-0.75 (4 seeds); CUDA 0.71 (1 seed) | not run |
 
-Ready on the laptop, not yet on hardware: the adapter update that forms only this rank's shard (24 of 24 loader
-cases bit-identical on CPU; 5.0 s -> 0.95 s of host arithmetic per rank on the laptop); sglang-neuron PR 4 applied on
+Ready on the laptop, not yet on hardware: the adapter update that forms only this rank's shard (CPU-tested:
+`python 62_lazy_delta_test.py <sglang-neuron v0.1.0 source root>`; host timing on the laptop: `python 61_adapter_delta_cost.py`); sglang-neuron PR 4 applied on
 our patch (one file, no overlap).
 
 ## 4. Work packages
@@ -73,11 +73,11 @@ our patch (one file, no overlap).
   engine side is where Miles expects the checkpoint to be rebuilt from the published deltas, and that code is not in
   our SGLang and was not read. So W1.7 needs a shim that does that rebuild; Miles would stop at its first call
   without it. This is a replay of Miles's sequence (read at main 9011e81), not Miles itself.
-  `64_miles_sequence.md`, `64_miles_replay.py`, self-test 51 of 51.
+  `64_miles_sequence.md`, `64_miles_replay.py`; CPU-tested against the stand-in: `python selftest_fake_server.py`.
 - W0.3: `trainer8b.py` (per-layer checkpointing, micro-batch 1, chunked answer logits, optimizer on the host,
-  memory report). On CPU against a random 3-layer Qwen3 model, gradients of all 42 LoRA tensors and the values after
-  one update equal the existing trainer within 1e-5 (worst 6.9e-7 and 1.3e-6), 36 of 36 checks; four planted bugs each
-  made the test fail. Not tested: anything on Neuron, length buckets, the multi-core trainer.
+  memory report). CPU-tested against a random small Qwen3 model: the gradients of the LoRA tensors and the values after
+  one update are compared with the existing trainer, and planted bugs make the test fail
+  (`python 65_trainer8b_cpu_test.py`). Not tested: anything on Neuron, length buckets, the multi-core trainer.
   `65_trainer8b_cpu_test.py`. The loop takes `--trainer8b`.
 - W0.4: not done. The session scripts wait for the new AWS setup (below).
 
@@ -88,7 +88,7 @@ security group) may change with them.
 
 | # | Check | Expected, and why | If met | If not | Min |
 |---|---|---|---|---|---|
-| W1.1 | 8B adapter update with the shard-only delta | 13.9 s -> 2.5-3.5 s (estimate: host arithmetic was 13.5 of 14 s, laptop ratio 5.3x); equal to a fresh start on the merged checkpoint | adapter sync is the 8B path | the per-rank log shows what is left (delta, add, copy); fix that one | 15 |
+| W1.1 | 8B adapter update with the shard-only delta | 13.9 s -> 2.5-3.5 s (estimate: host arithmetic was 13.5 of 14 s, scaled by the laptop timing of `61_adapter_delta_cost.py`); equal to a fresh start on the merged checkpoint | adapter sync is the 8B path | the per-rank log shows what is left (delta, add, copy); fix that one | 15 |
 | W1.2 | Decode context ladder on, compiled context 8192, same short requests | step 10.4-14.8 ms instead of 26.5 ms (estimate: short rows run a quarter-context graph) | serve with the ladder on | per-operation device profile at 8192 | 30 |
 | W1.3 | PR 4 at context 16384: a question whose answer needs text past token 8K, with and without the PR; GSM8K-500 at context 1024 both ways | without: wrong past 8K; with: right; GSM8K unchanged (basis: the PR's runs on Qwen3-MoE; no dense run exists) | carry PR 4 for long answers | if dense is right without it, leave it out | 45 |
 | W1.4 | One group of 32 answers, one decode bucket against the default set | default set 5-20 % faster (estimate from 9.3 ms at 32 rows, 5.1 ms at 4) | default buckets for evaluation, one bucket for saturated rollouts | keep one bucket | 15 |
