@@ -27,6 +27,13 @@
 #                 built-in variables; that a repeated name then takes the last value is docker behaviour that was NOT RUN here. Default empty = nothing added. A bad item
 #                 stops the start (exit 2) before anything is started.
 #   VLLM_DEV_GLOB (/dev/neuron*) pattern of the device files to pass in; only a test needs to change it
+#   VLLM_NKI_INDEX_CHECK (1) before the start, check $VLLM_CACHE/neuron/compile_cache/nki with nki_index_check.py
+#                 (next to this script), run in a throwaway container of the same image with the same mounts. If an
+#                 entry names a kernel file that does not exist there (vllm-neuron writes them to the container's own
+#                 /var/tmp, gone with that container; a later start that looks such an entry up fails with
+#                 NCC_EVRF059), only that index folder is removed. One line starting "nki index check:" says what
+#                 was done. Skipped (and said so) while another running container mounts the same cache folder.
+#                 0 = no check.
 set -u
 IMAGE="${VLLM_IMAGE:-public.ecr.aws/neuron/pytorch-inference-vllm-neuronx:0.29.0.1.2.0-neuronx-py314-sdk2.33.1-ubuntu26.04}"
 cmd="${1:?start|alive|logs|stop}"
@@ -57,6 +64,23 @@ case "$cmd" in
     for d in ${VLLM_DEV_GLOB:-/dev/neuron*}; do [ -e "$d" ] && devices+=(--device "$d"); done
     [ "${#devices[@]}" -gt 0 ] || { echo "no /dev/neuron* devices"; exit 2; }
     docker rm -f "$name" >/dev/null 2>&1 || true
+    nki_dir="$VLLM_CACHE/neuron/compile_cache/nki"
+    if [ "${VLLM_NKI_INDEX_CHECK:-1}" != 0 ] && [ -d "$nki_dir" ]; then
+      cache_real="$(realpath "$VLLM_CACHE")"; users=""
+      for c in $(docker ps -q); do
+        for src in $(docker inspect -f '{{range .Mounts}}{{.Source}} {{end}}' "$c"); do
+          [ "$(realpath "$src" 2>/dev/null)" = "$cache_real" ] && users="$users $c"
+        done
+      done
+      if [ -n "$users" ]; then
+        echo "nki index check: skipped, cache folder in use by running container(s):$users"
+      else
+        docker run --rm -v "$MODELS_ROOT":/models:ro -v "$VLLM_CACHE":/cache \
+          -v "$(cd "$(dirname "$0")" && pwd)/nki_index_check.py":/nki_index_check.py:ro \
+          --entrypoint python3 "$IMAGE" /nki_index_check.py /cache/neuron/compile_cache/nki \
+          || echo "nki index check: the check container failed (exit $?); index left as it was"
+      fi
+    fi
     # shellcheck disable=SC2086
     docker run -d --name "$name" --init --ipc=host --cap-add SYS_NICE "${devices[@]}" \
       -v "$MODELS_ROOT":/models:ro -v "$VLLM_CACHE":/cache \
