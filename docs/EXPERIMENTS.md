@@ -30,8 +30,8 @@ laptop. `SESSION2_RECORD` is `docs/SESSION2_RECORD_2026-11-20.md` (the first rep
 | `49_sync_stress.py` | What breaks after many in-place updates, and while requests are in flight? | trn2, patched server | not in repo | SESSION2_RECORD §7; PR draft, measurements | measured |
 | `50_adapter_server_test.py` | Is an adapter-only update equal to a fresh start on the merged checkpoint? | trn2, patched server | `data/2026-11-21_night/50_adapter_q8.jsonl` | NIGHT_RECORD §4 | measured |
 | `51_logprob_parity.py` | Do trainer and server give the same log-probabilities for the same tokens, before and after an adapter sync? | trn2, patched server, one more core | not in repo | SESSION2_RECORD §8, §11.2; PR draft, measurements | measured |
-| `61_adapter_delta_cost.py` | Host-side cost of an adapter update by operation, on Qwen3-8B shapes | host only | not in repo | experiment plan §3 | host-only timing; command `python 61_adapter_delta_cost.py` |
-| `62_lazy_delta_test.py` | Does the shard-only adapter delta (`_LowRankSlice`) equal the full-matrix path through the engine's own loaders? | CPU, sglang-neuron v0.1.0 source tree | none | experiment plan §3 | CPU test: `python 62_lazy_delta_test.py <sglang-neuron v0.1.0 source root>` |
+| `61_adapter_delta_cost.py` | Host-side cost of an adapter update by operation, on Qwen3-8B shapes | host only | not in repo | experiment plan §3 | CPU-tested (host timing): `python 61_adapter_delta_cost.py` |
+| `62_lazy_delta_test.py` | Does the shard-only adapter delta (`_LowRankSlice`) equal the full-matrix path through the engine's own loaders? | CPU, sglang-neuron v0.1.0 source tree | none | experiment plan §3 | CPU-tested: `python 62_lazy_delta_test.py <sglang-neuron v0.1.0 source root>` |
 | `68_update_under_load.py` | What does an in-place update do to requests that are running? (plan row W1.5) | trn2, patched server | none | experiment plan W1.5 | not run |
 | `mk_alt.py` | Helper: perturbed copy of a checkpoint that the update tests move to | host | none | NIGHT_RECORD | helper |
 
@@ -43,7 +43,7 @@ laptop. `SESSION2_RECORD` is `docs/SESSION2_RECORD_2026-11-20.md` (the first rep
 | `52_train_step_probe.py` | Where does a training micro-batch's time go, eager against compiled? | one core | not in repo | SESSION2_RECORD §11.2 | measured |
 | `56_ptrainer_probe.py` | Does the multi-core trainer compute the same update as one core, and how much faster? | trn2, several cores | not in repo | SESSION2_RECORD §11.2, §12.3 | measured |
 | `63_padding_share.py` | How much of the fixed 576-position training length is padding, from saved loop runs? (plan row W0.1) | saved loop files | `data/2026-11-21_night/63_padding_share.txt` | experiment plan W0.1 | measured on saved runs |
-| `65_trainer8b_cpu_test.py` | Does `trainer8b.py` give the same gradients and update as `trainer.py`? | CPU | none | experiment plan W0.3 | CPU test: `python 65_trainer8b_cpu_test.py` |
+| `65_trainer8b_cpu_test.py` | Does `trainer8b.py` give the same gradients and update as `trainer.py`? | CPU | none | experiment plan W0.3 | CPU-tested: `python 65_trainer8b_cpu_test.py` |
 | `70_mem_probe.py` | Device memory of Qwen3 training on one core, stage by stage (plan rows W2.1, W2.2) | trn2, one core | none | experiment plan W2 | not run |
 | `71_handoff_probe.py` | Cost of handing an activation between two NeuronCore processes through host shared memory (W2.4) | trn2, two cores | none | experiment plan W2.4 | not run |
 | `72_collective_backward_probe.py` | Do gradients through a collective on Neuron match a CPU reference (W2.5)? | trn2, 4 cores | none | experiment plan W2.5 | not run |
@@ -69,7 +69,7 @@ laptop. `SESSION2_RECORD` is `docs/SESSION2_RECORD_2026-11-20.md` (the first rep
 
 | Script | Question | Needs | Results | Record | Status |
 |---|---|---|---|---|---|
-| `64_miles_replay.py` | Replay of the HTTP calls one Miles disk-delta update sends to a rollout engine (our replay, not Miles itself) | a server URL | none | `64_miles_sequence.md` | CPU test against the stand-in: `python selftest_fake_server.py` |
+| `64_miles_replay.py` | Replay of the HTTP calls one Miles disk-delta update sends to a rollout engine (our replay, not Miles itself) | a server URL | none | `64_miles_sequence.md` | CPU-tested against the stand-in: `python selftest_fake_server.py` |
 | `66_pull_weights_shim.py` | A proxy in front of the server that answers `POST /pull_weights`, so Miles's sync can drive SGLang-Neuron | server, Miles delta files | none | `64_miles_sequence.md`, gap 1 | CPU-tested with Miles's publisher code |
 | `66_pull_weights_shim_test.py` | Test of the shim with Miles's own delta publisher | CPU, Miles checkout | none | as above | CPU-tested |
 | `selftest_fake_server.py` | Client-side scripts against a stand-in server that mimics SGLang-Neuron's documented behaviour | CPU | none | experiment plan W0.2 | CPU-tested |
@@ -108,7 +108,7 @@ the fork's [RESULTS.md](https://github.com/pengchenglu1997/sglang-neuron/blob/ma
 | `80_moe30b_probe.sh` | Does the `integration` build start Qwen3-30B-A3B TP4 EP4 on trn2 and answer a known-answer prompt? One small benchmark cell | trn2, the `integration` build as a patch folder | `80_moe30b_r8.jsonl`, `llmbench_moe30b_r8.csv` | 8.7 | measured, one probe |
 | `81_opt_sweep.py`, `81_opt_table.py`, `r9_run.sh` | Serving settings of SGLang-Neuron on Qwen3-0.6B, one factor at a time, then combinations | trn2 | `81_opt_sweep_*.jsonl`, `opt_sweep_*.md`, `llmbench_r9*`, `llmbench_r13*` to `llmbench_r16*` | 8.4, 8.5 | measured |
 | `patch_manifest.py` | Helper: which files a patch folder would mount into the engine, with md5 | host | none | - | helper |
-| `selftest_74.py`, `selftest_75.py`, `selftest_81.py` | CPU self-tests of the log classifier of 74, of 75 and of the sweep logic of 81 | CPU, no device | none | - | CPU tests: `python selftest_74.py`, `python selftest_75.py`, `python selftest_81.py` |
+| `selftest_74.py`, `selftest_75.py`, `selftest_81.py` | CPU self-tests of the log classifier of 74, of 75 and of the sweep logic of 81 | CPU, no device | none | - | CPU-tested: `python selftest_74.py`, `python selftest_75.py`, `python selftest_81.py` |
 | `82_cache_record.py` | End-of-session step: size in bytes and file count of each compile-cache folder, and any profile folder still inside one. Run it after the servers have stopped | host, no device | `82_cache_record_<tag>.jsonl` | - | CPU-tested (`selftest_cache_record.py`), not yet run in a session |
 | `selftest_cache_record.py`, `selftest_launcher_env.py` | CPU self-tests of `82_cache_record.py` and of the profile-folder rule of `59_decode_profile.py`; of the environment handling of `srv_vllm_neuron_docker.sh` (a stand-in `docker`: the two compile-timeout names, `VLLM_ENV`, and the NKI index check branch, i.e. the check container's arguments, `VLLM_NKI_INDEX_CHECK=0`, a failing check container, the in-use skip for a cache path with a space, a parent and a mount source of `/`, and a launcher copied without the helper) | CPU, no device | none | - | CPU only |
 | `selftest_nki_index_check.py` | CPU self-test of `nki_index_check.py`: keep, remove, unreadable-only entries, null, integer or empty kernel path, an empty or missing index folder, an error during removal | CPU, no device | none | - | CPU only |
