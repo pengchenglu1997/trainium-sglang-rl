@@ -1,6 +1,6 @@
 # Experiment plan: RL post-training of Qwen3 on Trainium2 with SGLang-Neuron
 
-*Pengcheng Lu (UW), 22 November 2026. Draft for review.*
+*Draft for review, 22 November 2026.*
 
 ## 1. Goal
 
