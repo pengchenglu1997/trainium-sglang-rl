@@ -1,0 +1,18 @@
+scrub_check: 927 files, 2678150 bytes scanned
+patterns: instance-id, spot-request-id, account-id-12-digits, ipv4, ip-hostname, email, user-at-host, arn, access-key, windows-path, other-home-folder, key-file, price
+private word list: 25 entries
+hits: 0
+accepted on purpose: 5
+  OK  correctness/logs/collect_q8_all.out:1 other-home-folder '/home/u'  (text wrapped inside a path: "/home/u" then "buntu/..."; the folder is /home/ubuntu)
+  OK  correctness/logs/collect_q8_rel.out:1 other-home-folder '/home/u'  (text wrapped inside a path: "/home/u" then "buntu/..."; the folder is /home/ubuntu)
+  OK  i29_compiler_args/i29_q06_topk_cold/inspect_i29_q06_topk_cold.json:280 other-home-folder '/home/.openmpi'  ("/home/.openmpi" is a folder of the container image's PATH, not a user name)
+  OK  i29_compiler_args/i29_q06_topk_cold/inspect_i29_q06_topk_cold.json:286 other-home-folder '/home/.openmpi'  ("/home/.openmpi" is a folder of the container image's PATH, not a user name)
+  OK  i37_topk_kernel/results/logs/collect_r2_koff_b.out:1 other-home-folder '/home/ubu'  (text wrapped inside a path: "/home/ubu" then "ntu/..."; the folder is /home/ubuntu)
+
+second scan, files outside this folder that the pull request adds or changes
+(s4_prep.sh, s4_run.sh, s4_x.sh, s4_8b.sh, s4_profile.py, s4_table.py, 22b_llmbench_grid.sh, selftest_81.py, this README, and the
+lines added to the top-level README and docs/EXPERIMENTS.md), same patterns and word list:
+hits: 3, all in 22b_llmbench_grid.sh lines 4, 5 and 42, which are on main already and are not changed by this pull request
+(the address of the third-party llmbench repository and the name of another public repository that the header cites);
+s4_prep.sh takes the llmbench address from LLMBENCH_URL instead.
+no other hit.

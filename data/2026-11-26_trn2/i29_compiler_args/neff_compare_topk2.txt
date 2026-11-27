@@ -1,0 +1,11 @@
+topk_cold2(14) vs q06_topk common: 14
+topk_cold2(14) vs i29_q06_topk_cold common: 14
+topk_cold2(14) vs i29_q06_temp_cold common: 2
+i29_neff_i29_q06_temp_cold.txt
+i29_neff_i29_q06_topk_cold.txt
+i29_neff_i29_q06_topk_cold2.txt
+i29_neff_q06_all.txt
+i29_neff_q06_main.txt
+i29_neff_q06_rel.txt
+i29_neff_q06_topk.txt
+i29_neff_q06_topk_koff.txt

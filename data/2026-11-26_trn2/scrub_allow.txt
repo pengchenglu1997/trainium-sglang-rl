@@ -1,0 +1,5 @@
+# path<TAB>pattern<TAB>reason   (hits accepted on purpose; scrub_check.py --allow)
+correctness/logs/collect_q8_all.out	other-home-folder	text wrapped inside a path: "/home/u" then "buntu/..."; the folder is /home/ubuntu
+correctness/logs/collect_q8_rel.out	other-home-folder	text wrapped inside a path: "/home/u" then "buntu/..."; the folder is /home/ubuntu
+i37_topk_kernel/results/logs/collect_r2_koff_b.out	other-home-folder	text wrapped inside a path: "/home/ubu" then "ntu/..."; the folder is /home/ubuntu
+i29_compiler_args/i29_q06_topk_cold/inspect_i29_q06_topk_cold.json	other-home-folder	"/home/.openmpi" is a folder of the container image's PATH, not a user name

@@ -1,0 +1,3 @@
+== S 01:45:27 bench q8_rel exit 0: SERVE_AND_BENCH_DONE b_q8_rel ready_s=355.4 precheck=ok benches_done=2/2 result=/home/ubuntu/w/results_s4/76_serve_b_q8_rel.jsonl
+== S 01:57:53 bench q8_main exit 0: SERVE_AND_BENCH_DONE b_q8_main ready_s=345.2 precheck=ok benches_done=2/2 result=/home/ubuntu/w/results_s4/76_serve_b_q8_main.jsonl
+S_DONE sgl

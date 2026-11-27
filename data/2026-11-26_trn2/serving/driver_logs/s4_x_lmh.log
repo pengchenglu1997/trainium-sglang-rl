@@ -1,0 +1,4 @@
+== S 01:52:22 bench q06_lmh_off exit 0: SERVE_AND_BENCH_DONE b_q06_lmh_off ready_s=179.3 precheck=ok benches_done=3/3 result=/home/ubuntu/w/results_s4/76_serve_b_q06_lmh_off.jsonl
+S_DONE bench q06_lmh_off
+== S 01:58:52 bench q06_lmh_on exit 0: SERVE_AND_BENCH_DONE b_q06_lmh_on ready_s=159.1 precheck=ok benches_done=3/3 result=/home/ubuntu/w/results_s4/76_serve_b_q06_lmh_on.jsonl
+S_DONE bench q06_lmh_on

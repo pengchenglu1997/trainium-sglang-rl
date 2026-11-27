@@ -1,0 +1,72 @@
+== env
+== ls -la /var/tmp
+total 8
+drwxrwxrwt 2 root root 4096 Apr 20  2026 .
+drwxr-xr-x 1 root root 4096 Oct 25 10:26 ..
+== id
+uid=0(root) gid=0(root) groups=0(root)
+== versions
+Name: nki
+Version: 0.7.0+37713544100.gfede04bb
+Location: /opt/conda/lib/python3.14/site-packages
+Name: libtorch-neuronx-lite
+Version: 2.13.0.1.0.4089+71ce3449
+Location: /opt/conda/lib/python3.14/site-packages
+Name: libtorch-neuronx-lite
+Version: 2.13.0.1.0.4089+71ce3449
+Location: /opt/conda/lib/python3.14/site-packages
+Name: vllm-neuron
+Version: 0.29.0.1.2.0
+Location: /opt/conda/lib/python3.14/site-packages
+SP=/opt/conda/lib/python3.14/site-packages
+== setdefault / environ of NKI vars in python packages
+/opt/conda/lib/python3.14/site-packages/nki/compiler/_trace_cache.py:194:    NKI_ENABLE_TRACE_CACHE=1     Opt in (experimental; OFF by default).
+/opt/conda/lib/python3.14/site-packages/nki/compiler/_trace_cache.py:195:    NKI_DISABLE_TRACE_CACHE=1    Force off (overrides enable).
+/opt/conda/lib/python3.14/site-packages/nki/compiler/_trace_cache.py:197:    NKI_TRACE_CACHE_URL          Override cache base dir (s3:// warns + falls back).
+/opt/conda/lib/python3.14/site-packages/nki/compiler/_trace_cache.py:259:    OFF by default: requires an explicit ``NKI_ENABLE_TRACE_CACHE`` opt-in and
+/opt/conda/lib/python3.14/site-packages/nki/compiler/_trace_cache.py:260:    is suppressed by either ``NKI_DISABLE_TRACE_CACHE`` or the umbrella
+/opt/conda/lib/python3.14/site-packages/nki/compiler/_trace_cache.py:1386:            f"  enabled : {s['enabled']} (NKI_ENABLE_TRACE_CACHE)"
+/opt/conda/lib/python3.14/site-packages/nki/compiler/ncc_driver.py:909:    # On by default; disable via NKI_USE_COLZ=0 environment variable.
+/opt/conda/lib/python3.14/site-packages/nki/compiler/_disk_cache.py:21:    NKI_COMPILE_CACHE_URL     Override cache base directory (s3:// warns)
+/opt/conda/lib/python3.14/site-packages/nki/compiler/_disk_cache.py:64:    - NKI_COMPILE_CACHE_URL → use as base (warn + fallback on s3://)
+/opt/conda/lib/python3.14/site-packages/nki/framework/compiled.py:346:        (opt-in via NKI_ENABLE_TRACE_CACHE) can still let a cold process skip the
+/opt/conda/lib/python3.14/site-packages/libtorch_neuronx_lite/_compiler/nki_kernel.py:19:    if os.environ.get("NKI_ENABLE_TRACE_CACHE", "1") == "1":
+/opt/conda/lib/python3.14/site-packages/libtorch_neuronx_lite/_compiler/nki_kernel.py:21:            "NKI_ENABLE_TRACE_CACHE=1: the NKI kernel compile cache is persisted "
+/opt/conda/lib/python3.14/site-packages/libtorch_neuronx_lite/_compiler/nki_kernel.py:25:            "for details. Set NKI_ENABLE_TRACE_CACHE=0 to disable.",
+/opt/conda/lib/python3.14/site-packages/libtorch_neuronx_lite/_compiler/__init__.py:151:os.environ.setdefault("NKI_USE_COLZ", "1")
+/opt/conda/lib/python3.14/site-packages/libtorch_neuronx_lite/_compiler/__init__.py:154:os.environ.setdefault("NKI_ENABLE_TRACE_CACHE", "1")
+== trace cache gate
+263:    if _config.disable_compile_cache.value:
+265:    if _config.disable_trace_cache.value:
+267:    return _config.enable_trace_cache.value
+290:    The default base is per-user (``/var/tmp/nki-trace-cache-<uid>``, created
+301:    base = url or f"/var/tmp/nki-trace-cache-{_user_tag()}"
+73:            "Falling back to /var/tmp/nki-intermediate-cache"
+77:    base = url or "/var/tmp/nki-intermediate-cache"
+== warning source
+/opt/conda/lib/python3.14/site-packages/libtorch_neuronx_lite/_compiler/nki_kernel.py
+== nki_hop 625-640
+/opt/conda/lib/python3.14/site-packages/libtorch_neuronx_lite/_compiler/nki_hop.py
+        self.has_side_effect = has_side_effect
+
+    def __getitem__(self, grid: "NKIGridType") -> "NKIHOPCaller":
+        if isinstance(grid, int):
+            grid = (grid,)
+        grid = tuple(map(int, grid))
+        return NKIHOPCaller(
+            self.kernel_idx,
+            grid,
+            self.kernel_arg_names,
+            self.kernel_default_args,
+            self.has_side_effect,
+        )
+
+    def __call__(self, *args: Sequence[Any], **kwargs: dict[str, Any]) -> Any:
+        combined_args_dict = {**merge_names_and_args(self.kernel_arg_names, args), **kwargs}
+        # Add default args for missing parameters
+        for arg_name in self.kernel_arg_names:
+            if arg_name not in combined_args_dict:
+                combined_args_dict[arg_name] = self.kernel_default_args[arg_name]
+        # Convert to list in order of kernel_arg_names
+== parallel_trace TMPDIR / var/tmp
+/opt/conda/lib/python3.14/site-packages/libtorch_neuronx_lite/compile/parallel_trace.py

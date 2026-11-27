@@ -1,0 +1,12 @@
+== p1t_t0_p1
+  cell   D1: decode n= 17340  53.328 s (mean 3.075 ms, host-paced 0.7%) | prefill n=  69  0.286 s (mean 4.15 ms) | gaps n=   1  2.094 s | sum  55.709 s, prefill share 0.5%, gap share 3.8%
+  cell   D4: decode n=   510   2.292 s (mean 4.493 ms, host-paced 0.4%) | prefill n=   8  0.093 s (mean 11.59 ms) | gaps n=   0  0.000 s | sum   2.384 s, prefill share 3.9%, gap share 0.0%
+  cell   D8: decode n=  2040   9.216 s (mean 4.518 ms, host-paced 0.4%) | prefill n=  64  0.805 s (mean 12.58 ms) | gaps n=   0  0.000 s | sum  10.021 s, prefill share 8.0%, gap share 0.0%
+  cell  D32: decode n=   458   3.484 s (mean 7.608 ms, host-paced 0.4%) | prefill n=  64  0.859 s (mean 13.42 ms) | gaps n=   1  0.087 s | sum   4.430 s, prefill share 19.4%, gap share 2.0%
+== p1t_t0_p2
+  cell   D1: decode n= 17360  53.653 s (mean 3.091 ms, host-paced 1.4%) | prefill n=  78  0.322 s (mean 4.13 ms) | gaps n=   1  2.027 s | sum  56.002 s, prefill share 0.6%, gap share 3.6%
+  cell   D4: decode n=   509   2.239 s (mean 4.400 ms, host-paced 0.4%) | prefill n=   8  0.092 s (mean 11.49 ms) | gaps n=   1  0.050 s | sum   2.382 s, prefill share 3.9%, gap share 2.1%
+  cell   D7: decode n=     7   0.118 s (mean 16.796 ms, host-paced 0.0%) | prefill n=   0  0.000 s (mean 0.00 ms) | gaps n=   0  0.000 s | sum   0.118 s, prefill share 0.0%, gap share 0.0%
+  cell   D8: decode n=  2033   8.870 s (mean 4.363 ms, host-paced 0.4%) | prefill n=  57  0.709 s (mean 12.44 ms) | gaps n=   0  0.000 s | sum   9.579 s, prefill share 7.4%, gap share 0.0%
+  cell  D31: decode n=     1   0.027 s (mean 27.413 ms, host-paced 0.0%) | prefill n=   0  0.000 s (mean 0.00 ms) | gaps n=   0  0.000 s | sum   0.027 s, prefill share 0.0%, gap share 0.0%
+  cell  D32: decode n=   526   4.007 s (mean 7.618 ms, host-paced 0.4%) | prefill n=  62  0.832 s (mean 13.41 ms) | gaps n=   1  2.049 s | sum   6.888 s, prefill share 12.1%, gap share 29.7%

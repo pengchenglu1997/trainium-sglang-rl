@@ -1,0 +1,16 @@
+==================== q06_topk_kon sampler rows 9396 of 528056
+by source file, per step (both pcores): rows, instr ms {'cascaded_max_utils.py': {'size': 5.0, 'sum': 0.002}, 'rlkit_sampler_kernel.py': {'size': 286.0, 'sum': 0.683}, 'rotation_matrix.py': {'size': 9.0, 'sum': 0.002}, 'rotational_topk.py': {'size': 15.0, 'sum': 0.027}, 'rotational_topk_utils.py': {'size': 1159.0, 'sum': 0.943}, 'sampling.py': {'size': 805.0, 'sum': 0.16}, 'transpose.py': {'size': 70.0, 'sum': 0.02}}
+ exec  pcore  after_lmhead_union_ms  after_lmhead_span_ms  span_ms  start_after_t0_ms  end_before_t1_ms  union_ms  instr_ms  rows
+    0      0                 0.8224                1.4763   1.4763             6.3236            0.0259    0.8224    0.9801  1261
+    0      1                 0.7268                1.4748   1.4748             6.3232            0.0279    0.7268    0.8570  1088
+    1      0                 0.8221                1.4774   1.4774             5.9996            0.0297    0.8221    0.9797  1261
+    1      1                 0.7267                1.4750   1.4750             6.0000            0.0317    0.7267    0.8569  1088
+    2      0                 0.8222                1.4785   1.4785             6.0227            0.0259    0.8222    0.9800  1261
+    2      1                 0.7266                1.4778   1.4778             6.0213            0.0279    0.7266    0.8568  1088
+    3      0                 0.8224                1.4750   1.4750             6.0240            0.0258    0.8224    0.9801  1261
+    3      1                 0.7267                1.4740   1.4740             6.0231            0.0277    0.7267    0.8571  1088
+mean by pcore:
+       after_lmhead_union_ms  after_lmhead_span_ms  span_ms  start_after_t0_ms  end_before_t1_ms  union_ms  instr_ms    rows
+pcore                                                                                                                       
+0                     0.8223                1.4768   1.4768             6.0925            0.0268    0.8223    0.9800  1261.0
+1                     0.7267                1.4754   1.4754             6.0919            0.0288    0.7267    0.8569  1088.0

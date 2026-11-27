@@ -1,0 +1,4 @@
+== S 01:24:17 vllm served name: i12_s1a
+LLMBENCH_DONE b_q8_vllm_p1 csv=/home/ubuntu/w/results_s4/llmbench_b_q8_vllm_p1.csv rows=3
+LLMBENCH_DONE b_q8_vllm_p2 csv=/home/ubuntu/w/results_s4/llmbench_b_q8_vllm_p2.csv rows=3
+S_DONE vllm

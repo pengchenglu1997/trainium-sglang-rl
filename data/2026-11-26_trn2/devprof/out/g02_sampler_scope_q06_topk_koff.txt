@@ -1,0 +1,16 @@
+==================== q06_topk_koff sampler rows 39832 of 561540
+by source file, per step (both pcores): rows, instr ms {'cascaded_max_utils.py': {'size': 12.0, 'sum': 0.004}, 'rotation_matrix.py': {'size': 19.0, 'sum': 0.008}, 'rotational_topk.py': {'size': 31.0, 'sum': 0.032}, 'rotational_topk_utils.py': {'size': 2024.0, 'sum': 1.154}, 'sampling.py': {'size': 7802.0, 'sum': 4.608}, 'transpose.py': {'size': 70.0, 'sum': 0.02}}
+ exec  pcore  after_lmhead_union_ms  after_lmhead_span_ms  span_ms  start_after_t0_ms  end_before_t1_ms  union_ms  instr_ms  rows
+    0      0                 1.9987                2.4418   2.4418             6.1040            0.0170    1.9987    2.9132  5072
+    0      1                 1.9752                2.4327   2.4327             6.1039            0.0262    1.9752    2.9128  4886
+    1      0                 1.9964                2.4468   2.4468             6.0073            0.0176    1.9964    2.9133  5072
+    1      1                 1.9766                2.4383   2.4383             6.0068            0.0266    1.9766    2.9114  4886
+    2      0                 1.9974                2.4462   2.4462             6.0528            0.0171    1.9974    2.9141  5072
+    2      1                 1.9792                2.4372   2.4372             6.0525            0.0265    1.9792    2.9143  4886
+    3      0                 1.9968                2.4451   2.4451             6.0313            0.0176    1.9968    2.9138  5072
+    3      1                 1.9756                2.4361   2.4361             6.0309            0.0269    1.9756    2.9127  4886
+mean by pcore:
+       after_lmhead_union_ms  after_lmhead_span_ms  span_ms  start_after_t0_ms  end_before_t1_ms  union_ms  instr_ms    rows
+pcore                                                                                                                       
+0                     1.9973                2.4450   2.4450             6.0489            0.0173    1.9973    2.9136  5072.0
+1                     1.9766                2.4361   2.4361             6.0485            0.0266    1.9766    2.9128  4886.0

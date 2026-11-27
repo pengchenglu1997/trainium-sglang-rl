@@ -1,0 +1,11 @@
+selftests on the machine (Linux bash 5.3.9(1)-release, Python 3.14.4), 2026-11-27T05:06:50Z
+064ed90d3cb15a8d3f0cdb0d3049f94c3649f75c9a7f877f3c884e7ec3467659  srv_vllm_neuron_docker.sh
+a4456509abe29e71104ee080a99bc355a3009a751d6baad0739c476d477f12b1  nki_index_check.py
+6d742342a5949b4fb48a672c171c350cec1a16226ea9889b900615b33ff4ead1  selftest_launcher_env.py
+aacccdb482894a7ff7bae19009f6361d118366504fa90cf7761d1ec28d1b0391  selftest_nki_index_check.py
+== selftest_launcher_env.py
+SELFTEST_LAUNCHER_ENV PASSED 27 checks
+exit 0
+== selftest_nki_index_check.py
+SELFTEST_NKI_INDEX_CHECK PASSED 20 checks
+exit 0

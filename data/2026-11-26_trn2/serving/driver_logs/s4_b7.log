@@ -1,0 +1,2 @@
+== S 01:27:34 bench q06_lmh_on exit 3: SERVE_AND_BENCH_FAILED b_q06_lmh_on: RuntimeError: 2 of 3 bench commands did not end in LLMBENCH_DONE (see the bench events and /home/ubuntu/w/results_s4/logs)
+S_DONE b7

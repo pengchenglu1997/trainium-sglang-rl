@@ -1,0 +1,369 @@
+[
+    {
+        "Id": "2925c9f22c300297c6d7b5fb551005a31a643acff76ccc815f98c85816ad0551",
+        "Created": "2026-11-27T04:10:42.349943871Z",
+        "Path": "/opt/sglang-neuron/examples/qwen3_0p6b/run_server.sh",
+        "Args": [
+            "--context-length",
+            "4096",
+            "--chunked-prefill-size",
+            "2048",
+            "--max-running-requests",
+            "32",
+            "--max-total-tokens",
+            "131072",
+            "--cuda-graph-bs-decode",
+            "1",
+            "8",
+            "32"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 1260212,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-11-27T04:10:42.444032322Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:a68587706e73cb4c831c81a6f839a104ae4d12321ab066318f92532b46af6d9a",
+        "ResolvConfPath": "/var/lib/docker/containers/2925c9f22c300297c6d7b5fb551005a31a643acff76ccc815f98c85816ad0551/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/2925c9f22c300297c6d7b5fb551005a31a643acff76ccc815f98c85816ad0551/hostname",
+        "HostsPath": "/var/lib/docker/containers/2925c9f22c300297c6d7b5fb551005a31a643acff76ccc815f98c85816ad0551/hosts",
+        "LogPath": "/var/lib/docker/containers/2925c9f22c300297c6d7b5fb551005a31a643acff76ccc815f98c85816ad0551/2925c9f22c300297c6d7b5fb551005a31a643acff76ccc815f98c85816ad0551-json.log",
+        "Name": "/i29_q06_topk_cold",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/home/ubuntu/w/models:/models:ro",
+                "/home/ubuntu/w/sgl_cache_s4_i29_q06_topk_cold:/cache"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {
+                "30000/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "30340"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": [
+                "CAP_SYS_NICE"
+            ],
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "host",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": [
+                "label=disable"
+            ],
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [
+                {
+                    "PathOnHost": "/dev/neuron0",
+                    "PathInContainer": "/dev/neuron0",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron1",
+                    "PathInContainer": "/dev/neuron1",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron10",
+                    "PathInContainer": "/dev/neuron10",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron11",
+                    "PathInContainer": "/dev/neuron11",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron12",
+                    "PathInContainer": "/dev/neuron12",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron13",
+                    "PathInContainer": "/dev/neuron13",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron14",
+                    "PathInContainer": "/dev/neuron14",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron15",
+                    "PathInContainer": "/dev/neuron15",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron2",
+                    "PathInContainer": "/dev/neuron2",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron3",
+                    "PathInContainer": "/dev/neuron3",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron4",
+                    "PathInContainer": "/dev/neuron4",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron5",
+                    "PathInContainer": "/dev/neuron5",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron6",
+                    "PathInContainer": "/dev/neuron6",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron7",
+                    "PathInContainer": "/dev/neuron7",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron8",
+                    "PathInContainer": "/dev/neuron8",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/neuron9",
+                    "PathInContainer": "/dev/neuron9",
+                    "CgroupPermissions": "rwm"
+                }
+            ],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ],
+            "Init": true
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/ubuntu/w/sgl_cache_s4_i29_q06_topk_cold",
+                "Destination": "/cache",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/home/ubuntu/w/models",
+                "Destination": "/models",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "2925c9f22c30",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "30000/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "SGLANG_NEURON_SAMPLER=topk_topp",
+                "NEURON_RT_VISIBLE_CORES=12-15",
+                "HOST=0.0.0.0",
+                "PORT=30000",
+                "MODEL_PATH=/models/Qwen3-0.6B",
+                "HF_HUB_OFFLINE=1",
+                "PATH=/opt/aws/neuron/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/amazon/efa/bin:/home/.openmpi/bin",
+                "PYTHONDONTWRITEBYTECODE=1",
+                "PYTHONUNBUFFERED=1",
+                "PYTHONIOENCODING=UTF-8",
+                "LANG=C.UTF-8",
+                "LC_ALL=C.UTF-8",
+                "LD_LIBRARY_PATH=/opt/aws/neuron/lib:/opt/amazon/efa/lib:/opt/amazon/efa/lib64:/opt/amazon/openmpi/lib64:/usr/local/lib:/home/.openmpi/lib/",
+                "SAGEMAKER_TRAINING_MODULE=sagemaker_pytorch_container.training:main",
+                "DGLBACKEND=pytorch",
+                "PIP_CONSTRAINT=/etc/pip/constraints.txt",
+                "SGLANG_PLATFORM=neuron"
+            ],
+            "Cmd": [
+                "/opt/sglang-neuron/examples/qwen3_0p6b/run_server.sh",
+                "--context-length",
+                "4096",
+                "--chunked-prefill-size",
+                "2048",
+                "--max-running-requests",
+                "32",
+                "--max-total-tokens",
+                "131072",
+                "--cuda-graph-bs-decode",
+                "1",
+                "8",
+                "32"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "NONE"
+                ]
+            },
+            "Image": "public.ecr.aws/neuron/pytorch-inference-sglang-neuron:v0.1.0-neuron-py314-sdk-2.33.0-ubuntu26.04",
+            "Volumes": null,
+            "WorkingDir": "/",
+            "Entrypoint": null,
+            "Labels": {
+                "com.amazonaws.neuron.sdk": "2.33.0",
+                "com.amazonaws.sglang-neuron.sglang-commit": "43881a719e42165ff987fb0273a6bf12eaeb7662",
+                "dlc_major_version": "1",
+                "maintainer": "Amazon AI",
+                "org.opencontainers.image.created": "2026-11-12T19:13:00Z",
+                "org.opencontainers.image.description": "SGLang with the SGLang-Neuron plugin on the AWS Neuron SDK 2.33.0 container",
+                "org.opencontainers.image.revision": "20433da91b575fdc089f8036b649282288673e48",
+                "org.opencontainers.image.title": "sglang-neuron",
+                "org.opencontainers.image.version": "0.1.0"
+            }
+        },
+        "NetworkSettings": {
+            "SandboxID": "5bc49653b2615da9090f69e391b60b9420787d084cc4baaa5b94e0ab63307acd",
+            "SandboxKey": "/var/run/docker/netns/5bc49653b261",
+            "Ports": {
+                "30000/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "30340"
+                    }
+                ]
+            },
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "761369aa2375be9f866317a5f15302680171062afb91efa427c66bd4a33a3dc9",
+                    "EndpointID": "165063d32c05011dd3d67cedd20e92224de83a239f42028dcc28fc21ea516667",
+                    "Gateway": "<redacted>",
+                    "IPAddress": "<redacted>",
+                    "MacAddress": "2a:01:b2:d7:d7:5b",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+            "digest": "sha256:a68587706e73cb4c831c81a6f839a104ae4d12321ab066318f92532b46af6d9a",
+            "size": 8931,
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]

@@ -1,0 +1,9 @@
+{"t": "2026-11-27T02:03:56Z", "event": "open", "name": "lmh_off_b", "cores": "52-55", "port": 30302, "sets": ["t0", "t08"], "cache_src": "/home/ubuntu/w/sgl_cache_s4_q06_lmh_off", "cache": "/home/ubuntu/w/sgl_cache_cc_lmh_off_b", "cache_files_at_start": 70, "cache_files_in_original": 70, "env": {"DA
+{"t": "2026-11-27T02:06:40Z", "event": "server_start", "ready_s": 164.5, "log": "/home/ubuntu/w/cc/results/server_logs/server_cc_lmh_off_b_001.log", "start_no": 1}
+{"t": "2026-11-27T02:06:44Z", "event": "set_done", "set": "t0", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T02:06:49Z", "event": "set_done", "set": "t08", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T02:06:49Z", "event": "log_lines", "counts": {"sampler by the kernel": 0, "topk_topp sampler by the kernel": 0}, "pretransposed_mentions": 0, "examples": []}
+{"t": "2026-11-27T02:06:53Z", "event": "stop", "seconds": 4.0}
+{"t": "2026-11-27T02:06:53Z", "event": "end", "status": "ok"}
+{"t": "2026-11-27T02:06:53Z", "done": true}
+CC_COLLECT_DONE lmh_off_b

@@ -1,0 +1,6 @@
+==================== q8_all Unknown 4.19-Mflop transposes total rows 0 per step 0.0
+ exec  n  first_ms  last_end_ms  union_ms  instr_ms  n_before_last_allreduce  n_A2  n_from_lmhead  cut_l_ms  lmhead_start_ms
+    0  0       NaN          NaN       0.0       0.0                        0     0              0    13.422           13.422
+    1  0       NaN          NaN       0.0       0.0                        0     0              0    12.942           12.942
+    2  0       NaN          NaN       0.0       0.0                        0     0              0    13.017           13.017
+    3  0       NaN          NaN       0.0       0.0                        0     0              0    12.978           12.978

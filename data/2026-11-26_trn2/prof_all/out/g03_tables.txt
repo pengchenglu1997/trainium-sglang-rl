@@ -1,0 +1,161 @@
+== T1 wall per execution (ms, pcore 0 rows) and mean
+q06_rel_nd      9.241 9.148 9.189 9.178 mean 9.189
+q06_main_nd     8.630 8.325 8.372 8.375 mean 8.425
+q06_topk_nd     8.659 8.438 8.495 8.487 mean 8.520
+q06_lmh_off_nd  9.335 9.152 9.199 9.188 mean 9.218
+q06_lmh_on_nd   7.681 7.511 7.572 7.563 mean 7.581
+q8_rel_nd       15.140 14.921 14.961 14.967 mean 14.997
+q8_main_nd      14.489 13.873 13.932 13.923 mean 14.054
+q06_topk_kon    7.826 7.507 7.527 7.525 mean 7.596
+q06_topk_koff   8.563 8.472 8.516 8.494 mean 8.511
+q06_all         6.442 6.444 9.169 6.435 mean 7.123
+q06_topk_all    7.539 7.325 7.368 7.367 mean 7.400
+q8_all          14.377 13.890 13.966 13.925 mean 14.039
+
+== T2 exclusive wall split, ms per step (share of wall), mean of 4 execs, by pcore
+pc0 q06_rel_nd      wall 9.189 | math 4.050 (44.1%) dma_issue 2.765 (30.1%) dma 1.369 (14.9%) cc 0.278 (3.0%) host 0.037 (0.4%) control 0.004 (0.0%) wait 0.247 (2.7%) nothing 0.438 (4.8%)
+pc0 q06_main_nd     wall 8.425 | math 3.031 (36.0%) dma_issue 2.811 (33.4%) dma 1.318 (15.6%) cc 0.367 (4.4%) host 0.040 (0.5%) control 0.004 (0.0%) wait 0.352 (4.2%) nothing 0.503 (6.0%)
+pc0 q06_topk_nd     wall 8.520 | math 4.099 (48.1%) dma_issue 2.045 (24.0%) dma 1.129 (13.2%) cc 0.520 (6.1%) host 0.092 (1.1%) control 0.052 (0.6%) wait 0.353 (4.1%) nothing 0.229 (2.7%)
+pc0 q06_lmh_off_nd  wall 9.218 | math 4.050 (43.9%) dma_issue 2.781 (30.2%) dma 1.366 (14.8%) cc 0.292 (3.2%) host 0.038 (0.4%) control 0.004 (0.0%) wait 0.240 (2.6%) nothing 0.448 (4.9%)
+pc0 q06_lmh_on_nd   wall 7.581 | math 3.303 (43.6%) dma_issue 1.913 (25.2%) dma 1.333 (17.6%) cc 0.291 (3.8%) host 0.041 (0.5%) control 0.003 (0.0%) wait 0.203 (2.7%) nothing 0.493 (6.5%)
+pc0 q8_rel_nd       wall 14.997 | math 6.743 (45.0%) dma_issue 3.609 (24.1%) dma 3.755 (25.0%) cc 0.276 (1.8%) host 0.037 (0.2%) control 0.003 (0.0%) wait 0.204 (1.4%) nothing 0.370 (2.5%)
+pc0 q8_main_nd      wall 14.054 | math 5.757 (41.0%) dma_issue 3.472 (24.7%) dma 3.794 (27.0%) cc 0.378 (2.7%) host 0.036 (0.3%) control 0.003 (0.0%) wait 0.231 (1.6%) nothing 0.384 (2.7%)
+pc0 q06_topk_kon    wall 7.596 | math 3.178 (41.8%) dma_issue 2.036 (26.8%) dma 1.134 (14.9%) cc 0.543 (7.1%) host 0.099 (1.3%) control 0.049 (0.7%) wait 0.319 (4.2%) nothing 0.238 (3.1%)
+pc0 q06_topk_koff   wall 8.511 | math 4.087 (48.0%) dma_issue 2.107 (24.8%) dma 1.051 (12.4%) cc 0.471 (5.5%) host 0.144 (1.7%) control 0.039 (0.5%) wait 0.378 (4.4%) nothing 0.234 (2.7%)
+pc0 q06_all         wall 7.123 | math 2.290 (32.2%) dma_issue 1.848 (25.9%) dma 1.330 (18.7%) cc 0.941 (13.2%) host 0.044 (0.6%) control 0.002 (0.0%) wait 0.196 (2.8%) nothing 0.471 (6.6%)
+pc0 q06_topk_all    wall 7.400 | math 3.045 (41.1%) dma_issue 2.032 (27.5%) dma 1.062 (14.3%) cc 0.504 (6.8%) host 0.151 (2.0%) control 0.041 (0.6%) wait 0.337 (4.6%) nothing 0.227 (3.1%)
+pc0 q8_all          wall 14.039 | math 5.489 (39.1%) dma_issue 3.644 (26.0%) dma 3.910 (27.8%) cc 0.331 (2.4%) host 0.046 (0.3%) control 0.003 (0.0%) wait 0.212 (1.5%) nothing 0.404 (2.9%)
+pc1 q06_rel_nd      wall 9.189 | math 4.115 (44.8%) dma_issue 2.620 (28.5%) dma 1.457 (15.9%) cc 0.293 (3.2%) host 0.044 (0.5%) control 0.004 (0.0%) wait 0.240 (2.6%) nothing 0.417 (4.5%)
+pc1 q06_main_nd     wall 8.425 | math 3.023 (35.9%) dma_issue 2.716 (32.2%) dma 1.392 (16.5%) cc 0.343 (4.1%) host 0.045 (0.5%) control 0.005 (0.1%) wait 0.412 (4.9%) nothing 0.489 (5.8%)
+pc1 q06_topk_nd     wall 8.520 | math 4.209 (49.4%) dma_issue 1.751 (20.6%) dma 1.313 (15.4%) cc 0.530 (6.2%) host 0.105 (1.2%) control 0.053 (0.6%) wait 0.400 (4.7%) nothing 0.158 (1.8%)
+pc1 q06_lmh_off_nd  wall 9.218 | math 4.139 (44.9%) dma_issue 2.622 (28.4%) dma 1.447 (15.7%) cc 0.303 (3.3%) host 0.044 (0.5%) control 0.003 (0.0%) wait 0.242 (2.6%) nothing 0.418 (4.5%)
+pc1 q06_lmh_on_nd   wall 7.581 | math 3.392 (44.7%) dma_issue 1.802 (23.8%) dma 1.331 (17.6%) cc 0.305 (4.0%) host 0.042 (0.6%) control 0.004 (0.1%) wait 0.229 (3.0%) nothing 0.476 (6.3%)
+pc1 q8_rel_nd       wall 14.997 | math 6.777 (45.2%) dma_issue 3.453 (23.0%) dma 3.700 (24.7%) cc 0.337 (2.2%) host 0.060 (0.4%) control 0.005 (0.0%) wait 0.294 (2.0%) nothing 0.372 (2.5%)
+pc1 q8_main_nd      wall 14.054 | math 5.714 (40.7%) dma_issue 3.364 (23.9%) dma 3.750 (26.7%) cc 0.449 (3.2%) host 0.080 (0.6%) control 0.005 (0.0%) wait 0.334 (2.4%) nothing 0.358 (2.5%)
+pc1 q06_topk_kon    wall 7.596 | math 3.250 (42.8%) dma_issue 1.697 (22.3%) dma 1.330 (17.5%) cc 0.548 (7.2%) host 0.108 (1.4%) control 0.048 (0.6%) wait 0.439 (5.8%) nothing 0.177 (2.3%)
+pc1 q06_topk_koff   wall 8.511 | math 4.256 (50.0%) dma_issue 1.735 (20.4%) dma 1.322 (15.5%) cc 0.459 (5.4%) host 0.113 (1.3%) control 0.056 (0.7%) wait 0.405 (4.8%) nothing 0.165 (1.9%)
+pc1 q06_all         wall 7.123 | math 2.277 (32.0%) dma_issue 1.758 (24.7%) dma 1.374 (19.3%) cc 0.960 (13.5%) host 0.044 (0.6%) control 0.003 (0.0%) wait 0.257 (3.6%) nothing 0.449 (6.3%)
+pc1 q06_topk_all    wall 7.400 | math 3.070 (41.5%) dma_issue 1.694 (22.9%) dma 1.349 (18.2%) cc 0.506 (6.8%) host 0.105 (1.4%) control 0.053 (0.7%) wait 0.456 (6.2%) nothing 0.167 (2.3%)
+pc1 q8_all          wall 14.039 | math 5.501 (39.2%) dma_issue 3.514 (25.0%) dma 3.818 (27.2%) cc 0.425 (3.0%) host 0.102 (0.7%) control 0.004 (0.0%) wait 0.313 (2.2%) nothing 0.361 (2.6%)
+
+== T3 phases, ms per step (share), pcore 0; spill MB and TRANSPOSE count per phase, pcore 0 / pcore 1
+q06_rel_nd      A1_embed_layers      5.848 (63.6%) | math 1.925 dma_issue 1.863 dma 1.141 cc 0.274 host 0.032 control 0.003 wait 0.228 nothing 0.382 | spill MB 26.9 / 20.4  transposes 1640 / 1640  dmaMB 608.3
+q06_rel_nd      A2_layers_to_lmhead  1.077 (11.7%) | math 0.399 dma_issue 0.453 dma 0.218 cc 0.000 host 0.000 control 0.000 wait 0.001 nothing 0.006 | spill MB 135.8 / 129.8  transposes 2346 / 2338  dmaMB 186.7
+q06_rel_nd      B_lmhead             0.801 (8.7%) | math 0.399 dma_issue 0.358 dma 0.004 cc 0.000 host 0.001 control 0.000 wait 0.004 nothing 0.035 | spill MB 38.9 / 44.7  transposes 332 / 333  dmaMB 50.7
+q06_rel_nd      C_tail               1.462 (15.9%) | math 1.327 dma_issue 0.092 dma 0.006 cc 0.004 host 0.003 control 0.000 wait 0.014 nothing 0.016 | spill MB 7.3 / 7.4  transposes 892 / 899  dmaMB 10.6
+q06_main_nd     A1_embed_layers      6.115 (72.6%) | math 1.920 dma_issue 1.903 dma 1.102 cc 0.363 host 0.037 control 0.003 wait 0.328 nothing 0.459 | spill MB 17.3 / 10.7  transposes 1648 / 1648  dmaMB 609.8
+q06_main_nd     A2_layers_to_lmhead  1.063 (12.6%) | math 0.393 dma_issue 0.461 dma 0.202 cc 0.000 host 0.000 control 0.000 wait 0.002 nothing 0.005 | spill MB 140.8 / 141.9  transposes 2362 / 2367  dmaMB 181.5
+q06_main_nd     B_lmhead             0.822 (9.8%) | math 0.336 dma_issue 0.434 dma 0.007 cc 0.000 host 0.001 control 0.000 wait 0.005 nothing 0.038 | spill MB 43.5 / 42.4  transposes 306 / 301  dmaMB 51.2
+q06_main_nd     C_tail               0.425 (5.0%) | math 0.383 dma_issue 0.012 dma 0.007 cc 0.004 host 0.002 control 0.000 wait 0.017 nothing 0.000 | spill MB 0.1 / 0.0  transposes 0 / 0  dmaMB 2.9
+q06_topk_nd     A1_embed_layers      6.102 (71.6%) | math 2.021 dma_issue 1.911 dma 1.089 cc 0.514 host 0.087 control 0.050 wait 0.260 nothing 0.171 | spill MB 12.2 / 0.9  transposes 3326 / 3238  dmaMB 612.8
+q06_topk_nd     A2_layers_to_lmhead  0.000 (0.0%) | math 0.000 dma_issue 0.000 dma 0.000 cc 0.000 host 0.000 control 0.000 wait 0.000 nothing 0.000 | spill MB 0.0 / 0.0  transposes 0 / 0  dmaMB 0.0
+q06_topk_nd     B_lmhead             0.000 (0.0%) | math 0.000 dma_issue 0.000 dma 0.000 cc 0.000 host 0.000 control 0.000 wait 0.000 nothing 0.000 | spill MB 0.0 / 0.0  transposes 1 / 1  dmaMB 0.0
+q06_topk_nd     C_tail               2.418 (28.4%) | math 2.078 dma_issue 0.134 dma 0.039 cc 0.007 host 0.005 control 0.001 wait 0.094 nothing 0.058 | spill MB 17.7 / 7.3  transposes 3665 / 3621  dmaMB 55.8
+q06_lmh_off_nd  A1_embed_layers      5.878 (63.8%) | math 1.922 dma_issue 1.882 dma 1.135 cc 0.287 host 0.029 control 0.004 wait 0.226 nothing 0.394 | spill MB 26.9 / 20.4  transposes 1640 / 1640  dmaMB 608.1
+q06_lmh_off_nd  A2_layers_to_lmhead  1.077 (11.7%) | math 0.400 dma_issue 0.452 dma 0.219 cc 0.000 host 0.000 control 0.000 wait 0.001 nothing 0.005 | spill MB 135.8 / 129.8  transposes 2346 / 2338  dmaMB 186.9
+q06_lmh_off_nd  B_lmhead             0.802 (8.7%) | math 0.402 dma_issue 0.355 dma 0.004 cc 0.000 host 0.001 control 0.000 wait 0.004 nothing 0.035 | spill MB 38.9 / 44.8  transposes 332 / 336  dmaMB 50.7
+q06_lmh_off_nd  C_tail               1.462 (15.9%) | math 1.325 dma_issue 0.092 dma 0.007 cc 0.004 host 0.008 control 0.000 wait 0.010 nothing 0.015 | spill MB 7.3 / 7.3  transposes 892 / 896  dmaMB 10.6
+q06_lmh_on_nd   A1_embed_layers      5.958 (78.6%) | math 1.836 dma_issue 1.819 dma 1.310 cc 0.286 host 0.038 control 0.003 wait 0.191 nothing 0.476 | spill MB 7.6 / 0.9  transposes 1618 / 1618  dmaMB 608.7
+q06_lmh_on_nd   A2_layers_to_lmhead  0.000 (0.0%) | math 0.000 dma_issue 0.000 dma 0.000 cc 0.000 host 0.000 control 0.000 wait 0.000 nothing 0.000 | spill MB 0.0 / 0.0  transposes 0 / 0  dmaMB 0.0
+q06_lmh_on_nd   B_lmhead             0.193 (2.5%) | math 0.145 dma_issue 0.027 dma 0.018 cc 0.000 host 0.001 control 0.000 wait 0.000 nothing 0.002 | spill MB 0.0 / 0.0  transposes 329 / 378  dmaMB 32.9
+q06_lmh_on_nd   C_tail               1.431 (18.9%) | math 1.323 dma_issue 0.067 dma 0.005 cc 0.006 host 0.002 control 0.000 wait 0.013 nothing 0.016 | spill MB 7.3 / 7.3  transposes 879 / 830  dmaMB 10.4
+q8_rel_nd       A1_embed_layers      12.944 (86.3%) | math 4.896 dma_issue 3.477 dma 3.721 cc 0.271 host 0.033 control 0.002 wait 0.190 nothing 0.353 | spill MB 31.7 / 1.2  transposes 6114 / 5978  dmaMB 2425.9
+q8_rel_nd       A2_layers_to_lmhead  0.030 (0.2%) | math 0.008 dma_issue 0.005 dma 0.011 cc 0.000 host 0.002 control 0.000 wait 0.003 nothing 0.000 | spill MB 0.0 / 0.0  transposes 114 / 206  dmaMB 6.9
+q8_rel_nd       B_lmhead             0.663 (4.4%) | math 0.564 dma_issue 0.082 dma 0.017 cc 0.000 host 0.000 control 0.000 wait 0.000 nothing 0.000 | spill MB 0.0 / 4.6  transposes 9676 / 9934  dmaMB 147.4
+q8_rel_nd       C_tail               1.361 (9.1%) | math 1.275 dma_issue 0.045 dma 0.006 cc 0.005 host 0.002 control 0.000 wait 0.011 nothing 0.016 | spill MB 7.3 / 2.7  transposes 874 / 596  dmaMB 7.5
+q8_main_nd      A1_embed_layers      13.072 (93.0%) | math 4.866 dma_issue 3.445 dma 3.758 cc 0.373 host 0.032 control 0.003 wait 0.213 nothing 0.381 | spill MB 31.7 / 1.2  transposes 6146 / 6066  dmaMB 2429.4
+q8_main_nd      A2_layers_to_lmhead  0.020 (0.1%) | math 0.008 dma_issue 0.006 dma 0.004 cc 0.000 host 0.000 control 0.000 wait 0.001 nothing 0.002 | spill MB 0.0 / 0.0  transposes 96 / 112  dmaMB 3.8
+q8_main_nd      B_lmhead             0.538 (3.8%) | math 0.498 dma_issue 0.011 dma 0.029 cc 0.000 host 0.000 control 0.000 wait 0.000 nothing 0.001 | spill MB 0.0 / 0.0  transposes 9642 / 9642  dmaMB 144.3
+q8_main_nd      C_tail               0.424 (3.0%) | math 0.385 dma_issue 0.011 dma 0.004 cc 0.004 host 0.004 control 0.000 wait 0.016 nothing 0.000 | spill MB 0.1 / 0.0  transposes 0 / 0  dmaMB 2.9
+q06_topk_kon    A1_embed_layers      6.141 (80.8%) | math 2.007 dma_issue 1.941 dma 1.085 cc 0.537 host 0.090 control 0.048 wait 0.259 nothing 0.173 | spill MB 12.2 / 0.9  transposes 2968 / 3088  dmaMB 616.6
+q06_topk_kon    A2_layers_to_lmhead  0.000 (0.0%) | math 0.000 dma_issue 0.000 dma 0.000 cc 0.000 host 0.000 control 0.000 wait 0.000 nothing 0.000 | spill MB 0.0 / 0.0  transposes 0 / 0  dmaMB 0.0
+q06_topk_kon    B_lmhead             0.149 (2.0%) | math 0.094 dma_issue 0.017 dma 0.022 cc 0.000 host 0.002 control 0.000 wait 0.000 nothing 0.014 | spill MB 0.8 / 0.0  transposes 1232 / 1269  dmaMB 28.0
+q06_topk_kon    C_tail               1.306 (17.2%) | math 1.077 dma_issue 0.078 dma 0.027 cc 0.006 host 0.007 control 0.001 wait 0.060 nothing 0.051 | spill MB 12.4 / 0.0  transposes 1536 / 1455  dmaMB 19.3
+q06_topk_koff   A1_embed_layers      6.094 (71.6%) | math 2.008 dma_issue 1.974 dma 1.013 cc 0.463 host 0.140 control 0.038 wait 0.282 nothing 0.176 | spill MB 12.2 / 0.9  transposes 2972 / 3088  dmaMB 612.7
+q06_topk_koff   A2_layers_to_lmhead  0.000 (0.0%) | math 0.000 dma_issue 0.000 dma 0.000 cc 0.000 host 0.000 control 0.000 wait 0.000 nothing 0.000 | spill MB 0.0 / 0.0  transposes 0 / 0  dmaMB 0.0
+q06_topk_koff   B_lmhead             0.000 (0.0%) | math 0.000 dma_issue 0.000 dma 0.000 cc 0.000 host 0.000 control 0.000 wait 0.000 nothing 0.000 | spill MB 0.0 / 0.0  transposes 1 / 0  dmaMB 0.0
+q06_topk_koff   C_tail               2.417 (28.4%) | math 2.078 dma_issue 0.133 dma 0.038 cc 0.008 host 0.004 control 0.001 wait 0.097 nothing 0.057 | spill MB 17.7 / 7.3  transposes 3657 / 3618  dmaMB 55.8
+q06_all         A1_embed_layers      6.583 (92.4%) | math 1.830 dma_issue 1.816 dma 1.310 cc 0.937 host 0.041 control 0.001 wait 0.182 nothing 0.467 | spill MB 7.6 / 0.9  transposes 1618 / 1618  dmaMB 611.5
+q06_all         A2_layers_to_lmhead  0.000 (0.0%) | math 0.000 dma_issue 0.000 dma 0.000 cc 0.000 host 0.000 control 0.000 wait 0.000 nothing 0.000 | spill MB 0.0 / 0.0  transposes 0 / 0  dmaMB 0.0
+q06_all         B_lmhead             0.149 (2.1%) | math 0.102 dma_issue 0.023 dma 0.019 cc 0.000 host 0.000 control 0.000 wait 0.001 nothing 0.004 | spill MB 0.0 / 0.0  transposes 314 / 314  dmaMB 30.3
+q06_all         C_tail               0.391 (5.5%) | math 0.358 dma_issue 0.009 dma 0.002 cc 0.004 host 0.003 control 0.000 wait 0.014 nothing 0.000 | spill MB 0.1 / 0.0  transposes 0 / 0  dmaMB 2.9
+q06_topk_all    A1_embed_layers      6.086 (82.2%) | math 1.995 dma_issue 1.935 dma 1.017 cc 0.499 host 0.143 control 0.040 wait 0.278 nothing 0.178 | spill MB 12.2 / 0.9  transposes 2952 / 3072  dmaMB 617.1
+q06_topk_all    A2_layers_to_lmhead  0.000 (0.0%) | math 0.000 dma_issue 0.000 dma 0.000 cc 0.000 host 0.000 control 0.000 wait 0.000 nothing 0.000 | spill MB 0.0 / 0.0  transposes 0 / 0  dmaMB 0.0
+q06_topk_all    B_lmhead             0.001 (0.0%) | math 0.000 dma_issue 0.001 dma 0.000 cc 0.000 host 0.000 control 0.000 wait 0.000 nothing 0.001 | spill MB 0.0 / 0.0  transposes 0 / 0  dmaMB 0.0
+q06_topk_all    C_tail               1.313 (17.7%) | math 1.050 dma_issue 0.096 dma 0.045 cc 0.006 host 0.008 control 0.001 wait 0.059 nothing 0.048 | spill MB 13.2 / 0.0  transposes 400 / 356  dmaMB 46.4
+q8_all          A1_embed_layers      13.090 (93.2%) | math 4.852 dma_issue 3.467 dma 3.800 cc 0.327 host 0.043 control 0.002 wait 0.195 nothing 0.402 | spill MB 31.7 / 1.2  transposes 5986 / 5922  dmaMB 2430.0
+q8_all          A2_layers_to_lmhead  0.000 (0.0%) | math 0.000 dma_issue 0.000 dma 0.000 cc 0.000 host 0.000 control 0.000 wait 0.000 nothing 0.000 | spill MB 0.0 / 0.0  transposes 0 / 0  dmaMB 0.0
+q8_all          B_lmhead             0.529 (3.8%) | math 0.254 dma_issue 0.167 dma 0.105 cc 0.000 host 0.000 control 0.000 wait 0.001 nothing 0.002 | spill MB 0.0 / 0.0  transposes 362 / 362  dmaMB 147.6
+q8_all          C_tail               0.420 (3.0%) | math 0.382 dma_issue 0.011 dma 0.004 cc 0.004 host 0.003 control 0.000 wait 0.016 nothing 0.000 | spill MB 0.1 / 0.0  transposes 0 / 0  dmaMB 2.9
+
+== T4 pair diffs (second minus first), ms per step, pcore 0
+q06_lmh_off_nd -> q06_lmh_on_nd: wall 9.218 -> 7.581 (-1.637)
+   A1_embed_layers      len 5.878 -> 5.958 (+0.079); spill MB 26.9 -> 7.6; transposes 1640 -> 1618; math -0.087 dma_issue -0.063 dma +0.175
+   A2_layers_to_lmhead  len 1.077 -> 0.000 (-1.077); spill MB 135.8 -> 0.0; transposes 2346 -> 0; math -0.400 dma_issue -0.452 dma -0.219
+   B_lmhead             len 0.802 -> 0.193 (-0.609); spill MB 38.9 -> 0.0; transposes 332 -> 329; math -0.257 dma_issue -0.328 dma +0.014
+   C_tail               len 1.462 -> 1.431 (-0.030); spill MB 7.3 -> 7.3; transposes 892 -> 879; math -0.003 dma_issue -0.025 dma -0.002
+q06_rel_nd -> q06_main_nd: wall 9.189 -> 8.425 (-0.764)
+   A1_embed_layers      len 5.848 -> 6.115 (+0.266); spill MB 26.9 -> 17.3; transposes 1640 -> 1648; math -0.005 dma_issue +0.040 dma -0.039
+   A2_layers_to_lmhead  len 1.077 -> 1.063 (-0.014); spill MB 135.8 -> 140.8; transposes 2346 -> 2362; math -0.007 dma_issue +0.009 dma -0.017
+   B_lmhead             len 0.801 -> 0.822 (+0.021); spill MB 38.9 -> 43.5; transposes 332 -> 306; math -0.063 dma_issue +0.077 dma +0.003
+   C_tail               len 1.462 -> 0.425 (-1.036); spill MB 7.3 -> 0.1; transposes 892 -> 0; math -0.944 dma_issue -0.080 dma +0.001
+q06_rel_nd -> q06_topk_nd: wall 9.189 -> 8.520 (-0.669)
+   A1_embed_layers      len 5.848 -> 6.102 (+0.254); spill MB 26.9 -> 12.2; transposes 1640 -> 3326; math +0.096 dma_issue +0.048 dma -0.051
+   A2_layers_to_lmhead  len 1.077 -> 0.000 (-1.077); spill MB 135.8 -> 0.0; transposes 2346 -> 0; math -0.399 dma_issue -0.453 dma -0.218
+   B_lmhead             len 0.801 -> 0.000 (-0.801); spill MB 38.9 -> 0.0; transposes 332 -> 1; math -0.399 dma_issue -0.357 dma -0.004
+   C_tail               len 1.462 -> 2.418 (+0.956); spill MB 7.3 -> 17.7; transposes 892 -> 3665; math +0.751 dma_issue +0.043 dma +0.033
+q8_rel_nd -> q8_main_nd: wall 14.997 -> 14.054 (-0.943)
+   A1_embed_layers      len 12.944 -> 13.072 (+0.128); spill MB 31.7 -> 31.7; transposes 6114 -> 6146; math -0.030 dma_issue -0.032 dma +0.037
+   A2_layers_to_lmhead  len 0.030 -> 0.020 (-0.010); spill MB 0.0 -> 0.0; transposes 114 -> 96; math -0.001 dma_issue +0.000 dma -0.007
+   B_lmhead             len 0.663 -> 0.538 (-0.125); spill MB 0.0 -> 0.0; transposes 9676 -> 9642; math -0.066 dma_issue -0.071 dma +0.012
+   C_tail               len 1.361 -> 0.424 (-0.937); spill MB 7.3 -> 0.1; transposes 874 -> 0; math -0.889 dma_issue -0.034 dma -0.002
+q06_topk_koff -> q06_topk_kon: wall 8.511 -> 7.596 (-0.915)
+   A1_embed_layers      len 6.094 -> 6.141 (+0.047); spill MB 12.2 -> 12.2; transposes 2972 -> 2968; math -0.001 dma_issue -0.033 dma +0.072
+   A2_layers_to_lmhead  len 0.000 -> 0.000 (+0.000); spill MB 0.0 -> 0.0; transposes 0 -> 0; math +0.000 dma_issue +0.000 dma +0.000
+   B_lmhead             len 0.000 -> 0.149 (+0.149); spill MB 0.0 -> 0.8; transposes 1 -> 1232; math +0.094 dma_issue +0.017 dma +0.022
+   C_tail               len 2.417 -> 1.306 (-1.111); spill MB 17.7 -> 12.4; transposes 3657 -> 1536; math -1.001 dma_issue -0.055 dma -0.011
+q06_rel_nd -> q06_lmh_off_nd: wall 9.189 -> 9.218 (+0.029)
+   A1_embed_layers      len 5.848 -> 5.878 (+0.030); spill MB 26.9 -> 26.9; transposes 1640 -> 1640; math -0.003 dma_issue +0.019 dma -0.005
+   A2_layers_to_lmhead  len 1.077 -> 1.077 (-0.001); spill MB 135.8 -> 135.8; transposes 2346 -> 2346; math +0.001 dma_issue -0.001 dma +0.001
+   B_lmhead             len 0.801 -> 0.802 (+0.000); spill MB 38.9 -> 38.9; transposes 332 -> 332; math +0.003 dma_issue -0.002 dma -0.000
+   C_tail               len 1.462 -> 1.462 (-0.000); spill MB 7.3 -> 7.3; transposes 892 -> 892; math -0.001 dma_issue +0.000 dma +0.001
+q06_main_nd -> q06_lmh_off_nd: wall 8.425 -> 9.218 (+0.793)
+   A1_embed_layers      len 6.115 -> 5.878 (-0.237); spill MB 17.3 -> 26.9; transposes 1648 -> 1640; math +0.003 dma_issue -0.021 dma +0.033
+   A2_layers_to_lmhead  len 1.063 -> 1.077 (+0.014); spill MB 140.8 -> 135.8; transposes 2362 -> 2346; math +0.007 dma_issue -0.010 dma +0.017
+   B_lmhead             len 0.822 -> 0.802 (-0.021); spill MB 43.5 -> 38.9; transposes 306 -> 332; math +0.066 dma_issue -0.079 dma -0.003
+   C_tail               len 0.425 -> 1.462 (+1.036); spill MB 0.1 -> 7.3; transposes 0 -> 892; math +0.943 dma_issue +0.080 dma +0.000
+q06_rel_nd -> q06_all: wall 9.189 -> 7.123 (-2.066)
+   A1_embed_layers      len 5.848 -> 6.583 (+0.735); spill MB 26.9 -> 7.6; transposes 1640 -> 1618; math -0.095 dma_issue -0.047 dma +0.169
+   A2_layers_to_lmhead  len 1.077 -> 0.000 (-1.077); spill MB 135.8 -> 0.0; transposes 2346 -> 0; math -0.399 dma_issue -0.453 dma -0.218
+   B_lmhead             len 0.801 -> 0.149 (-0.653); spill MB 38.9 -> 0.0; transposes 332 -> 314; math -0.297 dma_issue -0.334 dma +0.014
+   C_tail               len 1.462 -> 0.391 (-1.071); spill MB 7.3 -> 0.1; transposes 892 -> 0; math -0.969 dma_issue -0.082 dma -0.004
+q06_main_nd -> q06_all: wall 8.425 -> 7.123 (-1.303)
+   A1_embed_layers      len 6.115 -> 6.583 (+0.469); spill MB 17.3 -> 7.6; transposes 1648 -> 1618; math -0.090 dma_issue -0.087 dma +0.208
+   A2_layers_to_lmhead  len 1.063 -> 0.000 (-1.063); spill MB 140.8 -> 0.0; transposes 2362 -> 0; math -0.393 dma_issue -0.461 dma -0.202
+   B_lmhead             len 0.822 -> 0.149 (-0.674); spill MB 43.5 -> 0.0; transposes 306 -> 314; math -0.234 dma_issue -0.411 dma +0.012
+   C_tail               len 0.425 -> 0.391 (-0.035); spill MB 0.1 -> 0.1; transposes 0 -> 0; math -0.024 dma_issue -0.003 dma -0.005
+q06_lmh_on_nd -> q06_all: wall 7.581 -> 7.123 (-0.459)
+   A1_embed_layers      len 5.958 -> 6.583 (+0.626); spill MB 7.6 -> 7.6; transposes 1618 -> 1618; math -0.006 dma_issue -0.003 dma -0.001
+   A2_layers_to_lmhead  len 0.000 -> 0.000 (+0.000); spill MB 0.0 -> 0.0; transposes 0 -> 0; math +0.000 dma_issue +0.000 dma +0.000
+   B_lmhead             len 0.193 -> 0.149 (-0.044); spill MB 0.0 -> 0.0; transposes 329 -> 314; math -0.043 dma_issue -0.004 dma +0.001
+   C_tail               len 1.431 -> 0.391 (-1.041); spill MB 7.3 -> 0.1; transposes 879 -> 0; math -0.965 dma_issue -0.058 dma -0.003
+q8_rel_nd -> q8_all: wall 14.997 -> 14.039 (-0.958)
+   A1_embed_layers      len 12.944 -> 13.090 (+0.146); spill MB 31.7 -> 31.7; transposes 6114 -> 5986; math -0.044 dma_issue -0.010 dma +0.079
+   A2_layers_to_lmhead  len 0.030 -> 0.000 (-0.030); spill MB 0.0 -> 0.0; transposes 114 -> 0; math -0.008 dma_issue -0.005 dma -0.011
+   B_lmhead             len 0.663 -> 0.529 (-0.133); spill MB 0.0 -> 0.0; transposes 9676 -> 362; math -0.310 dma_issue +0.085 dma +0.089
+   C_tail               len 1.361 -> 0.420 (-0.941); spill MB 7.3 -> 0.1; transposes 874 -> 0; math -0.893 dma_issue -0.035 dma -0.002
+q8_main_nd -> q8_all: wall 14.054 -> 14.039 (-0.015)
+   A1_embed_layers      len 13.072 -> 13.090 (+0.018); spill MB 31.7 -> 31.7; transposes 6146 -> 5986; math -0.014 dma_issue +0.022 dma +0.042
+   A2_layers_to_lmhead  len 0.020 -> 0.000 (-0.020); spill MB 0.0 -> 0.0; transposes 96 -> 0; math -0.008 dma_issue -0.006 dma -0.004
+   B_lmhead             len 0.538 -> 0.529 (-0.008); spill MB 0.0 -> 0.0; transposes 9642 -> 362; math -0.243 dma_issue +0.156 dma +0.077
+   C_tail               len 0.424 -> 0.420 (-0.004); spill MB 0.1 -> 0.1; transposes 0 -> 0; math -0.003 dma_issue -0.000 dma +0.000
+q06_topk_kon -> q06_topk_all: wall 7.596 -> 7.400 (-0.196)
+   A1_embed_layers      len 6.141 -> 6.086 (-0.055); spill MB 12.2 -> 12.2; transposes 2968 -> 2952; math -0.013 dma_issue -0.006 dma -0.068
+   A2_layers_to_lmhead  len 0.000 -> 0.000 (+0.000); spill MB 0.0 -> 0.0; transposes 0 -> 0; math +0.000 dma_issue +0.000 dma +0.000
+   B_lmhead             len 0.149 -> 0.001 (-0.148); spill MB 0.8 -> 0.0; transposes 1232 -> 0; math -0.094 dma_issue -0.017 dma -0.022
+   C_tail               len 1.306 -> 1.313 (+0.007); spill MB 12.4 -> 13.2; transposes 1536 -> 400; math -0.027 dma_issue +0.018 dma +0.017
+q06_all -> q06_topk_all: wall 7.123 -> 7.400 (+0.277)
+   A1_embed_layers      len 6.583 -> 6.086 (-0.498); spill MB 7.6 -> 12.2; transposes 1618 -> 2952; math +0.165 dma_issue +0.120 dma -0.293
+   A2_layers_to_lmhead  len 0.000 -> 0.000 (+0.000); spill MB 0.0 -> 0.0; transposes 0 -> 0; math +0.000 dma_issue +0.000 dma +0.000
+   B_lmhead             len 0.149 -> 0.001 (-0.148); spill MB 0.0 -> 0.0; transposes 314 -> 0; math -0.102 dma_issue -0.023 dma -0.019
+   C_tail               len 0.391 -> 1.313 (+0.922); spill MB 0.1 -> 13.2; transposes 0 -> 400; math +0.692 dma_issue +0.087 dma +0.043

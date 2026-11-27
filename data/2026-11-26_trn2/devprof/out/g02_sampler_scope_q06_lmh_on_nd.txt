@@ -1,0 +1,16 @@
+==================== q06_lmh_on_nd sampler rows 28896 of 483953
+by source file, per step (both pcores): rows, instr ms {'(label only)': {'size': 819.0, 'sum': 0.259}, '_functional_collectives.py': {'size': 4.0, 'sum': 0.001}, 'sampling.py': {'size': 6401.0, 'sum': 4.198}}
+ exec  pcore  after_lmhead_union_ms  after_lmhead_span_ms  span_ms  start_after_t0_ms  end_before_t1_ms  union_ms  instr_ms  rows
+    0      0                 1.2776                1.4254   7.6604             0.0161            0.0042    1.4251    2.2576  3664
+    0      1                 1.2642                1.4189   7.6400             0.0157            0.0248    1.4087    2.2001  3559
+    1      0                 1.2777                1.4249   7.4979             0.0085            0.0043    1.4256    2.2600  3664
+    1      1                 1.2638                1.4162   7.4772             0.0082            0.0253    1.4066    2.1991  3559
+    2      0                 1.2777                1.4310   7.5656             0.0017            0.0043    1.4264    2.2592  3666
+    2      1                 1.2634                1.4163   7.5219             0.0194            0.0303    1.4061    2.1989  3559
+    3      0                 1.2771                1.4272   7.5566             0.0024            0.0042    1.4241    2.2571  3666
+    3      1                 1.2637                1.4168   7.5159             0.0210            0.0263    1.4055    2.1978  3559
+mean by pcore:
+       after_lmhead_union_ms  after_lmhead_span_ms  span_ms  start_after_t0_ms  end_before_t1_ms  union_ms  instr_ms    rows
+pcore                                                                                                                       
+0                     1.2775                1.4271   7.5701             0.0072            0.0042    1.4253    2.2584  3665.0
+1                     1.2638                1.4171   7.5388             0.0161            0.0267    1.4067    2.1990  3559.0

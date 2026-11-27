@@ -1,0 +1,15 @@
+start 04:12:32
+cache_a files=211 du=54M
+cache_b files=211 du=54M
+cache_c files=157 du=116M
+i12_cache_p2 files=211
+i12_cache_p4 files=157
+built /home/ubuntu/w/i34/unit
+nki index check: kept /cache/neuron/compile_cache/nki (1 entries, 1 point at existing files, 0 at missing files, 0 unreadable)
+keep: index dir after: rewritten.json 
+nki index check: removed /cache/neuron/compile_cache/nki (2 entries, 1 point at existing files, 1 at missing files, 0 unreadable; first missing: /var/tmp/nki-intermediate-cache/nki_0.7.0+37713544100.gfede04bb/c2db2f2a6455342a6/vllm_neuron.functional.attention.attention_decode._torch_compatible_attention_block_tkg_kernel_lnc0_c2db2f2a6455342a6.colz)
+remove: index dir after: ls: cannot access '/home/ubuntu/w/i34/unit/remove/neuron/compile_cache/nki': No such file or directory 
+a done 04:16:06
+b done 04:25:06
+c done 04:32:56
+all done 04:32:56

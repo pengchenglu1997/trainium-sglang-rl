@@ -5,6 +5,7 @@
 # 22_llmbench.sh; that repository's script, HarryZ66/trainium-inference-parity payload/run_inference.sh line 46, pins it too).
 # Environment (defaults = that repository's round-3 grid, run_inference.sh lines 123 to 126):
 #   LB_CONC "1,2,4,8,16,32"   LB_PROMPTS "128,1024,3072"   LB_OUT 256   LB_REQ 64   LB_WARM 4   LB_MAXLEN 4096
+#   LB_TEMP 0 (request temperature)   LB_EXTRA_BODY "" (extra request fields, "name=value" items separated by spaces; added 2026-11-26)
 #   LLMBENCH_DIR  where the tool is cloned (default $HOME/w/llmbench); needs Python 3.10 to 3.13, uv fetches one
 # Files: <results>/llmbench_<tag>.yaml (config), .log (tool output), llmbench_<tag>/<run id>/ (raw), and on
 # success <results>/llmbench_<tag>.csv = that run's summary_all.csv (a copy). Nothing here starts or stops a server.
@@ -73,8 +74,10 @@ targets:
     request_timeout_s: 1800
     extra_body:
       ignore_eos: true
-      temperature: 0
+      temperature: ${LB_TEMP:-0}
 EOF
+# LB_EXTRA_BODY "top_k=50 top_p=0.95": more request fields, one "name=value" per item (added 2026-11-26; unset = as before)
+for kv in ${LB_EXTRA_BODY:-}; do echo "      ${kv%%=*}: ${kv#*=}" >> "$cfg"; done
 cd "$dir" || fail "cd $dir"
 uv sync -q || fail "uv sync"
 uv run llm-bench validate --config "$cfg" || fail "validate"

@@ -1,0 +1,5 @@
+== I37 04:18:00 r2 start
+== I37 04:18:39 collect r2_kon_mask exit 1: I37_COLLECT_FAILED r2_kon_mask
+== I37 04:23:17 collect r2_koff_b exit 0: I37_COLLECT_DONE r2_koff_b
+== I37 04:23:17 r2 end
+I37_R2_DONE

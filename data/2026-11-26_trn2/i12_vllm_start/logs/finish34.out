@@ -1,0 +1,5 @@
+i12_f34a: {"id":"cmpl-9fa95fba1fe327e6","object":"text_completion","created":1795746087,"model":"i12_f34a","choices":[{"index":0,"text":" Paris. The capital of Italy is Rome. The capital of Spain is Madrid.","logprobs":null,"finish_reason":"length","stop_reason":null,"token_ids":null,"prompt_logprobs":null,"p
+i12_f34a evrf=0 ready_line=1734
+i12_f34b: {"id":"cmpl-a8850f1731264243","object":"text_completion","created":1795746087,"model":"i12_f34b","choices":[{"index":0,"text":" Paris. The capital of Italy is Rome. The capital of Spain is Madrid.","logprobs":null,"finish_reason":"length","stop_reason":null,"token_ids":null,"prompt_logprobs":null,"p
+i12_f34b evrf=0 ready_line=1734
+no i12_ containers

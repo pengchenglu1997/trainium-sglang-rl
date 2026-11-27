@@ -1,0 +1,9 @@
+== CC 02:29:11 gsm8k2 start
+== CC 02:32:12 collect koff_a exit 0: CC_COLLECT_DONE koff_a
+== CC 02:32:12 collect kon exit 0: CC_COLLECT_DONE kon
+== CC 02:33:14 collect q8_all exit 0: CC_COLLECT_DONE q8_all
+== CC 02:35:16 collect q8_rel exit 0: CC_COLLECT_DONE q8_rel
+== CC 02:35:16 gsm8k2 end
+COMPARE a=koff_a b=kon: paired questions 200 | both right 109 | only a 3 | only b 9 | accuracy a 0.5600 b 0.5900 | exact McNemar p 0.146
+COMPARE a=q8_rel b=q8_all: paired questions 200 | both right 190 | only a 2 | only b 1 | accuracy a 0.9600 b 0.9550 | exact McNemar p 1.000
+CC_GSM8K2_DONE

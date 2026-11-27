@@ -1,0 +1,16 @@
+==================== q06_topk_nd sampler rows 39832 of 561539
+by source file, per step (both pcores): rows, instr ms {'cascaded_max_utils.py': {'size': 12.0, 'sum': 0.004}, 'rotation_matrix.py': {'size': 19.0, 'sum': 0.008}, 'rotational_topk.py': {'size': 31.0, 'sum': 0.032}, 'rotational_topk_utils.py': {'size': 2024.0, 'sum': 1.154}, 'sampling.py': {'size': 7802.0, 'sum': 4.606}, 'transpose.py': {'size': 70.0, 'sum': 0.02}}
+ exec  pcore  after_lmhead_union_ms  after_lmhead_span_ms  span_ms  start_after_t0_ms  end_before_t1_ms  union_ms  instr_ms  rows
+    0      0                 1.9971                2.4443   2.4443             6.1979            0.0171    1.9971    2.9127  5072
+    0      1                 1.9706                2.4364   2.4364             6.1962            0.0268    1.9706    2.9156  4886
+    1      0                 1.9973                2.4454   2.4454             5.9755            0.0173    1.9973    2.9127  5072
+    1      1                 1.9711                2.4364   2.4364             5.9749            0.0269    1.9711    2.9128  4886
+    2      0                 1.9954                2.4458   2.4458             6.0330            0.0157    1.9954    2.9139  5072
+    2      1                 1.9733                2.4371   2.4371             6.0321            0.0254    1.9733    2.9103  4886
+    3      0                 1.9966                2.4456   2.4456             6.0258            0.0157    1.9966    2.9119  5072
+    3      1                 1.9745                2.4357   2.4357             6.0260            0.0254    1.9745    2.9086  4886
+mean by pcore:
+       after_lmhead_union_ms  after_lmhead_span_ms  span_ms  start_after_t0_ms  end_before_t1_ms  union_ms  instr_ms    rows
+pcore                                                                                                                       
+0                     1.9966                2.4453   2.4453             6.0581            0.0165    1.9966    2.9128  5072.0
+1                     1.9724                2.4364   2.4364             6.0573            0.0261    1.9724    2.9118  4886.0

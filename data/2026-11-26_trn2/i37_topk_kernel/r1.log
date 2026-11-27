@@ -1,0 +1,5 @@
+== I37 04:11:07 r1 start
+== I37 04:15:44 collect r1_kon exit 0: I37_COLLECT_DONE r1_kon
+== I37 04:16:21 collect r1_koff exit 0: I37_COLLECT_DONE r1_koff
+== I37 04:16:21 r1 end
+I37_R1_DONE

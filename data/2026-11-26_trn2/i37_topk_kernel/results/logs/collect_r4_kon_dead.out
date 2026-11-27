@@ -1,0 +1,7 @@
+{"t": "2026-11-27T04:28:57Z", "event": "open", "name": "r4_kon_dead", "cores": "0-3", "port": 30306, "cache_src": "/home/ubuntu/w/sgl_cache_s4_none", "cache": "/home/ubuntu/w/sgl_cache_i37_r4_kon_dead", "cache_files_at_start": 0, "env": {"DATA_ROOT": "/home/ubuntu/w", "MODELS_ROOT": "/home/ubuntu/w/
+{"t": "2026-11-27T04:34:27Z", "event": "server_start", "ready_s": 330.1, "log": "/home/ubuntu/w/i37/results/server_logs/server_i37_r4_kon_dead_001.log", "start_no": 1}
+{"t": "2026-11-27T04:34:41Z", "event": "set_done", "set": "t0", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T04:34:41Z", "event": "log_lines", "counts": {"sampler by the kernel": 4, "topk_topp sampler by the kernel": 4}, "examples": ["[2026-11-27 04:30:19 TP2] [rlkit] topk_topp sampler by the kernel: rows=1 shard_width=37984 segments=32 partitions=32 partials=[32,4] pid=452 rank_in_group=
+{"t": "2026-11-27T04:34:44Z", "event": "stop", "seconds": 2.9, "cache_files_at_end": 103}
+{"t": "2026-11-27T04:34:44Z", "event": "end", "status": "ok"}
+I37_COLLECT_DONE r4_kon_dead

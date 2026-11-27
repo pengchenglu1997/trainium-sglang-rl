@@ -1,0 +1,45 @@
+tag | c | tok/s | TTFT p50 s | ok/err
+d_ctl06_a_t08 | 1 | 320.8 | 0.0282 | 64/0
+d_ctl06_a_t08 | 8 | 1635.6 | 0.0758 | 64/0
+d_ctl06_a_t08 | 32 | 3343.7 | 0.2607 | 64/0
+d_ctl06_a_t0_p1 | 1 | 320.3 | 0.0275 | 64/0
+d_ctl06_a_t0_p1 | 8 | 1648.7 | 0.0746 | 64/0
+d_ctl06_a_t0_p1 | 32 | 3347.4 | 0.2541 | 64/0
+d_ctl06_a_t0_p2 | 1 | 322.8 | 0.0283 | 64/0
+d_ctl06_a_t0_p2 | 8 | 1651.2 | 0.0759 | 64/0
+d_ctl06_a_t0_p2 | 32 | 3344.2 | 0.2611 | 64/0
+d_ctl06_b_t08 | 1 | 324.3 | 0.0280 | 64/0
+d_ctl06_b_t08 | 8 | 1640.2 | 0.0736 | 64/0
+d_ctl06_b_t08 | 32 | 3345.3 | 0.2562 | 64/0
+d_ctl06_b_t0_p1 | 1 | 326.4 | 0.0268 | 64/0
+d_ctl06_b_t0_p1 | 8 | 1642.1 | 0.0749 | 64/0
+d_ctl06_b_t0_p1 | 32 | 3334.9 | 0.2651 | 64/0
+d_ctl06_b_t0_p2 | 1 | 323.8 | 0.0282 | 64/0
+d_ctl06_b_t0_p2 | 8 | 1659.8 | 0.0749 | 64/0
+d_ctl06_b_t0_p2 | 32 | 3346.9 | 0.2573 | 64/0
+d_dp2_06_t08 | 1 | 266.5 | 0.0383 | 64/0
+d_dp2_06_t08 | 8 | 1188.1 | 0.0670 | 64/0
+d_dp2_06_t08 | 32 | 2326.3 | 0.2222 | 64/0
+d_dp2_06_t0_p1 | 1 | 267.1 | 0.0365 | 64/0
+d_dp2_06_t0_p1 | 8 | 1191.4 | 0.0690 | 64/0
+d_dp2_06_t0_p1 | 32 | 2334.1 | 0.2165 | 64/0
+d_dp2_06_t0_p2 | 1 | 266.5 | 0.0384 | 64/0
+d_dp2_06_t0_p2 | 8 | 1197.0 | 0.0651 | 64/0
+d_dp2_06_t0_p2 | 32 | 2332.9 | 0.2174 | 64/0
+d_dp4_06_t08 | 1 | 220.4 | 0.0497 | 64/0
+d_dp4_06_t08 | 8 | 849.8 | 0.0609 | 64/0
+d_dp4_06_t08 | 32 | 3084.0 | 0.1856 | 64/0
+d_dp4_06_t0_p1 | 1 | 221.2 | 0.0430 | 64/0
+d_dp4_06_t0_p1 | 8 | 850.7 | 0.0627 | 64/0
+d_dp4_06_t0_p1 | 32 | 3099.3 | 0.1655 | 64/0
+d_dp4_06_t0_p2 | 1 | 221.3 | 0.0434 | 64/0
+d_dp4_06_t0_p2 | 8 | 847.8 | 0.0721 | 64/0
+d_dp4_06_t0_p2 | 32 | 3089.3 | 0.1842 | 64/0
+
+76_serve_d_c_dp2_06: ready_s [521.4], cache files before [None], benches ok [], bench seconds []
+76_serve_d_c_dp4_06: ready_s [647.1], cache files before [None], benches ok [], bench seconds []
+76_serve_d_c_dp4_8: ready_s [None], cache files before [None], benches ok [], bench seconds []
+76_serve_d_ctl06_a: ready_s [164.3], cache files before [79], benches ok [True, True, True, True], bench seconds [75.4, 75.3, 75.5, 3.0]
+76_serve_d_ctl06_b: ready_s [179.3], cache files before [79], benches ok [True, True, True, True], bench seconds [74.5, 75.0, 74.8, 3.1]
+76_serve_d_dp2_06: ready_s [204.4], cache files before [79], benches ok [True, True, True, True], bench seconds [93.2, 93.2, 93.3, 3.8]
+76_serve_d_dp4_06: ready_s [224.5], cache files before [79], benches ok [True, True, True, True], bench seconds [109.5, 109.5, 109.8, 4.6]

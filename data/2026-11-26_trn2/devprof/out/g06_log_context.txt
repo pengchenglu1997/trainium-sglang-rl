@@ -1,0 +1,90 @@
+========== q06_rel_nd profiler_start lines 1 stop lines 1
+ start: USDT:2026-11-27 01:15:28 192:192 SyncAct | stop: USDT:2026-11-27 01:15:31 192:192 SyncAct
+    ('2026-11-27 01:15:27', 'running', '32', 'tokens', '12544')
+    ('2026-11-27 01:15:28', 'running', '32', 'tokens', '6272')
+       ...
+    ('2026-11-27 01:15:31', 'running', '32', 'tokens', '8192')
+    ('2026-11-27 01:15:31', 'running', '32', 'tokens', '8192')
+  pass 0 s 2.704 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 1 s 4.987 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 2 s 2.695 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+========== q06_main_nd profiler_start lines 1 stop lines 1
+ start: USDT:2026-11-27 01:15:23 192:192 SyncAct | stop: USDT:2026-11-27 01:15:25 192:192 SyncAct
+    ('2026-11-27 01:15:22', 'running', '32', 'tokens', '12544')
+    ('2026-11-27 01:15:23', 'running', '32', 'tokens', '6272')
+       ...
+    ('2026-11-27 01:15:25', 'running', '32', 'tokens', '8192')
+    ('2026-11-27 01:15:26', 'running', '32', 'tokens', '8192')
+  pass 0 s 2.521 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 1 s 4.768 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 2 s 2.485 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+========== q06_topk_nd profiler_start lines 1 stop lines 1
+ start: USDT:2026-11-27 01:15:43 193:193 SyncAct | stop: USDT:2026-11-27 01:15:46 193:193 SyncAct
+    ('2026-11-27 01:15:42', 'running', '32', 'tokens', '12544')
+    ('2026-11-27 01:15:43', 'running', '32', 'tokens', '6272')
+       ...
+    ('2026-11-27 01:15:46', 'running', '32', 'tokens', '8192')
+    ('2026-11-27 01:15:46', 'running', '32', 'tokens', '8192')
+  pass 0 s 2.52 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'top_k': 50, 'top_p': 0.95, 'ignore_eos': True} errors 0
+  pass 1 s 5.287 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'top_k': 50, 'top_p': 0.95, 'ignore_eos': True} errors 0
+  pass 2 s 2.544 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'top_k': 50, 'top_p': 0.95, 'ignore_eos': True} errors 0
+========== q06_lmh_off_nd profiler_start lines 1 stop lines 1
+ start: USDT:2026-11-27 01:13:47 192:192 SyncAct | stop: USDT:2026-11-27 01:13:50 192:192 SyncAct
+    ('2026-11-27 01:13:46', 'running', '32', 'tokens', '12544')
+    ('2026-11-27 01:13:47', 'running', '32', 'tokens', '6272')
+       ...
+    ('2026-11-27 01:13:50', 'running', '32', 'tokens', '8192')
+    ('2026-11-27 01:13:51', 'running', '32', 'tokens', '8192')
+  pass 0 s 2.698 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 1 s 5.326 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 2 s 2.695 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+========== q06_lmh_on_nd profiler_start lines 1 stop lines 1
+ start: USDT:2026-11-27 01:16:04 193:193 SyncAct | stop: USDT:2026-11-27 01:16:06 193:193 SyncAct
+    ('2026-11-27 01:16:03', 'running', '32', 'tokens', '12544')
+    ('2026-11-27 01:16:04', 'running', '32', 'tokens', '6272')
+       ...
+    ('2026-11-27 01:16:06', 'running', '32', 'tokens', '8192')
+    ('2026-11-27 01:16:07', 'running', '32', 'tokens', '8192')
+  pass 0 s 2.275 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 1 s 4.564 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 2 s 2.282 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+========== q8_rel_nd profiler_start lines 1 stop lines 1
+ start: USDT:2026-11-27 01:23:12 192:192 SyncAct | stop: USDT:2026-11-27 01:23:14 192:192 SyncAct
+    ('2026-11-27 01:23:10', 'running', '32', 'tokens', '12544')
+    ('2026-11-27 01:23:12', 'running', '32', 'tokens', '6272')
+       ...
+    ('2026-11-27 01:23:14', 'running', '32', 'tokens', '8192')
+    ('2026-11-27 01:23:15', 'running', '32', 'tokens', '8192')
+  pass 0 s 4.881 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 1 s 7.246 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 2 s 4.905 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+========== q8_main_nd profiler_start lines 1 stop lines 1
+ start: USDT:2026-11-27 01:16:31 192:192 SyncAct | stop: USDT:2026-11-27 01:16:34 192:192 SyncAct
+    ('2026-11-27 01:16:29', 'running', '32', 'tokens', '12544')
+    ('2026-11-27 01:16:31', 'running', '32', 'tokens', '6272')
+       ...
+    ('2026-11-27 01:16:34', 'running', '32', 'tokens', '8192')
+    ('2026-11-27 01:16:35', 'running', '32', 'tokens', '8192')
+  pass 0 s 4.594 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 1 s 7.373 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+  pass 2 s 4.63 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'ignore_eos': True} errors 0
+========== q06_topk_kon profiler_start lines 1 stop lines 1
+ start: USDT:2026-11-27 01:22:04 194:194 SyncAct | stop: USDT:2026-11-27 01:22:06 194:194 SyncAct
+    ('2026-11-27 01:22:03', 'running', '32', 'tokens', '12544')
+    ('2026-11-27 01:22:04', 'running', '32', 'tokens', '6272')
+       ...
+    ('2026-11-27 01:22:06', 'running', '32', 'tokens', '8192')
+    ('2026-11-27 01:22:07', 'running', '32', 'tokens', '8192')
+  pass 0 s 2.263 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'top_k': 50, 'top_p': 0.95, 'ignore_eos': True} errors 0
+  pass 1 s 4.647 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'top_k': 50, 'top_p': 0.95, 'ignore_eos': True} errors 0
+  pass 2 s 2.284 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'top_k': 50, 'top_p': 0.95, 'ignore_eos': True} errors 0
+========== q06_topk_koff profiler_start lines 1 stop lines 1
+ start: USDT:2026-11-27 01:22:44 194:194 SyncAct | stop: USDT:2026-11-27 01:22:47 194:194 SyncAct
+    ('2026-11-27 01:22:44', 'running', '32', 'tokens', '12544')
+    ('2026-11-27 01:22:44', 'running', '32', 'tokens', '6272')
+       ...
+    ('2026-11-27 01:22:47', 'running', '32', 'tokens', '8192')
+    ('2026-11-27 01:22:47', 'running', '32', 'tokens', '8192')
+  pass 0 s 2.526 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'top_k': 50, 'top_p': 0.95, 'ignore_eos': True} errors 0
+  pass 1 s 4.576 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'top_k': 50, 'top_p': 0.95, 'ignore_eos': True} errors 0
+  pass 2 s 2.539 req 32 tok 8192 min/max ans 256 256 temp 0.8 extra {'top_k': 50, 'top_p': 0.95, 'ignore_eos': True} errors 0

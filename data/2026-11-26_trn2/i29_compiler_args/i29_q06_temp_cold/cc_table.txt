@@ -1,0 +1,39 @@
+compiles recorded: 14
+2026-11-27T04:19:16Z cc_cmdlines line 1 workdir 8aac11c54de2 | before first warm line
+2026-11-27T04:19:29Z cc_cmdlines line 3 workdir 9916f5526a0c | before first warm line
+2026-11-27T04:19:48Z cc_cmdlines line 5 workdir 1d61067eb65e | log line 150: [neuron] warm decode bucket=1 context=1024
+2026-11-27T04:20:31Z cc_cmdlines line 8 workdir 79e6fa218783 | log line 198: [neuron] warm decode bucket=1 context=2048
+2026-11-27T04:21:14Z cc_cmdlines line 11 workdir 47f694e123e2 | log line 234: [neuron] warm decode bucket=1 context=4096
+2026-11-27T04:21:58Z cc_cmdlines line 14 workdir bbcd63178a0b | log line 272: [neuron] warm decode bucket=8 context=1024
+2026-11-27T04:22:48Z cc_cmdlines line 17 workdir 3a9b3e6e9798 | log line 322: [neuron] warm decode bucket=8 context=2048
+2026-11-27T04:23:38Z cc_cmdlines line 20 workdir 9551596d0b2d | log line 358: [neuron] warm decode bucket=8 context=4096
+2026-11-27T04:24:29Z cc_cmdlines line 23 workdir 3801663aa69e | log line 395: [neuron] warm decode bucket=32 context=1024
+2026-11-27T04:25:22Z cc_cmdlines line 26 workdir 396a479c4164 | log line 430: [neuron] warm decode bucket=32 context=2048
+2026-11-27T04:26:25Z cc_cmdlines line 29 workdir 1f72cfd0403d | log line 465: [neuron] warm decode bucket=32 context=4096
+2026-11-27T04:27:30Z cc_cmdlines line 32 workdir 1c0a52f7bd37 | log line 513: [neuron] warm prefill bucket=512
+2026-11-27T04:28:02Z cc_cmdlines line 38 workdir 36079ed0ccc1 | log line 592: [neuron] warm prefill bucket=1024
+2026-11-27T04:28:36Z cc_cmdlines line 44 workdir accd657e7124 | log line 665: [neuron] warm prefill bucket=2048
+
+distinct argument strings: 3
+--- used by 2 compiles; first at cc_cmdlines line 1 (before first warm line)
+compile module.mlir --framework XLA --target trn2 --lnc 2 -O1 --model-type transformer --auto-cast=none --internal-disable-fma-on-ios --output module.neff
+--- used by 9 compiles; first at cc_cmdlines line 5 (log line 150: [neuron] warm decode bucket=1 context=1024)
+compile module.mlir --framework XLA --target trn2 --lnc 2 -O2 --model-type transformer --auto-cast=none --auto-cast=none --verbose=35 --internal-backend-options=--enable-verifier=false --hbm-scratchpad-page-size=3584 --internal-hlo2tensorizer-options=--hierarchy-splitter=false --model-type=generic --output module.neff
+--- used by 3 compiles; first at cc_cmdlines line 32 (log line 513: [neuron] warm prefill bucket=512)
+compile module.mlir --framework XLA --target trn2 --lnc 2 -O1 --model-type transformer --auto-cast=none --auto-cast=none --verbose=35 --internal-hlo2tensorizer-options=--modular-flow-mac-threshold=10 --hierarchy-splitter=false --internal-backend-options=--enable-verifier=false --hbm-scratchpad-page-size=3584 --model-type=generic --output module.neff
+
+warm lines (TP0):
+  log line 150: 2026-11-27 04:19:32 [neuron] warm decode bucket=1 context=1024
+  log line 198: 2026-11-27 04:20:16 [neuron] warm decode bucket=1 context=2048
+  log line 234: 2026-11-27 04:20:58 [neuron] warm decode bucket=1 context=4096
+  log line 272: 2026-11-27 04:21:42 [neuron] warm decode bucket=8 context=1024
+  log line 322: 2026-11-27 04:22:32 [neuron] warm decode bucket=8 context=2048
+  log line 358: 2026-11-27 04:23:22 [neuron] warm decode bucket=8 context=4096
+  log line 395: 2026-11-27 04:24:13 [neuron] warm decode bucket=32 context=1024
+  log line 430: 2026-11-27 04:25:06 [neuron] warm decode bucket=32 context=2048
+  log line 465: 2026-11-27 04:26:07 [neuron] warm decode bucket=32 context=4096
+  log line 508: 2026-11-27 04:27:12 [neuron] warmup done in 459.6s (9 shapes)
+  log line 513: 2026-11-27 04:27:12 [neuron] warm prefill bucket=512
+  log line 592: 2026-11-27 04:27:41 [neuron] warm prefill bucket=1024
+  log line 665: 2026-11-27 04:28:13 [neuron] warm prefill bucket=2048
+  log line 691: 2026-11-27 04:28:49 [neuron] warmup done in 96.6s (3 shapes)

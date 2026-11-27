@@ -1,0 +1,38 @@
+selftests at commit f6610180c59c21b13882d7e0f8d77006875b2f99, Windows git bash + Python 3.12.10, 2026-11-27T05:07:52Z
+== selftest_74.py
+PASS race log: stamp_race true, plain count 1, the line names .KERNEL_SOURCES.194
+PASS other log: FileNotFoundError counted plain, stamp_race false
+PASS far log: the stamp name is 21 lines away, so stamp_race is false, plain count 1
+PASS empty log: nothing counted
+selftest_74 passed (4 of 4)
+exit 0
+== selftest_75.py
+PASS repeat differs: the summary lists the warning and still says passed; PASSED line names it
+PASS --skip-fresh: exit 0, no restart, the fresh and radix checks written as not_run
+PASS unreadable --manifest-json: exit 1, error in the first line, done line, no server started
+PASS --prompts 5 --smoke-updates 3: exit 0, 5 answers per set, smoke ends on alt so the load update goes to base
+selftest_75 passed (32 of 32)
+exit 0
+== selftest_81.py
+SELFTEST_81 PASSED 125 checks
+exit 0
+== selftest_cache_record.py
+cache_archives: 777 bytes, 1 files, unreadable 0
+sgl_cache_one: 10 bytes, 1 files, unreadable 0
+vllm_cache_two: 20 bytes, 1 files, unreadable 0
+FAILED: no cache folder given (--cache DIR or --root DIR with a sub-folder that has 'cache' in its name)
+SELFTEST_CACHE_RECORD PASSED 34 checks
+exit 0
+== selftest_fake_server.py
+PASS 68 mixed weights: the script reports answers of neither weight set and says not consistent
+PASS 68 mixed weights: the stop position and the splice share are written
+PASS 68 mixed weights: those answers overlapped an update
+PASS 68 short answers: reference_short written and every request counted below min tokens
+selftest passed (73 of 73)
+exit 0
+== selftest_launcher_env.py
+SELFTEST_LAUNCHER_ENV PASSED 27 checks
+exit 0
+== selftest_nki_index_check.py
+SELFTEST_NKI_INDEX_CHECK PASSED 20 checks
+exit 0

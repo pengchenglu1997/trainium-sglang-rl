@@ -1,0 +1,12 @@
+diff -ru /home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk/sampling.py /home/ubuntu/w/i37/patch_nomask/sampling.py
+--- /home/ubuntu/w/sglang_rl/patches/sglang_neuron_int_topk/sampling.py	2026-11-27 01:16:43.000000000 +0000
++++ /home/ubuntu/w/i37/patch_nomask/sampling.py	2026-11-27 04:58:47.520819064 +0000
+@@ -322,7 +322,7 @@
+     (1 for greedy rows) and the Gumbel-perturbed tempered scores (raw logits for greedy rows)."""
+     rows, width = logits.shape
+     ids = torch.arange(width, dtype=torch.int64, device=logits.device) + rank.to(torch.int64) * width
+-    logits = logits.float().masked_fill(ids.unsqueeze(0) >= vocabulary_size, float("-inf"))
++    logits = logits.float()  # i37 control: padded-vocabulary mask removed (was masked_fill ids >= vocabulary_size)
+     temperature = temperatures.reshape(rows, 1).to(torch.float32)
+     sampled = temperature > 0
+     inverse = torch.where(sampled, 1.0 / torch.where(sampled, temperature, torch.ones_like(temperature)),

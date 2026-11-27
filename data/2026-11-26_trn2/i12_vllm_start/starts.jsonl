@@ -1,0 +1,94 @@
+{"name": "i12_s2", "unix": 1795740862.911, "utc": "00:54:22", "event": "config", "cores": "36,37,38,39", "port": 30123, "cache": "/home/ubuntu/w/i12_cache_s2", "cache_files_before": 0, "vllm_env": "NKI_ENABLE_TRACE_CACHE=0", "mode": "stop_on_pass", "cap_s": 1800}
+{"name": "i12_s1b", "unix": 1795740862.911, "utc": "00:54:22", "event": "config", "cores": "32,33,34,35", "port": 30122, "cache": "/home/ubuntu/w/i12_cache_s1b", "cache_files_before": 0, "vllm_env": "", "mode": "stop_on_pass", "cap_s": 1800}
+{"name": "i12_s1a", "unix": 1795740862.912, "utc": "00:54:22", "event": "config", "cores": "28,29,30,31", "port": 30121, "cache": "/home/ubuntu/w/i12_cache_s1a", "cache_files_before": 0, "vllm_env": "", "mode": "keep", "cap_s": 2700}
+{"name": "i12_s3", "unix": 1795740862.912, "utc": "00:54:22", "event": "config", "cores": "40,41,42,43", "port": 30124, "cache": "/home/ubuntu/w/i12_cache_s3", "cache_files_before": 0, "vllm_env": "VLLM_NEURON_DISABLE_PARALLEL_TRACE=1", "mode": "keep", "cap_s": 2700}
+{"name": "i12_s1b", "unix": 1795740863.311, "utc": "00:54:23", "event": "launched", "rc": 0, "container_started": "2026-11-27T00:54:23.142773024Z"}
+{"name": "i12_s3", "unix": 1795740863.337, "utc": "00:54:23", "event": "launched", "rc": 0, "container_started": "2026-11-27T00:54:23.159078217Z"}
+{"name": "i12_s2", "unix": 1795740863.350, "utc": "00:54:23", "event": "launched", "rc": 0, "container_started": "2026-11-27T00:54:23.167125929Z"}
+{"name": "i12_s1a", "unix": 1795740863.370, "utc": "00:54:23", "event": "launched", "rc": 0, "container_started": "2026-11-27T00:54:23.165216863Z"}
+{"name": "i12_s1b", "unix": 1795741071.976, "utc": "00:57:51", "event": "parallel_trace_finished", "elapsed_s": 209, "line_no": 900}
+{"name": "i12_s1b", "unix": 1795741072.097, "utc": "00:57:52", "event": "end", "verdict": "pass_stopped", "cache_files_after": 135}
+{"name": "i12_s1a", "unix": 1795741077.103, "utc": "00:57:57", "event": "parallel_trace_finished", "elapsed_s": 215, "line_no": 898}
+{"name": "i12_s2", "unix": 1795741077.104, "utc": "00:57:57", "event": "parallel_trace_finished", "elapsed_s": 215, "line_no": 812}
+{"name": "i12_s2", "unix": 1795741077.215, "utc": "00:57:57", "event": "end", "verdict": "pass_stopped", "cache_files_after": 135}
+{"name": "i12_s1c", "unix": 1795741135.126, "utc": "00:58:55", "event": "config", "cores": "32,33,34,35", "port": 30125, "cache": "/home/ubuntu/w/i12_cache_s1b", "cache_files_before": 135, "reuse_cache": "1", "vllm_env": "", "mode": "stop_on_pass", "cap_s": 900}
+{"name": "i12_s2c", "unix": 1795741135.126, "utc": "00:58:55", "event": "config", "cores": "36,37,38,39", "port": 30126, "cache": "/home/ubuntu/w/i12_cache_s2", "cache_files_before": 135, "reuse_cache": "1", "vllm_env": "NKI_ENABLE_TRACE_CACHE=0", "mode": "stop_on_pass", "cap_s": 900}
+{"name": "i12_s2c", "unix": 1795741135.454, "utc": "00:58:55", "event": "launched", "rc": 0, "container_started": "2026-11-27T00:58:55.2733353Z"}
+{"name": "i12_s1c", "unix": 1795741135.474, "utc": "00:58:55", "event": "launched", "rc": 0, "container_started": "2026-11-27T00:58:55.279837237Z"}
+{"name": "i12_s1b", "unix": 1795741193.135, "utc": "00:59:53", "event": "stopped"}
+{"name": "i12_s1b", "unix": 1795741193.192, "utc": "00:59:53", "event": "stopped"}
+{"name": "i12_s2", "unix": 1795741198.267, "utc": "00:59:58", "event": "stopped"}
+{"name": "i12_s2", "unix": 1795741198.321, "utc": "00:59:58", "event": "stopped"}
+{"name": "i12_s1a", "unix": 1795741266.931, "utc": "01:01:06", "event": "watch_reattached", "t0": 1795740863}
+{"name": "i12_s3", "unix": 1795741266.931, "utc": "01:01:06", "event": "watch_reattached", "t0": 1795740863}
+{"name": "i12_s2c", "unix": 1795741272.560, "utc": "01:01:12", "event": "parallel_trace_finished", "elapsed_s": 137, "line_no": 1066}
+{"name": "i12_s1c", "unix": 1795741272.561, "utc": "01:01:12", "event": "parallel_trace_finished", "elapsed_s": 137, "line_no": 1142}
+{"name": "i12_s2c", "unix": 1795741272.670, "utc": "01:01:12", "event": "end", "verdict": "pass_stopped", "cache_files_after": 135}
+{"name": "i12_s1c", "unix": 1795741272.672, "utc": "01:01:12", "event": "end", "verdict": "pass_stopped", "cache_files_after": 135}
+{"name": "i12_s1c", "unix": 1795741393.836, "utc": "01:03:13", "event": "stopped"}
+{"name": "i12_s2c", "unix": 1795741393.907, "utc": "01:03:13", "event": "stopped"}
+{"name": "i12_s1a", "unix": 1795741459.492, "utc": "01:04:19", "event": "ready", "elapsed_s": 596, "ready_line_no": 1735}
+{"name": "i12_s1a", "unix": 1795741459.608, "utc": "01:04:19", "event": "end", "verdict": "ready", "cache_files_after": 135}
+{"name": "i12_r1_q06", "unix": 1795741483.073, "utc": "01:04:43", "event": "config", "model": "Qwen3-0.6B", "cores": "32,33,34,35", "port": 30127, "cache": "/home/ubuntu/w/i12_cache_r1", "cache_files_before": 0, "reuse_cache": "0", "vllm_env": "", "mode": "keep", "cap_s": 900}
+{"name": "i12_r1_q06", "unix": 1795741483.601, "utc": "01:04:43", "event": "launched", "rc": 0, "container_started": "2026-11-27T01:04:43.45331488Z"}
+{"name": "i12_r1_q06", "unix": 1795741655.948, "utc": "01:07:35", "event": "parallel_trace_finished", "elapsed_s": 172, "line_no": 889}
+{"name": "i12_s3", "unix": 1795741778.813, "utc": "01:09:38", "event": "ready", "elapsed_s": 915, "ready_line_no": 1134}
+{"name": "i12_s3", "unix": 1795741778.922, "utc": "01:09:38", "event": "end", "verdict": "ready", "cache_files_after": 135}
+{"name": "i12_s3", "utc": "01:10:05", "event": "stop_requested_after_ready"}
+{"name": "i12_r1_q06", "unix": 1795741944.836, "utc": "01:12:24", "event": "ready", "elapsed_s": 461}
+{"name": "i12_r1_q06", "unix": 1795741944.949, "utc": "01:12:24", "event": "end", "verdict": "ready", "cache_files_after": 135}
+{"name": "i12_r1_q06", "utc": "01:13:56", "event": "stopped_after_ready"}
+{"name": "i12_r1b_q8", "unix": 1795742036.710, "utc": "01:13:56", "event": "config", "model": "Qwen3-8B", "cores": "36,37,38,39", "port": 30129, "cache": "/home/ubuntu/w/i12_cache_r1b", "cache_files_before": 135, "reuse_cache": "1", "vllm_env": "NKI_ENABLE_TRACE_CACHE=0", "mode": "stop_on_pass", "cap_s": 900}
+{"name": "i12_r1_q8", "unix": 1795742036.711, "utc": "01:13:56", "event": "config", "model": "Qwen3-8B", "cores": "32,33,34,35", "port": 30128, "cache": "/home/ubuntu/w/i12_cache_r1", "cache_files_before": 135, "reuse_cache": "1", "vllm_env": "", "mode": "stop_on_pass", "cap_s": 900}
+{"name": "i12_r1b_q8", "unix": 1795742036.977, "utc": "01:13:56", "event": "launched", "rc": 0, "container_started": "2026-11-27T01:13:56.825507408Z"}
+{"name": "i12_r1_q8", "unix": 1795742036.997, "utc": "01:13:57", "event": "launched", "rc": 0, "container_started": "2026-11-27T01:13:56.823572691Z"}
+{"name": "i12_r1b_q8", "unix": 1795742123.291, "utc": "01:15:23", "event": "evrf059", "elapsed_s": 87, "line_no": 625}
+{"name": "i12_r1b_q8", "unix": 1795742123.407, "utc": "01:15:23", "event": "end", "verdict": "fail", "cache_files_after": 211}
+{"name": "i12_r1_q8", "unix": 1795742128.363, "utc": "01:15:28", "event": "evrf059", "elapsed_s": 92, "line_no": 609}
+{"name": "i12_r1_q8", "unix": 1795742128.478, "utc": "01:15:28", "event": "end", "verdict": "fail", "cache_files_after": 211}
+{"name": "i12_r1b_q8", "unix": 1795742243.923, "utc": "01:17:23", "event": "stopped"}
+{"name": "i12_r1_q8", "unix": 1795742249.028, "utc": "01:17:29", "event": "stopped"}
+{"name": "i12_p_q06", "unix": 1795743043.695, "utc": "01:30:43", "event": "config", "model": "Qwen3-0.6B", "cores": "32,33,34,35", "port": 30131, "cache": "/home/ubuntu/w/i12_cache_p0", "cache_files_before": 0, "reuse_cache": "0", "vllm_env": "", "mode": "keep", "cap_s": 900}
+{"name": "i12_p_q06", "unix": 1795743044.051, "utc": "01:30:44", "event": "launched", "rc": 0, "container_started": "2026-11-27T01:30:43.885579049Z"}
+{"name": "i12_p_q06", "unix": 1795743221.542, "utc": "01:33:41", "event": "parallel_trace_finished", "elapsed_s": 178, "line_no": 889}
+{"name": "i12_p_q06", "unix": 1795743520.605, "utc": "01:38:40", "event": "ready", "elapsed_s": 477}
+{"name": "i12_p_q06", "unix": 1795743520.734, "utc": "01:38:40", "event": "end", "verdict": "ready", "cache_files_after": 135}
+{"name": "i12_p_q06", "utc": "01:38:57", "event": "stopped_after_ready"}
+{"name": "i12_a2_nopool", "unix": 1795743537.271, "utc": "01:38:57", "event": "config", "model": "Qwen3-8B", "cores": "40,41,42,43", "port": 30134, "cache": "/home/ubuntu/w/i12_cache_p3", "cache_files_before": 135, "reuse_cache": "1", "vllm_env": "VLLM_NEURON_DISABLE_PARALLEL_TRACE=1", "mode": "keep", "cap_s": 1500}
+{"name": "i12_a1_ctl", "unix": 1795743537.271, "utc": "01:38:57", "event": "config", "model": "Qwen3-8B", "cores": "36,37,38,39", "port": 30133, "cache": "/home/ubuntu/w/i12_cache_p2", "cache_files_before": 135, "reuse_cache": "1", "vllm_env": "", "mode": "stop_on_pass", "cap_s": 900}
+{"name": "i12_a1_fix", "unix": 1795743537.272, "utc": "01:38:57", "event": "config", "model": "Qwen3-8B", "cores": "32,33,34,35", "port": 30132, "cache": "/home/ubuntu/w/i12_cache_p1", "cache_files_before": 23, "reuse_cache": "1", "vllm_env": "", "mode": "stop_on_pass", "cap_s": 900}
+{"name": "i12_a1_ctl", "unix": 1795743537.612, "utc": "01:38:57", "event": "launched", "rc": 0, "container_started": "2026-11-27T01:38:57.436330786Z"}
+{"name": "i12_a1_fix", "unix": 1795743537.631, "utc": "01:38:57", "event": "launched", "rc": 0, "container_started": "2026-11-27T01:38:57.434405635Z"}
+{"name": "i12_a2_nopool", "unix": 1795743537.654, "utc": "01:38:57", "event": "launched", "rc": 0, "container_started": "2026-11-27T01:38:57.440712938Z"}
+{"name": "i12_a1_ctl", "unix": 1795743623.985, "utc": "01:40:23", "event": "evrf059", "elapsed_s": 86, "line_no": 682}
+{"name": "i12_a1_ctl", "unix": 1795743624.124, "utc": "01:40:24", "event": "end", "verdict": "fail", "cache_files_after": 211}
+{"name": "i12_a2_nopool", "unix": 1795743639.214, "utc": "01:40:39", "event": "evrf059", "elapsed_s": 102, "line_no": 368}
+{"name": "i12_a2_nopool", "unix": 1795743639.324, "utc": "01:40:39", "event": "end", "verdict": "fail", "cache_files_after": 143}
+{"name": "i12_a1_fix", "unix": 1795743725.466, "utc": "01:42:05", "event": "parallel_trace_finished", "elapsed_s": 188, "line_no": 898}
+{"name": "i12_a1_fix", "unix": 1795743725.570, "utc": "01:42:05", "event": "end", "verdict": "pass_stopped", "cache_files_after": 157}
+{"name": "i12_a1_ctl", "unix": 1795743744.670, "utc": "01:42:24", "event": "stopped"}
+{"name": "i12_a2_nopool", "unix": 1795743759.840, "utc": "01:42:39", "event": "stopped"}
+{"name": "i12_a1_fix", "unix": 1795743846.652, "utc": "01:44:06", "event": "stopped"}
+{"name": "i12_s1a", "utc": "02:00:41", "event": "stopped_after_issue2_bench"}
+{"name": "i12_b_q06", "unix": 1795744841.627, "utc": "02:00:41", "event": "config", "model": "Qwen3-0.6B", "cores": "28,29,30,31", "port": 30141, "cache": "/home/ubuntu/w/i12_cache_b06", "cache_files_before": 0, "reuse_cache": "0", "vllm_env": "", "mode": "keep", "cap_s": 1500}
+{"name": "i12_b_q06", "unix": 1795744841.886, "utc": "02:00:41", "event": "launched", "rc": 0, "container_started": "2026-11-27T02:00:41.737125581Z"}
+{"name": "i12_b_q06", "unix": 1795745004.025, "utc": "02:03:24", "event": "parallel_trace_finished", "elapsed_s": 162, "line_no": 889}
+{"name": "i12_b_q06", "unix": 1795745292.702, "utc": "02:08:12", "event": "ready", "elapsed_s": 451}
+{"name": "i12_b_q06", "unix": 1795745292.805, "utc": "02:08:12", "event": "end", "verdict": "ready", "cache_files_after": 135}
+{"name": "i12_b_q06", "utc": "02:08:20", "event": "bench_start", "tag": "b_q06_vllm_p1"}
+{"name": "i12_b_q06", "utc": "02:10:12", "event": "bench_end", "tag": "b_q06_vllm_p1", "rc": 0, "last": "LLMBENCH_DONE b_q06_vllm_p1 csv=/home/ubuntu/w/results_s4/llmbench_b_q06_vllm_p1.csv rows=3"}
+{"name": "i12_b_q06", "utc": "02:10:12", "event": "bench_start", "tag": "b_q06_vllm_p2"}
+{"name": "i12_b_q06", "utc": "02:12:02", "event": "bench_end", "tag": "b_q06_vllm_p2", "rc": 0, "last": "LLMBENCH_DONE b_q06_vllm_p2 csv=/home/ubuntu/w/results_s4/llmbench_b_q06_vllm_p2.csv rows=3"}
+{"name": "i12_b_q06", "utc": "02:12:20", "event": "stopped_after_bench"}
+{"name": "i12_f34a", "unix": 1795745540.480, "utc": "02:12:20", "event": "config", "model": "Qwen3-8B", "cores": "32,33,34,35", "port": 30142, "cache": "/home/ubuntu/w/i12_cache_p4", "cache_files_before": 23, "reuse_cache": "1", "vllm_env": "", "mode": "keep", "cap_s": 2700}
+{"name": "i12_f34b", "unix": 1795745540.480, "utc": "02:12:20", "event": "config", "model": "Qwen3-8B", "cores": "36,37,38,39", "port": 30143, "cache": "/home/ubuntu/w/i12_cache_p5", "cache_files_before": 23, "reuse_cache": "1", "vllm_env": "", "mode": "keep", "cap_s": 2700}
+{"name": "i12_f34a", "unix": 1795745540.770, "utc": "02:12:20", "event": "launched", "rc": 0, "container_started": "2026-11-27T02:12:20.607106905Z"}
+{"name": "i12_f34b", "unix": 1795745540.789, "utc": "02:12:20", "event": "launched", "rc": 0, "container_started": "2026-11-27T02:12:20.613774604Z"}
+{"name": "i12_f34b", "unix": 1795745723.517, "utc": "02:15:23", "event": "parallel_trace_finished", "elapsed_s": 183, "line_no": 898}
+{"name": "i12_f34a", "unix": 1795745723.519, "utc": "02:15:23", "event": "parallel_trace_finished", "elapsed_s": 183, "line_no": 898}
+{"name": "i12_f34a", "unix": 1795746078.307, "utc": "02:21:18", "event": "ready", "elapsed_s": 538}
+{"name": "i12_f34a", "unix": 1795746078.416, "utc": "02:21:18", "event": "end", "verdict": "ready", "cache_files_after": 157}
+{"name": "i12_f34b", "unix": 1795746083.373, "utc": "02:21:23", "event": "ready", "elapsed_s": 543}
+{"name": "i12_f34b", "unix": 1795746083.480, "utc": "02:21:23", "event": "end", "verdict": "ready", "cache_files_after": 157}
+{"name": "i12_f34a", "utc": "02:21:29", "event": "stopped_after_ready"}
+{"name": "i12_f34b", "utc": "02:21:30", "event": "stopped_after_ready"}

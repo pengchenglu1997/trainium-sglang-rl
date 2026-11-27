@@ -1,0 +1,9 @@
+{"t": "2026-11-27T02:03:56Z", "event": "open", "name": "all", "cores": "60-63", "port": 30304, "sets": ["t0", "gsm8k"], "cache_src": "/home/ubuntu/w/sgl_cache_s4_q06_all", "cache": "/home/ubuntu/w/sgl_cache_cc_all", "cache_files_at_start": 79, "cache_files_in_original": 79, "env": {"DATA_ROOT": "/ho
+{"t": "2026-11-27T02:06:40Z", "event": "server_start", "ready_s": 164.5, "log": "/home/ubuntu/w/cc/results/server_logs/server_cc_all_001.log", "start_no": 1}
+{"t": "2026-11-27T02:06:43Z", "event": "set_done", "set": "t0", "ok": 20, "of": 20, "first_error": null}
+{"t": "2026-11-27T02:06:54Z", "event": "gsm8k", "cmd": ["/opt/aws_neuronx_venv_torch_neuronx_2_14_0/bin/python", "/home/ubuntu/w/sglang_rl/21_gsm8k_acc.py", "--base-url", "http://127.0.0.1:30304", "--model", "/models/Qwen3-0.6B", "--data", "/home/ubuntu/w/models/gsm8k/test.jsonl", "--results", "/hom
+{"t": "2026-11-27T02:06:54Z", "event": "log_lines", "counts": {"sampler by the kernel": 4, "topk_topp sampler by the kernel": 0}, "pretransposed_mentions": 0, "examples": ["[2026-11-27 02:04:48 TP1] [rlkit] sampler by the kernel: rows=1 shard_width=37984 segments=32 partitions=32 partials=[32,4] pid
+{"t": "2026-11-27T02:06:58Z", "event": "stop", "seconds": 4.8}
+{"t": "2026-11-27T02:06:58Z", "event": "end", "status": "ok"}
+{"t": "2026-11-27T02:06:58Z", "done": true}
+CC_COLLECT_DONE all

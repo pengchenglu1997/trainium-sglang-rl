@@ -1,0 +1,32 @@
+compiles recorded: 11
+2026-11-27T04:12:42Z cc_cmdlines line 1 workdir b94122951f01 | log line 232: [neuron] warm decode bucket=1 context=2048
+2026-11-27T04:13:08Z cc_cmdlines line 7 workdir 6dbee174efba | log line 299: [neuron] warm decode bucket=1 context=4096
+2026-11-27T04:13:37Z cc_cmdlines line 13 workdir 0d697f2ff5db | log line 365: [neuron] warm decode bucket=8 context=1024
+2026-11-27T04:14:06Z cc_cmdlines line 19 workdir fcbe760c80ed | log line 426: [neuron] warm decode bucket=8 context=2048
+2026-11-27T04:14:33Z cc_cmdlines line 25 workdir 9024435e6f12 | log line 471: [neuron] warm decode bucket=8 context=4096
+2026-11-27T04:15:02Z cc_cmdlines line 31 workdir 044e27c4987c | log line 516: [neuron] warm decode bucket=32 context=1024
+2026-11-27T04:15:31Z cc_cmdlines line 37 workdir 7cece3135e76 | log line 557: [neuron] warm decode bucket=32 context=2048
+2026-11-27T04:16:00Z cc_cmdlines line 43 workdir d65ec6e9f445 | log line 604: [neuron] warm decode bucket=32 context=4096
+2026-11-27T04:16:32Z cc_cmdlines line 49 workdir fa688ca5d3f6 | log line 658: [neuron] warm prefill bucket=512
+2026-11-27T04:17:04Z cc_cmdlines line 55 workdir 737fb7c63588 | log line 768: [neuron] warm prefill bucket=1024
+2026-11-27T04:17:43Z cc_cmdlines line 61 workdir 72a854023088 | log line 875: [neuron] warm prefill bucket=2048
+
+distinct argument strings: 1
+--- used by 11 compiles; first at cc_cmdlines line 1 (log line 232: [neuron] warm decode bucket=1 context=2048)
+compile module.mlir --framework XLA --target trn2 --lnc 2 -O1 --model-type transformer --auto-cast=none --auto-cast=none --verbose=35 --internal-hlo2tensorizer-options=--modular-flow-mac-threshold=10 --hierarchy-splitter=false --internal-backend-options=--enable-verifier=false --hbm-scratchpad-page-size=3584 --model-type=generic --output module.neff
+
+warm lines (TP0):
+  log line 149: 2026-11-27 04:11:55 [neuron] warm decode bucket=1 context=1024
+  log line 232: 2026-11-27 04:12:24 [neuron] warm decode bucket=1 context=2048
+  log line 299: 2026-11-27 04:12:52 [neuron] warm decode bucket=1 context=4096
+  log line 365: 2026-11-27 04:13:21 [neuron] warm decode bucket=8 context=1024
+  log line 426: 2026-11-27 04:13:49 [neuron] warm decode bucket=8 context=2048
+  log line 471: 2026-11-27 04:14:17 [neuron] warm decode bucket=8 context=4096
+  log line 516: 2026-11-27 04:14:45 [neuron] warm decode bucket=32 context=1024
+  log line 557: 2026-11-27 04:15:14 [neuron] warm decode bucket=32 context=2048
+  log line 604: 2026-11-27 04:15:42 [neuron] warm decode bucket=32 context=4096
+  log line 652: 2026-11-27 04:16:11 [neuron] warmup done in 255.8s (9 shapes)
+  log line 658: 2026-11-27 04:16:11 [neuron] warm prefill bucket=512
+  log line 768: 2026-11-27 04:16:44 [neuron] warm prefill bucket=1024
+  log line 875: 2026-11-27 04:17:18 [neuron] warm prefill bucket=2048
+  log line 930: 2026-11-27 04:17:58 [neuron] warmup done in 107.2s (3 shapes)

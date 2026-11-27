@@ -1,0 +1,10 @@
+== S 00:38:00 host: 192 cpus; df /dev/root 387G 33G 355G 9% /
+== S 00:38:01 neuron-ls: instance-type: trn2.48xlarge|instance-id: <redacted>|logical-neuroncore-config: 2|+--------+--------+----------+--------+---------------+--------------+---------------+------+|
+== S 00:44:55 image ok
+== S 00:45:47 model Qwen3-0.6B ok 1.5G
+== S 00:45:48 model Qwen3-8B ok 16G
+== S 00:45:53 gsm8k lines:    8792 total
+== S 00:45:54 llmbench at 08f416347db19bb45ff2489b8a69eacef62b6875
+== S 00:46:01 llmbench uv sync ok
+== S 00:46:01 prep problems: 0
+S_DONE prep status=ok

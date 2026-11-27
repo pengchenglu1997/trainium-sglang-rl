@@ -1,0 +1,4 @@
+temp_cold(14) vs q06_rel(14) common: 14
+temp_cold(14) vs q06_main(14) common: 2
+temp_cold(14) vs q06_all(14) common: 2
+temp_cold(14) vs i29_q06_topk_cold(14) common: 2

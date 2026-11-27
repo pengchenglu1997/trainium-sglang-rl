@@ -1,0 +1,2 @@
+/var/tmp/nki-intermediate-cache 124
+/var/tmp/nki-trace-cache-uid0 62
