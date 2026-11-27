@@ -9,7 +9,7 @@ Times are UTC. Every number is read from a result file in `results_night_2026-11
 
 | id | type | region | from – to | notes |
 |---|---|---|---|---|
-| `i-029198d9cae3bbf06` (spot `sir-knbfqz5k`) | trn2.48xlarge | ap-south-2b | 07:58 – 09:43 | powered off from inside (`shutdown -P now`; shutdown behaviour terminate). The AWS login had expired at that moment, so the terminated state and the absence of a left-over volume were NOT read back from AWS that night; read back on 22 November: no trn2 instance, no left-over volume. Guard was 14:01. |
+| `<instance id redacted>` (spot `<spot request id redacted>`) | trn2.48xlarge | ap-south-2 | 07:58 – 09:43 | powered off from inside (`shutdown -P now`; shutdown behaviour terminate). The AWS login had expired at that moment, so the terminated state and the absence of a left-over volume were NOT read back from AWS that night; read back on 22 November: no trn2 instance, no left-over volume. Guard was 14:01. |
 
 Image `pytorch-inference-sglang-neuron:v0.1.0-neuron-py314-sdk-2.33.0-ubuntu26.04`, patch
 `patches/sglang_neuron_v0.1.0_inplace` with two additions of this session in `models/host.py`: a coverage log line
